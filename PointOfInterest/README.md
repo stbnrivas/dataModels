@@ -1,11 +1,32 @@
-# PointOfInterest
+# Point Of interest
 
-This folder contains all the code related to a harmonized NGSIv2 end point which serves entities of type `PointOfInterest`.
+This folder contains all the code related to a harmonized NGSIv2 end point.
 
-The main entry point the is the poi-server.js. Querying the end point is as easy as
+Such endpoint serves entities of type `PointOfInterest`. Data comes from different sources:
+
+* from the city of Porto (Portugal)
+* from AEMET (National Weather Agency from Spain)
+* from Madrid City Council
+
+The scripts present in this folder are:
+
+* `poi-server.js`. Main entry point of the endpoint.
+* `oporto-ost.js`. Contains all the logic needed to interact with [OST Platform](https://www.ost.pt/)
+
+Please check licenses before using this data in an application. 
+
+Currently the following categories are supported:
+
+* ```WeatherStation```
+* ```AirQualityStation```
+* ```Restaurant```
+* ```Hotel```
+* ```ParkingLot```
+
+## Examples of use
 
 ```
-http://130.206.83.68:1027/v2/entities?type=PointOfInterest&q=category:Restaurant
+curl http://130.206.83.68:1027/v2/entities?type=PointOfInterest&q=category:Restaurant
 ```
 
 ```json
@@ -26,12 +47,3 @@ http://130.206.83.68:1027/v2/entities?type=PointOfInterest&q=category:Restaurant
     "description": "Space with simple lines, a modern and minimalist decor ... "
 }
 ```
-
-The referred end point is providing data from the city of Porto (Portugal) and from AEMET (National Weather Agency from Spain)
-
-Currently the following categories are supported:
-
-* 'WeatherStation',
-* 'Restaurant',
-* 'Hotel',
-* 'ParkingLot'

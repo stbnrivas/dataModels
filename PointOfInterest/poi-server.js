@@ -39,7 +39,8 @@ var categoriesMap = {
   'ParkingLot': '418',
   'Restaurant': '347',
   'Hotel': '436',
-  'WeatherStation': 'WeatherStation'
+  'WeatherStation': 'WeatherStation',
+  'AirQualityStation': 'AirQualityStation'
 };
 
 app.get('/v2/entities', function (req, resp) {
@@ -87,7 +88,8 @@ app.get('/v2/entities', function (req, resp) {
       }
     });
     
-    if (category === 'WeatherStation') {
+    if (category === 'WeatherStation' || category === 'AirQualityStation') {
+      var pattern = category + '-.*';
       
       var options = {
         GeoJSON: true
@@ -100,7 +102,7 @@ app.get('/v2/entities', function (req, resp) {
       console.log(JSON.stringify(locationOptions));
       
       OrionClient.queryContext({
-        pattern: 'WeatherStation-.*'
+        pattern: pattern
       }, options).then(function(data) {
           resp.json(data);
       });
