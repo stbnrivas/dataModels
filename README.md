@@ -17,4 +17,4 @@ So before using the data please check carefully each data license.
 Contributions should come in the form of pull requests. 
 
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
-[license-url]: https://github.com/Fiware/tools.Md2pdf/blob/master/LICENSE
+[license-url]: LICENSE
