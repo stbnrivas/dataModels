@@ -27,7 +27,7 @@ curl http://130.206.83.68:1029/v2/entities?type=AmbientObserved&q=stationCode:28
       "addressLocality": "Madrid",
       "streetAddress": "Plaza de España"
     },
-    "created": "2016-03-15T13:29:30.894942",
+    "dateCreated": "2016-03-15T13:29:30.894942",
     "id": "Madrid-AmbientObserved-28079004-2016-03-15T11:00:00",
     "location": {
       "type": "geo:point",

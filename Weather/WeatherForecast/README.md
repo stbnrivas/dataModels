@@ -25,7 +25,7 @@ curl http://130.206.83.68:1028/v2/entities?type=WeatherForecast&q=country:PT;add
     },
     "feelsLikeTemperature": 14.2,
     "temperature": 15.1,
-    "created": "2016-03-14T08:27:45",
+    "dateCreated": "2016-03-14T08:27:45",
     "windDirection": "W",
     "weatherType": "High clouds",
     "dayMaximum": {

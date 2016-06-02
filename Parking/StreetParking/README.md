@@ -24,14 +24,13 @@ curl http://130.206.83.68:1026/v2/entities?type=StreetParking
     "type": "StreetParking",
     "allowedVehicles": [ "Car" ],
     "availableSpotNumber": 1,
-    "centroid": "43.462923, -3.803335",
     "location": {
       "type": "geo:polygon",
       "value": "43.462975627835796,-3.80356167695194,43.46301091092682,-3.803128198976552,43.462879859445884,-3.803097956327106,43.462829455030146,-3.803536474744068,43.462975627835796,-3.80356167695194"
     },
     "totalSpotNumber": 6,
-    "updated": {
-      "type": "date",
+    "dateUpdated": {
+      "type": "DateTime",
       "value": "2016-03-15T14:40:14.428Z"
     }
 }

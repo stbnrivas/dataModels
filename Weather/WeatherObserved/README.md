@@ -22,7 +22,7 @@ Please check data licenses at the original data sources before using this data i
       "addressLocality": "Valladolid",
       "addressCountry": "ES"
     },
-    "observed": "2016-03-14T16:00:00",
+    "dateObserved": "2016-03-14T16:00:00",
     "pressure": 930,
     "windSpeed": 7,
     "type": "WeatherObserved",

@@ -22,7 +22,7 @@ curl http://130.206.83.68:1028/v2/entities?type=WeatherAlarm&q=country:ES
       "addressCountry": "ES",
       "addressRegion": "Huesca"
     },
-    "created": "2016-03-14T13:54:01",
+    "dateCreated": "2016-03-14T13:54:01",
     "type": "WeatherAlarm",
     "id": "WeatherAlarm-83b872975414bfca10832e564a1bb416-7",
     "validity": {

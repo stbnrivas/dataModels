@@ -75,7 +75,7 @@ def get_weather_observed(request):
       observation['pressureTendency'] =  get_data(row, 8)
       observation['relativeHumidity'] = get_data(row, 9, factor=100.0)
       
-      observation['observed'] = datetime.datetime.strptime(row[0], '%d/%m/%Y %H:%M').isoformat()
+      observation['dateObserved'] = datetime.datetime.strptime(row[0], '%d/%m/%Y %H:%M').isoformat()
       observation['source'] = 'http://www.aemet.es'
       observation['address'] = {
         'addressLocality': address.decode('latin-1'),
