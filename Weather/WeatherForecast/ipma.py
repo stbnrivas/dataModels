@@ -96,7 +96,7 @@ def get_weather_forecasted_pt(locality):
       hr = None
       
     obj['relativeHumidity'] = hr
-    obj['created'] = forecast['dataUpdate']
+    obj['dateCreated'] = forecast['dataUpdate']
     obj['validity'] = {
       'from': forecast['dataPrev'],
       'to':   valid_to.isoformat()

@@ -126,7 +126,7 @@ def get_weather_forecasted(request):
         f['type'] = 'WeatherForecast'
         f['id'] = generate_id(postal_code, country, date) + '_' + str(counter)
         f['address'] = address
-        f['created'] = created
+        f['dateCreated'] = created
         f['source'] = source
         counter+=1
         out.append(f)

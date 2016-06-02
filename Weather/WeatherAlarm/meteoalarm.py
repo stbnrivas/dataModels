@@ -108,7 +108,7 @@ def get_weather_alarms(request):
                 'addressRegion': zone
               },
               'source': 'http://www.meteoalarm.eu',
-              'created': pub_date
+              'dateCreated': pub_date
             }
             out.append(obj)
         else:
