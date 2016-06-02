@@ -3,9 +3,12 @@
 /* Sets up all the data needed for smart parking in Santander */
 
 const ORION_SERVER = 'http://130.206.83.68:1026/v1';
+const ORION_SERVER_V2 = 'http://130.206.83.68:1026/v2';
+
 const SANTANDER_SERVER = 'http://mu.tlmat.unican.es:8099/v1'
 
 var csv = require('ya-csv');
+var Request = require('request');
 
 var Orion = require('fiware-orion-client'),
     OrionClient = new Orion.Client({
@@ -20,11 +23,16 @@ var Orion = require('fiware-orion-client'),
 
 function setupConfig() {
   return new Promise(function(resolve, reject) {
+    
+    console.log('Starting process ...');
+    
     var sensor2Polygon = Object.create(null);
     var polygon2Sensor = Object.create(null);
   
     var obj = null;
-    readCsv('sensors_polygons.csv').then(function(data) {
+    readCsv('sensors_polygons_refined.csv').then(function(data) {
+      console.log('CSV read');
+      
       data.forEach(function(aRecord) {
         var sensorId = aRecord.id;
         var polygonId = aRecord['sensor_id'];
@@ -40,16 +48,16 @@ function setupConfig() {
         'polygon2Sensor': polygon2Sensor
       };
       
-      // console.log('Data: ', JSON.stringify(obj));
+      console.log('Data: ', JSON.stringify(obj));
       
       return OrionClient.updateContext({
         type: 'santander:smartparking:config',
         id:   'parking_config_1',
         data: obj
       });
-    }, reject).then(function() {
-        resolve(obj); },
-      reject).catch(reject);
+    }).then(function() {
+        resolve(obj);
+    }).catch(reject);
   });
 }
 
@@ -83,12 +91,48 @@ function readJson(file) {
   return obj;
 }
 
+function createEntitiesV2(entityList) {
+  console.log(JSON.stringify(entityList));
+  
+  return new Promise(function(resolve, reject) {
+    Request.post({
+      baseUrl: ORION_SERVER_V2,
+      url: '/op/update/',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: {
+        "actionType": "APPEND",
+        "entities": entityList
+      },
+      json: true
+    }, function(err, response, body) {
+        console.log('Here ...');
+        if (err) {
+          console.error('Error while creating: ', err);
+          reject(err);
+          return;
+        }
+        if (response.statusCode !== 204) {
+          console.error('Error while creating: ', body);
+          reject(body.description);
+        }
+        resolve();
+    });
+  });
+}
+
+process.on('uncaughtException', function(error) {
+  console.error('Error: '. JSON.stringify(error));
+});
+
 // Iterates over the street parking list (polygon GeoJSON)
 
 setupConfig().then(function(config) {
   console.log('Data updated properly');
   
-  var data = readJson('polygons_geojson.geojson');
+  var data = readJson('polygons_geojson_refined.geojson');
   // Array to hold the list of entities to be created
   var entitiesToCreate = [];
   // Array fo promises for querying sensor status
@@ -101,23 +145,27 @@ setupConfig().then(function(config) {
     var obj = {
       id:   'santander' + ':' + polygonId,
       type: 'StreetParking',
-      allowedVehicles: ['Car'],
-      totalSpotNumber: config.polygon2Sensor[polygonId].length
+      allowedVehicles: {
+        value: ['Car']
+      },
+      totalSpotNumber: {
+        value: config.polygon2Sensor[polygonId].length
+      }
     };
     
-    var centroid = properties['centroid_YCOORD'] + ', ' + properties['centroid_XCOORD'];
-    obj.centroid = new Orion.Attribute(centroid, 'geo:point');
-    
     var coordinates = aFeature.geometry.coordinates[0];
-    var polygonCoords = '';
+    var polygonCoords = [];
     coordinates.forEach(function(aCoordinate) {
-      polygonCoords += aCoordinate[1] + ',' + aCoordinate[0]
-      polygonCoords += ','
+      polygonCoords.push(aCoordinate[1] + ',' + aCoordinate[0]);
     });
     
-    obj.location = new Orion.Attribute(polygonCoords.substring(0, polygonCoords.length - 1),
-                                       'geo:polygon');
+    obj.location = {
+      value: polygonCoords,
+      type: 'geo:polygon'
+    };
     entitiesToCreate.push(obj);
+    
+    console.log(obj);
     
     var sensors = config.polygon2Sensor[polygonId];
     var queryData = [];
@@ -127,6 +175,8 @@ setupConfig().then(function(config) {
       })
     });
     
+    console.log(JSON.stringify(queryData));
+    
     // Enquee a promise to get status
     querySensorStatus.push(SantanderClient.queryContext(queryData,{
       path: '/parking/#'
@@ -135,25 +185,32 @@ setupConfig().then(function(config) {
   
   Promise.all(querySensorStatus).then(function(results) {
     console.log('Promise.all finished: ', results.length, entitiesToCreate.length);
+    
     entitiesToCreate.forEach(function(aEntity, index) {
       console.log(index);
       if (index == 27) {
         console.log(aEntity);
       }
-      var freeSpots = aEntity.totalSpotNumber;
+      var freeSpots = aEntity.totalSpotNumber.value;
       var sensorData = results[index];
       sensorData && sensorData.forEach(function(aSensor) {
         if (aSensor['presenceStatus:parking'] === 'true') {
           freeSpots--;
         }
       });
-      aEntity.availableSpotNumber = freeSpots;
-      aEntity.updated = new Date();
+      aEntity.availableSpotNumber = {
+        value: freeSpots
+      };
+      aEntity.dateUpdated = {
+        value: new Date(),
+        type: 'DateTime'
+      };
     });
     
     console.log('Going to create entities');
     
-    return OrionClient.updateContext(entitiesToCreate);
+    return createEntitiesV2(entitiesToCreate);
+    // return OrionClient.updateContext(entitiesToCreate);
   
   }).then(function() {
       console.log('Santander street parking created OK');
