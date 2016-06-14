@@ -60,7 +60,7 @@ curl http://130.206.83.68:1028/v2/entities?type=WeatherForecast&q=postalCode:390
       "relativeHumidity": 0.6
     },
     "temperature": 7,
-    "created": "2016-03-14T11:40:02",
+    "dateCreated": "2016-03-14T11:40:02",
     "type": "WeatherForecast",
     "address": {
       "addressCountry": "ES",
