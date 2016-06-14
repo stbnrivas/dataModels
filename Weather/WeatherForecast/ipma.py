@@ -80,15 +80,20 @@ def get_weather_forecasted_pt(locality):
     
     obj = {
       'type': 'WeatherForecast',
-      'dayMaximum': {
-        'temperature': tMax,
-      },
-      'dayMinimum': {
-        'temperature': tMin
-      },
       'feelsLikeTemperature': get_data(forecast, 'utci'),
       'temperature': get_data(forecast, 'tMed'),
     }
+    
+    if tMax is not None:
+      obj['dayMaximum'] = {
+        'temperature': tMax
+      }
+    
+    if tMin is not None:
+      obj['dayMinimum'] = {
+        'temperature': tMin
+      }
+    
     hr = get_data(forecast, 'hR')
     if hr <> None:
       hr = hr / 100
