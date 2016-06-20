@@ -6,9 +6,9 @@ A geographical area which keeps one or more waste containers.
 
 ## Data Model
 
-+ `id` : NGSI identifier. 
++ `id` : Unique identifier. 
 
-+ `type` : NGSI entity type. It must be `WasteContainerIsle`. 
++ `type` : Entity type. It must be equal to `WasteContainerIsle`. 
 
 + `location`: Location of the isle represented by a GeoJSON Polygon.
     + Attribute type: `geo:json`.

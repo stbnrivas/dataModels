@@ -6,13 +6,15 @@ A model of waste container which captures the static properties of a class of co
 
 ## Data Model
 
-+ `type`: `WasteContainerModel`
++ `id` : Unique identifier. 
+
++ `type`: Entity Type. It must be equal to `WasteContainerModel`.
 
 + `name`. Name given to the container model
     + Normative References: [https://schema.org/name](https://schema.org/name)
     + Mandatory
 
-+ `width'. Width of the container.
++ `width`. Width of the container.
     + Attribute type: [Number](https://schema.org/Number).
     + Unit: Meters
     + See also: [https://schema.org/width](https://schema.org/width)
@@ -69,7 +71,7 @@ A model of waste container which captures the static properties of a class of co
     + Allowed values: one Of (`plastic`, `wood` , `metal`, `other`)
     + Optional
     
-+ `madeOfCode. Material Code as per standard tables. TBD.
++ `madeOfCode`. Material Code as per standard tables. TBD.
     + Attribute type: [Text](https://schema.org/Text)
     + Optional
        
@@ -95,12 +97,12 @@ A model of waste container which captures the static properties of a class of co
 + `colors`.  Available colors.
     + Attribute type: List of [Text](https://schema.org/Text)
     + Allowed Values:
-        + A color keyword as specified by [W3C Color Keywords] (https://www.w3.org/TR/SVG/types.html#ColorKeywords)
+        + A color keyword as specified by [W3C Color Keywords](https://www.w3.org/TR/SVG/types.html#ColorKeywords)
         + A color value as specified by [W3C Color Data Type](https://www.w3.org/TR/SVG/types.html#BasicDataTypes)
     + See also: [https://schema.org/color](https://schema.org/color)
     + Optional
 
-+ `image` . A URL containing a photo of the container model.
++ `image`. A URL containing a photo of the container model.
     + Normative References: [https://schema.org/image](https://schema.org/image)
     + Optional
 
