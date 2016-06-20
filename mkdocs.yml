@@ -10,4 +10,20 @@ theme: readthedocs
 extra_css: ["https://fiware.org/style/fiware_readthedocs.css"]
 pages:
   -  Home: index.md
-  - 'Waste Management' : WasteManagement/doc/waste_management.md
+  -  PointOfInterest: 
+      - 'WeatherStation'       : 'PointOfInterest/WeatherStation/doc/spec.md'
+      - 'AirQualityStation'    : 'PointOfInterest/AirQualityStation/doc/spec.md'
+  -  Parking:
+      - 'StreetParking'        : 'Parking/StreetParking/doc/spec.md'
+      - 'ParkingLot'           : 'Parking/ParkingLot/doc/spec.md'
+  -  Ambient:
+      - 'AmbientObserved'      : 'AmbientObserved/doc/spec.md'
+      - 'AirQualityThreshold'  : 'AirQualityThreshold/doc/spec.md'
+  -  Weather:
+      - 'WeatherObserved'      : 'Weather/WeatherObserved/doc/spec.md'
+      - 'WeatherForecast'      : 'Weather/WeatherForecast/doc/spec.md'
+      - 'WeatherAlarm'         : 'Weather/WeatherAlarm/doc/spec.md'
+  - 'Waste Management':
+      - 'WasteContainerIsle'   : 'WasteManagement/WasteContainerIsle/doc/spec.md'
+      - 'WasteContainerModel'  : 'WasteManagement/WasteContainerModel/doc/spec.md'
+      - 'WasteContainer'       : 'WasteManagement/WasteContainer/doc/spec.md'

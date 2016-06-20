@@ -1,6 +1,6 @@
-# Waste Management
+# Waste Container Isle
 
-## Waste Container Isle
+## Data Model
 
 An area which may contain one or more waste containers. 
 
@@ -10,7 +10,7 @@ An area which may contain one or more waste containers.
   + Normative References: [geojson](https://tools.ietf.org/html/draft-ietf-geojson-03)
   + Mandatory
   
-+ `level`:
++ `level`: Isle level (ground, underground, etc.)
   + Attribute type: [Text](http://schema.org/Text)
   + Allowed values: one Of (`ground`, `underground`)
   + Optional
@@ -19,18 +19,17 @@ An area which may contain one or more waste containers.
   + Normative References: [address](https://schema.org/address)
   + Optional
 
-+ `description`:
++ `description`: Description about the isle. 
   + Normative References: [description](https://schema.org/description)
   + Optional
 
-+ `containers`:
-  + List of containers present in the aisle.
++ `containers`: List of containers present in the aisle.
   + Attribute type: List. 
   + Allowed values. Container's id.
   + Optional
 
 
-### Example
+## Example
 
     {
       "id": "wastecontaineraisle:Fleming:1",
@@ -53,5 +52,5 @@ An area which may contain one or more waste containers.
       "containers": ["wastecontainer:Fleming:4", "wastecontainer:Fleming:5"] 
     }
     
-### Test it with a real service
+## Test it with a real service
 
