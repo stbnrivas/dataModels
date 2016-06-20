@@ -2,17 +2,20 @@
 
 ## Description
 
-An area which may contain one or more waste containers. 
+A geographical area which keeps one or more waste containers. 
 
 ## Data Model
 
-+ `type` : `WasteContainerIsle`
++ `id` : NGSI identifier. 
+
++ `type` : NGSI entity type. It must be `WasteContainerIsle`. 
+
 + `location`: Location of the isle represented by a GeoJSON Polygon.
     + Attribute type: `geo:json`.
     + Normative References: [https://tools.ietf.org/html/draft-ietf-geojson-03](https://tools.ietf.org/html/draft-ietf-geojson-03)
     + Mandatory
   
-+ `level`: Isle level (ground, underground, etc.)
++ `level`: Level at which the isle is placed (ground, underground, etc.)
     + Attribute type: [Text](http://schema.org/Text)
     + Allowed values: one Of (`ground`, `underground`)
     + Optional
@@ -20,13 +23,17 @@ An area which may contain one or more waste containers.
 + `address`: Civic address where the isle is located. 
     + Normative References: [https://schema.org/address](https://schema.org/address)
     + Optional
+ 
++ `name`: Name given to the isle
+    + Normative References: [https://schema.org/name](https://schema.org/name)
+    + Optional
 
 + `description`: Description about the isle. 
     + Normative References: [https://schema.org/description](https://schema.org/description)
     + Optional
 
 + `containers`: List of containers present in the isle.
-    + Attribute type: List. 
+    + Attribute type: List of references to [WasteContainer](../../WasteContainer/doc/spec.md) entities. 
     + Allowed values. Container's id.
     + Optional
 
@@ -54,6 +61,7 @@ An area which may contain one or more waste containers.
          "addressCountry": "ES"
       },
       "level": "ground",
+      "name": "Doctor Fleming 5",
       "description": "Container isle located downtown",
       "containers": ["wastecontainer:Fleming:4", "wastecontainer:Fleming:5"] 
     }
