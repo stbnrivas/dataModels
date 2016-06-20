@@ -1,4 +1,4 @@
-# IoT Big Data Ecosystem Data Models
+# FIWARE Data Models
 
 [![MIT license][license-image]][license-url]
 
