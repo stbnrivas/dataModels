@@ -1,32 +1,34 @@
 # Waste Container Isle
 
-## Data Model
+## Description
 
 An area which may contain one or more waste containers. 
 
+## Data Model
+
 + `type` : `WasteContainerIsle`
 + `location`: Location of the isle represented by a GeoJSON Polygon.
-  + Attribute type: `geo:json`.
-  + Normative References: [geojson](https://tools.ietf.org/html/draft-ietf-geojson-03)
-  + Mandatory
+    + Attribute type: `geo:json`.
+    + Normative References: [geojson](https://tools.ietf.org/html/draft-ietf-geojson-03)
+    + Mandatory
   
 + `level`: Isle level (ground, underground, etc.)
-  + Attribute type: [Text](http://schema.org/Text)
-  + Allowed values: one Of (`ground`, `underground`)
-  + Optional
+    + Attribute type: [Text](http://schema.org/Text)
+    + Allowed values: one Of (`ground`, `underground`)
+    + Optional
   
 + `address`: Civic address where the isle is located. 
-  + Normative References: [address](https://schema.org/address)
-  + Optional
+    + Normative References: [address](https://schema.org/address)
+    + Optional
 
 + `description`: Description about the isle. 
-  + Normative References: [description](https://schema.org/description)
-  + Optional
+    + Normative References: [description](https://schema.org/description)
+    + Optional
 
 + `containers`: List of containers present in the aisle.
-  + Attribute type: List. 
-  + Allowed values. Container's id.
-  + Optional
+    + Attribute type: List. 
+    + Allowed values. Container's id.
+    + Optional
 
 
 ## Example
