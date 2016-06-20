@@ -10,38 +10,49 @@ A geographical area which keeps one or more waste containers.
 
 + `type` : Entity type. It must be equal to `WasteContainerIsle`. 
 
-+ `location`: Location of the isle represented by a GeoJSON Polygon.
++ `location` : Location of the isle represented by a GeoJSON Polygon.
     + Attribute type: `geo:json`.
     + Normative References: [https://tools.ietf.org/html/draft-ietf-geojson-03](https://tools.ietf.org/html/draft-ietf-geojson-03)
     + Mandatory
   
-+ `level`: Level at which the isle is placed (ground, underground, etc.)
-    + Attribute type: [Text](http://schema.org/Text)
-    + Allowed values: one Of (`ground`, `underground`)
-    + Optional
-  
-+ `address`: Civic address where the isle is located. 
++ `address` : Civic address where the isle is located. 
     + Normative References: [https://schema.org/address](https://schema.org/address)
     + Optional
  
-+ `name`: Name given to the isle
++ `name` : Name given to the isle
     + Normative References: [https://schema.org/name](https://schema.org/name)
     + Optional
 
-+ `description`: Description about the isle. 
++ `description` : Description about the isle. 
     + Normative References: [https://schema.org/description](https://schema.org/description)
     + Optional
+    
++ `insertHolesNumber` : Number of insert holes the isle has.
+    + Attribute type: [Number](https://schema.org/Number).
+    + Optional
+    
++ `features` : A list of features provided by the isle.
+    + Attribute type: List of [Text](http://schema.org/Text).
+    + Allowed values:
+        + `containerFix`. Allows to fix containers to a permanent position.
+        + `fenced`. The isle is properly fenced.
+        + `underground`. The isle allows to hold buried containers. 
+        + Any other value meaningful to the application.
+    + Optional
 
-+ `containers`: List of containers present in the isle.
++ `containers` : List of containers present in the isle.
     + Attribute type: List of references to [WasteContainer](../../WasteContainer/doc/spec.md) entities. 
     + Allowed values. Container's id.
     + Optional
 
++ `zone` : Higher level zone to which the isle belongs to. It can be used to group isles per responsible, etc.
+    + Attribute type: [Text](https://schema.org/Text)
+    + Optional
 
 ## Example
 
     {
-      "id": "wastecontainerisle:Fleming:1",
+      "id": "wastecontainerisle:Fleming:12",
       "type": "WasteContainerIsle",
       "location": {
          "type": "Polygon",
@@ -56,14 +67,14 @@ A geographical area which keeps one or more waste containers.
          ]
       },
       "address": {
-         "streetAddress" : "Calle Dr. Fleming, 5",
+         "streetAddress" : "Calle Dr. Fleming, 12",
          "addressLocality": "Guadalajara",
          "addressCountry": "ES"
       },
-      "level": "ground",
-      "name": "Doctor Fleming 5",
+      "features": ["underground"],
+      "name": "Dr. Fleming 12, Esquina Manuel Paez Xaramillo",
       "description": "Container isle located downtown",
-      "containers": ["wastecontainer:Fleming:4", "wastecontainer:Fleming:5"] 
+      "containers": ["wastecontainer:Fleming:12a", "wastecontainer:Fleming:12b"] 
     }
     
 ## Test it with a real service

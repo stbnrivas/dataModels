@@ -16,50 +16,50 @@ A model of waste container which captures the static properties of a class of co
 
 + `width`. Width of the container.
     + Attribute type: [Number](https://schema.org/Number).
-    + Unit: Meters
+    + Default Unit: Meters
     + See also: [https://schema.org/width](https://schema.org/width)
     + Optional 
 
 + `height`. Height of the container. 
     + Attribute type: [Number](https://schema.org/Number).
-    + Unit: Meters
+    + Default Unit: Meters
     + See also: [https://schema.org/height](https://schema.org/height)
     + Optional 
 
 + `depth`. Depth of the container.
     + Attribute type: [Number](https://schema.org/Number).
-    + Unit: Meters
+    + Default Unit: Meters
     + See also: [https://schema.org/depth](https://schema.org/depth)
     + Optional
 
 + `weight`. Weight of the container.
     + Attribute type: [Number](https://schema.org/Number).
-    + Unit: Kilograms
+    + Default Unit: Kilograms
     + See also: [https://schema.org/weight](https://schema.org/weight)
     + Optional
 
-+ `volume`. Total volume the container can hold.
++ `volumeStored`. Total volume the container can hold.
     + Attribute type: [Number](https://schema.org/Number).
-    + Unit: cubic meters
+    + Default Unit: liters
     + Optional
        
 + `maximumLoad`. Maximum load the container can hold safely.
     + Attribute type: [Number](https://schema.org/Number).
-    + Unit: Kilograms
+    + Default Unit: Kilograms
     + Optional
 
 + `recommendedLoad`. Manufacturer recommended load for the container.
     + Attribute type: [Number](https://schema.org/Number).
-    + Unit: Kilograms
+    + Default Unit: Kilograms
     + Optional
 
-+ `shape`. Container’s shape. TBD. 
-    + Attribute type: [Text](https://schema.org/Text).
-    + Optional
-
-+ `coverType`
-    + Attribute type: [Text](https://schema.org/Text)
-    + Allowed values: one Of (`flat`, `round`, `none`)
++ `category`. Container’s category. 
+    + Attribute type: List of [Text](https://schema.org/Text).
+    + Allowed values (Informative):
+        + `dumpster`. See [https://en.wikipedia.org/wiki/Dumpster](https://en.wikipedia.org/wiki/Dumpster)
+        + `trashCan`.
+        + `wheelieBin`.
+        + Any other category relevant for the application. 
     + Optional
   
 + `insertHolesNumber`. Number of insert holes the container has.
@@ -106,8 +106,36 @@ A model of waste container which captures the static properties of a class of co
     + Normative References: [https://schema.org/image](https://schema.org/image)
     + Optional
 
++ `compliantWith`. A list of standards to which the container is compliant with (ex. `UNE-EN 840-2:2013`)
+    + AttributeType: List of [Text](https://schema.org/Text).
+    + Optional
+
++ `features`. A list of container features. 
+    + Attribute type: List of [Text](https://schema.org/Text)
+    + Allowed Values:
+        + `wheels`
+        + `lid`
+        + `roundedLid`
+        + `insertHoles`
+        + `lockable`
+        + Any other value meaningful for the application.
     
 ## Example
+
+    {
+       "id": "wastecontainermodel:c1",
+       "type": "WasteContainerModel",
+       "width": 0.50,
+       "height": 0.80,
+       "depth": 0.40,
+       "volumeStored": 150,
+       "brandName": "Contenedores Ejemplo",
+       "modelName": "C1",
+       "compliantWith": ["UNE-EN 840-2:2013"],
+       "madeOf": "plastic",
+       "features": ["wheels", "lid"],
+       "category": ["dumpster"]
+    }
 
 
 ## Test it with a real service
