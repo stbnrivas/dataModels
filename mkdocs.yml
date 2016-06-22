@@ -10,20 +10,31 @@ theme: readthedocs
 extra_css: ["https://fiware.org/style/fiware_readthedocs.css"]
 pages:
   -  Home: index.md
-  -  PointOfInterest: 
-      - 'WeatherStation'       : 'PointOfInterest/WeatherStation/doc/spec.md'
-      - 'AirQualityStation'    : 'PointOfInterest/AirQualityStation/doc/spec.md'
-  -  Parking:
-      - 'StreetParking'        : 'Parking/StreetParking/doc/spec.md'
-      - 'ParkingLot'           : 'Parking/ParkingLot/doc/spec.md'
   -  Ambient:
       - 'AmbientObserved'      : 'AmbientObserved/doc/spec.md'
       - 'AirQualityThreshold'  : 'AirQualityThreshold/doc/spec.md'
+  -  Parking:
+      - 'Introduction'         : 'Parking/doc/introduction.md' 
+      - 'OffStreetParking'     : 'Parking/OffStreetParking/doc/spec.md'
+      - 'OffStreetParkingZone' : 'Parking/OffStreetParkingZone/doc/spec.md'
+      - 'OnStreetParking'      : 'Parking/OnStreetParking/doc/spec.md'
+      - 'ParkingAccess'        : 'Parking/ParkingAccess/doc/spec.md' 
+      - 'ParkingSpot'          : 'Parking/ParkingSpot/doc/spec.md'
+  -  'Parks & Gardens'         : 'ParksAndGardens/doc/introduction.md'          
+  -  PointOfInterest: 
+      - 'WeatherStation'       : 'PointOfInterest/WeatherStation/doc/spec.md'
+      - 'AirQualityStation'    : 'PointOfInterest/AirQualityStation/doc/spec.md'
+  -  'Issue Tracking'          : 'IssueTracking/doc/introduction.md'
+  -  'Street Lighting':
+      - 'Introduction'         : 'StreetLighting/doc/introduction.md'
+      - 'StreetLight'          : 'StreetLighting/StreetLight/doc/spec.md'      
   -  Weather:
       - 'WeatherObserved'      : 'Weather/WeatherObserved/doc/spec.md'
       - 'WeatherForecast'      : 'Weather/WeatherForecast/doc/spec.md'
       - 'WeatherAlarm'         : 'Weather/WeatherAlarm/doc/spec.md'
-  - 'Waste Management':
+  -  'Waste Management':
+      - 'Introduction'         : 'WasteManagement/doc/introduction.md'
       - 'WasteContainerIsle'   : 'WasteManagement/WasteContainerIsle/doc/spec.md'
       - 'WasteContainerModel'  : 'WasteManagement/WasteContainerModel/doc/spec.md'
       - 'WasteContainer'       : 'WasteManagement/WasteContainer/doc/spec.md'
+  -  'Water Quality'           : 'WaterQuality/doc/introduction.md'
