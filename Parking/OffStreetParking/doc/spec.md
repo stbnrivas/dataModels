@@ -97,22 +97,34 @@ it conveys what is such special location.
     + Attribute type: [Boolean](https://schema.org/Boolean)
     + Optional
 
-+ `totalSpotNumber` : The total number of spots offered by the parking site, aggregating data from all its zones (if defined).
-This can be difficult to be measured at those parking locations on which spots are not clearly limited by lines.
++ `totalSpotNumber` : The total number of spots offered by this parking site. 
+This number must aggregate numbers from all parking zones belonging to this parking site.
+This number can be difficult to be obtained for those parking locations on which spots are not clearly marked by lines.
     + Attribute type: [Number](http://schema.org/Number)
-    + Allowed values: Any positive integer number.
-    + Normative references: DATEX 2 version 2.3 attribute `parkingNumberofSpaces` of the *ParkingRecord* class.
+    + Allowed values: Any positive integer number or 0. 
+    + Normative references: DATEX 2 version 2.3 attribute *parkingNumberOfSpaces* of the *ParkingRecord* class.
     + Optional
 
-+ `availableSpotNumber` : The total number of spots available, aggregating all its zones (if defined).
++ `availableSpotNumber` : The number of spots available, excluding reserved spaces, such as those for disabled people,
+long term parkers and so on. This value must aggregate numbers from all zones devoted to regular parking.
 This might be harder to estimate at those parking locations on which spots borders are not clearly marked by lines.
     + Attribute type: [Number](http://schema.org/Number)
-    + Allowed values: A positive integer number, including 0.
+    + Allowed values: A positive integer number, including 0. It must lower or equal than `totalSpotNumber`. 
     + Metadata:
         + `dateUpdated` : Timestamp of the last attribute update
         + Type: [DateTime](https://schema.org/DateTime)
     + Optional
-    
+        
++ `extraSpotNumber` : The number of extra spots *available*, i.e. free. Extra spots are those reserved for special purposes and usually require
+a permit. Permit details will be found at parking zone level. This value must aggregate free spots from all zones
+devoted to special parking.
+    + Attribute type: [Number](http://schema.org/Number)
+    + Allowed values: A positive integer number, including 0. `extraSpotNumber` plus `availableSpotNumber` must be lower than or
+    equal to `totalSpotNumber`. 
+    + Metadata:
+        + `dateUpdated` : Timestamp of the last attribute update
+        + Type: [DateTime](https://schema.org/DateTime)
+   
 + `occupancyDetectionType` : Occupancy detection method(s).
     + Attribute type: List of [Text](http://schema.org/Text)
     + Allowed values: DATEX II version 2.3 *OccupancyDetectionTypeEnum*
@@ -185,12 +197,6 @@ all the zones. If there is no height limitation this value must be equal to `nul
     + Default unit: Seconds
     + Optional
 
-+ `requiredPermits` : Required permit(s) for parking at the site. If this property is not present no permit is needed.
- List semantics is that one of those permits must held in order to park at the site. 
-    + Attribute type: List of [Text](http://schema.org/Text)
-    + Allowed values: Those defined by the *PermitTypeEnum* enumeration of DATEX II version 2.3. 
-    + Optional    
-
 + `chargeType` : Type of charge performed by the parking site.
 Note that this attribute can change dynamically depending on time of day or day of week.
     + Attribute type: List of [Text](http://schema.org/Text)
@@ -239,7 +245,7 @@ Note that this attribute can change dynamically depending on time of day or day 
       },
       "description": "Municipal car park located near the Trindade metro station and the Town Hall",
       "dateUpdated": "2016-06-02T09:25:55.00Z"
-  }
+    }
 
 ## Test it with a real service
 

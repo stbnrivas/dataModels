@@ -143,7 +143,7 @@ Note that this attribute can change dynamically depending on time of day or day 
             [-3.80356167695194, 43.46296641666926]
           ]
         ]
-      }
+      },
       "totalSpotNumber": 6
     }
 
