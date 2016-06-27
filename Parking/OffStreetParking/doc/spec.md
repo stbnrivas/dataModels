@@ -5,8 +5,8 @@
 A site, off street, intended to park vehicles, managed independently and with suitable
 and clearly marked access points (entrances and exits).
 If necessary, and for management purposes or to deal with multi-location parking sites,
-it can de divided into different zones modelled by the entity type [../../OffStreetParkingZone/spec.md](OffStreetParkingZone).
-In DATEX 2 version 2.3 terminology it corresponds to a **UrbanParkingSite* of type *offStreetParking**. 
+it can de divided into different zones modelled by the entity type [OffStreetParkingZone](../../OffStreetParkingZone/doc/spec.md) .
+In DATEX 2 version 2.3 terminology it corresponds to a *UrbanParkingSite* of type *offStreetParking*. 
 
 ## Data Model
 
@@ -173,11 +173,11 @@ all the zones. If there is no height limitation this value must be equal to `nul
     + Optional
 
 + `entrance` : Parking site's entrance(s).
-    + Attribute type: List of references to [ParkingAccess](../../ParkingAccess/spec.md)
+    + Attribute type: List of references to [ParkingAccess](../../ParkingAccess/doc/spec.md)
     + Optional
 
 + `exit` : Parking site's exit(s).
-    + Attribute type: List of references to [ParkingAccess](../../ParkingAccess/spec.md)
+    + Attribute type: List of references to [ParkingAccess](../../ParkingAccess/doc/spec.md)
     + Optional
    
 + `maximumAParkingDuration` : Maximum allowed stay at site.
@@ -193,7 +193,7 @@ all the zones. If there is no height limitation this value must be equal to `nul
 
 + `chargeType` : Type of charge performed by the parking site.
 Note that this attribute can change dynamically depending on time of day or day of week.
-    + Attribute type: List of [Text](http://schema.org/Number)
+    + Attribute type: List of [Text](http://schema.org/Text)
     + Allowed values: Those defined by the DATEX II version 2.3 *ChargeTypeEnum* enumeration.
     + Optional
     
@@ -206,11 +206,17 @@ Note that this attribute can change dynamically depending on time of day or day 
     + Optional
 
 + `parkingZones` : Parking site's identified zones. A zone can correspond to a complete storey, a group of spots, etc. 
-    + Attribute type: List of references to [OffStreetParkingZone](../../OffStreetParkingZone/spec.md)
+    + Attribute type: List of references to [OffStreetParkingZone](../../OffStreetParkingZone/doc/spec.md)
+    + Optional
+    
+ + `area` : Area to which this entity belongs to. Precise semantics can depend on the application or target city.
+ For instance, it can be a neighbourhood, burough or district.
+    + Attribute type: [Text](http://schema.org/Text)
     + Optional
 
 # Test it with a real service
 
 # Open issues
 
-+ How to model tariffs
++ How to model tariffs (use DATEX II version 2.3 as possible input)
++ Principal available spot number vs available spot number and how to convey spots for handicaped people, etc. 

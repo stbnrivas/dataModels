@@ -3,7 +3,7 @@
 ## Description
 
 An off street parking zone. Granularity level can vary.
-It can be an storey on a parking garage, an specific area belonging to a big parking lot etc or just a group of spots intended
+It can be an storey on a parking garage, an specific zone belonging to a big parking lot,  or just a group of spots intended
 for parking a certain vehicle type.
 
 ## Data Model
@@ -19,8 +19,8 @@ for parking a certain vehicle type.
         + Any value not covered by the above enumeration and meaningful for the application.
     + Mandatory
 
-+ `parkingSite` : Parking site to which this zone belongs to. A zone cannot be orphan and must always belong to an OffStreetParking.
-    + Attribute type: Reference to a [OffStreetParking](../../OffStreetParking/spec.md) entity. 
++ `parkingSite` : Parking site to which this zone belongs to. A zone cannot be orphan and must always belong to an `OffStreetParking`.
+    + Attribute type: Reference to a [OffStreetParking](../../OffStreetParking/doc/spec.md) entity. 
     + Mandatory
 
 + `layout` : Parking zone layout. If not defined layout will be of the parent *OffStreetParking*. Only one layout is
@@ -105,25 +105,20 @@ This might be harder to estimate at those parking locations on which spots borde
     + Default unit: Meters
     + Optional
 
-+ `entrances` : Zone entrances. If not defined, entrances will be those of the parking site this zone belongs to. 
-    + Attribute type: List of references to [ParkingAccess](../../ParkingAccess/spec.md)
++ `entrance` : Zone entrance(s). If not defined, entrances will be those of the parking site this zone belongs to. 
+    + Attribute type: List of references to [ParkingAccess](../../ParkingAccess/doc/spec.md)
     + Optional
 
-+ `exits` : Zone exits. If not defined, exists will be those of the parking site this zone belongs to.
-    + Attribute type: List of references to [ParkingAccess](../../ParkingAccess/spec.md)
++ `exit` : Zone exit(s). If not defined, exists will be those of the parking site this zone belongs to.
+    + Attribute type: List of references to [ParkingAccess](../../ParkingAccess/doc/spec.md)
     + Optional
-   
-+ `maximumAParkingDuration` : Maximum allowed stay at the zone. If not defined it fallbacks to the value of the zone's parent. 
-    + Attribute type: [Number](http://schema.org/Number)
-    + Default unit: Seconds
-    + Optional    
     
 + `image` : A URL containing a photo of this parking zone.
     + Normative References: [https://schema.org/image](https://schema.org/image)
     + Optional
 
 + `parkingSpots` : Parking spots belonging to this zone.
-    + Attribute type: List of references to [ParkingSpot](../../ParkingSpot/spec.md)
+    + Attribute type: List of references to [ParkingSpot](../../ParkingSpot/doc/spec.md)
     + Optional
     
 + `status` : Status of the parking zone. 
@@ -135,14 +130,20 @@ This might be harder to estimate at those parking locations on which spots borde
         + *ParkingSiteStatusEnum*
     + Optional
     
- + `requiredPermits` : Required permit(s) for parking at the zone. If not present no permit is needed.
++ `requiredPermits` : Required permit(s) for parking at the zone. If not present no permit is needed.
  List semantics is that one of those permits must held in order to park at the zone. If not defined, fallbacks to the parent. 
     + Attribute type: List of [Text](http://schema.org/Text)
     + Allowed values: Those defined by the *PermitTypeEnum* enumeration of DATEX II version 2.3. 
     + Optional
+    
+ 
++ `maximumAParkingDuration` : Maximum allowed stay at zone.
+    + Attribute type: [Number](http://schema.org/Number)
+    + Default unit: Seconds
+    + Optional    
 
 # Test it with a real service
 
 # Open issues
 
-+ How to model tariffs
++ Attributes allowed on this entity vs OffStreetParking.
