@@ -161,6 +161,11 @@ possible to determine the current filling level it must be equal to `null`.
 + `annotations` : A field reserved for annotations (incidences, remarks, etc.).
     + Attribute type: List of [Text](https://schema.org/Text)
     + Optional
+    
++ `area` : Higher level area to which the container belongs to. It can be used to group containers per
+responsible, district, neighbourhood, etc.
+    + Attribute type: [Text](https://schema.org/Text)
+    + Optional    
   
 ## Examples of use
 
