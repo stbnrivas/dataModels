@@ -165,7 +165,12 @@ possible to determine the current filling level it must be equal to `null`.
 + `area` : Higher level area to which the container belongs to. It can be used to group containers per
 responsible, district, neighbourhood, etc.
     + Attribute type: [Text](https://schema.org/Text)
-    + Optional    
+    + Optional
+    
++ `dateUpdated` : Last update timestamp of this entity
+    + Attribute type: [DateTime](https://schema.org/DateTime)
+    + Optional
+
   
 ## Examples of use
 

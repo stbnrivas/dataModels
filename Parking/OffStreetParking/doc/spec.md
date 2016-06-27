@@ -213,10 +213,37 @@ Note that this attribute can change dynamically depending on time of day or day 
  For instance, it can be a neighbourhood, burough or district.
     + Attribute type: [Text](http://schema.org/Text)
     + Optional
+    
++ `dateUpdated` : Last update timestamp of this entity
+    + Attribute type: [DateTime](https://schema.org/DateTime)
+    + Optional
+    
 
-# Test it with a real service
+## Examples of use
 
-# Open issues
+    {
+      "type": "OffStreetParking",
+      "id": "porto-ParkingLot-23889",
+      "name": "Parque de estacionamento Trindade",
+      "location": {
+        "coordinates": [-8.60961198807, 41.150691773],
+        "type": "Point"
+      },
+      "allowedVehicleType": ["Car"],
+      "totalSpotNumber": 414,
+      "availableSpotNumber": 132,
+      "address": {
+        "streetAddress": "Rua de Fernandes Tomás",
+        "addressLocality": "Porto",
+        "addressCountry": "Portugal"
+      },
+      "description": "Municipal car park located near the Trindade metro station and the Town Hall",
+      "dateUpdated": "2016-06-02T09:25:55.00Z"
+  }
+
+## Test it with a real service
+
+## Open issues
 
 + How to model tariffs (use DATEX II version 2.3 as possible input)
 + Principal available spot number vs available spot number and how to convey spots for handicaped people, etc. 

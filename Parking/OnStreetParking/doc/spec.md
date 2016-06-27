@@ -2,8 +2,8 @@
 
 ## Description
 
-A site, open space, on street, with direct access from a road, intended to park vehicles.
-In DATEX 2 version 2.3 terminology it corresponds to a **UrbanParkingSite* of type *onStreetParking**. 
+A site, open space zone, on street, (metered or not) with direct access from a road, intended to park vehicles.
+In DATEX 2 version 2.3 terminology it corresponds to a *UrbanParkingSite* of type *onStreetParking*. 
 
 ## Data Model
 
@@ -34,11 +34,11 @@ In DATEX 2 version 2.3 terminology it corresponds to a **UrbanParkingSite* of ty
     + Normative References: [https://schema.org/address](https://schema.org/address)
     + Optional
 
-+ `name` : Name given to the parking site.
++ `name` : Name given to the parking zone.
     + Normative References: [https://schema.org/name](https://schema.org/name)
     + Optional
 
-+ `description` : Description about the parking site. 
++ `description` : Description about the parking zone. 
     + Normative References: [https://schema.org/description](https://schema.org/description)
     + Optional
 
@@ -47,7 +47,9 @@ In DATEX 2 version 2.3 terminology it corresponds to a **UrbanParkingSite* of ty
     + Allowed Values: Those values defined by *VehicleTypeEnum*, [DATEX 2 version 2.3](http://www.datex2.eu/sites/www.datex2.eu/files/DATEXIISchema_2_2_2_1.zip)
     + Optional
    
-+ `openingHours` : Opening hours of the parking site.
++ `openingHours` : Opening hours of the parking zone for the general public.
+This property allows to capture load / unload zones or any other zone
+which can be subject to restrictions at certain times or week days. 
     + Normative references:  [http://schema.org/openingHours](http://schema.org/openingHours)
     + Optional
 
@@ -55,7 +57,7 @@ In DATEX 2 version 2.3 terminology it corresponds to a **UrbanParkingSite* of ty
     + Attribute type: [Boolean](https://schema.org/Boolean)
     + Optional
 
-+ `totalSpotNumber` : The total number of spots offered by the parking site.
++ `totalSpotNumber` : The total number of spots offered by the parking zone.
 This can be difficult to be measured at those parking locations on which spots are not clearly limited by lines.
     + Attribute type: [Number](http://schema.org/Number)
     + Allowed values: Any positive integer number.
@@ -99,13 +101,13 @@ This might be harder to estimate at those parking locations on which spots borde
     + Default unit: Seconds
     + Optional
 
-+ `requiredPermits` : Required permit(s) for parking at the site. If this property is not present no permit is needed.
++ `requiredPermits` : Required permit(s) for parking at the zone. If this property is not present no permit is needed.
  List semantics is that one of those permits must held in order to park at the site. 
     + Attribute type: List of [Text](http://schema.org/Text)
     + Allowed values: Those defined by the *PermitTypeEnum* enumeration of DATEX II version 2.3. 
     + Optional    
 
-+ `chargeType` : Type of charge performed by the parking site.
++ `chargeType` : Type of charge performed at the parking zone.
 Note that this attribute can change dynamically depending on time of day or day of week.
     + Attribute type: List of [Text](http://schema.org/Number)
     + Allowed values: Those defined by the DATEX II version 2.3 *ChargeTypeEnum* enumeration. 
@@ -115,11 +117,39 @@ Note that this attribute can change dynamically depending on time of day or day 
     + Optional
 
 + `parkingSpots` : Individual spots belonging to this on street parking site.  
-    + Attribute type: List of references to [ParkingSpot](../../ParkingSpot/spec.md)
+    + Attribute type: List of references to [ParkingSpot](../../ParkingSpot/doc/spec.md)
     + Optional
+    
++ `dateUpdated` : Last update timestamp of this entity
+    + Attribute type: [DateTime](https://schema.org/DateTime)
+    + Optional
+  
+## Examples of use
 
-# Test it with a real service
+    {
+      "id": "santander:daoiz_velarde_1_5",
+      "type": "OnStreetParking",
+      "allowedVehicleType": "Car",
+      "availableSpotNumber": 1,
+      "dateUpdated": "2016-06-02T09:25:55.00Z",
+      "location": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-3.80356167695194, 43.46296641666926 ],
+            [-3.803161973253841,43.46301091092682 ],
+            [-3.803147082548618,43.462879859445884],
+            [-3.803536474744068,43.462838666196674],
+            [-3.80356167695194, 43.46296641666926]
+          ]
+        ]
+      }
+      "totalSpotNumber": 6
+    }
 
-# Open issues
+
+## Test it with a real service
+
+## Open issues
 
 + How to model tariffs

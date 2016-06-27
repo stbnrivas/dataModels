@@ -49,6 +49,14 @@ A geographical area which keeps one or more waste containers.
 responsible, district, neighbourhood, etc.
     + Attribute type: [Text](https://schema.org/Text)
     + Optional
+    
++ `dateUpdated` : Last update timestamp of this entity
+    + Attribute type: [DateTime](https://schema.org/DateTime)
+    + Optional
+
++ `dateCreated` : Creation timestamp of the isle (This might different than the entity creation time)
+    + Attribute type: [DateTime](https://schema.org/DateTime)
+    + Optional    
 
 ## Example
 

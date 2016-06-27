@@ -9,9 +9,9 @@ many simplifications has been made with respect to DATEX II version 2.3.
 The main entity types identified are:
 
 + [OffStreetParking](../OffStreetParking/doc/spec.md). An offstreet parking site with explicit entries and exits.
-+ [ParkingAccess](../ParkingAccess/doc/spec.md). An access point to an off street parking site.
 + [OffStreetParkingZone](../OffStreetParkingZone/doc/spec.md). An off street parking zone. Granularity level can vary.
-It can be an storey on a parking garage, an specific area belonging to a big parking lot etc or just a group of spots. 
+It can be an storey on a parking garage, an specific area belonging to a big parking lot etc or just a group of spots.
++ [ParkingAccess](../ParkingAccess/doc/spec.md). An access point to an off street parking site.
 + [OnStreetParking](../OnStreetParking/doc/spec.md). An on street, free entry (but might be metered) parking zone
 which contains at least one ore more adjacent parking spots.
 + [ParkingSpot](../ParkingSpot/doc/spec.md). An individual, usually monitored, parking spot. 

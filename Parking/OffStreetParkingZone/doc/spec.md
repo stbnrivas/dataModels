@@ -140,10 +140,17 @@ This might be harder to estimate at those parking locations on which spots borde
 + `maximumAParkingDuration` : Maximum allowed stay at zone.
     + Attribute type: [Number](http://schema.org/Number)
     + Default unit: Seconds
+    + Optional
+    
++ `dateUpdated` : Last update timestamp of this entity
+    + Attribute type: [DateTime](https://schema.org/DateTime)
     + Optional    
 
-# Test it with a real service
 
-# Open issues
+## Examples of use
+
+## Test it with a real service
+
+## Open issues
 
 + Attributes allowed on this entity vs OffStreetParking.
