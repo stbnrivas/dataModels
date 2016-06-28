@@ -6,9 +6,9 @@ This is a set of guidelines for defining new data models.
 
 + Use English terms, preferably American English.
 + Use camel case syntax for properties (`camelCase`). 
-+ Entity type names must start with a Capital letter.
++ Entity type names must start with a Capital letter, for instance, `WasteContainer`.
 + Use names and not verbs for properties, ex. `name`, qualifying it when necessary, ex. `totalSpotNumber` or `dateCreated`.
-+ Avoid plurals in property names, but state clearly when it can be a list of items. Ex. `category`. 
++ Avoid plurals in property names, but state clearly when a list of items fits. Ex. `category`. 
 
 ## Reuse
 
