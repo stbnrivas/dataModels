@@ -11,6 +11,7 @@ extra_css: ["https://fiware.org/style/fiware_readthedocs.css"]
 pages:
   -  Home: index.md
   -  Guidelines: guidelines.md
+  -  Alarm:                    : 'Alarm/doc/introduction.md'
   -  Ambient:
       - 'AmbientObserved'      : 'AmbientObserved/doc/spec.md'
       - 'AirQualityThreshold'  : 'AirQualityThreshold/doc/spec.md'
@@ -26,6 +27,7 @@ pages:
       - 'WeatherStation'       : 'PointOfInterest/WeatherStation/doc/spec.md'
       - 'AirQualityStation'    : 'PointOfInterest/AirQualityStation/doc/spec.md'
   -  'Issue Tracking'          : 'IssueTracking/doc/introduction.md'
+  -  Sensor                    : 'Sensor/doc/introduction.md'
   -  'Street Lighting':
       - 'Introduction'         : 'StreetLighting/doc/introduction.md'
       - 'StreetLight'          : 'StreetLighting/StreetLight/doc/spec.md'      
