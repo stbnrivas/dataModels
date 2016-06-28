@@ -10,6 +10,7 @@ theme: readthedocs
 extra_css: ["https://fiware.org/style/fiware_readthedocs.css"]
 pages:
   -  Home: index.md
+  -  Guidelines: guidelines.md
   -  Ambient:
       - 'AmbientObserved'      : 'AmbientObserved/doc/spec.md'
       - 'AirQualityThreshold'  : 'AirQualityThreshold/doc/spec.md'
