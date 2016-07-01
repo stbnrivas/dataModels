@@ -150,7 +150,7 @@ hint which can help to identify the KPI coverage.
       },
       "provider": {
          "name": "Cleaning Service Provider S.A."
-      }
+      },
       "kpiValue": 20,
       "currentStanding": "good",
       "calculationPeriod": {
