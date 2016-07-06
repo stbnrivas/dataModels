@@ -66,7 +66,7 @@ FIWARE / OASC recommends the following additional fields as an extension to the 
       "open311:type": "realtime",
       "service_code": 234,
       "service_name": "Aceras",
-      "description: "When a sidewalk is broken or dirty allows citizens to request a fix",
+      "description": "When a sidewalk is broken or dirty allows citizens to request a fix",
       "keywords": "street,sidewalk, cleaning, repair",
       "group": "street",
       "attributes": [
