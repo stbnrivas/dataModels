@@ -34,11 +34,11 @@ pages:
       - 'WeatherStation'       : 'PointOfInterest/WeatherStation/doc/spec.md'
       - 'AirQualityStation'    : 'PointOfInterest/AirQualityStation/doc/spec.md'
   -  'Street Lighting':
-      - 'Introduction'                   : 'StreetLighting/doc/introduction.md'
-      - 'Streetlight'                    : 'StreetLighting/Streetlight/doc/spec.md'
-      - 'StreetlightModel'               : 'StreetLighting/StreetlightModel/doc/spec.md'
-      - 'StreetlightControlCabinet'      : 'StreetLighting/StreetlightControlCabinet/doc/spec.md'
-      - 'StreetlightControlCabinetModel' : 'StreetLighting/StreetlightControlCabinetModel/doc/spec.md'
+      - 'Introduction'              : 'StreetLighting/doc/introduction.md'
+      - 'Streetlight'               : 'StreetLighting/Streetlight/doc/spec.md'
+      - 'StreetlightModel'          : 'StreetLighting/StreetlightModel/doc/spec.md'
+      - 'StreetlightGroup'          : 'StreetLighting/StreetlightGroup/doc/spec.md'
+      - 'StreetlightControlCabinet' : 'StreetLighting/StreetlightControlCabinet/doc/spec.md'
   -  Weather:
       - 'WeatherObserved'      : 'Weather/WeatherObserved/doc/spec.md'
       - 'WeatherForecast'      : 'Weather/WeatherForecast/doc/spec.md'

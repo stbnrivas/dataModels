@@ -1,4 +1,9 @@
-# Street Light
+# Streetlight
+
+An entity of type `Streetlight` represents a streetlight composed by a column, one or more arms together
+with their corresponding lanterns and lamps.
+A `Steeetlight` entity does not contain any attribute corresponding to its structural characteristics.
+Such data is captured by entities of type `StreetlightModel`.
 
 ## Data Model
 
@@ -46,11 +51,11 @@ Typically it will contain an identifier that will allow to obtain more informati
     + Allowed values: one Of (`on`, `off`, `bootingUp`)
     + Optional
     
-+ `refCabinetController` : Streetlight's cabinet controller
-    + Attribute type : Reference to a [StreetlightCabinetController](../../StreetlightCabinetController/doc/spec.md) entity.
++ `refGroup` : Streetlight's group
+    + Attribute type : Reference to a [StreetlightGroup](../../StreetlightGroup/doc/spec.md) entity.
     + Optional
 
-+ `dateLastLampChange` : Timestamp of the last change of lamp made
++ `dateLastLampChange` : Timestamp of the last change of lamp made.
     + Attribute Type: [DateTime](http://schema.org/DateTime)
     + Attribute metadata:
         + `dateUpdated` : Timestamp when the last update of the attribute happened.
@@ -85,7 +90,7 @@ Typically it will contain an identifier that will allow to obtain more informati
             + Type: [DateTime](http://schema.org/DateTime)
     + Optional
 
-+ `controllingMethod` : The method used to control this streetlight
++ `controllingMethod` : The method used to control this streetlight.
     + Attribute type: [Text](http://schema.org/Text)
     + Allowed values: one Of (`cabinetController`, `individual`)
     
@@ -96,6 +101,32 @@ Typically it will contain an identifier that will allow to obtain more informati
 + `dateServiceStarted` : Date at which the streetlight started giving service.
     + Attribute Type: [Date](http://schema.org/Date)
     + Optional
+       
++ `color` : Street light structure's color.
+    + Attribute type: [Text](https://schema.org/Text)
+    + Allowed Values:
+        + A color keyword as specified by [W3C Color Keywords](https://www.w3.org/TR/SVG/types.html#ColorKeywords)
+        + A color value as specified by [W3C Color Data Type](https://www.w3.org/TR/SVG/types.html#BasicDataTypes)
+    + See also: [https://schema.org/color](https://schema.org/color)
+    + Optional
+
++ `image` : A URL containing a photo of the streetlight.
+    + Normative References: [https://schema.org/image](https://schema.org/image)
+    + Optional
+    
++ `description` : Description about the streetlight. 
+    + Normative References: [https://schema.org/description](https://schema.org/description)
+    + Optional
+
++ `annotations` : A field reserved for annotations (incidences, remarks, etc.).
+    + Attribute type: List of [Text](https://schema.org/Text)
+    + Optional
+    
++ `category` : Type of asset which implements the street light (`street lighting`, `street furniture`)
+
++ `streetLocation` : (`façade`, `sidewalk`)
+
++ `lanternHeight` : 
 
 ## Examples of Use
 
@@ -108,17 +139,10 @@ Typically it will contain an identifier that will allow to obtain more informati
       },
       "area": "Poligono Industrial I",
       "status": "ok",
-      "refStreetlightModel": "streetlightmodel:M4567",
+      "refStreetlightGroup": "streetlightgroup:G345",
       "circuit": "C-456-A467",
-      "dateLastSwitchingOn":  "2016-07-07T19:59:06.618Z",
-      "dateLastSwitchingOff": "2016-07-07T07:59:06.618Z",
-      "refCabinetController": "cabinetcontroller:CC45A34",
-      "timeSwitchingOn":  "19:00",
-      "timeSwitchingOff": "08:00"
     }
 
 ## Test it with a real service
 
-
 ## Open Issues
-
