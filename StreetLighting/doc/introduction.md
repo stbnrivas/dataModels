@@ -1,8 +1,8 @@
 # Street Lighting Data Models
 
+Streetlights, commonly known as 'lamp-posts', are designed to make the streets safer for pedestrians and drivers.
 These data models are intended to model streetlights and all
 their controlling equipment towards energy-efficient and effective urban illuminance.
-Streetlights, commonly known as 'lamp-posts', are designed to make the streets safer for pedestrians and drivers.
 
 It encompasses the following entity types: 
 
