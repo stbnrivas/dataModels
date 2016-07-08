@@ -1,8 +1,9 @@
 # Streetlight
 
-An entity of type `Streetlight` represents a streetlight composed by a column, one or more arms together
-with their corresponding lanterns and lamps.
-A `Steeetlight` entity does not contain any attribute corresponding to its structural characteristics.
+An entity of type `Streetlight` represents a urban streetlight. Actually, there will be an entity of type `Streetlight` per lamp. Thus,
+if a particular pole holds more than one lantern there will be as many streetlight entites as installed lamps. As a result there might be more than
+one streetlight entity per location. 
+A `Steeetlight` entity does not contain any attribute corresponding to structural characteristics.
 Such data is captured by entities of type `StreetlightModel`.
 
 ## Data Model
@@ -20,7 +21,7 @@ Such data is captured by entities of type `StreetlightModel`.
     + Normative References: [https://schema.org/address](https://schema.org/address)
     + Mandatory if `location` is not present.
     
-+ `area` : Higher level area to which the streetlight belongs to. It can be used to group streetlights per
++ `area` : Higher level area to which this streetlight belongs to. It can be used to group streetlights per
 responsible, district, neighbourhood, etc.
     + Attribute type: [Text](https://schema.org/Text)
     + Optional 
@@ -32,6 +33,10 @@ Typically it will contain an identifier that will allow to obtain more informati
 
 + `refStreetlightModel` : Streetlight's model. 
     + Attribute type : Reference to a [StreetlightModel](../../StreetlightModel/doc/spec.md) entity.
+    + Optional
+    
++ `refStreetlightControlCabinet` : If this streetlight is individually controlled, reference to the control cabinet in charge of.
+    + Attribute type : Reference to a [StreetlightControlCabinet](../../StreetlightControlCabinet/doc/spec.md) entity.
     + Optional
 
 + `status` : The overall status of this street light. 
@@ -48,14 +53,14 @@ Typically it will contain an identifier that will allow to obtain more informati
     + Attribute metadata:
         + `dateUpdated` : Timestamp when the last update of the attribute happened.
             + Type: [DateTime](http://schema.org/DateTime)
-    + Allowed values: one Of (`on`, `off`, `bootingUp`)
+    + Allowed values: one Of (`on`, `off`, `low`, `bootingUp`)
     + Optional
     
-+ `refGroup` : Streetlight's group
++ `refStreetlightGroup` : Streetlight's group, if this streetlight belongs to any group. 
     + Attribute type : Reference to a [StreetlightGroup](../../StreetlightGroup/doc/spec.md) entity.
     + Optional
 
-+ `dateLastLampChange` : Timestamp of the last change of lamp made.
++ `dateLastLampChange` : Timestamp of the last change of lamp made. If `null` it will mean that the lamp has never been changed. 
     + Attribute Type: [DateTime](http://schema.org/DateTime)
     + Attribute metadata:
         + `dateUpdated` : Timestamp when the last update of the attribute happened.
@@ -76,23 +81,10 @@ Typically it will contain an identifier that will allow to obtain more informati
             + Type: [DateTime](http://schema.org/DateTime)
     + Optional
 
-+ `timeSwitchingOn` : Regular switching on time for this street light.
-    + Attribute Type: [DateTime](http://schema.org/Time)
-    + Attribute metadata:
-        + `dateUpdated`: Timestamp when the last update of the attribute happened.
-            + Type: [DateTime](http://schema.org/DateTime)
-    + Optional
-
-+ `timeSwitchingOff` : Regular switching off time for this street light.
-    + Attribute Type: [DateTime](http://schema.org/Time)
-    + Attribute metadata:
-        + `dateUpdated`: Timestamp when the last update of the attribute happened.
-            + Type: [DateTime](http://schema.org/DateTime)
-    + Optional
-
 + `controllingMethod` : The method used to control this streetlight.
     + Attribute type: [Text](http://schema.org/Text)
-    + Allowed values: one Of (`cabinetController`, `individual`)
+    + Allowed values: one Of (`group`, `individual`)
+    + Optional
     
 + `dateUpdated` : Timestamp of the last update made to this entity
     + Attribute Type: [DateTime](http://schema.org/DateTime)
@@ -102,14 +94,6 @@ Typically it will contain an identifier that will allow to obtain more informati
     + Attribute Type: [Date](http://schema.org/Date)
     + Optional
        
-+ `color` : Street light structure's color.
-    + Attribute type: [Text](https://schema.org/Text)
-    + Allowed Values:
-        + A color keyword as specified by [W3C Color Keywords](https://www.w3.org/TR/SVG/types.html#ColorKeywords)
-        + A color value as specified by [W3C Color Data Type](https://www.w3.org/TR/SVG/types.html#BasicDataTypes)
-    + See also: [https://schema.org/color](https://schema.org/color)
-    + Optional
-
 + `image` : A URL containing a photo of the streetlight.
     + Normative References: [https://schema.org/image](https://schema.org/image)
     + Optional
@@ -121,13 +105,19 @@ Typically it will contain an identifier that will allow to obtain more informati
 + `annotations` : A field reserved for annotations (incidences, remarks, etc.).
     + Attribute type: List of [Text](https://schema.org/Text)
     + Optional
+
++ `locationCategory` : Category of the location where the streetlight is placed.
+    + Attribute type:
+    + Allowed values: oneOf (`façade`, `sidewalk`, `pedestrianPath`, `road`, `playground`,
+    `park`, `garden`, `bridge`, `tunnel`, `parking`, `centralIsland`)
+        + Or any other value with semantics not covered by the above list. 
+
++ `lanternHeight` : Lantern's height. In columns with many arms this can vary between streetlights. Another variation source
+of this property are wall-mounted streetlights. 
+    + Attribute type: [Number](https://schema.org/Number)
+    + Default unit: Meters. 
+    + Optional
     
-+ `category` : Type of asset which implements the street light (`street lighting`, `street furniture`)
-
-+ `streetLocation` : (`façade`, `sidewalk`)
-
-+ `lanternHeight` : 
-
 ## Examples of Use
 
     {
@@ -137,12 +127,20 @@ Typically it will contain an identifier that will allow to obtain more informati
         "type": "Point",
         "coordinates": [  -3.164485591715449, 40.62785133667262 ]
       },
-      "area": "Poligono Industrial I",
+      "area": "Roundabouts city entrance",
       "status": "ok",
       "refStreetlightGroup": "streetlightgroup:G345",
+      "refStreetlightModel": "streetlightmodel:STEEL_Tubular_10m",
       "circuit": "C-456-A467",
+      "lanternHeight": 10,
+      "locationCategory" : "centralIsland",
+      "powerStatus": "off",
+      "controllingMethod": "individual",
+      "dateLastLampChange": "2016-07-08T08:02:21.753Z"
     }
 
 ## Test it with a real service
 
+
 ## Open Issues
+

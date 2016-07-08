@@ -62,7 +62,7 @@ possible to determine the current filling level it must be equal to `null`.
     + Allowed values: Depend on the target regulation. For Europe, check [Europe's List of Waste](http://ec.europa.eu/environment/waste/framework/list.htm). 
     + Optional
 
-+ `containerModel` : Container's model.
++ `refWasteContainerModel` : Container's model.
     + Attribute type: Reference to a [WasteContainerModel](../../WasteContainerModel/doc/spec.md) entity.
     + Optional
     
@@ -177,7 +177,7 @@ responsible, district, neighbourhood, etc.
     {
        "id": "wastecontainer:Fleming:12a",
        "type": "WasteContainer",
-       "containerModel": "wastecontainermodel:c1",
+       "refWasteContainerModel": "wastecontainermodel:c1",
        "containerIsle": "wastecontainerisle:Fleming:12",
        "serialNumber": "ab56kjl",
        "location": {

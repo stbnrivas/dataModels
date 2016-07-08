@@ -1,7 +1,7 @@
 # Streetlight group
 
-An entity of type `StreetlightGroup` represents a group of streetlights which belong to the same circuit and which are controlled
-by a common automated system. This entity type is mainly useful when the streetlight system is controlled by groups and not individually. 
+An entity of type `StreetlightGroup` represents a group of streetlights which belong to the same circuit and which are normally controlled
+together by the same automated system (cabinet controller). 
 
 ## Data Model
 
@@ -29,12 +29,12 @@ Typically it will contain an identifier that will allow to obtain more informati
     + Attribute metadata:
         + `dateUpdated` : Timestamp when the last update of the attribute happened.
             + Type: [DateTime](http://schema.org/DateTime)
-    + Allowed values: one Of (`on`, `off`, `bootingUp`)
+    + Allowed values: one Of (`on`, `off`, `low`, `bootingUp`)
     + Optional
     
-+ `refCabinetController` : Streetlight group's cabinet controller
++ `refStreetlightCabinetController` : Streetlight group's cabinet controller
     + Attribute type : Reference to a [StreetlightCabinetController](../../StreetlightCabinetController/doc/spec.md) entity.
-    + Mandatory
+    + Optional
     
 + `dateLastSwitchingOn` : Timestamp of the last switching on.
     + Attribute Type: [DateTime](http://schema.org/DateTime)
@@ -50,21 +50,36 @@ Typically it will contain an identifier that will allow to obtain more informati
             + Type: [DateTime](http://schema.org/DateTime)
     + Optional
 
-+ `timeSwitchingOn` : Regular switching on time.
-    + Attribute Type: [DateTime](http://schema.org/Time)
++ `switchingOnHours` : Switching on hours. It is used normally to set special schedules for certain dates. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Subproperties:
+        + `from` : Starting date (it can be yearless). 
+            + Type: [Date](https://schema.org/Date)
+        + `to` : Ending date (it can be yearless)
+            + Type: [Date](https://schema.org/Date)
+        + `hours` : Hours. 
+            + Normative References: Value must be compliant with [https://schema.org/openingHours](https://schema.org/openingHours)
     + Attribute metadata:
-        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+        + `dateUpdated` : Timestamp when the last update of the attribute happened.
             + Type: [DateTime](http://schema.org/DateTime)
     + Optional
-
-+ `timeSwitchingOff` : Regular switching off time.
-    + Attribute Type: [DateTime](http://schema.org/Time)
+        
++ `switchingMode` : Switching mode for the street light. 
+    + Attribute Type: List of [Text](http://schema.org/Text)
+    + Allowed values: (`night-ON`, `night-OFF`, `night-LOW`, `always-ON`, `day-ON`, `day-OFF`, `day-LOW`)
     + Attribute metadata:
         + `dateUpdated`: Timestamp when the last update of the attribute happened.
             + Type: [DateTime](http://schema.org/DateTime)
     + Optional
     
-+ `dateUpdated` : Timestamp of the last update made to this entity
++ `activeProgramId` : Identifier of the active program for this streetlight group.
+    + Attribute type: [Text](https://schema.org/Text)
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional 
+    
++ `dateUpdated` : Timestamp of the last update made to this entity.
     + Attribute Type: [DateTime](http://schema.org/DateTime)
     + Optional
         
@@ -78,7 +93,7 @@ Typically it will contain an identifier that will allow to obtain more informati
 
 + `refStreetlight` : List of streetlight entities belonging to this group. 
     + Attribute type: List of references to entities fo type [Streetlight](../../Streetlight/doc/spec.md)
-    + Allowed values: There must topographical integrity between the location of the group and the individual streetlights.  
+    + Allowed values: There must topographical integrity between the location of the group and of the individual streetlights.  
     + Optional
     
 ## Examples of Use
@@ -94,13 +109,19 @@ Typically it will contain an identifier that will allow to obtain more informati
         ]
       },
       "powerStatus": "off", 
-      "area": "Poligono Industrial I",
+      "area": "Calle Comercial Centro",
       "circuit": "C-456-A467",
       "dateLastSwitchingOn":  "2016-07-07T19:59:06.618Z",
       "dateLastSwitchingOff": "2016-07-07T07:59:06.618Z",
-      "refCabinetController": "cabinetcontroller:CC45A34",
-      "timeSwitchingOn":  "19:00",
-      "timeSwitchingOff": "08:00"
+      "refStreetlightCabinetController": "cabinetcontroller:CC45A34",
+      "switchingOnHours": [
+        {
+          "from" :  "--11-30"
+          "to" :    "--01-07",
+          "hours" : "Mo,Su 16:00-02:00",
+          "description": "Christmas"
+        }
+      ]
     }
 
 ## Test it with a real service

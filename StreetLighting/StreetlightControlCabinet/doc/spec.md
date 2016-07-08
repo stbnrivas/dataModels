@@ -1,6 +1,6 @@
 # Streetlight control cabinet
 
-It represents equipment, usually on street, used to control a group(s) of streetlights, i.e. one or more circuits.
+It represents equipment, usually on street, used to the automated control of a group(s) of streetlights, i.e. one or more circuits.
 
 ## Data Model
 
@@ -52,7 +52,9 @@ responsible, district, neighbourhood, etc.
 
 + `features` : A list of cabinet controller features. 
     + Attribute type: List of [Text](https://schema.org/Text)
-    + Allowed Values: Those technical values considered meaningful by applications. 
+    + Allowed Values: Those technical values considered meaningful by applications.
+        + `astronomicalClock` .- The control cabinet includes an astronomical clock to deal with switching hours. 
+        + `individualControl` .- The control cabinet allows to control street lights individually. 
 
 + `compliantWith`. A list of standards to which the cabinet controller is compliant with (ex. `IP54`)
     + AttributeType: List of [Text](https://schema.org/Text).
