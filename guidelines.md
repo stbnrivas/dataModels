@@ -51,7 +51,7 @@ from Orion 1.2 on. If not use, old NGSI version 1 type `coords`.
 ## Modelling linked data
 
 + When an entity attribute is used as a link to other entities name
-it with the prefix `ref` plus the name of the target (linked) entity type. For instance `refStreetlightModel', represents an attribute
+it with the prefix `ref` plus the name of the target (linked) entity type. For instance `refStreetlightModel`, represents an attribute
 which contains a reference to an entity of type `StreetlightModel`. 
 
 ## Property names for dates
