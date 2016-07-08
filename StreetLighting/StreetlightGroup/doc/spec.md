@@ -93,6 +93,7 @@ Typically it will contain an identifier that will allow to obtain more informati
           [ [102.0, 2.0], [103.0, 3.0] ]
         ]
       },
+      "powerStatus": "off", 
       "area": "Poligono Industrial I",
       "circuit": "C-456-A467",
       "dateLastSwitchingOn":  "2016-07-07T19:59:06.618Z",

@@ -13,4 +13,4 @@ of the same circuit and controlled by the same automated system.
 + [StreetlightModel](../StreetlightModel/doc/spec.md). It represents a model of streetlight composed by a specific supporting structure model,
 a lantern model and a lamp model. A streetlight instance will be based on a certain streetlight model. 
 + [StreetlightControlCabinet](../StreetlightControlCabinet/doc/spec.md). It represents equipment, usually on street,
-used to control a group of streetlights, i.e. a circuit.
+used to control a group(s) of streetlights, i.e. one or more circuits.
