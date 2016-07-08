@@ -13,8 +13,9 @@ This is a set of guidelines for defining new data models.
 ## Reuse
 
 + Check for the existence of the same property on any of the other models and reuse it, if pertinent. 
-+ Have a look at  [schema.org](http://schema.org) trying to find a similar term with similar semantics.
-+ Try to find common used ontologies or existing standards well accepted by the Community, or by goverments, agencies, etc. 
++ Have a look at [schema.org](http://schema.org) trying to find a similar term with the same semantics.
++ Try to find common used ontologies or existing standards well accepted by the Community, or by goverments, agencies, etc.
+For instance, [Open311](http://www.open311.org/) for civic issue tracking or [Datex II](http://www.datex2.eu/) for transport systems. 
 
 ## Data types
 
@@ -45,7 +46,13 @@ such as `relativeHumidity`, `precipitationProbability`, etc.
 + Use `address` property for civic locations as per [schema.org](http://schema.org/address)
 
 + Use `location` property for geographical coordinates. Ideally use GeoJSON for codifying geospatial properties. That works
-from Orion 1.2 on. If not use, old NGSI version 1 type `coords`. 
+from Orion 1.2 on. If not use, old NGSI version 1 type `coords`.
+
+## Modelling linked data
+
++ When an entity attribute is used as a link to other entities name
+it with the prefix `ref` plus the name of the target (linked) entity type. For instance `refStreetlightModel', represents an attribute
+which contains a reference to an entity of type `StreetlightModel`. 
 
 ## Property names for dates
 
@@ -55,18 +62,24 @@ from Orion 1.2 on. If not use, old NGSI version 1 type `coords`.
 
 + Use `dateUpdated` for update dates.
 
++ Use the `date` prefix for naming entity attributes representing dates (or complete timestamps). Ex. `dateLastEmptying`. 
+
 ## Dynamic properties
 
-+ Use a metadata attribute named `dateUpdated` for capturing the last update time of the property.
++ Use a metadata attribute named `dateUpdated` for capturing the last update time of a dynamic property.
 
 ## Some of the most used properties
 
 In case of doubt check other existing models! 
 
 + `name`
++ `alternateName`
 + `description`
 + `serialNumber`
 + `category`
++ `features`
 + `source`
 + `relativeHumidity`
 + `temperature`
++ `dateCreated`
++ `dateUpdated`
