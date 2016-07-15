@@ -1,5 +1,7 @@
 # Parking Spot
 
+This is a draft of the datamodel. Changes are expected soon. 
+
 ## Description
 
 A space intended to park a vehicle. 
