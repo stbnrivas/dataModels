@@ -58,23 +58,27 @@ which contains a reference to an entity of type `StreetlightModel`.
 
 + Type must be `DateTime`.
 
-+ `dateCreated` is used to denote the entity's creation date.
-
-+ `dateModified` is used to denote the entity's last update date. 
-
-+ `dateCreated` and `dateModified` are reserved attribute names. Be careful because they can be different
-than the actual creation or update date of the real world entity represented by a digital entity.
-
-+ When necessary define additional attributes to capture precisely all the date details.
-For instance, to denote the date at which a weather forecast was delivered you can use an attribute named `dateIssued`.
-In that particular case using `dateCreated` would be incorrect because
-it would be the creation date of the entity representing the weather forecast which typically might have a delay. 
-
 + Use the `date` prefix for naming entity attributes representing dates (or complete timestamps). Ex. `dateLastEmptying`. 
+
++ `dateCreated` must be used to denote the (digital) entity's creation date.
+
++ `dateModified` must be used to denote the (digital) entity's last update date. 
+
++ As per NGSIv2 `dateCreated` and `dateModified` are reserved attribute names. Be careful because they can be different
+than the actual creation or update date of the real world entity represented by its corresponding digital entity.
+
++ When necessary define additional attributes to capture precisely all the details about dates.
+For instance, to denote the date at which a weather forecast was delivered an attribute named `dateIssued` can be used.
+In that particular case just reusing `dateCreated` would be incorrect because
+it would be the creation date of the (digital) entity representing the weather forecast which typically might have a delay. 
 
 ## Dynamic properties
 
-+ Use a metadata attribute named `dateModified` for capturing the last update timestamp of a dynamic property.
++ Use a metadata attribute named `dateUpdated` for capturing the last update timestamp of a dynamic property. Please note
+that this is the actual date at which the measured value was obtained (from a sensor, by visual observation, etc.) and that
+date might be different than the date (metadata attribute named `dateModified` as per NGSIv2) at which the attribute
+of the virtual entity was updated, as typically there might be delay,
+specially on IoT networks which deliver data only at specific timeslots. 
 
 ## Some of the most used properties
 
