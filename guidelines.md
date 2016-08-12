@@ -54,9 +54,9 @@ from Orion 1.2 on. If not use, old NGSI version 1 type `coords`.
 it with the prefix `ref` plus the name of the target (linked) entity type. For instance `refStreetlightModel`, represents an attribute
 which contains a reference to an entity of type `StreetlightModel`. 
 
-## Property names for dates
+## Date Attributes
 
-+ Type must be `DateTime`.
++ Attribute type must be `DateTime`.
 
 + Use the `date` prefix for naming entity attributes representing dates (or complete timestamps). Ex. `dateLastEmptying`. 
 
@@ -64,20 +64,21 @@ which contains a reference to an entity of type `StreetlightModel`.
 
 + `dateModified` must be used to denote the (digital) entity's last update date. 
 
-+ As per NGSIv2 `dateCreated` and `dateModified` are reserved attribute names. Be careful because they can be different
++ `dateCreated` and `dateModified` are special entity attributes provided off-the-shelf by NGSIv2 implementations.
+Be careful because they can be different
 than the actual creation or update date of the real world entity represented by its corresponding digital entity.
 
 + When necessary define additional attributes to capture precisely all the details about dates.
 For instance, to denote the date at which a weather forecast was delivered an attribute named `dateIssued` can be used.
 In that particular case just reusing `dateCreated` would be incorrect because
-it would be the creation date of the (digital) entity representing the weather forecast which typically might have a delay. 
+the latter would be the creation date of the (digital) entity representing the weather forecast which typically might have a delay. 
 
 ## Dynamic properties
 
 + Use a metadata attribute named `dateUpdated` for capturing the last update timestamp of a dynamic property. Please note
 that this is the actual date at which the measured value was obtained (from a sensor, by visual observation, etc.) and that
 date might be different than the date (metadata attribute named `dateModified` as per NGSIv2) at which the attribute
-of the virtual entity was updated, as typically there might be delay,
+of the digital entity was updated, as typically there might be delay,
 specially on IoT networks which deliver data only at specific timeslots. 
 
 ## Some of the most used properties
