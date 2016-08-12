@@ -58,15 +58,23 @@ which contains a reference to an entity of type `StreetlightModel`.
 
 + Type must be `DateTime`.
 
-+ Use `dateCreated` for creation dates. Be careful that this date can be different than the entity creation date.
++ `dateCreated` is used to denote the entity's creation date.
 
-+ Use `dateUpdated` for update dates.
++ `dateModified` is used to denote the entity's last update date. 
+
++ `dateCreated` and `dateModified` are reserved attribute names. Be careful because they can be different
+than the actual creation or update date of the real world entity represented by a digital entity.
+
++ When necessary define additional attributes to capture precisely all the date details.
+For instance, to denote the date at which a weather forecast was delivered you can use an attribute named `dateIssued`.
+In that particular case using `dateCreated` would be incorrect because
+it would be the creation date of the entity representing the weather forecast which typically might have a delay. 
 
 + Use the `date` prefix for naming entity attributes representing dates (or complete timestamps). Ex. `dateLastEmptying`. 
 
 ## Dynamic properties
 
-+ Use a metadata attribute named `dateUpdated` for capturing the last update time of a dynamic property.
++ Use a metadata attribute named `dateModified` for capturing the last update timestamp of a dynamic property.
 
 ## Some of the most used properties
 
@@ -81,5 +89,3 @@ In case of doubt check other existing models!
 + `source`
 + `relativeHumidity`
 + `temperature`
-+ `dateCreated`
-+ `dateUpdated`
