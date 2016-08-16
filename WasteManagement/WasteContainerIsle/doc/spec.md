@@ -12,7 +12,7 @@ A geographical area which keeps one or more waste containers.
 
 + `location` : Location of the isle represented by a GeoJSON Polygon.
     + Attribute type: `geo:json`.
-    + Normative References: [https://tools.ietf.org/html/draft-ietf-geojson-03](https://tools.ietf.org/html/draft-ietf-geojson-03)
+    + Normative References: [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     + Mandatory
   
 + `address` : Civic address where the isle is located. 

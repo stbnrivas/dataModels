@@ -12,7 +12,7 @@ A waste container.
 
 + `location` : Container's location represented by a GeoJSON Point. 
     + Attribute type: `geo:json`.
-    + Normative References: [https://tools.ietf.org/html/draft-ietf-geojson-03](https://tools.ietf.org/html/draft-ietf-geojson-03)
+    + Normative References: [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     + Mandatory if `address` is not present.
     
 + `address`: Civic address where the container is located. 
