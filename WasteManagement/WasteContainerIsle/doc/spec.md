@@ -45,7 +45,7 @@ A geographical area which keeps one or more waste containers.
     + Allowed values. Container's id.
     + Optional
 
-+ `area` : Higher level area to which the isle belongs to. It can be used to group isles per
++ `areaServed` : Higher level area to which the isle belongs to. It can be used to group isles per
 responsible, district, neighbourhood, etc.
     + Attribute type: [Text](https://schema.org/Text)
     + Optional

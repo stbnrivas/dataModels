@@ -162,7 +162,7 @@ possible to determine the current filling level it must be equal to `null`.
     + Attribute type: List of [Text](https://schema.org/Text)
     + Optional
     
-+ `area` : Higher level area to which the container belongs to. It can be used to group containers per
++ `areaServed` : Higher level area to which the container belongs to. It can be used to group containers per
 responsible, district, neighbourhood, etc.
     + Attribute type: [Text](https://schema.org/Text)
     + Optional
