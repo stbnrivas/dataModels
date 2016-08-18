@@ -138,7 +138,7 @@ responsible, district, neighbourhood, etc.
       "compliantWith": ["IP54"],
       "dateLastProgramming": "2016-07-08",
       "maximumPowerAvailable": 10,
-      "powerConsumed": 162456,
+      "energyConsumed": 162456,
       "dateMeteringStarted": "2013-07-07",
       "lastMeterReading": 161237,
       "meterReadingPeriod": 60
