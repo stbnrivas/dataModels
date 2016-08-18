@@ -17,7 +17,7 @@ It represents equipment, usually on street, used to the automated control of a g
     + Normative References: [https://schema.org/address](https://schema.org/address)
     + Mandatory if `location` is not present.
         
-+ `area` : Higher level area to which the cabinet belongs to. It can be used to group per
++ `areaServed` : Higher level area to which the cabinet belongs to. It can be used to group per
 responsible, district, neighbourhood, etc.
     + Attribute type: [Text](https://schema.org/Text)
     + Optional
@@ -64,7 +64,7 @@ responsible, district, neighbourhood, etc.
     + Attribute type: List of [Text](https://schema.org/Text)
     + Optional
 
-+ `dateUpdated` : Last update timestamp of this entity.
++ `dateModified` : Last update timestamp of this entity.
     + Attribute type: [DateTime](https://schema.org/DateTime)
     + Optional
 
@@ -84,7 +84,44 @@ responsible, district, neighbourhood, etc.
     + Attribute type: [Text](http://schema.org/Text)
     + Optional
 
++ `workingMode` : Working mode for this cabinet controller.
+    + Attribute type: [Text](http://schema.org/Text)
+    + Allowed values: 
+        + `automatic` : The cabinet controller decides automatically when light groups are switched on and off.
+        Manual operation is not allowed. 
+        + `manual` : Human intervention is required for switching on and off. 
+        + `semiautomatic` : The same as `automatic` but in this case manual intervention is allowed. 
+    + Mandatory 
 
++ `maximumPowerAvailable` : The maximum power available (by contract) for the circuits controlled by this cabinet.
+    + Attribute type: [Number](http://schema.org/Number)
+    + Default unit: Kilowatts
+    + Optional
+    
+ + `energyConsumed` :  Energy consumed by the circuits controlled since metering started (since `dateMeteringStarted`).
+    + Attribute type: [Number](https://schema.org/Number)
+    + Default unit: Kilowatts per hour (Kwh).
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+    
++ `dateMeteringStarted` : The starting date for metering energy consumed.
+    + Attribute Type: [DateTime](http://schema.org/DateTime)
+    + Mandatory if `powerConsumedAccumulated` is present.     
+
++ `lastMeterReading` : Value of the last reading obtained from the energy consumed metering system.
+    + Attribute type: [Number](https://schema.org/Number)
+    + Default unit: Kilowatts per hour.
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp which reflects the date and time at which the referred reading was obtained.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+    
++ `meterReadingPeriod` : The periodicity of energy consumed meter readings in days.
+    + Attribute Type: [Number](http://schema.org/Number)
+    + Optional
+      
 ## Examples of Use
 
     {
@@ -99,7 +136,12 @@ responsible, district, neighbourhood, etc.
       "modelName": "Simatic S7 1200",
       "refStreetlightGroup": ["streetlightgroup:BG678", "streetlightgroup:789"],
       "compliantWith": ["IP54"],
-      "dateLastProgramming": "2016-07-08"
+      "dateLastProgramming": "2016-07-08",
+      "maximumPowerAvailable": 10,
+      "powerConsumed": 162456,
+      "dateMeteringStarted": "2013-07-07",
+      "lastMeterReading": 161237,
+      "meterReadingPeriod": 60
     }
 
 
@@ -108,4 +150,6 @@ responsible, district, neighbourhood, etc.
 
 ## Open Issues
 
-+ Should we create a `StreetlightControlCabinetModel entity type? 
++ Should we create a `StreetlightControlCabinetModel` entity type?
++ Should we have the programming parameters as attribute of this entity? Advantage is that if programming is the same
+for all the controlled cicuits then there is no need to repeat the same parameters over multiple entities. 

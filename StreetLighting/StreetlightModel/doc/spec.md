@@ -126,7 +126,7 @@ a lantern model and a lamp model. A streetlight instance will be based on a cert
     + Default unit: Lumens
     + Optional  
 
-+ `powerConsumption` : Power consumption made by the lamp.
++ `powerConsumption` : (Nominal) power consumption made by the lamp.
     + Attribute type: List of [Number](https://schema.org/Number).
     + Default unit: Watts
     + Optional

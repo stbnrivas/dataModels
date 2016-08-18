@@ -21,7 +21,7 @@ Such data is captured by entities of type `StreetlightModel`.
     + Normative References: [https://schema.org/address](https://schema.org/address)
     + Mandatory if `location` is not present.
     
-+ `area` : Higher level area to which this streetlight belongs to. It can be used to group streetlights per
++ `areaServed` : Higher level area to which this streetlight belongs to. It can be used to group streetlights per
 responsible, district, neighbourhood, etc.
     + Attribute type: [Text](https://schema.org/Text)
     + Optional 
@@ -86,7 +86,7 @@ Typically it will contain an identifier that will allow to obtain more informati
     + Allowed values: one Of (`group`, `individual`)
     + Optional
     
-+ `dateUpdated` : Timestamp of the last update made to this entity
++ `dateModified` : Timestamp of the last update made to this entity
     + Attribute Type: [DateTime](http://schema.org/DateTime)
     + Optional
     
@@ -117,7 +117,16 @@ of this property are wall-mounted streetlights.
     + Attribute type: [Number](https://schema.org/Number)
     + Default unit: Meters. 
     + Optional
+
++ `illuminanceLevel` : Relative illuminance level setting.
+    + Attribute Type: [Number](http://schema.org/Number)
+    + Allowed values: A number between 0 and 1.
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
     
+        
 ## Examples of Use
 
     {
@@ -127,14 +136,14 @@ of this property are wall-mounted streetlights.
         "type": "Point",
         "coordinates": [  -3.164485591715449, 40.62785133667262 ]
       },
-      "area": "Roundabouts city entrance",
+      "areaServed": "Roundabouts city entrance",
       "status": "ok",
       "refStreetlightGroup": "streetlightgroup:G345",
       "refStreetlightModel": "streetlightmodel:STEEL_Tubular_10m",
       "circuit": "C-456-A467",
       "lanternHeight": 10,
       "locationCategory" : "centralIsland",
-      "powerStatus": "off",
+      "powerState": "off",
       "controllingMethod": "individual",
       "dateLastLampChange": "2016-07-08T08:02:21.753Z"
     }
@@ -144,3 +153,4 @@ of this property are wall-mounted streetlights.
 
 ## Open Issues
 
++ Initially is not considered practical to monitor individual power consumptions

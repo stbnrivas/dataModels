@@ -14,7 +14,7 @@ together by the same automated system (cabinet controller).
     + Normative References: [https://tools.ietf.org/html/draft-ietf-geojson-03](https://tools.ietf.org/html/draft-ietf-geojson-03)
     + Mandatory
         
-+ `area` : Higher level area to which the streetlight group belongs to. It can be used to group per
++ `areaServed` : Higher level area to which the streetlight group belongs to. It can be used to group per
 responsible, district, neighbourhood, etc.
     + Attribute type: [Text](https://schema.org/Text)
     + Optional 
@@ -64,7 +64,7 @@ Typically it will contain an identifier that will allow to obtain more informati
             + Type: [DateTime](http://schema.org/DateTime)
     + Optional
         
-+ `switchingMode` : Switching mode for the street light. 
++ `switchingMode` : Switching mode. 
     + Attribute Type: List of [Text](http://schema.org/Text)
     + Allowed values: (`night-ON`, `night-OFF`, `night-LOW`, `always-ON`, `day-ON`, `day-OFF`, `day-LOW`)
     + Attribute metadata:
@@ -72,6 +72,14 @@ Typically it will contain an identifier that will allow to obtain more informati
             + Type: [DateTime](http://schema.org/DateTime)
     + Optional
     
++ `illuminanceLevel` : Relative illuminance level setting for the group.
+    + Attribute Type: [Number](http://schema.org/Number)
+    + Allowed values: A number between 0 and 1.
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+        
 + `activeProgramId` : Identifier of the active program for this streetlight group.
     + Attribute type: [Text](https://schema.org/Text)
     + Attribute metadata:
@@ -79,7 +87,7 @@ Typically it will contain an identifier that will allow to obtain more informati
             + Type: [DateTime](http://schema.org/DateTime)
     + Optional 
     
-+ `dateUpdated` : Timestamp of the last update made to this entity.
++ `dateModified` : Timestamp of the last update made to this entity.
     + Attribute Type: [DateTime](http://schema.org/DateTime)
     + Optional
         
@@ -96,6 +104,108 @@ Typically it will contain an identifier that will allow to obtain more informati
     + Allowed values: There must topographical integrity between the location of the group and of the individual streetlights.  
     + Optional
     
++ `powerConsumed` : Power currently consumed by this group of streetlights.
+    + Attribute Type: [Number](http://schema.org/Number)
+    + Default unit: Watts. 
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional    
+    
++ `energyConsumed` : Energy consumed by the corresponding circuit since the metering start date (`dateMeteringStarted`)..
+    + Attribute type: [Number](https://schema.org/Number)
+    + Default unit: Kilowatts per hour (Kwh).
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+    
++ `dateMeteringStarted` : The starting date for metering energy consumed.
+    + Attribute Type: [DateTime](http://schema.org/DateTime)
+    + Mandatory if `powerConsumedAccumulated` is present.     
+
++ `lastMeterReading` : Value of the last reading obtained from the energy consumed metering system.
+    + Attribute type: [Number](https://schema.org/Number)
+    + Default unit: Kilowatts per hour.
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp which reflects the date and time at which the referred reading was obtained.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+    
++ `meterReadingPeriod` : The periodicity of energy consumed meter readings in days.
+    + Attribute Type: [Number](http://schema.org/Number)
+    + Optional
+    
++ `powerFactor` : Power factor of the circuit associated to this group of streetlights.
+    + Attribute Type: [Number](http://schema.org/Number)
+    + Allowed values: A number between -1 and 1.
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+    
++ `cosPhi` : "Cosin of phi" parameter of the circuit associated to this group of streetlights.
+    + Attribute Type: [Number](http://schema.org/Number)
+    + Allowed values: A number between -1 and 1.
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+
++ `activePower` : Active power consumed by the circuit. The actual values will be conveyed
+by subproperties which name will be equal to the name of each of the circuit's alternating
+current phases, typically R, S, T. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Default unit: Kilowatts
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+
++ `reactivePower` : Reactive power of the circuit. The actual values will be conveyed
+by subproperties which name will be equal to the name of each of the circuit's alternating
+current phases, typically R, S, T. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Default unit: KiloVolts-Ampere-Reactive (Kvar)
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+   
++ `intensity` : Electric intensity of the circuit. The actual values will be conveyed
+by one subproperty per circuit's alternating current phase.  The name of each subproperty
+will be equal to the phase name, typically `R`, `S`, `T`. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Default unit: Ampers
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+
++ `voltage` : Electric tension of the circuit. The actual values will be conveyed
+by one subproperty per circuit's alternating current phase.  The name of each subproperty
+will be equal to the phase name, typically `R`, `S`, `T`. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Default unit: Volts
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+
++ `thdrVoltage` : Total harmonic distortion (R) of the circuit's voltage. The actual values will be conveyed
+by one subproperty per circuit's alternating current phase.  The name of each subproperty
+will be equal to the phase name, typically `R`, `S`, `T`. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Allowed values: A number between 0 and 1
+    + Optional
+
++ `thdrIntensity` : Total harmonic distortion (R) of the circuit's intensity. The actual values will be conveyed
+by one subproperty per circuit's alternating current phase.  The name of each subproperty
+will be equal to the phase name, typically `R`, `S`, `T`. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Allowed values: A value between 0 and 1
+    + Optional
+   
 ## Examples of Use
 
     {
@@ -109,22 +219,34 @@ Typically it will contain an identifier that will allow to obtain more informati
         ]
       },
       "powerStatus": "off", 
-      "area": "Calle Comercial Centro",
+      "areaServed": "Calle Comercial Centro",
       "circuit": "C-456-A467",
       "dateLastSwitchingOn":  "2016-07-07T19:59:06.618Z",
       "dateLastSwitchingOff": "2016-07-07T07:59:06.618Z",
       "refStreetlightCabinetController": "cabinetcontroller:CC45A34",
       "switchingOnHours": [
         {
-          "from" :  "--11-30"
+          "from" :  "--11-30",
           "to" :    "--01-07",
           "hours" : "Mo,Su 16:00-02:00",
           "description": "Christmas"
         }
-      ]
+      ],
+      "intensity": {
+         "R": 20.1,
+         "S": 14.4,
+         "T": 22
+      },
+      "reactivePower": {
+        "R": 45,
+        "S": 43.5,
+        "T": 42
+      }
     }
 
 ## Test it with a real service
 
 
 ## Open Issues
+
++ Do we really need metering attributes on this entity? Is metering only going to be done at Cabinet level? 
