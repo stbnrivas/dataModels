@@ -120,9 +120,14 @@ Note that this attribute can change dynamically depending on time of day or day 
     + Attribute type: List of references to [ParkingSpot](../../ParkingSpot/doc/spec.md)
     + Optional
     
-+ `dateUpdated` : Last update timestamp of this entity
++ `dateModified` : Last update timestamp of this entity
     + Attribute type: [DateTime](https://schema.org/DateTime)
     + Optional
+    
++ `areaServed` : Area served by this onstreet parking. Precise semantics can depend on the application or target city.
+ For instance, it can be a neighbourhood, burough or district.
+    + Attribute type: [Text](http://schema.org/Text)
+    + Optional    
   
 ## Examples of use
 
@@ -131,7 +136,7 @@ Note that this attribute can change dynamically depending on time of day or day 
       "type": "OnStreetParking",
       "allowedVehicleType": "Car",
       "availableSpotNumber": 1,
-      "dateUpdated": "2016-06-02T09:25:55.00Z",
+      "dateModified": "2016-06-02T09:25:55.00Z",
       "location": {
         "type": "Polygon",
         "coordinates": [
@@ -144,7 +149,8 @@ Note that this attribute can change dynamically depending on time of day or day 
           ]
         ]
       },
-      "totalSpotNumber": 6
+      "totalSpotNumber": 6,
+      "areaServed": "Zona Centro"
     }
 
 
