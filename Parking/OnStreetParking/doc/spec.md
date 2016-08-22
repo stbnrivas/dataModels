@@ -57,7 +57,7 @@ which can be subject to restrictions at certain times or week days.
     + Attribute type: [Boolean](https://schema.org/Boolean)
     + Optional
 
-+ `totalSpotNumber` : The total number of spots offered by the parking zone.
++ `totalSpotNumber` : The total number of spots offered by this onstreet parking.
 This can be difficult to be measured at those parking locations on which spots are not clearly limited by lines.
     + Attribute type: [Number](http://schema.org/Number)
     + Allowed values: Any positive integer number.
@@ -116,8 +116,12 @@ Note that this attribute can change dynamically depending on time of day or day 
     + Normative References: [https://schema.org/image](https://schema.org/image)
     + Optional
 
-+ `parkingSpots` : Individual spots belonging to this on street parking site.  
++ `refParkingSpot` : Individual parking spots belonging to this on street parking site.  
     + Attribute type: List of references to [ParkingSpot](../../ParkingSpot/doc/spec.md)
+    + Optional
+    
++ `refParkingSpotGroup` : Reference to the groups of parking spots (if any) belonging to this onstreet parking zone.
+    + Attribute type: List of references to [ParkingSpotGroup](../../ParkingSpotGroup/doc/spec.md)
     + Optional
     
 + `dateModified` : Last update timestamp of this entity

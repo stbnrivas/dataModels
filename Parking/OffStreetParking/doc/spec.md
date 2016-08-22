@@ -97,16 +97,15 @@ it conveys what is such special location.
     + Attribute type: [Boolean](https://schema.org/Boolean)
     + Optional
 
-+ `totalSpotNumber` : The total number of spots offered by this parking site. 
-This number must aggregate numbers from all parking zones belonging to this parking site.
++ `totalSpotNumber` : The total number of spots offered globally by this parking site. 
 This number can be difficult to be obtained for those parking locations on which spots are not clearly marked by lines.
     + Attribute type: [Number](http://schema.org/Number)
     + Allowed values: Any positive integer number or 0. 
     + Normative references: DATEX 2 version 2.3 attribute *parkingNumberOfSpaces* of the *ParkingRecord* class.
     + Optional
 
-+ `availableSpotNumber` : The number of spots available, excluding reserved spaces, such as those for disabled people,
-long term parkers and so on. This value must aggregate numbers from all zones devoted to regular parking.
++ `availableSpotNumber` : The number of spots available globally, excluding reserved spaces, such as those for disabled people,
+long term parkers and so on.
 This might be harder to estimate at those parking locations on which spots borders are not clearly marked by lines.
     + Attribute type: [Number](http://schema.org/Number)
     + Allowed values: A positive integer number, including 0. It must lower or equal than `totalSpotNumber`. 
@@ -116,7 +115,7 @@ This might be harder to estimate at those parking locations on which spots borde
     + Optional
         
 + `extraSpotNumber` : The number of extra spots *available*, i.e. free. Extra spots are those reserved for special purposes and usually require
-a permit. Permit details will be found at parking zone level. This value must aggregate free spots from all zones
+a permit. Permit details will be found at parking spot group. This value must aggregate free spots from all groups
 devoted to special parking.
     + Attribute type: [Number](http://schema.org/Number)
     + Allowed values: A positive integer number, including 0. `extraSpotNumber` plus `availableSpotNumber` must be lower than or
