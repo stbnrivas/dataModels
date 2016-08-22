@@ -106,6 +106,14 @@ responsible, district, neighbourhood, etc.
             + Type: [DateTime](http://schema.org/DateTime)
     + Optional
     
++ `energyCost` : Cost of the energy consumed by the circuits controlled since the metering start date (`dateMeteringStarted`).
+    + Attribute type: [Number](https://schema.org/Number)
+    + Default currency: Euros. (Other currencies might be expressed using a metadata attribute)
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional   
+    
 + `dateMeteringStarted` : The starting date for metering energy consumed.
     + Attribute Type: [DateTime](http://schema.org/DateTime)
     + Mandatory if `powerConsumedAccumulated` is present.     

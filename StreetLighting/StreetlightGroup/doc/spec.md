@@ -112,9 +112,17 @@ Typically it will contain an identifier that will allow to obtain more informati
             + Type: [DateTime](http://schema.org/DateTime)
     + Optional    
     
-+ `energyConsumed` : Energy consumed by the corresponding circuit since the metering start date (`dateMeteringStarted`)..
++ `energyConsumed` : Energy consumed by the corresponding circuit since the metering start date (`dateMeteringStarted`).
     + Attribute type: [Number](https://schema.org/Number)
     + Default unit: Kilowatts per hour (Kwh).
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+    
++ `energyCost` : Cost of the energy consumed by the corresponding circuit since the metering start date (`dateMeteringStarted`).
+    + Attribute type: [Number](https://schema.org/Number)
+    + Default currency: Euros. (Other currencies might be expressed using a metadata attribute)
     + Attribute metadata:
         + `dateUpdated`: Timestamp when the last update of the attribute happened.
             + Type: [DateTime](http://schema.org/DateTime)
