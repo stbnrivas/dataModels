@@ -50,7 +50,7 @@ responsible, district, neighbourhood, etc.
     + Attribute type: [Text](https://schema.org/Text)
     + Optional
     
-+ `dateUpdated` : Last update timestamp of this entity
++ `dateModified` : Last update timestamp of this entity
     + Attribute type: [DateTime](https://schema.org/DateTime)
     + Optional
 
