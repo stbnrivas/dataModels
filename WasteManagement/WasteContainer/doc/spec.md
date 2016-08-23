@@ -118,9 +118,14 @@ to keep backwards compatibility with current FIWARE reference implementations.
     + Attribute Type: [DateTime](http://schema.org/DateTime)
     + Optional
     
-+ `containerIsle` : Isle where the container is placed. 
++ `refWasteContainerIsle` : Isle where the container is placed. 
     + Attribute Type: Reference to a [WasteContainerIsle](../../WasteContainerIsle/doc/spec.md) entity.
     + Optional
+    
++ `isleId` : Identifier (or name) of the isle where the container is placed. This attribute should be used when
+entities of type `WasteContainerIsle` are not being modelled specifically. Otherwise, `refWasteContainerIsle` should be used. 
+    + Attribute Type: [Text](http://schema.org/Text)
+    + Optional    
     
 + `category` : Container's category.
     + Attribute type: List of [Text](https://schema.org/Text)
@@ -147,24 +152,6 @@ to keep backwards compatibility with current FIWARE reference implementations.
               + Type: [DateTime]((https://schema.org/DateTime). here can be production environmments where the attribute type
     is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.    
     + Optional
-
-+ `deviceBatteryLevel` : Battery level of the principal device which monitors this container.
-It must be equal to `1.0` when battery is full. `0.0` when battery ìs empty.
-`null` when cannot be determined.  
-    + Type: [Number](https://schema.org/Number)
-    + Allowed values: Interval [0,1]
-    + Attribute metadata:
-        + `dateUpdated`: Timestamp when the last update of the attribute happened.
-            + Type: [DateTime](http://schema.org/DateTime)
-        + `TimeInstant` : Timestamp saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
-to keep backwards compatibility with current FIWARE reference implementations. 
-              + Type: [DateTime]((https://schema.org/DateTime). here can be production environmments where the attribute type
-    is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.
-    + Optional
-            
-+ `deviceProviderName` : Provider's name of the principal device which monitors this container. 
-    + Type: [String](https://schema.org/Number)
-    + Optional
     
 + `color` : Container's color
     + Attribute type: [Text](https://schema.org/Text)
@@ -188,7 +175,7 @@ to keep backwards compatibility with current FIWARE reference implementations.
     
 + `areaServed` : Higher level area to which the container belongs to. It can be used to group containers per
 responsible, district, neighbourhood, etc.
-    + Attribute type: [Text](https://schema.org/Text)
+    + Normative References: [https://pending.schema.org/areaServed](https://pending.schema.org/areaServed)
     + Optional
     
 + `dateModified` : Last update timestamp of this entity
@@ -201,8 +188,26 @@ to keep backwards compatibility with current FIWARE reference implementations.
     is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.  
     + Optional
     
-+ `deviceId` : The identifier (it could be the serial number) of the IoT device used to monitor this container. 
++ `deviceId` : The identifier (it could be the serial number) of the principal IoT device used to monitor this container. 
     + Attribute type: [Text](https://schema.org/Text)
+    + Optional
+    
++ `deviceBatteryLevel` : Battery level of the principal IoT device which monitors this container.
+It must be equal to `1.0` when battery is full. `0.0` when battery ìs empty.
+`null` when cannot be determined. 
+    + Type: [Number](https://schema.org/Number)
+    + Allowed values: Interval [0,1]
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+        + `TimeInstant` : Timestamp saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
+to keep backwards compatibility with current FIWARE reference implementations. 
+              + Type: [DateTime]((https://schema.org/DateTime). here can be production environmments where the attribute type
+    is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.
+    + Optional
+            
++ `deviceProviderName` : Provider's name of the principal IoT device which monitors this container. 
+    + Type: [String](https://schema.org/Number)
     + Optional    
   
 ## Examples of use
@@ -211,7 +216,7 @@ to keep backwards compatibility with current FIWARE reference implementations.
        "id": "wastecontainer:Fleming:12a",
        "type": "WasteContainer",
        "refWasteContainerModel": "wastecontainermodel:c1",
-       "containerIsle": "wastecontainerisle:Fleming:12",
+       "refWasteContainerIsle":  "wastecontainerisle:Fleming:12",
        "serialNumber": "ab56kjl",
        "location": {
          "type": "Point",
@@ -221,7 +226,8 @@ to keep backwards compatibility with current FIWARE reference implementations.
        "dateLastEmptying": "2016-06-21T15:05:59.408Z",
        "dateNextActuation": "2016-06-28",
        "status": "ok",
-       "category": ["underground"]
+       "category": ["underground"],
+       "deviceBatteryLevel": 0.6
     }
 
 
@@ -229,4 +235,4 @@ to keep backwards compatibility with current FIWARE reference implementations.
 
 ## Open issues
 
-* Sensor data probably should be separated to a different entity. 
+* Add a `refDevice` to hold reference(s) to the IoT Device(s) bound to this entity. 
