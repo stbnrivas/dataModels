@@ -26,6 +26,10 @@ possible to determine the current filling level it must be equal to `null`.
     + Attribute metadata:
         + `dateUpdated`: Timestamp when the last update of the attribute happened.
             + Type: [DateTime](http://schema.org/DateTime)
+        + `TimeInstant` : Timestamp saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
+to keep backwards compatibility with current FIWARE reference implementations. 
+              + Type: [DateTime]((https://schema.org/DateTime). here can be production environmments where the attribute type
+    is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.    
     + Allowed values: Interval [0,1]. 
     + Optional
     
@@ -34,6 +38,10 @@ possible to determine the current filling level it must be equal to `null`.
     + Attribute metadata:
         + `dateUpdated`: Timestamp when the last update of the attribute happened.
             + Type: [DateTime](http://schema.org/DateTime)
+        + `TimeInstant` : Timestamp saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
+to keep backwards compatibility with current FIWARE reference implementations. 
+              + Type: [DateTime]((https://schema.org/DateTime). here can be production environmments where the attribute type
+    is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.    
     + Default unit: Celsius Degrees.
     + Optional
     
@@ -42,6 +50,10 @@ possible to determine the current filling level it must be equal to `null`.
     + Attribute metadata:
         + `dateUpdated`: Timestamp when the last update of the attribute happened.
             + Type: [DateTime](http://schema.org/DateTime)
+        + `TimeInstant` : Timestamp saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
+to keep backwards compatibility with current FIWARE reference implementations. 
+              + Type: [DateTime]((https://schema.org/DateTime). here can be production environmments where the attribute type
+    is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.    
     + Default unit: Micrograms per cubic meter.
     + Optional
 
@@ -127,19 +139,31 @@ possible to determine the current filling level it must be equal to `null`.
         + `lidOpen`. Container's lid has been opened and not closed after a certain amount of time.
         + `dropped`. Container has been dropped for some reason.
         + `moved`. Container has been moved from its regular position and has not come back.
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+        + `TimeInstant` : Timestamp saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
+to keep backwards compatibility with current FIWARE reference implementations. 
+              + Type: [DateTime]((https://schema.org/DateTime). here can be production environmments where the attribute type
+    is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.    
     + Optional
 
-+ `sensorData` :
-    + Attribute Type: [StructuredValue](https://schema.org/StructuredValue)
-    + Subproperties:
-        + `batteryLevel` : Battery level of sensor. It must be equal to `1.0` when battery is full. `0.0` when battery ìs empty.
-        `null` when cannot be determined.  
-            + Type: [Number](https://schema.org/Number)
-            + Allowed values: Interval [0,1]
-        + `serialNumber` : Serial number of the device.
-             + Type: [String](https://schema.org/Number)
-        + `providerName` : Sensor and/or service provider's name
-             + Type: [String](https://schema.org/Number)
++ `deviceBatteryLevel` : Battery level of the principal device which monitors this container.
+It must be equal to `1.0` when battery is full. `0.0` when battery ìs empty.
+`null` when cannot be determined.  
+    + Type: [Number](https://schema.org/Number)
+    + Allowed values: Interval [0,1]
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+        + `TimeInstant` : Timestamp saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
+to keep backwards compatibility with current FIWARE reference implementations. 
+              + Type: [DateTime]((https://schema.org/DateTime). here can be production environmments where the attribute type
+    is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.
+    + Optional
+            
++ `deviceProviderName` : Provider's name of the principal device which monitors this container. 
+    + Type: [String](https://schema.org/Number)
     + Optional
     
 + `color` : Container's color
@@ -170,6 +194,16 @@ responsible, district, neighbourhood, etc.
 + `dateModified` : Last update timestamp of this entity
     + Attribute type: [DateTime](https://schema.org/DateTime)
     + Optional
+    
++ `TimeInstant` : Timestamp saved by FIWARE's IoT Agent as per dynamic IoT data arrival. Note: This attribute has not been harmonized
+to keep backwards compatibility with current FIWARE reference implementations. 
+    + Attribute type: [DateTime](https://schema.org/DateTime). There can be production environmments where the attribute type
+    is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.  
+    + Optional
+    
++ `deviceId` : The identifier (it could be the serial number) of the IoT device used to monitor this container. 
+    + Attribute type: [Text](https://schema.org/Text)
+    + Optional    
   
 ## Examples of use
 
