@@ -16,12 +16,17 @@ together by the same automated system (cabinet controller).
         
 + `areaServed` : Higher level area to which the streetlight group belongs to. It can be used to group per
 responsible, district, neighbourhood, etc.
-    + Attribute type: [Text](https://schema.org/Text)
+    + Normative References: [https://schema.org/areaServed](https://schema.org/areaServed)
     + Optional 
 
-+ `circuit` : The circuit to which the streetlights belonging to this group connect to and gets power from.
++ `circuitId` : The circuit to which the streetlights belonging to this group connect to and gets power from.
 Typically it will contain an identifier that will allow to obtain more information about such circuit. 
     + Attribute type: [Text](http://schema.org/Text)
+    + Optional
+    
++ `circuitFrequency` : The working frequency of the circuit.
+    + Attribute type: [Number](http://schema.org/Number)
+    + Default unit: Hertz
     + Optional
 
 + `powerState` : Streetlight group's power state.
@@ -104,9 +109,37 @@ Typically it will contain an identifier that will allow to obtain more informati
     + Allowed values: There must topographical integrity between the location of the group and of the individual streetlights.  
     + Optional
     
-+ `powerConsumed` : Power currently consumed by this group of streetlights.
++ `totalActivePower` : Active power currently consumed by this group of streetlights (counting all phases).
     + Attribute Type: [Number](http://schema.org/Number)
-    + Default unit: Watts. 
+    + Default unit: KiloWatts. 
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+    
++ `totalReactivePower` : Reactive power currently consumed by this group of streetlights (counting all phases).
+    + Attribute Type: [Number](http://schema.org/Number)
+    + Default unit: KiloVolts-Ampere-Reactive (Kvar). 
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+
++ `activePower` : Active power consumed by the circuit per phase. The actual values will be conveyed
+by subproperties which name will be equal to the name of each of the circuit's alternating
+current phases, typically R, S, T. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Default unit: Kilowatts
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+
++ `reactivePower` : Reactive power of the circuit. The actual values will be conveyed
+by subproperties which name will be equal to the name of each of the circuit's alternating
+current phases, typically R, S, T. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Default unit: KiloVolts-Ampere-Reactive (Kvar)
     + Attribute metadata:
         + `dateUpdated`: Timestamp when the last update of the attribute happened.
             + Type: [DateTime](http://schema.org/DateTime)
@@ -115,6 +148,15 @@ Typically it will contain an identifier that will allow to obtain more informati
 + `energyConsumed` : Energy consumed by the corresponding circuit since the metering start date (`dateMeteringStarted`).
     + Attribute type: [Number](https://schema.org/Number)
     + Default unit: Kilowatts per hour (Kwh).
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+    
++ `reactiveEnergyConsumed` : Energy consumed (counting reactive power) by the corresponding circuit
+since the metering start date (`dateMeteringStarted`).
+    + Attribute type: [Number](https://schema.org/Number)
+    + Default unit: KiloVolts-Ampere-Reactive per hour (Kvar).
     + Attribute metadata:
         + `dateUpdated`: Timestamp when the last update of the attribute happened.
             + Type: [DateTime](http://schema.org/DateTime)
@@ -155,26 +197,6 @@ Typically it will contain an identifier that will allow to obtain more informati
 + `cosPhi` : "Cosin of phi" parameter of the circuit associated to this group of streetlights.
     + Attribute Type: [Number](http://schema.org/Number)
     + Allowed values: A number between -1 and 1.
-    + Attribute metadata:
-        + `dateUpdated`: Timestamp when the last update of the attribute happened.
-            + Type: [DateTime](http://schema.org/DateTime)
-    + Optional
-
-+ `activePower` : Active power consumed by the circuit. The actual values will be conveyed
-by subproperties which name will be equal to the name of each of the circuit's alternating
-current phases, typically R, S, T. 
-    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
-    + Default unit: Kilowatts
-    + Attribute metadata:
-        + `dateUpdated`: Timestamp when the last update of the attribute happened.
-            + Type: [DateTime](http://schema.org/DateTime)
-    + Optional
-
-+ `reactivePower` : Reactive power of the circuit. The actual values will be conveyed
-by subproperties which name will be equal to the name of each of the circuit's alternating
-current phases, typically R, S, T. 
-    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
-    + Default unit: KiloVolts-Ampere-Reactive (Kvar)
     + Attribute metadata:
         + `dateUpdated`: Timestamp when the last update of the attribute happened.
             + Type: [DateTime](http://schema.org/DateTime)

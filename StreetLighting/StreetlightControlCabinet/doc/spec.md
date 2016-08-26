@@ -112,7 +112,16 @@ responsible, district, neighbourhood, etc.
     + Attribute metadata:
         + `dateUpdated`: Timestamp when the last update of the attribute happened.
             + Type: [DateTime](http://schema.org/DateTime)
-    + Optional   
+    + Optional
+    
++ `reactiveEnergyConsumed` : Energy consumed (with regards to reactive power) by circuits
+since the metering start date (`dateMeteringStarted`).
+    + Attribute type: [Number](https://schema.org/Number)
+    + Default unit: KiloVolts-Ampere-Reactive per hour (Kvar).
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
     
 + `dateMeteringStarted` : The starting date for metering energy consumed.
     + Attribute Type: [DateTime](http://schema.org/DateTime)
