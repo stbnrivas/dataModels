@@ -42,9 +42,14 @@ Thus, an entity of type `ParkingSpot` cannot exist without a containing entity o
     + Attribute type: [Text](https://schema.org/Text)
     + Allowed Values: one Of (`occupied`, `free`, `closed`, `unknown`)
     + Metadata:
-        + `dateUpdated` : Timestamp of the last attribute update
-            + Type: [DateTime](https://schema.org/DateTime)
-            + Optional
+        + `dateUpdated` : Timestamp which reflects the date when the attribute value was obtained. 
+              + Type: [DateTime](https://schema.org/DateTime)
+              + Optional
+        + `TimeInstant` : Timestamp saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
+to keep backwards compatibility with current FIWARE reference implementations. 
+              + Type: [DateTime]((https://schema.org/DateTime). here can be production environmments where the attribute type
+    is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.  
+              + Optional
     + Mandatory
 
 + `width` : Width of the parking spot.
@@ -72,6 +77,16 @@ only one group is allowed per parking spot.
         + `offstreet` : The parking spot belongs to an onstreet parking site.
         + Other values as per application needs
     + Mandatory
+    
++ `TimeInstant` : Timestamp saved by FIWARE's IoT Agent. Note: This attribute has not been harmonized
+to keep backwards compatibility with current FIWARE reference implementations. 
+    + Attribute type: [DateTime](https://schema.org/DateTime). There can be production environmments where the attribute type
+    is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.  
+    + Optional
+    
++ `deviceId` : The device identifier (it could be the serial number) of the sensor used to monitor this parking spot.
+    + Attribute type: [Text](https://schema.org/Text)
+    + Optional
 
 ## Examples of use
 

@@ -202,7 +202,7 @@ It must be equal to `1.0` when battery is full. `0.0` when battery ìs empty.
             + Type: [DateTime](http://schema.org/DateTime)
         + `TimeInstant` : Timestamp saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
 to keep backwards compatibility with current FIWARE reference implementations. 
-              + Type: [DateTime]((https://schema.org/DateTime). here can be production environmments where the attribute type
+              + Type: [DateTime]((https://schema.org/DateTime). There can be production environmments where the attribute type
     is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.
     + Optional
             

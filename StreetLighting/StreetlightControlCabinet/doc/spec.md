@@ -19,7 +19,7 @@ It represents equipment, usually on street, used to the automated control of a g
         
 + `areaServed` : Higher level area to which the cabinet belongs to. It can be used to group per
 responsible, district, neighbourhood, etc.
-    + Attribute type: [Text](https://schema.org/Text)
+    + Normative References: [https://schema.org/areaServed](https://schema.org/areaServed)
     + Optional
     
 + `serialNumber` : Serial number of the control cabinet.
@@ -125,7 +125,7 @@ since the metering start date (`dateMeteringStarted`).
     
 + `dateMeteringStarted` : The starting date for metering energy consumed.
     + Attribute Type: [DateTime](http://schema.org/DateTime)
-    + Mandatory if `powerConsumedAccumulated` is present.     
+    + Mandatory if `energyConsumed` is present.     
 
 + `lastMeterReading` : Value of the last reading obtained from the energy consumed metering system.
     + Attribute type: [Number](https://schema.org/Number)

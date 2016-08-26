@@ -172,7 +172,7 @@ since the metering start date (`dateMeteringStarted`).
     
 + `dateMeteringStarted` : The starting date for metering energy consumed.
     + Attribute Type: [DateTime](http://schema.org/DateTime)
-    + Mandatory if `powerConsumedAccumulated` is present.     
+    + Mandatory if `energyConsumed` is present.     
 
 + `lastMeterReading` : Value of the last reading obtained from the energy consumed metering system.
     + Attribute type: [Number](https://schema.org/Number)
@@ -248,9 +248,9 @@ will be equal to the phase name, typically `R`, `S`, `T`.
           [ [102.0, 2.0], [103.0, 3.0] ]
         ]
       },
-      "powerStatus": "off", 
+      "powerStatus": "on", 
       "areaServed": "Calle Comercial Centro",
-      "circuit": "C-456-A467",
+      "circuitId": "C-456-A467",
       "dateLastSwitchingOn":  "2016-07-07T19:59:06.618Z",
       "dateLastSwitchingOff": "2016-07-07T07:59:06.618Z",
       "refStreetlightCabinetController": "cabinetcontroller:CC45A34",
