@@ -202,13 +202,24 @@ It must be equal to `1.0` when battery is full. `0.0` when battery ìs empty.
             + Type: [DateTime](http://schema.org/DateTime)
         + `TimeInstant` : Timestamp saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
 to keep backwards compatibility with current FIWARE reference implementations. 
-              + Type: [DateTime]((https://schema.org/DateTime). There can be production environmments where the attribute type
+              + Type: [DateTime](https://schema.org/DateTime). There can be production environmments where the attribute type
     is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.
     + Optional
             
 + `deviceProviderName` : Provider's name of the principal IoT device which monitors this container. 
     + Type: [String](https://schema.org/Number)
-    + Optional    
+    + Optional
+    
++ `deviceState` : State of the principal IoT device which monitors this container. This value can depend on the device provider. 
+    + Type: [Text](https://schema.org/Text)
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+        + `TimeInstant` : Timestamp saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
+to keep backwards compatibility with current FIWARE reference implementations. 
+              + Type: [DateTime](https://schema.org/DateTime). There can be production environmments where the attribute type
+    is equal to the `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.
+    + Optional
   
 ## Examples of use
 
@@ -236,3 +247,4 @@ to keep backwards compatibility with current FIWARE reference implementations.
 ## Open issues
 
 * Add a `refDevice` to hold reference(s) to the IoT Device(s) bound to this entity. 
+* `deviceState` : Define a taxonomy of values, which should be human readable. 
