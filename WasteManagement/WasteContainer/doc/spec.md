@@ -207,10 +207,10 @@ to keep backwards compatibility with current FIWARE reference implementations.
     + Optional
             
 + `deviceProviderName` : Provider's name of the principal IoT device which monitors this container. 
-    + Type: [String](https://schema.org/Number)
+    + Type: [Text](https://schema.org/Text)
     + Optional
     
-+ `deviceState` : State of the principal IoT device which monitors this container. This value can depend on the device provider. 
++ `deviceState` : State of the principal IoT device which monitors this container. Attribute value can depend on the device provider. 
     + Type: [Text](https://schema.org/Text)
     + Attribute metadata:
         + `dateUpdated`: Timestamp when the last update of the attribute happened.
