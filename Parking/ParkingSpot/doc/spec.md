@@ -60,9 +60,9 @@ to keep backwards compatibility with current FIWARE reference implementations.
     + Attribute type: [DateTime](https://schema.org/Number)
     + Optional
 
-+ `refParkingSpotGroup` : Group to which the parking spot belongs to. For model simplification purposes
++ `refParkingGroup` : Group to which the parking spot belongs to. For model simplification purposes
 only one group is allowed per parking spot. 
-    + Attribute type: Reference to an entity of type `ParkingSpotGroup`.  
+    + Attribute type: Reference to an entity of type `ParkingGroup`.  
     + Optional
 
 + `refParkingSite` : Parking site to which the the parking spot belongs to. 

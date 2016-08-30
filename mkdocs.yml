@@ -25,8 +25,8 @@ pages:
   - Parking:
       - 'Introduction'         : 'Parking/doc/introduction.md' 
       - 'OffStreetParking'     : 'Parking/OffStreetParking/doc/spec.md'
-      - 'OffStreetParkingZone' : 'Parking/OffStreetParkingZone/doc/spec.md'
       - 'OnStreetParking'      : 'Parking/OnStreetParking/doc/spec.md'
+      - 'ParkingGroup'         : 'Parking/ParkingGroup/doc/spec.md'
       - 'ParkingAccess'        : 'Parking/ParkingAccess/doc/spec.md' 
       - 'ParkingSpot'          : 'Parking/ParkingSpot/doc/spec.md'
   - 'Parks & Gardens'          : 'ParksAndGardens/doc/introduction.md'          

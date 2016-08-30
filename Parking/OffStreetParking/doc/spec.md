@@ -93,10 +93,6 @@ it conveys what is such special location.
     + Normative references:  [http://schema.org/openingHours](http://schema.org/openingHours)
     + Optional
 
-+ `areBordersMarked` : Denotes whether parking spots are delimited (with blank lines or similar) or not.
-    + Attribute type: [Boolean](https://schema.org/Boolean)
-    + Optional
-
 + `totalSpotNumber` : The total number of spots offered globally by this parking site. 
 This number can be difficult to be obtained for those parking locations on which spots are not clearly marked by lines.
     + Attribute type: [Number](http://schema.org/Number)
@@ -115,8 +111,8 @@ This might be harder to estimate at those parking locations on which spots borde
     + Optional
         
 + `extraSpotNumber` : The number of extra spots *available*, i.e. free. Extra spots are those reserved for special purposes and usually require
-a permit. Permit details will be found at parking spot group. This value must aggregate free spots from all groups
-devoted to special parking.
+a permit. Permit details will be found at parking group level (entity of type `ParkingGroup`).
+This value must aggregate free spots from all groups devoted to special parking.
     + Attribute type: [Number](http://schema.org/Number)
     + Allowed values: A positive integer number, including 0. `extraSpotNumber` plus `availableSpotNumber` must be lower than or
     equal to `totalSpotNumber`. 
@@ -210,9 +206,13 @@ Note that this attribute can change dynamically depending on time of day or day 
     + Normative References: [https://schema.org/aggregateRating](https://schema.org/aggregateRating)
     + Optional
 
-+ `parkingZones` : Parking site's identified zones. A zone can correspond to a complete storey, a group of spots, etc. 
-    + Attribute type: List of references to [OffStreetParkingZone](../../OffStreetParkingZone/doc/spec.md)
++ `refParkingGroup` : Parking site's identified group(s). A group can correspond to a zone, a complete storey, a group of spots, etc. 
+    + Attribute type: List of references to [ParkingGroup](../../ParkingGroup/doc/spec.md)
     + Optional
+    
++ `refParkingSpot` : Individual parking spots belonging to this offstreet parking site.  
+    + Attribute type: List of references to [ParkingSpot](../../ParkingSpot/doc/spec.md)
+    + Optional    
     
  + `areaServed` : Area served by this parking. Precise semantics can depend on the application or target city.
  For instance, it can be a neighbourhood, burough or district.
@@ -251,4 +251,3 @@ Note that this attribute can change dynamically depending on time of day or day 
 ## Open issues
 
 + How to model tariffs (use DATEX II version 2.3 as possible input)
-+ Principal available spot number vs available spot number and how to convey spots for handicaped people, etc. 

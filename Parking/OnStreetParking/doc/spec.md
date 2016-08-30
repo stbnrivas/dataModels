@@ -17,28 +17,21 @@ In DATEX 2 version 2.3 terminology it corresponds to a *UrbanParkingSite* of typ
     *ParkingDurationEnum* of DATEX II version 2.3.
     For instance, `parkAndRide`.
     + Optional
-    
-+ `parkingZoneType` : Type of parking zone.
-    + Attribute type: [Text](http://schema.org/Text)
-    + Allowed values:
-        + All the values specified by the *ParkingTypeOfGroup* enumeration of DATEX II version 2.3.
-        + Any value not covered by the above enumeration and meaningful for the application.
-    + Mandatory    
-       
+          
 + `location` : Geolocation of the parking site represented by a GeoJSON (Multi)Polygon.
     + Attribute type: `geo:json`.
     + Normative References: [https://tools.ietf.org/html/draft-ietf-geojson-03](https://tools.ietf.org/html/draft-ietf-geojson-03)
     + Mandatory
     
-+ `address` : Registered parking site civic address.
++ `address` : Registered onstreet parking civic address.
     + Normative References: [https://schema.org/address](https://schema.org/address)
     + Optional
 
-+ `name` : Name given to the parking zone.
++ `name` : Name given to the onstreet parking zone.
     + Normative References: [https://schema.org/name](https://schema.org/name)
     + Optional
 
-+ `description` : Description about the parking zone. 
++ `description` : Description about the onstreet parking zone. 
     + Normative References: [https://schema.org/description](https://schema.org/description)
     + Optional
 
@@ -57,21 +50,32 @@ which can be subject to restrictions at certain times or week days.
     + Attribute type: [Boolean](https://schema.org/Boolean)
     + Optional
 
-+ `totalSpotNumber` : The total number of spots offered by this onstreet parking.
-This can be difficult to be measured at those parking locations on which spots are not clearly limited by lines.
++ `totalSpotNumber` : The total number of spots offered globally by this parking site. 
+This number can be difficult to be obtained for those parking locations on which spots are not clearly marked by lines.
     + Attribute type: [Number](http://schema.org/Number)
-    + Allowed values: Any positive integer number.
-    + Normative references: DATEX 2 version 2.3 attribute `parkingNumberofSpaces` of the *ParkingRecord* class.
+    + Allowed values: Any positive integer number or 0. 
+    + Normative references: DATEX 2 version 2.3 attribute *parkingNumberOfSpaces* of the *ParkingRecord* class.
     + Optional
 
-+ `availableSpotNumber` : The total number of spots available.
++ `availableSpotNumber` : The number of spots available globally, excluding reserved spaces, such as those for disabled people,
+long term parkers and so on.
 This might be harder to estimate at those parking locations on which spots borders are not clearly marked by lines.
     + Attribute type: [Number](http://schema.org/Number)
-    + Allowed values: A positive integer number, including 0.
+    + Allowed values: A positive integer number, including 0. It must lower or equal than `totalSpotNumber`. 
     + Metadata:
         + `dateUpdated` : Timestamp of the last attribute update
         + Type: [DateTime](https://schema.org/DateTime)
     + Optional
+        
++ `extraSpotNumber` : The number of extra spots *available*, i.e. free. Extra spots are those reserved for special purposes and usually require
+a permit. Permit details will be found at parking group level (entity of type `ParkingGroup`).
+This value must aggregate free spots from all groups devoted to special parking.
+    + Attribute type: [Number](http://schema.org/Number)
+    + Allowed values: A positive integer number, including 0. `extraSpotNumber` plus `availableSpotNumber` must be lower than or
+    equal to `totalSpotNumber`. 
+    + Metadata:
+        + `dateUpdated` : Timestamp of the last attribute update
+        + Type: [DateTime](https://schema.org/DateTime)
     
 + `occupancyDetectionType` : Occupancy detection method(s).
     + Attribute type: List of [Text](http://schema.org/Text)
@@ -120,8 +124,8 @@ Note that this attribute can change dynamically depending on time of day or day 
     + Attribute type: List of references to [ParkingSpot](../../ParkingSpot/doc/spec.md)
     + Optional
     
-+ `refParkingSpotGroup` : Reference to the groups of parking spots (if any) belonging to this onstreet parking zone.
-    + Attribute type: List of references to [ParkingSpotGroup](../../ParkingSpotGroup/doc/spec.md)
++ `refParkingGroup` : Reference to the parking group(s) (if any) belonging to this onstreet parking zone.
+    + Attribute type: List of references to [ParkingGroup](../../ParkingGroup/doc/spec.md)
     + Optional
     
 + `dateModified` : Last update timestamp of this entity
@@ -140,6 +144,7 @@ Note that this attribute can change dynamically depending on time of day or day 
       "type": "OnStreetParking",
       "allowedVehicleType": "Car",
       "availableSpotNumber": 1,
+      "totalSpotNumber": 6,
       "dateModified": "2016-06-02T09:25:55.00Z",
       "location": {
         "type": "Polygon",
@@ -153,8 +158,8 @@ Note that this attribute can change dynamically depending on time of day or day 
           ]
         ]
       },
-      "totalSpotNumber": 6,
-      "areaServed": "Zona Centro"
+      "areaServed": "Zona Centro",
+      "refParkingGroup: ["daoiz-velarde-1-5-disabled"]
     }
 
 
