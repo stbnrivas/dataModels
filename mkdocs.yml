@@ -51,3 +51,5 @@ pages:
   -  'Water Quality':
       - 'Introduction'         : 'WaterQuality/doc/introduction.md'
       - 'WaterQualityObserved' : 'WaterQuality/WaterQualityObserved/doc/spec.md'
+
+google_analytics: ['UA-83719923-1', 'fiware-datamodels.readthedocs.io']
