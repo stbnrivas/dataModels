@@ -39,23 +39,30 @@ In DATEX 2 version 2.3 terminology it corresponds to a *UrbanParkingSite* of typ
 Particularities and detailed descriptions should found under the corresponding specific attributes.
     + Attribute type: List of [Text](http://schema.org/Text)
     + Allowed values:
-        + (`public`, `private`, `urbanDeterrentParking`, `garage`,
+        + (`public`, `private`, `publicPrivate`,  
+           `urbanDeterrentParking`, `parkingGarage`, `parkingLot`,
            `shortTerm`, `mediumTerm`, `longTerm`,
            `free`, `feeCharged`,
-           `staffed`, `guarded`, `barrierAccess`, `gateAccess`, `freeAccess`, 
-           `underground`, `ground`,
-           `disabledAccessible`,
-           `forResidents`, `forDisabled`, `forCustomers`, `forVisitors`, `forEmployees`)
+           `staffed`, `guarded`, `barrierAccess`, `gateAccess`, `freeAccess`,
+           `accessible`, `electricalCharging`,
+           `onlyResidents`,
+           `forEmployees`, `forVisitors`, `forCustomers`, `forStudents`, `forMembers`, `forDisabled`, `forResidents`,
+           `underground`, `ground`)
+        + The semantics of the `forxxx` values is that the parking offers specific spots for that kind of users.
+        + The semantics of the `onlyxxx`values is that the parking only allow to park that kind of users. 
         + Other application-specific
     + Mandatory
     
-+ `allowedVehicleType` : Vehicle type(s) allowed. The first element of this array *MUST* be the principal vehicle type allowed i.e. the one used
-for reporting the `availableSpotNumber` attribute. Free spot numbers of other allowed vehicle types will be
-reported under the attribute `extraSpotNumber` and specific entities of type *ParkingGroup*. 
++ `allowedVehicleType` : Vehicle type(s) allowed. The first element of this array *MUST* be the principal
+vehicle type allowed i.e. the one used for reporting the `availableSpotNumber` attribute.
+Free spot numbers of other allowed vehicle types will be reported under the attribute `extraSpotNumber`
+and through specific entities of type *ParkingGroup*. 
     + Attribute type: List of [Text](http://schema.org/Text)
-    + Allowed Values: The following values defined by *VehicleTypeEnum*, [DATEX 2 version 2.3](http://www.datex2.eu/sites/www.datex2.eu/files/DATEXIISchema_2_2_2_1.zip):
+    + Allowed Values: The following values defined by *VehicleTypeEnum*,
+    [DATEX 2 version 2.3](http://www.datex2.eu/sites/www.datex2.eu/files/DATEXIISchema_2_2_2_1.zip):
         + (`agriculturalVehicle`, `bicycle`, `bus`, `car`, `caravan`,
-           `carWithCaravan`, `carWithTrailer`, `constructionOrMaintenanceVehicle`, `lorry`, `moped`, `motorcycle`, `motorcycleWithSideCar`,
+           `carWithCaravan`, `carWithTrailer`, `constructionOrMaintenanceVehicle`, `lorry`, `moped`,
+           `motorcycle`, `motorcycleWithSideCar`,
            `motorscooter`, `tanker`, `trailer`, `van`, `anyVehicle`)
     + Mandatory
     
@@ -67,7 +74,7 @@ reported under the attribute `extraSpotNumber` and specific entities of type *Pa
     + Normative References: [https://schema.org/image](https://schema.org/image)
     + Optional
  
-+ `layout` : Parking layout.  
++ `layout` : Parking layout. Gives more details to the `category` attribute. 
     + Attribute type: [Text](http://schema.org/Text)
     + Allowed values:  As per the *ParkingLayoutEnum* of DATEX II version 2.3:
         + one Of (`automatedParkingGarage`, `surface`, `multiStorey`, `singleLevel`, `multiLevel`,
@@ -76,7 +83,7 @@ reported under the attribute `extraSpotNumber` and specific entities of type *Pa
         + Or any other value useful for the application and not covered above.
     + Optional
     
-+ `usageScenario` : Usage scenario.
++ `usageScenario` : Usage scenario. Gives more details to the `category` attribute. 
     + Attribute type: List of [Text](http://schema.org/Text)
     + Allowed values: Those defined by the enumeration *ParkingUsageScenarioEnum* of DATEX II version 2.3:
         + (`truckParking`, `parkAndRide`, `parkAndCycle`,	`parkAndWalk`, `kissAndRide`, `	liftshare`, `carSharing`,
@@ -109,38 +116,41 @@ reported under the attribute `extraSpotNumber` and specific entities of type *Pa
         + Any other application-specific
     + Optional    
     
-+ `highestFloor` : For multistorey parking sites, highest floor.
++ `highestFloor` : For parking sites with multiple floor levels, highest floor.
     + Attribute type: [Number](http://schema.org/Number)
     + Allowed values: An integer number. 0 is ground level. Upper floors are positive numbers. Lower floors are negative ones. 
     + Optional
     
-+ `lowestFloor` : For multistorey parking sites, lowest floor.
++ `lowestFloor` : For parking sites with multiple floor levels, lowest floor.
     + Attribute type: [Number](http://schema.org/Number)
     + Allowed values: An integer number.
     + Optional
     
-+ `maximumAParkingDuration` : Maximum allowed stay at site encoded as a ISO8601 duration.
++ `maximumAParkingDuration` : Maximum allowed stay at site, on a general basis, encoded as a ISO8601 duration.
     + Attribute type: [Text](http://schema.org/Text)
     + Optional
 
-+ `chargeType` : Type of charge performed by the parking site. If no charge this attribute 
-Note that this attribute can change dynamically depending on time of day or day of week.
++ `chargeType` : Type of charge performed by the parking site on a general basis. If there are exceptions for certain parking
+spots this must be conveyed at parking spot level. 
     + Attribute type: List of [Text](http://schema.org/Text)
     + Allowed values: Some of those defined by the DATEX II version 2.3 *ChargeTypeEnum* enumeration:
         + (`flat`, `minimum`, `maximum`, `additionalIntervalPrice` `seasonTicket` `temporaryPrice` `firstIntervalPrice`,
-        `annualPayment`, `monthlyPayment`, `other`)
+        `annualPayment`, `monthlyPayment`, `free`, `other`)
         + Any other application-specific
     + Optional
     
-+ `acceptedPaymentMethod` : Accepted payment method(s)
++ `acceptedPaymentMethod` : Accepted payment method(s).
     + Normative references: https://schema.org/acceptedPaymentMethod
     + Optional
     
-+ `requiredPermit` : This attribute captures what permit(s) are needed to park at this site.
++ `requiredPermit` : This attribute captures what permit(s) might be needed to park at this site on a general basis. Semantics
+is that at least *one of* these permits is needed to park. When a permit is composed by more than one item (and)
+they can be combined with a ",". For instance "residentPermit,disabledPermit" stays that both, at the same time,
+a resident and a disabled permit are needed to park. 
     + Attribute type: List of [Text](http://schema.org/Text)
     + Allowed values: The following, defined by the *PermitTypeEnum* enumeration of DATEX II version 2.3.
-        + oneOf (`employeePermit`, `fairPermit`, `governmentPermit`,  `residentPermit`, `specificIdentifiedVehiclePermit`,
-        `disabledPermit`, `visitorPermit`)
+        + oneOf (`employeePermit`, `studentPermit`, `fairPermit`, `governmentPermit`,  `residentPermit`,
+        `specificIdentifiedVehiclePermit`, `visitorPermit`)
         + Any other application-specific
     + Optional
     
