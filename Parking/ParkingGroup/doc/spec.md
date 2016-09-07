@@ -21,9 +21,10 @@ per group type.
         + `offstreet` if the parking group belongs to an `OffStreetParking`.
         + (`adjacentSpaces`, `nonAdjacentSpaces`, `completeFloor`, `statisticsOnly`,
            `vehicleTypeSpaces`, `particularConditionsSpaces`)
-        + (`onlyDisabled`, `onlyResidents`, `onlyLoadUnload`, `onlyWithPermit`, `forELectricalCharging`)
+        + (`onlyDisabled`, `onlyResidents`, `onlyWithPermit`, `onlyELectricalCharging`)
         + (`free`, `feeCharged`)
-        + (`blueZone`, `greenZone`)
+        + (`blueZone`, `greenZone`, `loadUnloadZone`)
+        + (`shortTerm`, `mediumTerm`, `longTerm`)
         + Any value not covered by the above enumeration and meaningful for the application.
     + Mandatory
 
@@ -43,7 +44,7 @@ per group type.
        
 + `location` : Geolocation of the parking group represented by a GeoJSON (Multi)Polygon or Point.
     + Attribute type: `geo:json`.
-    + Normative References: [https://tools.ietf.org/html/draft-ietf-geojson-03](https://tools.ietf.org/html/draft-ietf-geojson-03)
+    + Normative References: [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     + Optional
 
 + `address` : Registered parking group civic address. 
@@ -58,7 +59,8 @@ per group type.
     + Normative References: [https://schema.org/description](https://schema.org/description)
     + Optional
 
-+ `maximumAParkingDuration` : Maximum allowed stay encoded as a ISO8601 duration.
++ `maximumAParkingDuration` : Maximum allowed stay encoded as a ISO8601 duration (`null` if indefinite).
+Applications *SHOULD* inspect the value of this property at parent's level if it is not defined. 
     + Attribute type: [Text](http://schema.org/Text)
     + Optional
 
@@ -68,27 +70,38 @@ per group type.
         + (`flat`, `minimum`, `maximum`, `additionalIntervalPrice` `seasonTicket` `temporaryPrice` `firstIntervalPrice`,
         `annualPayment`, `monthlyPayment`, `free`, `other`)
         + Any other application-specific
-    + Optional
+    + Mandatory
     
 + `requiredPermit` : This attribute captures what permit is needed to park in any of the spots of this group. For the
 sake of simplicity only one permit can be associated to a parking group. When a permit is composed by more than one item
 they can be combined by separating them with a ",". For instance "residentPermit,disabledPermit" stays that both
-a resident and a disabled permit are needed to park. 
+a resident and a disabled permit are needed to park. If empty or `null`, no permit is needed. 
     + Attribute type: [Text](http://schema.org/Text)
     + Allowed values: The following, defined by the *PermitTypeEnum* enumeration of DATEX II version 2.3.
         + oneOf (`employeePermit`, `studentPermit`, `fairPermit`, `governmentPermit`,  `residentPermit`, `specificIdentifiedVehiclePermit`,
-        `disabledPermit`, `visitorPermit`, `blueZonePermit` `careTakingPermit` `carpoolingPermit` `carSharingPermit` `emergencyVehiclePermit`
-        `maintenanceVehiclePermit`, `roadWorksPermit`, `taxiPermit`)
+        `disabledPermit`, `visitorPermit`, `blueZonePermit`, `careTakingPermit`, `carpoolingPermit`,
+        `carSharingPermit`, `emergencyVehiclePermit`,
+        `maintenanceVehiclePermit`, `roadWorksPermit`, `taxiPermit`, `transportationPermit`)
         + Any other application-specific
-    + Optional   
+    + Mandatory
+    
++ `permitActiveHours` : This attribute allows to capture situations when a permit is only needed at specific hours or days of week.
+It is an structured value which must contain a subproperty per each required permit, indicating when the permit is active.
+If nothing specified (or `null`) for a permit it will mean that a permit is always required. `null`or empty object means always active. 
+The syntax must be conformant with schema.org (opening hours specification)[https://schema.org/openingHours]. For instance,
+        a blue zone which is only active on dayweeks will be encoded as "blueZonePermit": "Mo,Tu,We,Th,Fr,Sa 09:00-20:00". 
+    + Attribute type: [StructuredValue](http://schema.org/StructuredValue)
+    + Mandatory. It can be `null`. 
 
 + `reservationType` : Conditions for reservation.
+Applications *SHOULD* inspect the value of this property at parent's level if it is not defined. 
     + Attribute type: [Text](http://schema.org/Text)
     + Allowed values: The following specified by *ReservationTypeEnum* of DATEX II version 2.3:
         + one Of (`optional`, `mandatory`, `notAvailable`, `partly`).
     + Optional
    
 + `areBordersMarked` : Denotes whether parking spots are delimited (with blank lines or similar) or not.
+Applications *SHOULD* inspect the value of this property at parent's level if it is not defined. 
     + Attribute type: [Boolean](https://schema.org/Boolean)
     + Optional
 
@@ -107,6 +120,7 @@ a resident and a disabled permit are needed to park.
     + Optional
             
 + `occupancyDetectionType` : Occupancy detection method(s).
+Applications *SHOULD* inspect the value of this property at parent's level if it is not defined. 
     + Attribute type: List of [Text](http://schema.org/Text)
     + Allowed values: The following from DATEX II version 2.3 *OccupancyDetectionTypeEnum*:
         + (`none`, `balancing`, `singleSpaceDetection`, `modelBased`, `manual`)
@@ -114,27 +128,32 @@ a resident and a disabled permit are needed to park.
     + Optional
     
 + `parkingMode` : Parking mode(s).
+Applications *SHOULD* inspect the value of this property at parent's level if it is not defined. 
     + Attribute type: List of [Text](http://schema.org/Text)
     + Allowed values: Those defined by the DATEX II version 2.3 *ParkingModeEnum* enumeration:
         + (`perpendicularParking`, `parallelParking`, `echelonParking`)
     + Optional
 
-+ `averageSpotWidth` : The average width of parking spots. 
++ `averageSpotWidth` : The average width of parking spots.
+Applications *SHOULD* inspect the value of this property at parent's level if it is not defined. 
     + Attribute type: [Number](http://schema.org/Number)
     + Default unit: Meters
     + Optional
 
-+ `averageSpotLength` : The average length of parking spots. 
++ `averageSpotLength` : The average length of parking spots.
+Applications *SHOULD* inspect the value of this property at parent's level if it is not defined. 
     + Attribute type: [Number](http://schema.org/Number)
     + Default unit: Meters
     + Optional
 
-+ `maximumAllowedHeight` : Maximum allowed height for vehicles. 
++ `maximumAllowedHeight` : Maximum allowed height for vehicles.
+Applications *SHOULD* inspect the value of this property at parent's level if it is not defined. 
     + Attribute type: [Number](http://schema.org/Number)
     + Default unit: Meters
     + Optional
 
-+ `maximumAllowedWidth` : Maximum allowed width for vehicles. 
++ `maximumAllowedWidth` : Maximum allowed width for vehicles.
+Applications *SHOULD* inspect the value of this property at parent's level if it is not defined. 
     + Attribute type: [Number](http://schema.org/Number)
     + Default unit: Meters
     + Optional
@@ -149,12 +168,16 @@ a resident and a disabled permit are needed to park.
         
 ## Examples of use
 
+A group of parking spots especially for disabled people. 
+
     {
       "id": "daoiz-velarde-1-5-disabled",
       "type": "ParkingGroup",
       "category": ["onstreet", "adjacentSpaces", "onlyDisabled"],
+      "allowedVehicleType": "car",
+      "chargeType": ["free"],
       "refParkingSite": "daoiz-velarde-1-5",
-      "description": "Two parking spots reserved for people with disabilities",
+      "description": "Two parking spots reserved for disabled people",
       "totalSpotNumber": 2,
       "availableSpotNumber": 1,
       "location": {
@@ -169,7 +192,38 @@ a resident and a disabled permit are needed to park.
           ]
         ]
       },
-      "requiredPermit": ["disabledPermit"]
+      "requiredPermit": "disabledPermit",
+      "permitActiveHours": null          /* Always permit is needed */
+    }
+    
+A group of parking spots especially for loading and unloading goods. From 10:00 to 14:00, Monday-Saturday. 
+
+    {
+      "id": "daoiz-velarde-23-load",
+      "type": "ParkingGroup",
+      "category": ["onstreet", "adjacentSpaces", "loadUnloadZone"],
+      "allowedVehicleType": "car,van,lorry",
+      "chargeType": ["free"],
+      "refParkingSite": ""daoiz-velarde-23",
+      "description": "Three parking spots reserved for load and unload",
+      "totalSpotNumber": 3,
+      "availableSpotNumber": 2,
+      "location": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-3.80356167695194, 43.46296641666926 ],
+            [-3.803161973253841,43.46301091092682 ],
+            [-3.803147082548618,43.462879859445884],
+            [-3.803536474744068,43.462838666196674],
+            [-3.80356167695194, 43.46296641666926]
+          ]
+        ]
+      },
+      "requiredPermit": "transportPermit",
+      "permitActiveHours": {
+         "transportPermit": “Mo, Tu, We, Th, Fr, Sa 10:00-14:00"
+      }
     }
 
 ## Test it with a real service

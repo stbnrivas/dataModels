@@ -24,7 +24,7 @@ In DATEX 2 version 2.3 terminology it corresponds to a *UrbanParkingSite* of typ
     
 + `location` : Geolocation of the parking site represented by a GeoJSON (Multi)Polygon or Point.
     + Attribute type: `geo:json`.
-    + Normative References: [https://tools.ietf.org/html/draft-ietf-geojson-03](https://tools.ietf.org/html/draft-ietf-geojson-03)
+    + Normative References: [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     + Mandatory if `address` is not defined.
     
 + `address` : Registered parking site civic address.
@@ -36,20 +36,19 @@ In DATEX 2 version 2.3 terminology it corresponds to a *UrbanParkingSite* of typ
     + Mandatory
 
 + `category` : Parking site's category. The purpose of this field is to allow to tag, generally speaking, off street parking entities.
-Particularities and detailed descriptions should found under the corresponding specific attributes.
+Particularities and detailed descriptions should be found under the corresponding specific attributes.
     + Attribute type: List of [Text](http://schema.org/Text)
     + Allowed values:
         + (`public`, `private`, `publicPrivate`,  
            `urbanDeterrentParking`, `parkingGarage`, `parkingLot`,
            `shortTerm`, `mediumTerm`, `longTerm`,
            `free`, `feeCharged`,
-           `staffed`, `guarded`, `barrierAccess`, `gateAccess`, `freeAccess`,
-           `accessible`, `electricalCharging`,
-           `onlyResidents`,
+           `staffed`, `guarded`, `barrierAccess`, `gateAccess`, `freeAccess`, `forElectricalCharging`,
+           `onlyResidents`, `onlyWithPermit`,
            `forEmployees`, `forVisitors`, `forCustomers`, `forStudents`, `forMembers`, `forDisabled`, `forResidents`,
            `underground`, `ground`)
-        + The semantics of the `forxxx` values is that the parking offers specific spots for that kind of users.
-        + The semantics of the `onlyxxx`values is that the parking only allow to park that kind of users. 
+        + The semantics of the `forxxx` values is that the parking offers specific spots subject to that particular condition. 
+        + The semantics of the `onlyxxx`values is that the parking only allows to park on that particular condition. 
         + Other application-specific
     + Mandatory
     
@@ -65,6 +64,29 @@ and through specific entities of type *ParkingGroup*.
            `motorcycle`, `motorcycleWithSideCar`,
            `motorscooter`, `tanker`, `trailer`, `van`, `anyVehicle`)
     + Mandatory
+    
++ `chargeType` : Type of charge performed by the parking site on a general basis. 
+    + Attribute type: List of [Text](http://schema.org/Text)
+    + Allowed values: Some of those defined by the DATEX II version 2.3 *ChargeTypeEnum* enumeration:
+        + (`flat`, `minimum`, `maximum`, `additionalIntervalPrice` `seasonTicket` `temporaryPrice` `firstIntervalPrice`,
+        `annualPayment`, `monthlyPayment`, `free`, `other`)
+        + Any other application-specific
+    + Mandatory
+    
++ `requiredPermit` : This attribute captures what permit(s) might be needed to park at this site on a general basis. Semantics
+is that at least *one of* these permits is needed to park. When a permit is composed by more than one item (and)
+they can be combined with a ",". For instance "residentPermit,disabledPermit" stays that both, at the same time,
+a resident and a disabled permit are needed to park. If empty or `null`, no permit is needed. 
+    + Attribute type: List of [Text](http://schema.org/Text)
+    + Allowed values: The following, defined by the *PermitTypeEnum* enumeration of DATEX II version 2.3.
+        + oneOf (`employeePermit`, `studentPermit`, `fairPermit`, `governmentPermit`,  `residentPermit`,
+        `specificIdentifiedVehiclePermit`, `visitorPermit`)
+        + Any other application-specific
+    + Mandatory
+    
++ `acceptedPaymentMethod` : Accepted payment method(s).
+    + Normative references: https://schema.org/acceptedPaymentMethod
+    + Optional
     
 + `description` : Description about the parking site. 
     + Normative References: [https://schema.org/description](https://schema.org/description)
@@ -127,31 +149,8 @@ and through specific entities of type *ParkingGroup*.
     + Optional
     
 + `maximumAParkingDuration` : Maximum allowed stay at site, on a general basis, encoded as a ISO8601 duration.
+A `null` or empty value indicates an indefinite duration.  
     + Attribute type: [Text](http://schema.org/Text)
-    + Optional
-
-+ `chargeType` : Type of charge performed by the parking site on a general basis. If there are exceptions for certain parking
-spots this must be conveyed at parking spot level. 
-    + Attribute type: List of [Text](http://schema.org/Text)
-    + Allowed values: Some of those defined by the DATEX II version 2.3 *ChargeTypeEnum* enumeration:
-        + (`flat`, `minimum`, `maximum`, `additionalIntervalPrice` `seasonTicket` `temporaryPrice` `firstIntervalPrice`,
-        `annualPayment`, `monthlyPayment`, `free`, `other`)
-        + Any other application-specific
-    + Optional
-    
-+ `acceptedPaymentMethod` : Accepted payment method(s).
-    + Normative references: https://schema.org/acceptedPaymentMethod
-    + Optional
-    
-+ `requiredPermit` : This attribute captures what permit(s) might be needed to park at this site on a general basis. Semantics
-is that at least *one of* these permits is needed to park. When a permit is composed by more than one item (and)
-they can be combined with a ",". For instance "residentPermit,disabledPermit" stays that both, at the same time,
-a resident and a disabled permit are needed to park. 
-    + Attribute type: List of [Text](http://schema.org/Text)
-    + Allowed values: The following, defined by the *PermitTypeEnum* enumeration of DATEX II version 2.3.
-        + oneOf (`employeePermit`, `studentPermit`, `fairPermit`, `governmentPermit`,  `residentPermit`,
-        `specificIdentifiedVehiclePermit`, `visitorPermit`)
-        + Any other application-specific
     + Optional
     
 + `totalSpotNumber` : The total number of spots offered globally by this parking site. 
@@ -172,9 +171,10 @@ This might be harder to estimate at those parking locations on which spots borde
     + Optional
         
 + `extraSpotNumber` : The number of extra spots *available*, i.e. free. This value must aggregate free spots from all groups mentioned below:
-A/ those reserved for special purposes and usually require a permit. Permit details will be found at
+A/ Those reserved for special purposes and usually require a permit. Permit details will be found at
 parking group level (entity of type `ParkingGroup`).
-B/ Those reserved for other vehicle types different than the principal allowed vehicle type.  
+B/ Those reserved for other vehicle types different than the principal allowed vehicle type.
+C/ Any other parking spot not subject to the general condition rules conveyed by this entity.
     + Attribute type: [Number](http://schema.org/Number)
     + Allowed values: A positive integer number, including 0. `extraSpotNumber` plus `availableSpotNumber` must be lower than or
     equal to `totalSpotNumber`. 
@@ -288,13 +288,16 @@ all the zones.
 
 ## Examples of use
 
+A public off street parking underground controlled by a barrier. 
+
     {
-      "type": "OffStreetParking",
       "id": "porto-ParkingLot-23889",
+      "type": "OffStreetParking",
       "name": "Parque de estacionamento Trindade",
       "category": ["underground", "public", "feeCharged", "mediumTerm", "barrierAccess"],
       "chargeType": ["temporaryFee"],
-      "layout": ["multiStorey"],
+      "requiredPermit": [],
+      "layout": ["multiLevel"],
       "maximumParkingDuration": "PT8H",
       "location": {
         "coordinates": [-8.60961198807, 41.150691773],
@@ -311,6 +314,73 @@ all the zones.
       "description": "Municipal car park located near the Trindade metro station and the Town Hall",
       "dateModified": "2016-06-02T09:25:55.00Z"
     }
+    
+Urban Deterrent (xxxx and ride) parking. Free. 2 hours at a maximum. 
+
+    {
+       "id": "pdu-valladolid-1",
+       "type": "OffStreetParking",
+       "name": "Parking Disuasorio 1",
+       "category": ["urbanDeterrentParking", "shortTerm", "ground"],
+       "usageScenario": ["parkAndRide", "parkAndCycle"],
+       "layout": ["openSpace"],
+       "chargeType": ["freeParking"],
+       "allowedVehicleType": ["car"],
+       "maximumParkingDuration": "PT2H",
+       "requiredPermit": null,
+       "areaServed": "Centro",
+       "address": {
+          "streetAddress": "Calle La India",
+          "addressLocality": "Valladolid",
+          "addressCountry": "ES"
+      }
+    }
+
+Long stay parking. Maximum 4 days. Charging depends on time spent. 
+
+    {
+      "id": "long-stay-valladolid-2",
+      "type": "OffStreetParking",
+      "usageScenario": ["overnight"],
+      "category": ["longTerm", "underground"],
+      "layout": ["singleLevel"],
+      "chargeType": ["temporaryPrice"],
+      "allowedVehicleType": ["car"],
+      "maximumParkingDuration": “P4D”,
+      "requiredPermit": null,
+      "address": {
+          "streetAddress": "Paseo de Zorrilla, 96",
+          "addressLocality": "Valladolid",
+          "addressCountry": "ES"
+      }
+    }
+
+Off street parking with an specific area devoted to residents (100 spots). 
+
+    {
+       "id": "parking-example-234",
+       "type": "OffStreetParking",
+       "category": ["shortTerm", "mediumTerm", "forResidents"],
+       "chargeType": ["temporaryPrice"],   /* Root entity states the general case */ 
+       "totalSpotNumber": 250,
+       "availableSpotNumber": 100,
+       "extraSpotNumber": 60,
+       "refParkingGroup": [“example-234-g-residentes”],
+       "requiredPermit": [] /* Generally speaking no permit */
+       /* Other required fields (Check model) */
+    }
+
+    { 
+      "id": "example-234-g-residentes",
+      "type": "ParkingGroup",
+      "chargeType": ["annualTax"],   /* Annual payment for residents */
+      "category": ["offstreet", "longTerm", "onlyResidents"], /* Group Category. Overwrites parent's */
+      "totalSpotNumber": 100,
+      "availableSpotNumber": 60,
+      "requiredPermit": "residentPermit"
+      /* Other required fields (Check model) */
+    }
+
 
 ## Test it with a real service
 
