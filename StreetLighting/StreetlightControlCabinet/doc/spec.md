@@ -138,6 +138,97 @@ since the metering start date (`dateMeteringStarted`).
 + `meterReadingPeriod` : The periodicity of energy consumed meter readings in days.
     + Attribute Type: [Number](http://schema.org/Number)
     + Optional
+    
++ `frequency` : The working frequency of the circuit.
+    + Attribute type: [Number](http://schema.org/Number)
+    + Default unit: Hertz
+    + Optional
+        
++ `totalActivePower` : Active power currently consumed (counting all phases).
+    + Attribute Type: [Number](http://schema.org/Number)
+    + Default unit: KiloWatts. 
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+    
++ `totalReactivePower` : Reactive power currently consumed (counting all phases).
+    + Attribute Type: [Number](http://schema.org/Number)
+    + Default unit: KiloVolts-Ampere-Reactive (Kvar). 
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+
++ `activePower` : Active power consumed  per phase. The actual values will be conveyed
+by subproperties which name will be equal to the name of each of the alternating current phases, typically R, S, T. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Default unit: Kilowatts
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+
++ `reactivePower` : Reactive power. The actual values will be conveyed
+by subproperties which name will be equal to the name of each of the alternating
+current phases, typically R, S, T. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Default unit: KiloVolts-Ampere-Reactive (Kvar)
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional    
+       
++ `powerFactor` : Power factor.
+    + Attribute Type: [Number](http://schema.org/Number)
+    + Allowed values: A number between -1 and 1.
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+    
++ `cosPhi` : "Cosin of phi" parameter.
+    + Attribute Type: [Number](http://schema.org/Number)
+    + Allowed values: A number between -1 and 1.
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+   
++ `intensity` : Electric intensity. The actual values will be conveyed
+by one subproperty per alternating current phase.  The name of each subproperty
+will be equal to the phase name, typically `R`, `S`, `T`. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Default unit: Ampers
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+
++ `voltage` : Electric tension. The actual values will be conveyed
+by one subproperty alternating current phase.  The name of each subproperty
+will be equal to the phase name, typically `R`, `S`, `T`. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Default unit: Volts
+    + Attribute metadata:
+        + `dateUpdated`: Timestamp when the last update of the attribute happened.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+
++ `thdrVoltage` : Total harmonic distortion (R) of the voltage. The actual values will be conveyed
+by one subproperty per alternating current phase.  The name of each subproperty
+will be equal to the phase name, typically `R`, `S`, `T`. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Allowed values: A number between 0 and 1
+    + Optional
+
++ `thdrIntensity` : Total harmonic distortion (R) of intensity. The actual values will be conveyed
+by one subproperty alternating current phase.  The name of each subproperty
+will be equal to the phase name, typically `R`, `S`, `T`. 
+    + Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    + Allowed values: A value between 0 and 1
+    + Optional
+   
       
 ## Examples of Use
 
@@ -158,7 +249,17 @@ since the metering start date (`dateMeteringStarted`).
       "energyConsumed": 162456,
       "dateMeteringStarted": "2013-07-07",
       "lastMeterReading": 161237,
-      "meterReadingPeriod": 60
+      "meterReadingPeriod": 60,
+      "intensity": {
+         "R": 20.1,
+         "S": 14.4,
+         "T": 22
+      },
+      "reactivePower": {
+        "R": 45,
+        "S": 43.5,
+        "T": 42
+      }
     }
 
 
