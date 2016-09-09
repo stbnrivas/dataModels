@@ -321,7 +321,7 @@ Urban Deterrent (xxxx and ride) parking. Free. 2 hours at a maximum.
        "id": "pdu-valladolid-1",
        "type": "OffStreetParking",
        "name": "Parking Disuasorio 1",
-       "category": ["urbanDeterrentParking", "shortTerm", "ground"],
+       "category": ["public", "urbanDeterrentParking", "shortTerm", "ground", "parkingLot"],
        "usageScenario": ["parkAndRide", "parkAndCycle"],
        "layout": ["openSpace"],
        "chargeType": ["freeParking"],
@@ -341,8 +341,9 @@ Long stay parking. Maximum 4 days. Charging depends on time spent.
     {
       "id": "long-stay-valladolid-2",
       "type": "OffStreetParking",
+      "name": "El Corte Ingles", 
       "usageScenario": ["overnight"],
-      "category": ["longTerm", "underground"],
+      "category": ["public", "longTerm", "underground", "parkingGarage"],
       "layout": ["singleLevel"],
       "chargeType": ["temporaryPrice"],
       "allowedVehicleType": ["car"],
@@ -360,7 +361,8 @@ Off street parking with an specific area devoted to residents (100 spots).
     {
        "id": "parking-example-234",
        "type": "OffStreetParking",
-       "category": ["shortTerm", "mediumTerm", "forResidents"],
+       "name": "La Farola 1",
+       "category": ["public", "shortTerm", "mediumTerm", "forResidents"],
        "chargeType": ["temporaryPrice"],   /* Root entity states the general case */ 
        "totalSpotNumber": 250,
        "availableSpotNumber": 100,
@@ -370,17 +372,54 @@ Off street parking with an specific area devoted to residents (100 spots).
        /* Other required fields (Check model) */
     }
 
+Subrogated parking group to denote those parking spots devoted for residents. 
+
     { 
       "id": "example-234-g-residentes",
       "type": "ParkingGroup",
+      "name": "La Farola 1 - Residentes", 
       "chargeType": ["annualTax"],   /* Annual payment for residents */
       "category": ["offstreet", "longTerm", "onlyResidents"], /* Group Category. Overwrites parent's */
       "totalSpotNumber": 100,
       "availableSpotNumber": 60,
-      "requiredPermit": "residentPermit"
+      "requiredPermit": "residentPermit",
+      "refParkingSite": "parking-example-234",
+      "allowedVehicleType": "car"
       /* Other required fields (Check model) */
     }
 
+Private parking only for employees. A devoted visitor zone. 
+  
+    {
+      "id": "district-telefonica-parking-1",
+      "type": "OffStreetParking",
+      "name": "Distrito T - Parking Oeste",
+      "category": ["private", "underground", "mediumTerm", "forEmployees", "onlyWithPermit", "forVisitors"],
+      "requiredPermit": ["employeePermit"],
+      "chargeType": ["free"],
+      "allowedVehicleType": ["car"],
+      "maximumParkingDuration": "PT12H",
+      "totalSpotNumber": 250,
+      "availableSpotNumber": 100,
+      "extraSpotNumber": 10,
+      "refParkingGroup": ["dt-p1-visitor-group"]
+       /* Other required fields (Check model) */
+    }
+    
+Subrogated parking group modelling visitor's spots.
+
+    {
+      "id": "dt-p1-visitor-group",
+      "type": "ParkingGroup",
+      "category": ["offstreet", "onlyWithPermit", "shortTerm"],
+      "totalSpotNumber": 15,
+      "availableSpotNumber": 10,
+      "requiredPermit": "visitorPermit",
+      "chargeType": ["free"],
+      "refParkingSite": "district-telefonica-parking-1",
+      "allowedVehicleType": "car"
+      /* Other required fields (Check model) */
+    }
 
 ## Test it with a real service
 
