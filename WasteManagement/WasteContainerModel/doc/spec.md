@@ -38,8 +38,9 @@ A model of waste container which captures the static properties of a class of co
     + See also: [https://schema.org/weight](https://schema.org/weight)
     + Optional
 
-+ `volumeStored`. Total volume the container can hold.
++ `cargoVolume`. Total volume the container can hold.
     + Attribute type: [Number](https://schema.org/Number).
+    + Normative References: [https://schema.org/cargoVolume](https://schema.org/cargoVolume)
     + Default Unit: liters
     + Optional
        
@@ -128,7 +129,7 @@ A model of waste container which captures the static properties of a class of co
        "width": 0.50,
        "height": 0.80,
        "depth": 0.40,
-       "volumeStored": 150,
+       "cargoVolume": 150,
        "brandName": "Contenedores Ejemplo",
        "modelName": "C1",
        "compliantWith": ["UNE-EN 840-2:2013"],
