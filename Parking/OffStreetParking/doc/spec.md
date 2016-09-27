@@ -154,7 +154,7 @@ a resident and a disabled permit are needed to park. If empty or `null`, no perm
     + Allowed values: An integer number.
     + Optional
     
-+ `maximumAParkingDuration` : Maximum allowed stay at site, on a general basis, encoded as a ISO8601 duration.
++ `maximumParkingDuration` : Maximum allowed stay at site, on a general basis, encoded as a ISO8601 duration.
 A `null` or empty value indicates an indefinite duration.  
     + Attribute type: [Text](http://schema.org/Text)
     + Optional
