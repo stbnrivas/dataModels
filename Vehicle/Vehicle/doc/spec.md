@@ -1,0 +1,173 @@
+# Vehicle
+
+## Description
+
+A vehicle.
+
+## Data Model
+
++ `id` : Entity's unique identifier. 
+
++ `type` : Entity type. It must be equal to `Vehicle`.
+
++ `name` : Name given to this vehicle. 
+    + Normative References: [https://schema.org/name](https://schema.org/name)
+    + Optional
+
++ `description` : Vehicle description. 
+    + Normative References: [https://schema.org/description](https://schema.org/description)
+    + Optional
+
++ `location` : Vehicle's last known location represented by a GeoJSON Point. 
+    + Attribute type: `geo:json`.
+    + Normative References: [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
+    + Attribute metadata:
+        + `timestamp`: Timestamp which captures when the vehicle was at that location.
+        This value can also appear as a FIWARE [TimeInstant](https://github.com/telefonicaid/iotagent-node-lib/blob/develop/README.md#TimeInstant)
+            + Type: [DateTime](http://schema.org/DateTime) or `ISO8601` (legacy).   
+    + Optional
+    
++ `previousLocation` : Vehicle's previous location represented by a GeoJSON Point. 
+    + Attribute type: `geo:json`.
+    + Normative References: [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
+    + Attribute metadata:
+        + `timestamp`: Timestamp which captures when the vehicle was at that location.
+            + Type: [DateTime](http://schema.org/DateTime)
+    + Optional
+    
++ `speed` : Vehicle's last known speed.
+    + Attribute type: [Number](https:/schema.org/Number)
+    + Default unit: Kilometers per hour
+    + Attribute metadata:
+        + `timestamp`: Timestamp which captures when the vehicle was moving at that speed.
+        This value can also appear as a FIWARE [TimeInstant](https://github.com/telefonicaid/iotagent-node-lib/blob/develop/README.md#TimeInstant)
+            + Type: [DateTime](http://schema.org/DateTime) or `ISO8601` (legacy).
+    + Optional
+
++ `category` : Vehicle category(ies) from the point of view of usage.
+This is different than the vehicle type (car, lorry, etc.) represented by the `vehicleType` property.
+    + Attribute type: List of [Text](https:/schema.org/Text)
+    + Allowed values: (`public`, `private`, `municipalServices`) or any other needed by the applocation. 
+    + Mandatory
+
++ `cargoWeight` : Current weight of the vehicle's cargo.
+    + Attribute type: [Number](https:/schema.org/Number)
+    + Attribute metadata:
+        + `timestamp`: Timestamp associated to this measurement.
+        This value can also appear as a FIWARE [TimeInstant](https://github.com/telefonicaid/iotagent-node-lib/blob/develop/README.md#TimeInstant)
+            + Type: [DateTime](http://schema.org/DateTime) or `ISO8601` (legacy).
+    + Default unit: Kilograms
+    + Optional
+
++ `vehicleIdentificationNumber` : The Vehicle Identification Number (VIN) is a unique serial number used by the automotive industry
+to identify individual motor vehicles.
+    + Normative References: [https://schema.org/vehicleIdentificationNumber](https://schema.org/vehicleIdentificationNumber)
+    + Mandatory if `vehiclePlateIdentifier` is not defined.
+    
++ `vehiclePlateIdentifier` : An identifier or code displayed on a vehicle registration plate attached to the vehicle used for official identification purposes.
+The registration identifier is numeric or alphanumeric and is unique within the issuing authority's region.
+    + Normative References: DATEX II `vehicleRegistrationPlateIdentifier`
+    + Attribute Type: [Text](https://schema.org/Text)
+    + Mandatory if `vehicleIdentificationNumber` is not defined. 
+
++ `dateVehicleFirstRegistered` : The date of the first registration of the vehicle with the respective public authorities.
+    + Normative References: [https://schema.org/dateVehicleFirstRegistered](https://schema.org/dateVehicleFirstRegistered)
+    + Optional
+
++ `purchaseDate` : The date the item e.g. vehicle was purchased by the current owner.
+    + Normative References: [https://schema.org/purchaseDate](https://schema.org/purchaseDate)
+    + Optional
+
++ `mileageFromOdometer` : The total distance travelled by the particular vehicle since its initial production, as read from its odometer.
+    + Normative References: [https://schema.org/mileageFromOdometer](https://schema.org/mileageFromOdometer)
+    + Attribute metadata:
+        + `timestamp`: Timestamp associated to this measurement.
+        This value can also appear as a FIWARE [TimeInstant](https://github.com/telefonicaid/iotagent-node-lib/blob/develop/README.md#TimeInstant)
+            + Type: [DateTime](http://schema.org/DateTime) or `ISO8601` (legacy).
+    + Optional
+
++ `vehicleConfiguration` : A short text indicating the configuration of the vehicle, e.g. '5dr hatchback ST 2.5 MT 225 hp' or 'limited edition'.
+    + Normative References: [https://schema.org/vehicleConfiguration](https://schema.org/vehicleConfiguration)
+    + Optional
+
++ `color` : Vehicle's color
+    + Normative References: [https://schema.org/color](https://schema.org/color)
+    + Optional
+
++ `owner` : Vehicle's owner.
+    + Attribute Type: [https://schema.org/Person](https://schema.org/Person) or
+    [https://schema.org/Organization](https://schema.org/Organization)
+    + Optional
+
++ `serviceProvided` : Service(s) provided by (or associated to) the vehicle.
+    + Attribute type: List of [Text](https:/schema.org/Text)
+    + Allowed values: (`wasteContainerPickup`, `parksAndGardens`, `construction`, `lighting`,
+    `cargoTransport`, `urbanTransit`, `maintenance`, `fireBrigade`, `police`).
+    Or any other value needed by an specific application.
+    + Optional
+
++ `vehicleSpecialUsage` : Indicates whether the vehicle is been used for special purposes, like commercial rental,
+driving school, or as a taxi. The legislation in many countries requires this information to be revealed when offering a car for sale.
+    + Normative References: [https://auto.schema.org/vehicleSpecialUsage](https://auto.schema.org/vehicleSpecialUsage)
+    + Optional
+    
++ `vehicleType` : Type of vehicle from the point of view of its structural characteristics.
+This is different than the vehicle category (see above).
+    + Attribute type: [Text](https://schema.org/Text)
+    + Allowed Values: The following values defined by *VehicleTypeEnum*,
+    [DATEX 2 version 2.3](http://www.datex2.eu/sites/www.datex2.eu/files/DATEXIISchema_2_2_2_1.zip):
+        + (`agriculturalVehicle`, `bicycle`, `bus`, `car`, `caravan`,
+           `carWithCaravan`, `carWithTrailer`, `lorry`, `moped`,
+           `motorcycle`, `motorcycleWithSideCar`, `motorscooter`, `tanker`, `trailer`, `van`)
+    + Mandatory
+
++ `refVehicleModel` : Vehicle's model.
+    + Attribute type: Reference to a [VehicleModel](../../VehicleModel/doc/spec.md) entity.
+    + Optional
+
++ `areaServed` : Higher level area served by this vehicle. It can be used to group vehicles per
+responsible, district, neighbourhood, etc.
+    + Attribute type: [Text](https://schema.org/Text)
+    + Optional
+    
++ `status` : Vehicle status (from the point of view of the service provided).
+    + One of (`parked`, `onRoute`, `outOfOrder`, `stopped`)
+    + Attribute type: [Text](https://schema.org/Text)
+    + Optional
+
++ `dateModified` : Last update timestamp of this entity.
+    + Attribute type: [DateTime](https://schema.org/DateTime)
+    + Optional
+
++ `dateCreated` : Creation timestamp of this entity.
+    + Attribute type: [DateTime](https://schema.org/DateTime)
+    + Optional
+    
+## Example
+
+    {
+      "id": "vehicle:WasteManagement:1",
+      "type": "Vehicle",
+      "vehicleType": "lorry",
+      "category": ["municipalServices"],
+      "location": {
+         "type": "Point",
+         "coordinates": [ -3.164485591715449, 40.62785133667262 ]
+      },
+      "name": "C Recogida 1",
+      "speed": 50,
+      "cargoWeight": 314,
+      "status": "onroute",
+      "serviceProvided": ["WasteContainerPickup"],
+      "areaServed": "Centro",
+      "refVehicleModel": "vehiclemodel:econic",
+      "vehiclePlateIdentifier": "3456ABC"
+    }
+    
+## Test it with a real service
+
+T.B.D.
+
+## Issues
+
+* Taxonomy of service types
