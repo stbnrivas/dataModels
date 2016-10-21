@@ -166,7 +166,7 @@ Obviously, in order to toggle the referred switch, this attribute value will hav
       "mnc": "07",
       "batteryLevel": 0.75,
       "serialNumer": "9845A",
-      "refDeviceModel": ""myDevice-wastecontainer-sensor-345",
+      "refDeviceModel": "myDevice-wastecontainer-sensor-345",
       "value": "l=0.22;t=21.2",
       "deviceState": "ok",
       "dateFirstUsed": "2014-09-11",
