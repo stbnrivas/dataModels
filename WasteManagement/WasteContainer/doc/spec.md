@@ -227,7 +227,7 @@ to keep backwards compatibility with current FIWARE reference implementations.
        "dateNextActuation": "2016-06-28",
        "status": "ok",
        "category": ["underground"],
-       "refDevice": ["device-Fleming:12a:1]
+       "refDevice": ["device-Fleming:12a:1"]
     }
 
 
