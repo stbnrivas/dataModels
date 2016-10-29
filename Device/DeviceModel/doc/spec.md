@@ -30,7 +30,7 @@ This entity captures the static properties of a Device.
 + `deviceClass` : Class of constrained device as specified by RFC 7228.
 If the device is not a constrained device this property can be left as `null` or undefined. 
     + Attribute type: [Text](https://schema.org/Text)
-    + Normative References: [RFC7228] (https://tools.ietf.org/html/rfc7228#section-3)
+    + Normative References: [RFC7228](https://tools.ietf.org/html/rfc7228#section-3)
     + Allowed values: (`C0`, `C1`, `C2`)
     + Optional
 
@@ -49,7 +49,7 @@ If the device is not a constrained device this property can be left as `null` or
     + Allowed values: (`levelControl`, `sensing`, `onOff`, `openClose`, `metering`, `eventNotification`), from SAREF.
     + Optional
     
- `supportedProtocol` : Supported protocol(s) or networks.
++ `supportedProtocol` : Supported protocol(s) or networks.
     + Attribute type: List of [Text](https://schema.org/Text).
     + Allowed values: (`ul20`, `mqtt`, `lwm2m`, `http`, `websocket`, `onem2m`, `sigfox`, `lora`,
     `nb-iot`, `ec-gsm-iot`, `lte-m`, `cat-m`, `3g`, `grps`)  or any other value meaningful for an application. 
@@ -63,7 +63,7 @@ If the device is not a constrained device this property can be left as `null` or
     
 + `energyLimitationClass` : Device's class of energy limitation as per RFC 7228.
     + Attribute type: [Text](https://schema.org/Text)
-    + Normative References: [RFC7228] (https://tools.ietf.org/html/rfc7228#page-11)
+    + Normative References: [RFC7228](https://tools.ietf.org/html/rfc7228#page-11)
     + Allowed values: (`E0`, `E1`, `E2`, `E9`)
     + Optional
 
