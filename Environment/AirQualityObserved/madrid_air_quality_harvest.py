@@ -7,14 +7,13 @@ import json
 import urllib2
 import StringIO
 import logging
+import re
 
-
+# Entity type
 AMBIENT_TYPE_NAME = 'AirQualityObserved'
 
 # List of known air quality stations
 station_dict = { }
-
-MIME_JSON = 'application/json'
 
 # Orion service that will store the data
 orion_service = 'http://130.206.83.68:1026'
@@ -44,8 +43,8 @@ pollutant_descriptions = {
   '06': 'Carbon Monoxide',
   '07': 'Nitrogen Monoxide',
   '08': 'Nitrogen Dioxide',
-  '09': 'Particles < 2.5',
-  '10': 'Particles < 10',
+  '09': 'Particles lower than 2.5',
+  '10': 'Particles lower than 10',
   '12': 'Nitrogen oxides',
   '14': 'Ozone',
   '20': 'Toluene',
@@ -55,8 +54,8 @@ pollutant_descriptions = {
   '38': 'Paraxylene',
   '39': 'Orthoxylene',
   '42': 'Total Hydrocarbons',
-  '43': 'Hydrocarbons (Methane)',
-  '44': 'Non-methane hydrocarbons (Hexane)'
+  '43': 'Hydrocarbons - Methane',
+  '44': 'Non-methane hydrocarbons - Hexane'
 }
 
 other_dict = {
@@ -90,10 +89,17 @@ persisted_entities = 0
 already_existing_entities = 0
 in_error_entities = 0
 
+MIME_JSON = 'application/json'
 FIWARE_SERVICE = 'AirQuality'
 FIWARE_SPATH =   '/Spain/Madrid'
+
+# Sanitize string to avoid forbidden characters by Orion
+def sanitize(str_in):
+  return re.sub(r"[<(>)\"\'=;]", "", str_in)
+
     
-def get_air_quality_madrid(target_hour=-1):
+# Obtains air quality data and harmonizes it, persisting to Orion    
+def get_air_quality_madrid():
   req = urllib2.Request(url=dataset_url)
   f = urllib2.urlopen(req)
   
@@ -134,13 +140,14 @@ def get_air_quality_madrid(target_hour=-1):
     hour = 0
     
     for x in xrange(9, 57, 2):
-      if len(stations[station_code]) < hour + 1:
-        stations[station_code].append(build_station(station_num, station_code, hour, row))
-        
       value = row[x]
       value_control = row[x + 1]
     
-      if value_control == 'V':  
+      if value_control == 'V':
+        # A new entity object is created if it does not exist yet
+        if len(stations[station_code]) < hour + 1:
+          stations[station_code].append(build_station(station_num, station_code, hour, row))
+          
         param_value = float(value)
           
         if not is_other:
@@ -150,33 +157,22 @@ def get_air_quality_madrid(target_hour=-1):
           
           measurand_data = [property_name, str(param_value), unit_code, property_desc]
           stations[station_code][hour]['measurand']['value'].append(','.join(measurand_data))
-        else:
-          stations[station_code][hour][property_name] = param_value
-    
+          
+        stations[station_code][hour][property_name] = {
+          'value': param_value
+        }
       hour += 1
-
   
-  # Returning data as an array
-  station_list = []
-  
+  # Now persisting data to Orion Context Broker
   for station in stations:
     station_data = stations[station]
-    index_from = 0
-    index_to = len(station_data)
-    if target_hour <> -1:
-     index_from = target_hour
-     index_to = index_from + 1
-      
-    data_list = station_data[index_from:index_to]
-    
-    for data in data_list:  
-      if data['measurand'] or 'temperature' in data:
-        station_list.append(data)
-  
-  print json.dumps(station_list)      
-  # logging.debug(json.dumps(station_list))
+    for data in station_data:
+      post_data(data)
 
-# Buils a new entity of type AirQualityObserved
+#############    
+
+
+# Builds a new entity of type AirQualityObserved
 def build_station(station_num, station_code, hour, row):
   station_data = {
     'type': AMBIENT_TYPE_NAME,
@@ -188,14 +184,14 @@ def build_station(station_num, station_code, hour, row):
       'value': station_code
     },
     'stationName': {
-      'value': station_dict[station_num]['name']
+      'value': sanitize(station_dict[station_num]['name'])
     },
     'address': {
       'type': 'PostalAddress',
       'value': {
         'addressCountry': 'ES',
         'addressLocality': 'Madrid',
-        'streetAddress': station_dict[station_num]['address']  
+        'streetAddress': sanitize(station_dict[station_num]['address'])
       }
     },
     'location': {
@@ -233,6 +229,41 @@ def build_station(station_num, station_code, hour, row):
   station_data['id'] = 'Madrid-AmbientObserved-' + station_code + '-' + valid_from.isoformat()
     
   return station_data
+
+
+
+# POST data to an Orion Context Broker instance using NGSIv2 API
+def post_data(data):
+  data_as_str = json.dumps(data)
+  
+  headers = {
+    'Content-Type':   MIME_JSON,
+    'Content-Length': len(data_as_str),
+    'Fiware-Service': FIWARE_SERVICE,
+    'Fiware-Servicepath': FIWARE_SPATH
+  }
+  
+  req = urllib2.Request(url=(orion_service + '/v2/entities/'), data=data_as_str, headers=headers)
+  
+  logging.debug('Going to persist %s to %s', data['id'], orion_service)
+  
+  try:
+    f = urllib2.urlopen(req)
+  except urllib2.URLError as e:
+    if e.code == 422:
+      global already_existing_entities
+      logging.debug("Entity already exists: %s", data['id'])
+      already_existing_entities = already_existing_entities + 1
+    else:
+      global in_error_entities
+      logging.error('Error while POSTing data to Orion: %d %s', e.code, e.read())
+      logging.debug('Data which failed: %s', data_as_str)
+      in_error_entities = in_error_entities + 1
+  else:
+    global persisted_entities
+    logging.debug("Entity successfully created: %s", data['id'])
+    persisted_entities = persisted_entities + 1
+
 
 # Reads station data from CSV file
 def read_station_csv():
@@ -280,5 +311,3 @@ if __name__ == '__main__':
   logging.debug('Number of entities already existed: %d', already_existing_entities)
   logging.debug('Number of entities in error: %d', in_error_entities)
   logging.debug('#### Harvesting cycle finished ... ####')
-
-  
