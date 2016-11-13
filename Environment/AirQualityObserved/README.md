@@ -1,6 +1,6 @@
-# Ambient Observed
+# Air Quality Observed
 
-This folder contains scripts that give support to expose ambient observed data as NGSI version 2.
+This folder contains scripts that give support to expose air quality observed data as NGSI version 2.
 
 The data provided comes from the [air quality stations](../PointOfInterest/AirQualityStation) owned by Madrid City Council.
 
