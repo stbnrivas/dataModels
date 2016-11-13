@@ -1,4 +1,4 @@
-#!../bin/python
+ #!../bin/python
 # -*- coding: utf-8 -*-
 
 import csv
@@ -7,6 +7,7 @@ import json
 import urllib2
 import StringIO
 import logging
+import logging.handlers
 import re
 
 # Entity type
@@ -17,6 +18,8 @@ station_dict = { }
 
 # Orion service that will store the data
 orion_service = 'http://130.206.83.68:1026'
+
+logger = None
 
 pollutant_dict = {
   '01': 'SO2',
@@ -201,6 +204,9 @@ def build_station(station_num, station_code, hour, row):
     'source': {
       'type': 'URL',
       'value': 'http://datos.madrid.es'
+    },
+    'dataProvider': {
+      'value': 'TEF'
     }
   }
   valid_from = datetime.datetime(int(row[6]), int(row[7]), int(row[8]), hour)
@@ -245,23 +251,23 @@ def post_data(data):
   
   req = urllib2.Request(url=(orion_service + '/v2/entities/'), data=data_as_str, headers=headers)
   
-  logging.debug('Going to persist %s to %s', data['id'], orion_service)
+  logger.debug('Going to persist %s to %s', data['id'], orion_service)
   
   try:
     f = urllib2.urlopen(req)
   except urllib2.URLError as e:
     if e.code == 422:
       global already_existing_entities
-      logging.debug("Entity already exists: %s", data['id'])
+      logger.debug("Entity already exists: %s", data['id'])
       already_existing_entities = already_existing_entities + 1
     else:
       global in_error_entities
-      logging.error('Error while POSTing data to Orion: %d %s', e.code, e.read())
-      logging.debug('Data which failed: %s', data_as_str)
+      logger.error('Error while POSTing data to Orion: %d %s', e.code, e.read())
+      logger.debug('Data which failed: %s', data_as_str)
       in_error_entities = in_error_entities + 1
   else:
     global persisted_entities
-    logging.debug("Entity successfully created: %s", data['id'])
+    logger.debug("Entity successfully created: %s", data['id'])
     persisted_entities = persisted_entities + 1
 
 
@@ -296,18 +302,37 @@ def read_station_csv():
       'address': None,
       'location': None
     }
-    
+
+def setup_logger():
+  global logger
+  
+  LOG_FILENAME = 'harvest_madrid.log'
+
+  # Set up a specific logger with our desired output level
+  logger = logging.getLogger('Madrid')
+  logger.setLevel(logging.DEBUG)
+
+  #  Add the log message handler to the logger
+  handler = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=2000000, backupCount=3)
+  formatter = logging.Formatter('%(levelname)s %(asctime)s %(message)s')
+  handler.setFormatter(formatter)
+  
+  logger.addHandler(handler)
+  
       
 if __name__ == '__main__':
+  setup_logger()
+  
   read_station_csv()
   
-  logging.basicConfig(filename='harvest_madrid.log', level='DEBUG', format='%(levelname)s %(asctime)s %(message)s')
+  logger.debug('#### Starting a new harvesting and harmonization cycle ... ####')
+  logger.debug('Number of air quality stations known: %d', len(station_dict.keys()))
   
-  logging.debug('#### Starting a new harvesting and harmonization cycle ... ####')
-  logging.debug('Number of air quality stations known: %d', len(station_dict.keys()))
   get_air_quality_madrid()
   
-  logging.debug('Number of entities persisted: %d', persisted_entities)
-  logging.debug('Number of entities already existed: %d', already_existing_entities)
-  logging.debug('Number of entities in error: %d', in_error_entities)
-  logging.debug('#### Harvesting cycle finished ... ####')
+  logger.debug('Number of entities persisted: %d', persisted_entities)
+  logger.debug('Number of entities already existed: %d', already_existing_entities)
+  logger.debug('Number of entities in error: %d', in_error_entities)
+  logger.debug('#### Harvesting cycle finished ... ####')
+
+  
