@@ -5,6 +5,7 @@ import datetime
 import json
 import urllib2
 import logging
+import logging.handlers
 import re
 
 import sys
@@ -63,7 +64,7 @@ def sanitize(str_in):
 def get_air_quality_barcelona(target_stations):
   for station in target_stations:
   
-    logging.debug('Going to harvest data coming from : %s', station)
+    logger.debug('Going to harvest data coming from : %s', station)
     
     service_url1 = dataset_url.format(station)
     
@@ -71,7 +72,7 @@ def get_air_quality_barcelona(target_stations):
     station_req = urllib2.Request(url=service_url1, headers={'Accept': MIME_JSON})
     try: f = urllib2.urlopen(station_req)
     except urllib2.URLError as e:
-      logging.error('Error while calling: %s : %s', service_url1, e)
+      logger.error('Error while calling: %s : %s', service_url1, e)
       continue
       
     # deal with wrong encoding
@@ -83,10 +84,10 @@ def get_air_quality_barcelona(target_stations):
     data_req = urllib2.Request(url=service_url2, headers={'Accept': MIME_JSON})
     try: f2 = urllib2.urlopen(data_req)
     except urllib2.URLError as e:
-      logging.error('Error while calling: %s : %s', service_url2, e)
+      logger.error('Error while calling: %s : %s', service_url2, e)
       continue
     
-    logging.debug("All data from %s retrieved properly", station)
+    logger.debug("All data from %s retrieved properly", station)
     
     # deal with wrong encoding
     json_pollutants_str = f2.read().replace("'",'"')
@@ -176,7 +177,7 @@ def get_air_quality_barcelona(target_stations):
       'value': str(hour) + ':' + '00'
     }
     
-    logging.debug("Retrieved data for %s at %s",station_data['stationCode']['value'], observ_date.isoformat())
+    logger.debug("Retrieved data for %s at %s",station_data['stationCode']['value'], observ_date.isoformat())
     # Entity id corresponds to the observed date starting period
     station_data['id'] = 'Barcelona-AirQualityObserved' + '-' + station_code + '-' + observ_date.isoformat()
     
@@ -196,34 +197,53 @@ def post_data(data):
   
   req = urllib2.Request(url=(orion_service + '/v2/entities/'), data=data_as_str, headers=headers)
   
-  logging.debug('Going to persist %s to %s', data['id'], orion_service)
+  logger.debug('Going to persist %s to %s', data['id'], orion_service)
   
   try:
     f = urllib2.urlopen(req)
   except urllib2.URLError as e:
     if e.code == 422:
       global already_existing_entities
-      logging.debug("Entity already exists: %s", data['id'])
+      logger.debug("Entity already exists: %s", data['id'])
       already_existing_entities = already_existing_entities + 1
     else:
       global in_error_entities
-      logging.error('Error while POSTing data to Orion: %d %s', e.code, e.read())
-      logging.debug('Data which failed: %s', data_as_str)
+      logger.error('Error while POSTing data to Orion: %d %s', e.code, e.read())
+      logger.debug('Data which failed: %s', data_as_str)
       in_error_entities = in_error_entities + 1
   else:
     global persisted_entities
-    logging.debug("Entity successfully created: %s", data['id'])
+    logger.debug("Entity successfully created: %s", data['id'])
     persisted_entities = persisted_entities + 1
     
+
+def setup_logger():
+  global logger
+  
+  LOG_FILENAME = 'harvest_barcelona.log'
+
+  # Set up a specific logger with our desired output level
+  logger = logging.getLogger('Barcelona')
+  logger.setLevel(logging.DEBUG)
+
+  #  Add the log message handler to the logger
+  handler = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=2000000, backupCount=3)
+  formatter = logging.Formatter('%(levelname)s %(asctime)s %(message)s')
+  handler.setFormatter(formatter)
+  
+  logger.addHandler(handler)
     
 if __name__ == '__main__':
-  logging.basicConfig(filename='harvest.log', level='DEBUG', format='%(levelname)s %(asctime)s %(message)s')
+  setup_logger()
   
-  logging.debug('#### Starting a new harvesting and harmonization cycle ... ####')
-  logging.debug('Number of air quality stations known: %d', len(station_codes))
+  logger.debug('#### Starting a new harvesting and harmonization cycle ... ####')
+  logger.debug('Number of air quality stations known: %d', len(station_codes))
+  
   get_air_quality_barcelona(station_codes)
   
-  logging.debug('Number of entities persisted: %d', persisted_entities)
-  logging.debug('Number of entities already existed: %d', already_existing_entities)
-  logging.debug('Number of entities in error: %d', in_error_entities)
-  logging.debug('#### Harvesting cycle finished ... ####')
+  logger.debug('Number of entities persisted: %d', persisted_entities)
+  logger.debug('Number of entities already existed: %d', already_existing_entities)
+  logger.debug('Number of entities in error: %d', in_error_entities)
+  logger.debug('#### Harvesting cycle finished ... ####')
+
+
