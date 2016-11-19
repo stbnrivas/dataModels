@@ -31,6 +31,7 @@ pollutant_descriptions = {
   'O3': 'Ozone',
   'TOL': 'Toluene',
   'BEN': 'Benzene',
+  'C6H6': 'Benzene',
   'EBE': 'Etilbenzene',
   'MXY': 'Metaxylene',
   'PXY': 'Paraxylene',
@@ -62,7 +63,12 @@ def sanitize(str_in):
 
 # Retrieves all the data from the target stations    
 def get_air_quality_barcelona(target_stations):
+  # Will keep all the data indexed by station code
+  # An array with one element per hour
+  entity_data = {}
+  
   for station in target_stations:
+    entity_data[station] = []
   
     logger.debug('Going to harvest data coming from : %s', station)
     
@@ -95,42 +101,7 @@ def get_air_quality_barcelona(target_stations):
     
     station_code = data['codiEOI']
     
-    station_data = {
-      'type': AIRQUALITY_TYPE_NAME,
-      'stationCode': {
-        'value': station_code
-      },
-      'stationName': {
-        'value': sanitize(data['nom'])
-      },
-      'address': {
-        'value' : {
-          'addressCountry': 'ES',
-          'addressLocality': sanitize(data['municipi']),
-          'streetAddress': sanitize(data['direccioPostal'])
-        },
-        'type': 'PostalAddress'
-      },
-      'location': {
-        'value': {
-          'type': 'Point',
-          'coordinates': [float(data['longitud']),float(data['latitud'])]
-        },
-        'type': 'geo:json',
-      },
-      # Source of the data Generalitat of Catalonia
-      'source': {
-        'value': 'http://dtes.gencat.cat/',
-        'type': 'URL'
-      },
-      # Provider operator TEF
-      'dataProvider': {
-        'value': 'TEF'
-      }
-    }
-    
     pollutant_data = pollutant_data_st['contaminants']
-    measurands = []
     
     for pollutant_info in pollutant_data.values():
       values = pollutant_info['dadesMesuresDiaria']
@@ -144,45 +115,96 @@ def get_air_quality_barcelona(target_stations):
       counter = 0
       hour = 0
       for v in values:
-        if v['valor'] <> '' and counter < 24:
-          value = v['valor']
+        if v['valor'] <> '':
           hour = counter
-        counter = counter + 1
+          station_data = None
+          if len(entity_data[station_code]) > hour:
+            station_data = entity_data[station_code][hour]
+            
+          if  station_data is None:
+            station_data = build_station(station_code, data)
+            entity_data[station_code].append(station_data)
+            # 'data' in catalan is 'date' 
+            observ_date = datetime.datetime.strptime(pollutant_data_st['data'],'%d/%m/%Y')
+            observ_date = observ_date.replace(hour=hour,minute=0,second=0,microsecond=0)
+          
+            # Correction of 1 hour in order to deal with CB bug with timezones
+            one_hour_delta = datetime.timedelta(hours=1)
+            observ_corrected_date = observ_date - one_hour_delta
       
-      measurand_data = [pollutant_name, value, pollutant_unit, pollutant_descriptions[pollutant_name]]
-      measurands.append( ','.join(measurand_data))
-    
-      station_data[pollutant_name] = {
-        'value': float(value)
-      }
-    
-    # 'data' in catalan is 'date' 
-    observ_date = datetime.datetime.strptime(pollutant_data_st['data'],'%d/%m/%Y')
-    observ_date = observ_date.replace(hour=hour,minute=0,second=0,microsecond=0)
-    
-    # Correction of 1 hour in order to deal with CB bug with timezones
-    one_hour_delta = datetime.timedelta(hours=1)
-    observ_corrected_date = observ_date - one_hour_delta
-    
-    station_data['dateObserved'] = {
-      'value': observ_corrected_date.isoformat(),
-      'type': 'DateTime'
-    }
-    station_data['measurand'] = {
-      'value': measurands,
-      'type': 'List'
-    }
-    # Convenience data for filtering by target hour
-    station_data['hour'] = {
-      'value': str(hour) + ':' + '00'
-    }
+            station_data['dateObserved'] = {
+              'value': observ_corrected_date.isoformat(),
+              'type': 'DateTime'
+            }
+            
+            # Entity id corresponds to the observed date starting period
+            station_data['id'] = 'Barcelona-AirQualityObserved' + '-' + station_code + '-' + observ_date.isoformat()
+            
+            # Convenience data for filtering by target hour
+            station_data['hour'] = {
+              'value': str(hour) + ':' + '00'
+            }
+            
+          value = v['valor']
+          
+          measurand_data = [pollutant_name, value, pollutant_unit, pollutant_descriptions[pollutant_name]]
+          station_data['measurand']['value'].append( ','.join(measurand_data))
+          station_data[pollutant_name] = {
+            'value': float(value)
+          }
+          
+          counter = counter + 1
     
     logger.debug("Retrieved data for %s at %s",station_data['stationCode']['value'], observ_date.isoformat())
-    # Entity id corresponds to the observed date starting period
-    station_data['id'] = 'Barcelona-AirQualityObserved' + '-' + station_code + '-' + observ_date.isoformat()
-    
-    post_data(station_data)
+  
+  # Now persisting data to Orion Context Broker
+  for a_station in entity_data:
+    data_for_station = entity_data[a_station]
+    for data in data_for_station:
+      post_data(data)
 
+
+def build_station(station_code, data):
+  station_data = {
+    'type': AIRQUALITY_TYPE_NAME,
+    'stationCode': {
+      'value': station_code
+    },
+    'stationName': {
+      'value': sanitize(data['nom'])
+    },
+    'address': {
+      'value' : {
+        'addressCountry': 'ES',
+        'addressLocality': sanitize(data['municipi']),
+        'streetAddress': sanitize(data['direccioPostal'])
+      },
+      'type': 'PostalAddress'
+    },
+    'location': {
+      'value': {
+        'type': 'Point',
+        'coordinates': [float(data['longitud']),float(data['latitud'])]
+      },
+      'type': 'geo:json',
+    },
+    # Source of the data Generalitat of Catalonia
+    'source': {
+      'value': 'http://dtes.gencat.cat/',
+      'type': 'URL'
+    },
+    # Provider operator TEF
+    'dataProvider': {
+      'value': 'TEF'
+    },
+    'measurand': {
+      'value': [],
+      'type': 'List'
+    }
+  }
+  
+  return station_data
+    
   
 # POST data to an Orion Context Broker instance using NGSIv2 API
 def post_data(data):
@@ -245,5 +267,4 @@ if __name__ == '__main__':
   logger.debug('Number of entities already existed: %d', already_existing_entities)
   logger.debug('Number of entities in error: %d', in_error_entities)
   logger.debug('#### Harvesting cycle finished ... ####')
-
 
