@@ -7,6 +7,7 @@ import urllib2
 import logging
 import logging.handlers
 import re
+from pytz import timezone
 
 import sys
 
@@ -19,6 +20,8 @@ MIME_JSON = 'application/json'
 
 # Orion service that will store the data
 orion_service = 'http://130.206.83.68:1026'
+
+barcelona_tz = timezone('CET')
 
 pollutant_descriptions = {
   'SO2': 'Sulfur Dioxide',
@@ -128,16 +131,15 @@ def get_air_quality_barcelona(target_stations):
             observ_date = datetime.datetime.strptime(pollutant_data_st['data'],'%d/%m/%Y')
             observ_date = observ_date.replace(hour=hour,minute=0,second=0,microsecond=0)
           
-            # Correction of 1 hour in order to deal with CB bug with timezones
-            one_hour_delta = datetime.timedelta(hours=1)
-            observ_corrected_date = observ_date - one_hour_delta
+            # Include proper timezone info
+            observ_corrected_date = observ_date.replace(tzinfo=barcelona_tz)
       
             station_data['dateObserved'] = {
               'value': observ_corrected_date.isoformat(),
               'type': 'DateTime'
             }
             
-            # Entity id corresponds to the observed date starting period
+            # Entity id corresponds to the observed date starting period (in local time)
             station_data['id'] = 'Barcelona-AirQualityObserved' + '-' + station_code + '-' + observ_date.isoformat()
             
             # Convenience data for filtering by target hour
@@ -267,4 +269,3 @@ if __name__ == '__main__':
   logger.debug('Number of entities already existed: %d', already_existing_entities)
   logger.debug('Number of entities in error: %d', in_error_entities)
   logger.debug('#### Harvesting cycle finished ... ####')
-
