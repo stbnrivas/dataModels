@@ -1,4 +1,4 @@
- #!../bin/python
+#!../bin/python
 # -*- coding: utf-8 -*-
 
 import csv
@@ -9,6 +9,7 @@ import StringIO
 import logging
 import logging.handlers
 import re
+from pytz import timezone
 
 # Entity type
 AMBIENT_TYPE_NAME = 'AirQualityObserved'
@@ -20,6 +21,8 @@ station_dict = { }
 orion_service = 'http://130.206.83.68:1026'
 
 logger = None
+
+madrid_tz = timezone('CET')
 
 pollutant_dict = {
   '01': 'SO2',
@@ -123,6 +126,8 @@ def get_air_quality_madrid():
     
     if not station_code in stations:
       stations[station_code] = []
+      
+    print station_num, row
     
     magnitude = row[3]
             
@@ -148,8 +153,10 @@ def get_air_quality_madrid():
     
       if value_control == 'V':
         # A new entity object is created if it does not exist yet
-        if len(stations[station_code]) < hour + 1:
+        if (len(stations[station_code]) < hour + 1):
           stations[station_code].append(build_station(station_num, station_code, hour, row))
+        elif (not 'id' in stations[station_code][hour]):
+          stations[station_code][hour] = build_station(station_num, station_code, hour, row)
           
         param_value = float(value)
           
@@ -164,13 +171,18 @@ def get_air_quality_madrid():
         stations[station_code][hour][property_name] = {
           'value': param_value
         }
+      else:
+        # ensure there are no holes in the data
+        stations[station_code].append({})
+        
       hour += 1
   
   # Now persisting data to Orion Context Broker
   for station in stations:
     station_data = stations[station]
     for data in station_data:
-      post_data(data)
+      if 'id' in data:
+        post_data(data)
 
 #############    
 
@@ -209,12 +221,13 @@ def build_station(station_num, station_code, hour, row):
       'value': 'TEF'
     }
   }
+  
   valid_from = datetime.datetime(int(row[6]), int(row[7]), int(row[8]), hour)
   valid_to = (valid_from + datetime.timedelta(hours=1))
 
   station_data['validity'] = {
     'value': {
-      'from': valid_from.isoformat(),
+      'from': valid_from.replace(tzinfo=madrid_tz).isoformat(),
       'to': valid_to.isoformat()  
     },
     'type': 'StructuredValue'
@@ -224,9 +237,7 @@ def build_station(station_num, station_code, hour, row):
     'value': str(hour) + ':' + '00' 
   }
   
-  # Correction of 1 hour in order to deal with CB bug with timezones
-  one_hour_delta = datetime.timedelta(hours=1)
-  observ_corrected_date = valid_from - one_hour_delta
+  observ_corrected_date = valid_from
   station_data['dateObserved'] = {
     'type': 'DateTime',
     'value': observ_corrected_date.isoformat() 
@@ -335,4 +346,4 @@ if __name__ == '__main__':
   logger.debug('Number of entities in error: %d', in_error_entities)
   logger.debug('#### Harvesting cycle finished ... ####')
 
-  
+ 
