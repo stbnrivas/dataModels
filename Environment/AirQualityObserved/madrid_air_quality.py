@@ -4,17 +4,25 @@
 import csv
 import datetime
 import json
-from   flask import Flask, jsonify, request, Response
 import urllib2
 import StringIO
+import logging
+import logging.handlers
+import re
+from pytz import timezone
 
-import sys
+# Entity type
+AMBIENT_TYPE_NAME = 'AirQualityObserved'
 
-import ngsi_helper
+# List of known air quality stations
+station_dict = { }
 
-app = Flask(__name__)
+# Orion service that will store the data
+orion_service = 'http://130.206.83.68:1026'
 
-AMBIENT_TYPE_NAME = 'AmbientObserved'
+logger = None
+
+madrid_tz = timezone('CET')
 
 pollutant_dict = {
   '01': 'SO2',
@@ -41,8 +49,8 @@ pollutant_descriptions = {
   '06': 'Carbon Monoxide',
   '07': 'Nitrogen Monoxide',
   '08': 'Nitrogen Dioxide',
-  '09': 'Particles < 2.5',
-  '10': 'Particles < 10',
+  '09': 'Particles lower than 2.5',
+  '10': 'Particles lower than 10',
   '12': 'Nitrogen oxides',
   '14': 'Ozone',
   '20': 'Toluene',
@@ -52,8 +60,8 @@ pollutant_descriptions = {
   '38': 'Paraxylene',
   '39': 'Orthoxylene',
   '42': 'Total Hydrocarbons',
-  '43': 'Hydrocarbons (Methane)',
-  '44': 'Non-methane hydrocarbons (Hexane)'
+  '43': 'Hydrocarbons - Methane',
+  '44': 'Non-methane hydrocarbons - Hexane'
 }
 
 other_dict = {
@@ -81,76 +89,23 @@ other_descriptions = {
 }
 
 dataset_url = 'http://datos.madrid.es/egob/catalogo/212531-7916318-calidad-aire-tiempo-real.txt'
-orion_service = 'http://130.206.83.68:1026/v1/queryContext'
 
-@app.route('/v1/queryContext', methods=['POST'])
-def query_context():
-  msg = json.dumps(request.get_json())
-  # A post to Orion is issued in order to get the concerned entities
-  
-  req = urllib2.Request(url=orion_service, data=msg,
-                        headers={
-                          'Content-Type': 'application/json',
-                          'Accept': 'application/json'
-                        })
-  f = urllib2.urlopen(req)
-  orion_response = json.loads(f.read())
-  f.close()
-  
-  elements = ngsi_helper.parse(orion_response)
-  
-  if len(elements) > 0:
-    now = datetime.datetime.now()
-    if now.minute < 30:
-      target_hour = now.hour - 2
-    else:
-      target_hour = now.hour - 1
-      
-    if(target_hour < 0):
-      target_hour = 0
-    
-    station_list = []
-    for element in elements:
-      station_code = element['id'].split('-')[2]
-      station_list.append(station_code)
-    
-    entities = get_air_quality_madrid(station_list, target_hour)
-  else:
-    entities = []
-  
-  return Response(json.dumps(entities, sort_keys=True),
-                  mimetype='application/json')
+# Statistics for tracking purposes
+persisted_entities = 0
+already_existing_entities = 0
+in_error_entities = 0
 
-  
-@app.route('/v2/entities',  methods=['GET'])
-def v2_end_point():
-  entity_type = request.args.get('type')
-  query = request.args.get('q')
+MIME_JSON = 'application/json'
+FIWARE_SERVICE = 'AirQuality'
+FIWARE_SPATH =   '/Spain/Madrid'
 
-  station_code = ''
-  target_hour = -1
-  if query:
-    tokens  = query.split(';')
-  
-    for token in tokens:
-      items = token.split(':')
-      if items[0] == 'stationCode':
-        station_code = items[1].lower()
-      elif items[0] == 'hour':
-        target_hour = int(items[1])
-        
-  if entity_type == AMBIENT_TYPE_NAME:
-    station_codes = None
-    if station_code:
-      station_codes = [station_code]
-      
-    return Response(json.dumps(get_air_quality_madrid(station_codes, target_hour),
-                               sort_keys=True), mimetype='application/json')
-  else:
-    return Response(json.dumps([]), mimetype='application/json')
+# Sanitize string to avoid forbidden characters by Orion
+def sanitize(str_in):
+  return re.sub(r"[<(>)\"\'=;]", "", str_in)
 
     
-def get_air_quality_madrid(target_stations, target_hour=-1):
+# Obtains air quality data and harmonizes it, persisting to Orion    
+def get_air_quality_madrid():
   req = urllib2.Request(url=dataset_url)
   f = urllib2.urlopen(req)
   
@@ -158,12 +113,12 @@ def get_air_quality_madrid(target_stations, target_hour=-1):
   csv_file = StringIO.StringIO(csv_data)
   reader = csv.reader(csv_file, delimiter=',')
   
+  # Dictionary with station data indexed by station code
+  # An array per station code containing one element per hour
   stations = { }
   
   for row in reader:
     station_code = str(row[0]) + str(row[1]) + str(row[2])
-    if station_code and target_stations and not station_code in target_stations:      
-      continue
     
     station_num = row[2]
     if not station_dict[station_num]:
@@ -171,9 +126,11 @@ def get_air_quality_madrid(target_stations, target_hour=-1):
     
     if not station_code in stations:
       stations[station_code] = []
+      
+    print station_num, row
     
     magnitude = row[3]
-        
+            
     if (not magnitude in pollutant_dict) and (not magnitude in other_dict):
       continue
     
@@ -187,76 +144,145 @@ def get_air_quality_madrid(target_stations, target_hour=-1):
       property_name = other_dict[magnitude]
       property_desc = other_descriptions[magnitude]
       is_other = True
-    
-    print 'processing'
-    sys.stdout.flush()
       
     hour = 0
+    
     for x in xrange(9, 57, 2):
       value = row[x]
       value_control = row[x + 1]
-      if len(stations[station_code]) < hour + 1:
-        station_data = {
-          'type': AMBIENT_TYPE_NAME,
-          'pollutants': {},
-          'stationCode': station_code,
-          'stationName': station_dict[station_num]['name'],
-          'address': {
-            'addressCountry': 'ES',
-            'addressLocality': 'Madrid',
-            'streetAddress': station_dict[station_num]['address']
-          },
-          'location': station_dict[station_num]['location'] or None,
-          'source': 'http://datos.madrid.es',
-          'dateCreated': datetime.datetime.now().isoformat()
-        }
-        valid_from = datetime.datetime(int(row[6]), int(row[7]), int(row[8]), hour)
-        valid_to = (valid_from + datetime.timedelta(hours=1))
-
-        station_data['validity'] = {
-          'from': valid_from.isoformat(),
-          'to': valid_to.isoformat()
-        }
-        station_data['id'] = 'Madrid-AmbientObserved-' + station_code + '-' + valid_from.isoformat()
-        
-        stations[station_code].append(station_data);
-        
-      if value_control == 'V':  
+    
+      if value_control == 'V':
+        # A new entity object is created if it does not exist yet
+        if (len(stations[station_code]) < hour + 1):
+          stations[station_code].append(build_station(station_num, station_code, hour, row))
+        elif (not 'id' in stations[station_code][hour]):
+          stations[station_code][hour] = build_station(station_num, station_code, hour, row)
+          
         param_value = float(value)
           
         if not is_other:
+          unit_code = 'GQ'
           if property_name == 'CO':
-            param_value = param_value * 1000
-            
-          stations[station_code][hour]['pollutants'][property_name] = {
-            'description': property_desc,
-            'concentration': param_value
-          }
-        else:
-          stations[station_code][hour][property_name] = param_value
+            unit_code = 'GP'
+          
+          measurand_data = [property_name, str(param_value), unit_code, property_desc]
+          stations[station_code][hour]['measurand']['value'].append(','.join(measurand_data))
+          
+        stations[station_code][hour][property_name] = {
+          'value': param_value
+        }
+      else:
+        # ensure there are no holes in the data
+        stations[station_code].append({})
+        
       hour += 1
   
-  # Returning data as an array
-  station_list = []
-  
+  # Now persisting data to Orion Context Broker
   for station in stations:
-    index_from = 0
-    index_to = len(station_data)
     station_data = stations[station]
-    if target_hour <> -1:
-     index_from = target_hour
-     index_to = index_from + 1
-      
-    data_list = station_data[index_from:index_to]
+    for data in station_data:
+      if 'id' in data:
+        post_data(data)
+
+#############    
+
+
+# Builds a new entity of type AirQualityObserved
+def build_station(station_num, station_code, hour, row):
+  station_data = {
+    'type': AMBIENT_TYPE_NAME,
+    'measurand': {
+      'type': 'List',
+      'value': []
+    },
+    'stationCode': {
+      'value': station_code
+    },
+    'stationName': {
+      'value': sanitize(station_dict[station_num]['name'])
+    },
+    'address': {
+      'type': 'PostalAddress',
+      'value': {
+        'addressCountry': 'ES',
+        'addressLocality': 'Madrid',
+        'streetAddress': sanitize(station_dict[station_num]['address'])
+      }
+    },
+    'location': {
+      'type': 'geo:json',
+      'value': station_dict[station_num]['location']['value'] or None
+    },
+    'source': {
+      'type': 'URL',
+      'value': 'http://datos.madrid.es'
+    },
+    'dataProvider': {
+      'value': 'TEF'
+    }
+  }
+  
+  valid_from = datetime.datetime(int(row[6]), int(row[7]), int(row[8]), hour)
+  valid_to = (valid_from + datetime.timedelta(hours=1))
+
+  station_data['validity'] = {
+    'value': {
+      'from': valid_from.replace(tzinfo=madrid_tz).isoformat(),
+      'to': valid_to.isoformat()  
+    },
+    'type': 'StructuredValue'
+  }
+  
+  station_data['hour'] = {
+    'value': str(hour) + ':' + '00' 
+  }
+  
+  observ_corrected_date = valid_from
+  station_data['dateObserved'] = {
+    'type': 'DateTime',
+    'value': observ_corrected_date.isoformat() 
+  } 
     
-    for data in data_list:  
-      if data['pollutants'] or 'temperature' in data:
-        station_list.append(data)
-  return station_list
+  station_data['id'] = 'Madrid-AmbientObserved-' + station_code + '-' + valid_from.isoformat()
+    
+  return station_data
 
 
-station_dict = { }
 
+# POST data to an Orion Context Broker instance using NGSIv2 API
+def post_data(data):
+  data_as_str = json.dumps(data)
+  
+  headers = {
+    'Content-Type':   MIME_JSON,
+    'Content-Length': len(data_as_str),
+    'Fiware-Service': FIWARE_SERVICE,
+    'Fiware-Servicepath': FIWARE_SPATH
+  }
+  
+  req = urllib2.Request(url=(orion_service + '/v2/entities/'), data=data_as_str, headers=headers)
+  
+  logger.debug('Going to persist %s to %s', data['id'], orion_service)
+  
+  try:
+    f = urllib2.urlopen(req)
+  except urllib2.URLError as e:
+    if e.code == 422:
+      global already_existing_entities
+      logger.debug("Entity already exists: %s", data['id'])
+      already_existing_entities = already_existing_entities + 1
+    else:
+      global in_error_entities
+      logger.error('Error while POSTing data to Orion: %d %s', e.code, e.read())
+      logger.debug('Data which failed: %s', data_as_str)
+      in_error_entities = in_error_entities + 1
+  else:
+    global persisted_entities
+    logger.debug("Entity successfully created: %s", data['id'])
+    persisted_entities = persisted_entities + 1
+
+
+# Reads station data from CSV file
 def read_station_csv():
   with open('madrid_airquality_stations.csv', 'rU') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
@@ -268,8 +294,11 @@ def read_station_csv():
         station_name = row[3]
         station_address = row[4]
         station_coords = {
-          'type': 'geo:point',
-          'value': row[1] + ',' + row[0] 
+          'type': 'geo:json',
+          'value': {
+            'type': 'Point',
+            'coordinates': [float(row[0]), float(row[1])]
+          } 
         }
         
         station_dict[station_code.zfill(3)] = {
@@ -284,7 +313,35 @@ def read_station_csv():
       'address': None,
       'location': None
     }
+
+def setup_logger():
+  global logger
   
+  LOG_FILENAME = 'harvest_madrid.log'
+
+  # Set up a specific logger with our desired output level
+  logger = logging.getLogger('Madrid')
+  logger.setLevel(logging.DEBUG)
+
+  #  Add the log message handler to the logger
+  handler = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=2000000, backupCount=3)
+  formatter = logging.Formatter('%(levelname)s %(asctime)s %(message)s')
+  handler.setFormatter(formatter)
+  
+  logger.addHandler(handler)
+  
+      
 if __name__ == '__main__':
+  setup_logger()
+  
   read_station_csv()
-  app.run(host='0.0.0.0',port=1029,debug=True)
+  
+  logger.debug('#### Starting a new harvesting and harmonization cycle ... ####')
+  logger.debug('Number of air quality stations known: %d', len(station_dict.keys()))
+  
+  get_air_quality_madrid()
+  
+  logger.debug('Number of entities persisted: %d', persisted_entities)
+  logger.debug('Number of entities already existed: %d', already_existing_entities)
+  logger.debug('Number of entities in error: %d', in_error_entities)
+  logger.debug('#### Harvesting cycle finished ... ####')
