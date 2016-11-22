@@ -42,10 +42,26 @@ MIME_JSON = 'application/json'
 FIWARE_SERVICE = 'Weather'
 FIWARE_SPATH =   '/Spain'
 
+def decode_wind_direction(direction):
+  dictionary = {
+    'Norte': 0,
+    'Sur': 180,
+    'Este': 90,
+    'Oeste': -90,
+    'Nordeste': 45,
+    'Noroeste': -45,
+    'Sureste': 135,
+    'Suroeste': -135     
+  }
+  
+  if direction in dictionary: 
+    return dictionary[direction]
+  else: return None
+
 
 # Sanitize string to avoid forbidden characters by Orion
 def sanitize(str_in):
-  return re.sub(r"[<(>)\"\'=;]", "", str_in)
+  return re.sub(r"[<(>)\"\'=;-]", "", str_in)
 
 
 def get_data(row, index, conversion=float, factor=1.0):
@@ -82,14 +98,9 @@ def get_weather_observed_spain():
         
         index = 0
         for row in reader:
-          if index == 0:
-            address = row[0]
-            
           if index < 4:
             index += 1
             continue
-          
-          # print row
           
           observation = {
             'type': 'WeatherObserved',
@@ -97,7 +108,7 @@ def get_weather_observed_spain():
               'value': station_code
             },
             'stationName': {
-              'value': station_data[station_code]['name']
+              'value': sanitize(station_data[station_code]['name'])
             }
           }
           if len(row) < 2:
@@ -110,7 +121,7 @@ def get_weather_observed_spain():
             'value': get_data(row, 2, int)
           }
           observation['windDirection'] = {
-            'value': row[3] or None
+            'value': decode_wind_direction(row[3])
           }
           observation['precipitation'] = {
             'value': get_data(row, 6)
@@ -139,7 +150,7 @@ def get_weather_observed_spain():
           }
           observation['address'] = {
             'value': {
-              'addressLocality': sanitize(station_data[station_code]['address'].decode('latin-1')),
+              'addressLocality': sanitize(station_data[station_code]['address']),
               'addressCountry': 'ES'
             },
             'type': 'PostalAddress'
@@ -149,7 +160,8 @@ def get_weather_observed_spain():
           observation['id'] = 'Spain-WeatherObserved' + '-' + station_code + '-' + date_observed.isoformat()
           
           out.append(observation)
-      
+
+        # A batch of station data is persisted      
         post_station_data_batch(station_code, out)
 
 
@@ -176,10 +188,10 @@ def post_station_data_batch(station_code, data):
     with contextlib.closing(urllib2.urlopen(req)) as f:
       global persisted_entities
       global persisted_stations
-      logger.debug('Entities successfully created for station: %s %d/%d',
-                   station_code, persisted_stations, total_stations)
       persisted_entities = persisted_entities + len(data)
       persisted_stations += 1
+      logger.debug('Entities successfully created for station: %s %d/%d',
+                   station_code, persisted_stations, total_stations)
   except urllib2.URLError as e:
     logger.error('Error!!! %s', station_code)
     global in_error_entities
@@ -247,3 +259,4 @@ if __name__ == '__main__':
   logger.debug('Number of entities already existed: %d', already_existing_entities)
   logger.debug('Number of stations in error: %d', in_error_entities)
   logger.debug('#### Harvesting cycle finished ... ####')
+  
