@@ -1,6 +1,7 @@
 #!../bin/python
 # -*- coding: utf-8 -*-
 
+from __future__ import with_statement
 import datetime
 import json
 import urllib2
@@ -8,6 +9,7 @@ import logging
 import logging.handlers
 import re
 from pytz import timezone
+import contextlib
 
 import sys
 
@@ -70,6 +72,7 @@ def get_air_quality_barcelona(target_stations):
   # An array with one element per hour
   entity_data = {}
   
+  f = f2 = None
   for station in target_stations:
     entity_data[station] = []
   
@@ -82,11 +85,15 @@ def get_air_quality_barcelona(target_stations):
     try: f = urllib2.urlopen(station_req)
     except urllib2.URLError as e:
       logger.error('Error while calling: %s : %s', service_url1, e)
+      if f <> None:
+        f.close()
       continue
       
     # deal with wrong encoding
     json_str = f.read().replace("'",'"')
     data = json.loads(json_str,encoding='ISO-8859-15')
+    
+    f.close()
     
     service_url2 = dataset_url2.format(station)
     # Request to obtain pollutants data
@@ -94,6 +101,8 @@ def get_air_quality_barcelona(target_stations):
     try: f2 = urllib2.urlopen(data_req)
     except urllib2.URLError as e:
       logger.error('Error while calling: %s : %s', service_url2, e)
+      if f2 <> None:
+        f2.close()
       continue
     
     logger.debug("All data from %s retrieved properly", station)
@@ -101,6 +110,8 @@ def get_air_quality_barcelona(target_stations):
     # deal with wrong encoding
     json_pollutants_str = f2.read().replace("'",'"')
     pollutant_data_st = json.loads(json_pollutants_str,encoding='ISO-8859-15')
+    
+    f2.close()
     
     station_code = data['codiEOI']
     
@@ -224,7 +235,10 @@ def post_data(data):
   logger.debug('Going to persist %s to %s', data['id'], orion_service)
   
   try:
-    f = urllib2.urlopen(req)
+    with contextlib.closing(urllib2.urlopen(req)) as f:
+      global persisted_entities
+      logger.debug("Entity successfully created: %s", data['id'])
+      persisted_entities = persisted_entities + 1
   except urllib2.URLError as e:
     if e.code == 422:
       global already_existing_entities
@@ -234,11 +248,7 @@ def post_data(data):
       global in_error_entities
       logger.error('Error while POSTing data to Orion: %d %s', e.code, e.read())
       logger.debug('Data which failed: %s', data_as_str)
-      in_error_entities = in_error_entities + 1
-  else:
-    global persisted_entities
-    logger.debug("Entity successfully created: %s", data['id'])
-    persisted_entities = persisted_entities + 1
+      in_error_entities = in_error_entities + 1  
     
 
 def setup_logger():
@@ -269,3 +279,4 @@ if __name__ == '__main__':
   logger.debug('Number of entities already existed: %d', already_existing_entities)
   logger.debug('Number of entities in error: %d', in_error_entities)
   logger.debug('#### Harvesting cycle finished ... ####')
+
