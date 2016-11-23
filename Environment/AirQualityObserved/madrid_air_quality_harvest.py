@@ -1,6 +1,7 @@
 #!../bin/python
 # -*- coding: utf-8 -*-
 
+from __future__ import with_statement
 import csv
 import datetime
 import json
@@ -10,6 +11,8 @@ import logging
 import logging.handlers
 import re
 from pytz import timezone
+import contextlib
+
 
 # Entity type
 AMBIENT_TYPE_NAME = 'AirQualityObserved'
@@ -107,82 +110,79 @@ def sanitize(str_in):
 # Obtains air quality data and harmonizes it, persisting to Orion    
 def get_air_quality_madrid():
   req = urllib2.Request(url=dataset_url)
-  f = urllib2.urlopen(req)
-  
-  csv_data = f.read()
-  csv_file = StringIO.StringIO(csv_data)
-  reader = csv.reader(csv_file, delimiter=',')
-  
-  # Dictionary with station data indexed by station code
-  # An array per station code containing one element per hour
-  stations = { }
-  
-  for row in reader:
-    station_code = str(row[0]) + str(row[1]) + str(row[2])
+  with contextlib.closing(urllib2.urlopen(req)) as f:
+    csv_data = f.read()
+    csv_file = StringIO.StringIO(csv_data)
+    reader = csv.reader(csv_file, delimiter=',')
     
-    station_num = row[2]
-    if not station_dict[station_num]:
-      continue
+    # Dictionary with station data indexed by station code
+    # An array per station code containing one element per hour
+    stations = { }
     
-    if not station_code in stations:
-      stations[station_code] = []
+    for row in reader:
+      station_code = str(row[0]) + str(row[1]) + str(row[2])
       
-    print station_num, row
-    
-    magnitude = row[3]
-            
-    if (not magnitude in pollutant_dict) and (not magnitude in other_dict):
-      continue
-    
-    is_other = None
-    if magnitude in pollutant_dict:
-      property_name = pollutant_dict[magnitude]
-      property_desc = pollutant_descriptions[magnitude]
-      is_other = False
-   
-    if magnitude in other_dict:
-      property_name = other_dict[magnitude]
-      property_desc = other_descriptions[magnitude]
-      is_other = True
+      station_num = row[2]
+      if not station_dict[station_num]:
+        continue
       
-    hour = 0
-    
-    for x in xrange(9, 57, 2):
-      value = row[x]
-      value_control = row[x + 1]
-    
-      if value_control == 'V':
-        # A new entity object is created if it does not exist yet
-        if (len(stations[station_code]) < hour + 1):
-          stations[station_code].append(build_station(station_num, station_code, hour, row))
-        elif (not 'id' in stations[station_code][hour]):
-          stations[station_code][hour] = build_station(station_num, station_code, hour, row)
-          
-        param_value = float(value)
-          
-        if not is_other:
-          unit_code = 'GQ'
-          if property_name == 'CO':
-            unit_code = 'GP'
-          
-          measurand_data = [property_name, str(param_value), unit_code, property_desc]
-          stations[station_code][hour]['measurand']['value'].append(','.join(measurand_data))
-          
-        stations[station_code][hour][property_name] = {
-          'value': param_value
-        }
-      else:
-        # ensure there are no holes in the data
-        stations[station_code].append({})
+      if not station_code in stations:
+        stations[station_code] = []
+      
+      magnitude = row[3]
+              
+      if (not magnitude in pollutant_dict) and (not magnitude in other_dict):
+        continue
+      
+      is_other = None
+      if magnitude in pollutant_dict:
+        property_name = pollutant_dict[magnitude]
+        property_desc = pollutant_descriptions[magnitude]
+        is_other = False
+     
+      if magnitude in other_dict:
+        property_name = other_dict[magnitude]
+        property_desc = other_descriptions[magnitude]
+        is_other = True
         
-      hour += 1
-  
-  # Now persisting data to Orion Context Broker
-  for station in stations:
-    station_data = stations[station]
-    for data in station_data:
-      if 'id' in data:
-        post_data(data)
+      hour = 0
+      
+      for x in xrange(9, 57, 2):
+        value = row[x]
+        value_control = row[x + 1]
+      
+        if value_control == 'V':
+          # A new entity object is created if it does not exist yet
+          if (len(stations[station_code]) < hour + 1):
+            stations[station_code].append(build_station(station_num, station_code, hour, row))
+          elif (not 'id' in stations[station_code][hour]):
+            stations[station_code][hour] = build_station(station_num, station_code, hour, row)
+            
+          param_value = float(value)
+            
+          if not is_other:
+            unit_code = 'GQ'
+            if property_name == 'CO':
+              unit_code = 'GP'
+            
+            measurand_data = [property_name, str(param_value), unit_code, property_desc]
+            stations[station_code][hour]['measurand']['value'].append(','.join(measurand_data))
+            
+          stations[station_code][hour][property_name] = {
+            'value': param_value
+          }
+        else:
+          # ensure there are no holes in the data
+          stations[station_code].append({})
+          
+        hour += 1
+    
+    # Now persisting data to Orion Context Broker
+    for station in stations:
+      station_data = stations[station]
+      for data in station_data:
+        if 'id' in data:
+          post_data(data)
 
 #############    
 
@@ -265,7 +265,10 @@ def post_data(data):
   logger.debug('Going to persist %s to %s', data['id'], orion_service)
   
   try:
-    f = urllib2.urlopen(req)
+    with contextlib.closing(urllib2.urlopen(req)) as f:
+      global persisted_entities
+      logger.debug("Entity successfully created: %s", data['id'])
+      persisted_entities = persisted_entities + 1
   except urllib2.URLError as e:
     if e.code == 422:
       global already_existing_entities
@@ -275,16 +278,12 @@ def post_data(data):
       global in_error_entities
       logger.error('Error while POSTing data to Orion: %d %s', e.code, e.read())
       logger.debug('Data which failed: %s', data_as_str)
-      in_error_entities = in_error_entities + 1
-  else:
-    global persisted_entities
-    logger.debug("Entity successfully created: %s", data['id'])
-    persisted_entities = persisted_entities + 1
+      in_error_entities = in_error_entities + 1  
 
 
 # Reads station data from CSV file
 def read_station_csv():
-  with open('madrid_airquality_stations.csv', 'rU') as csvfile:
+  with contextlib.closing(open('madrid_airquality_stations.csv', 'rU')) as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
     
     index = 0
@@ -346,4 +345,4 @@ if __name__ == '__main__':
   logger.debug('Number of entities in error: %d', in_error_entities)
   logger.debug('#### Harvesting cycle finished ... ####')
 
- 
+  
