@@ -16,12 +16,12 @@ import sys
 AIRQUALITY_TYPE_NAME = 'AirQualityObserved'
 
 FIWARE_SERVICE = 'AirQuality'
-FIWARE_SPATH = '/Spain/Barcelona'
+FIWARE_SPATH = '/Spain_Barcelona'
 
 MIME_JSON = 'application/json'
 
 # Orion service that will store the data
-orion_service = 'http://130.206.83.68:1026'
+orion_service = 'http://localhost:1026'
 
 barcelona_tz = timezone('CET')
 

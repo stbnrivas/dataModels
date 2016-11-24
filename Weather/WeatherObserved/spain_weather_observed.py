@@ -17,7 +17,7 @@ import re
 station_data = { }
 
 # Orion service that will store the data
-orion_service = 'http://130.206.83.68:1026'
+orion_service = 'http://localhost:1026'
 
 # Stations in error so these are skipped when retrieving data
 station_code_exceptions = ['9946X', '1658', '349', '9894X', '1010X', '9198A', '6381', '9720X', 'C619Y', \

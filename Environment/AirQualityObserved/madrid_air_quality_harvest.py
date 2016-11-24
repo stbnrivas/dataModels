@@ -21,7 +21,7 @@ AMBIENT_TYPE_NAME = 'AirQualityObserved'
 station_dict = { }
 
 # Orion service that will store the data
-orion_service = 'http://130.206.83.68:1026'
+orion_service = 'http://localhost:1026'
 
 logger = None
 
@@ -100,7 +100,7 @@ in_error_entities = 0
 
 MIME_JSON = 'application/json'
 FIWARE_SERVICE = 'AirQuality'
-FIWARE_SPATH =   '/Spain/Madrid'
+FIWARE_SPATH =   '/Spain_Madrid'
 
 # Sanitize string to avoid forbidden characters by Orion
 def sanitize(str_in):
