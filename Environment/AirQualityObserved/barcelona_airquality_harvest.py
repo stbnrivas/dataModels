@@ -1,6 +1,17 @@
 #!../bin/python
 # -*- coding: utf-8 -*-
 
+'''
+  Peforms a data harvesting of air quality official data from the city of Barcelona.
+  
+  Data source is Catalonia's Government (http://dtes.gencat.cat/)
+  
+  Copyright (c) 2016 Telefónica Investigación y Desarrollo S.A.U. 
+  
+  LICENSE: MIT
+  
+'''
+
 from __future__ import with_statement
 import datetime
 import json
@@ -59,12 +70,13 @@ dataset_url = 'http://dtes.gencat.cat/icqa/AppJava/getEstacio.do?codiEOI={}'
 dataset_url2 = 'http://dtes.gencat.cat/icqa/AppJava/getDadesDiaries.do?codiEOI={}'
 
 persisted_entities = 0
-already_existing_entities = 0
 in_error_entities = 0
+
 
 # Sanitize string to avoid forbidden characters by Orion
 def sanitize(str_in):
   return re.sub(r"[<(>)\"\'=;]", "", str_in)
+
 
 # Retrieves all the data from the target stations    
 def get_air_quality_barcelona(target_stations):
@@ -92,7 +104,6 @@ def get_air_quality_barcelona(target_stations):
     # deal with wrong encoding
     json_str = f.read().replace("'",'"')
     data = json.loads(json_str,encoding='ISO-8859-15')
-    
     f.close()
     
     service_url2 = dataset_url2.format(station)
@@ -109,8 +120,7 @@ def get_air_quality_barcelona(target_stations):
     
     # deal with wrong encoding
     json_pollutants_str = f2.read().replace("'",'"')
-    pollutant_data_st = json.loads(json_pollutants_str,encoding='ISO-8859-15')
-    
+    pollutant_data_st = json.loads(json_pollutants_str,encoding='ISO-8859-15')    
     f2.close()
     
     station_code = data['codiEOI']
@@ -125,11 +135,14 @@ def get_air_quality_barcelona(target_stations):
       if pollutant_name == 'CO':
         pollutant_unit = 'GP'
         
-      # We get last value
       counter = 0
       hour = 0
       for v in values:
         if v['valor'] <> '':
+          # Last three values are averages and should be discarded
+          if counter >= (len(values) -3):
+            break
+          
           hour = counter
           station_data = None
           if len(entity_data[station_code]) > hour:
@@ -166,15 +179,16 @@ def get_air_quality_barcelona(target_stations):
             'value': float(value)
           }
           
-          counter = counter + 1
+        counter += 1
     
-    logger.debug("Retrieved data for %s at %s",station_data['stationCode']['value'], observ_date.isoformat())
+    if len(entity_data[station]) > 0:
+      logger.debug("Retrieved data for %s at %s (last hour)",station, entity_data[station][-1]['dateObserved']['value'])
+    else: logger.warn('No data found for station: %s', station)
   
   # Now persisting data to Orion Context Broker
   for a_station in entity_data:
     data_for_station = entity_data[a_station]
-    for data in data_for_station:
-      post_data(data)
+    post_station_data(a_station, data_for_station)
 
 
 def build_station(station_code, data):
@@ -220,8 +234,18 @@ def build_station(station_code, data):
     
   
 # POST data to an Orion Context Broker instance using NGSIv2 API
-def post_data(data):
-  data_as_str = json.dumps(data)
+def post_station_data(station_code, data):
+  if len(data) == 0:
+    return
+  
+  payload = {
+    'actionType': 'APPEND',
+    'entities': data
+  }
+  
+  print json.dumps(payload)
+  
+  data_as_str = json.dumps(payload)
   
   headers = {
     'Content-Type':   MIME_JSON,
@@ -230,25 +254,20 @@ def post_data(data):
     'Fiware-Servicepath': FIWARE_SPATH
   }
   
-  req = urllib2.Request(url=(orion_service + '/v2/entities/'), data=data_as_str, headers=headers)
+  req = urllib2.Request(url=(orion_service + '/v2/op/update'), data=data_as_str, headers=headers)
   
-  logger.debug('Going to persist %s to %s', data['id'], orion_service)
+  logger.debug('Going to persist %s to %s - %d', station_code, orion_service, len(data))
   
   try:
     with contextlib.closing(urllib2.urlopen(req)) as f:
       global persisted_entities
-      logger.debug("Entity successfully created: %s", data['id'])
+      logger.debug("Entity successfully created: %s", station_code)
       persisted_entities = persisted_entities + 1
   except urllib2.URLError as e:
-    if e.code == 422:
-      global already_existing_entities
-      logger.debug("Entity already exists: %s", data['id'])
-      already_existing_entities = already_existing_entities + 1
-    else:
-      global in_error_entities
-      logger.error('Error while POSTing data to Orion: %d %s', e.code, e.read())
-      logger.debug('Data which failed: %s', data_as_str)
-      in_error_entities = in_error_entities + 1  
+    global in_error_entities
+    logger.error('Error while POSTing data to Orion: %d %s', e.code, e.read())
+    logger.debug('Data which failed: %s', data_as_str)
+    in_error_entities = in_error_entities + 1  
     
 
 def setup_logger():
@@ -267,6 +286,7 @@ def setup_logger():
   
   logger.addHandler(handler)
     
+    
 if __name__ == '__main__':
   setup_logger()
   
@@ -276,7 +296,6 @@ if __name__ == '__main__':
   get_air_quality_barcelona(station_codes)
   
   logger.debug('Number of entities persisted: %d', persisted_entities)
-  logger.debug('Number of entities already existed: %d', already_existing_entities)
   logger.debug('Number of entities in error: %d', in_error_entities)
   logger.debug('#### Harvesting cycle finished ... ####')
 
