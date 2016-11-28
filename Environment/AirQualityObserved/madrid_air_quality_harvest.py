@@ -95,7 +95,6 @@ dataset_url = 'http://datos.madrid.es/egob/catalogo/212531-7916318-calidad-aire-
 
 # Statistics for tracking purposes
 persisted_entities = 0
-already_existing_entities = 0
 in_error_entities = 0
 
 MIME_JSON = 'application/json'
@@ -173,16 +172,25 @@ def get_air_quality_madrid():
           }
         else:
           # ensure there are no holes in the data
-          stations[station_code].append({})
+          if (len(stations[station_code]) < hour + 1):
+            stations[station_code].append({})
           
         hour += 1
+    
+      print len(stations[station_code])
     
     # Now persisting data to Orion Context Broker
     for station in stations:
       station_data = stations[station]
+      data_array = []
       for data in station_data:
         if 'id' in data:
-          post_data(data)
+          data_array.append(data)
+      if len(data_array) > 0:
+        logger.debug("Retrieved data for %s at %s (last hour)", station, data_array[-1]['dateObserved']['value'])
+      else: logger.warn('No data retrieved for: %s', station)
+      
+      post_station_data(station, data_array)
 
 #############    
 
@@ -250,8 +258,16 @@ def build_station(station_num, station_code, hour, row):
 
 
 # POST data to an Orion Context Broker instance using NGSIv2 API
-def post_data(data):
-  data_as_str = json.dumps(data)
+def post_station_data(station_code, data):
+  if len(data) == 0:
+    return
+  
+  payload = {
+    'actionType': 'APPEND',
+    'entities': data
+  }
+  
+  data_as_str = json.dumps(payload)
   
   headers = {
     'Content-Type':   MIME_JSON,
@@ -260,26 +276,21 @@ def post_data(data):
     'Fiware-Servicepath': FIWARE_SPATH
   }
   
-  req = urllib2.Request(url=(orion_service + '/v2/entities/'), data=data_as_str, headers=headers)
+  req = urllib2.Request(url=(orion_service + '/v2/op/update'), data=data_as_str, headers=headers)
   
-  logger.debug('Going to persist %s to %s', data['id'], orion_service)
+  logger.debug('Going to persist %s to %s - %d', station_code, orion_service, len(data))
   
   try:
     with contextlib.closing(urllib2.urlopen(req)) as f:
       global persisted_entities
-      logger.debug("Entity successfully created: %s", data['id'])
+      logger.debug("Entity successfully created: %s", station_code)
       persisted_entities = persisted_entities + 1
   except urllib2.URLError as e:
-    if e.code == 422:
-      global already_existing_entities
-      logger.debug("Entity already exists: %s", data['id'])
-      already_existing_entities = already_existing_entities + 1
-    else:
-      global in_error_entities
-      logger.error('Error while POSTing data to Orion: %d %s', e.code, e.read())
-      logger.debug('Data which failed: %s', data_as_str)
-      in_error_entities = in_error_entities + 1  
-
+    global in_error_entities
+    logger.error('Error while POSTing data to Orion: %d %s', e.code, e.read())
+    logger.debug('Data which failed: %s', data_as_str)
+    in_error_entities = in_error_entities + 1
+    
 
 # Reads station data from CSV file
 def read_station_csv():
@@ -313,6 +324,7 @@ def read_station_csv():
       'location': None
     }
 
+
 def setup_logger():
   global logger
   
@@ -341,7 +353,6 @@ if __name__ == '__main__':
   get_air_quality_madrid()
   
   logger.debug('Number of entities persisted: %d', persisted_entities)
-  logger.debug('Number of entities already existed: %d', already_existing_entities)
   logger.debug('Number of entities in error: %d', in_error_entities)
   logger.debug('#### Harvesting cycle finished ... ####')
 
