@@ -7,7 +7,7 @@
 
 This repository contains: 
 * code that allows to expose different harmonized datasets useful for different applications.
-Such datasets are exposed through the [FIWARE NGSI version 2](http://fiware.github.io/context.Orion/api/v2/) API (query).
+Such datasets are exposed through the [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API (query).
 * documentation on harmonized datamodels for smart cities, developed jointly with [OASC](http://oascities.org), and other domains. 
 
 This work is aligned with the results of the
