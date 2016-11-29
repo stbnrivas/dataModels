@@ -17,10 +17,10 @@ provided by Catalonia's Government.
 
 ## Examples of Use
 
-What was the air quality observed today at the "Plaza de España" air quality station?
+What was the air quality observed today at noon at the "Plaza de España" air quality station?
 
 ```
-curl -S --header 'fiware-service:airquality' --header 'fiware-servicepath:/Spain_Madrid' --header 'x-auth-token:4bc89e757d1841f6a33b02748376edc9' "http://130.206.118.244:1027/v2/entities?type=AirQualityObserved&attrs=measurand,address&q=dateObserved>2016-11-24;stationCode:'28079004'&orderBy=dateObserved&options=keyValues" | python -mjson.tool
+curl -S --header 'fiware-service:airquality' --header 'fiware-servicepath:/Spain_Madrid' --header 'x-auth-token:4bc89e757d1841f6a33b02748376edc9' "http://130.206.118.244:1027/v2/entities?options=keyValues&q=dateObserved:2016-11-28T12:00;stationCode:'28079027'" | python -mjson.tool
 ```
 
 ```json
