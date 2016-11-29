@@ -25,21 +25,43 @@ curl -S --header 'fiware-service:airquality' --header 'fiware-servicepath:/Spain
 
 ```json
 
-[{
-        "address": {
-            "addressCountry": "ES",
-            "addressLocality": "Madrid",
-            "streetAddress": "Plaza de Espa\u00f1a"
-        },
-        "id": "Madrid-AmbientObserved-28079004-2016-11-24T01:00:00",
-        "measurand": [
-            "SO2,2.0,GQ,Sulfur Dioxide",
-            "CO,0.3,GP,Carbon Monoxide",
-            "NO,20.0,GQ,Nitrogen Monoxide",
-            "NO2,57.0,GQ,Nitrogen Dioxide",
-            "NOx,88.0,GQ,Nitrogen oxides"
-        ],
-        "type": "AirQualityObserved"
-    }
-...
+    [
+        {
+            "id": "Madrid-AmbientObserved-28079027-2016-11-28T12:00:00",
+            "type": "AirQualityObserved",
+            "NO": 3,
+            "NO2": 11,
+            "NOx": 16,
+            "O3": 68,
+            "address":
+            {
+                "addressCountry": "ES",
+                "addressLocality": "Madrid",
+                "streetAddress": "C/. Júpiter, 21 Barajas "
+            },
+            "dataProvider": "TEF",
+            "dateObserved": "2016-11-28T11:00:00.00Z",
+            "hour": "12:00",
+            "location":
+            {
+                "type": "Point",
+                "coordinates":
+                [
+                    -3.580030556,
+                    40.476927778
+                ]
+            },
+            "measurand":
+            [
+                "NO,3.0,GQ,Nitrogen Monoxide",
+                "NO2,11.0,GQ,Nitrogen Dioxide",
+                "NOx,16.0,GQ,Nitrogen oxides",
+                "O3,68.0,GQ,Ozone"
+            ],
+            "source": "http://datos.madrid.es",
+            "stationCode": "28079027",
+            "stationName": "Barajas Pueblo",
+        }
+    ]
+
 ```
