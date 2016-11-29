@@ -21,7 +21,7 @@ AMBIENT_TYPE_NAME = 'AirQualityObserved'
 station_dict = { }
 
 # Orion service that will store the data
-orion_service = 'http://localhost:1026'
+orion_service = 'http://localhost:1030'
 
 logger = None
 

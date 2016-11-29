@@ -32,7 +32,7 @@ FIWARE_SPATH = '/Spain_Barcelona'
 MIME_JSON = 'application/json'
 
 # Orion service that will store the data
-orion_service = 'http://localhost:1026'
+orion_service = 'http://localhost:1030'
 
 barcelona_tz = timezone('CET')
 
@@ -242,8 +242,6 @@ def post_station_data(station_code, data):
     'actionType': 'APPEND',
     'entities': data
   }
-  
-  print json.dumps(payload)
   
   data_as_str = json.dumps(payload)
   

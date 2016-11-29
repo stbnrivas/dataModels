@@ -17,7 +17,7 @@ import re
 station_data = { }
 
 # Orion service that will store the data
-orion_service = 'http://localhost:1026'
+orion_service = 'http://localhost:1030'
 
 # Stations in error so these are skipped when retrieving data
 station_code_exceptions = ['9946X', '1658', '349', '9894X', '1010X', '9198A', '6381', '9720X', 'C619Y', \
@@ -180,7 +180,7 @@ def post_station_data_batch(station_code, data):
     'Fiware-Servicepath': FIWARE_SPATH
   }
   
-  logger.debug('Going to persist %s to %s', station_code, orion_service)
+  logger.debug('Going to persist %s (%d) to %s', station_code, len(data), orion_service)
   
   req = urllib2.Request(url=(orion_service + '/v2/op/update'), data=data_as_str, headers=headers)
   
