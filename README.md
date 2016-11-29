@@ -11,8 +11,8 @@ Such datasets are exposed through the [FIWARE NGSI version 2](http://fiware.gith
 * documentation on harmonized datamodels for smart cities, developed jointly with [OASC](http://oascities.org), and other domains. 
 
 This work is aligned with the results of the
-[GSMA IoT Big Data Ecosystem](http://www.gsma.com/connectedliving/connected-living-mobilising-the-internet-of-things/) Project.
-Such project is working on the harmonization of APIs and data models for fueling IoT and Big Data Ecosystems. 
+[GSMA IoT Big Data Ecosystem](http://www.gsma.com/connectedliving/iot-big-data/) Project.
+Such project is working on the harmonization of APIs and data models for fueling IoT and Big Data Ecosystems. In fact the FIWARE datamodels are a superset of the [GSMA Data Models](http://www.gsma.com/connectedliving/wp-content/uploads/2016/11/CLP.26-v1.0.pdf). 
 
 All the code in this repository is licensed under the MIT License. However each original data source may have a different license.
 So before using the data please check carefully each data license.
