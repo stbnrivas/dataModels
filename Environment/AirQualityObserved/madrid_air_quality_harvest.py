@@ -231,11 +231,16 @@ def build_station(station_num, station_code, hour, row):
   }
   
   valid_from = datetime.datetime(int(row[6]), int(row[7]), int(row[8]), hour)
+  station_data['id'] = 'Madrid-AmbientObserved-' + station_code + '-' + valid_from.isoformat()
   valid_to = (valid_from + datetime.timedelta(hours=1))
+  
+  # Adjust timezones
+  valid_from = valid_from.replace(tzinfo=madrid_tz)
+  valid_to = valid_to.replace(tzinfo=madrid_tz)
 
   station_data['validity'] = {
     'value': {
-      'from': valid_from.replace(tzinfo=madrid_tz).isoformat(),
+      'from': valid_from.isoformat(),
       'to': valid_to.isoformat()  
     },
     'type': 'StructuredValue'
@@ -250,8 +255,6 @@ def build_station(station_num, station_code, hour, row):
     'type': 'DateTime',
     'value': observ_corrected_date.isoformat() 
   } 
-    
-  station_data['id'] = 'Madrid-AmbientObserved-' + station_code + '-' + valid_from.isoformat()
     
   return station_data
 
