@@ -25,43 +25,47 @@ curl -S --header 'fiware-service:airquality' --header 'fiware-servicepath:/Spain
 
 ```json
 
-    [
+   {
+        "id": "Madrid-AmbientObserved-28079004-2016-11-28T12:00:00",
+        "type": "AirQualityObserved",
+        "CO": 0.3,
+        "NO": 18,
+        "NO2": 46,
+        "NOx": 73,
+        "SO2": 4,
+        "address":
         {
-            "id": "Madrid-AmbientObserved-28079027-2016-11-28T12:00:00",
-            "type": "AirQualityObserved",
-            "NO": 3,
-            "NO2": 11,
-            "NOx": 16,
-            "O3": 68,
-            "address":
-            {
-                "addressCountry": "ES",
-                "addressLocality": "Madrid",
-                "streetAddress": "C/. Júpiter, 21 Barajas "
-            },
-            "dataProvider": "TEF",
-            "dateObserved": "2016-11-28T11:00:00.00Z",
-            "hour": "12:00",
-            "location":
-            {
-                "type": "Point",
-                "coordinates":
-                [
-                    -3.580030556,
-                    40.476927778
-                ]
-            },
-            "measurand":
+            "addressCountry": "ES",
+            "addressLocality": "Madrid",
+            "streetAddress": "Plaza de España"
+        },
+        "dateObserved": "2016-11-28T11:00:00.00Z",
+        "hour": "12:00",
+        "location":
+        {
+            "type": "Point",
+            "coordinates":
             [
-                "NO,3.0,GQ,Nitrogen Monoxide",
-                "NO2,11.0,GQ,Nitrogen Dioxide",
-                "NOx,16.0,GQ,Nitrogen oxides",
-                "O3,68.0,GQ,Ozone"
-            ],
-            "source": "http://datos.madrid.es",
-            "stationCode": "28079027",
-            "stationName": "Barajas Pueblo",
-        }
-    ]
-
+                -3.712247222,
+                40.423852778
+            ]
+        },
+        "measurand":
+        [
+            "SO2,4.0,GQ,Sulfur Dioxide",
+            "CO,0.3,GP,Carbon Monoxide",
+            "NO,18.0,GQ,Nitrogen Monoxide",
+            "NO2,46.0,GQ,Nitrogen Dioxide",
+            "NOx,73.0,GQ,Nitrogen oxides"
+        ],
+        "precipitation": 0,
+        "relativeHumidity": 69,
+        "source": "http://datos.madrid.es",
+        "stationCode": "28079004",
+        "stationName": "Pza. de España",
+        "temperature": 14.3,
+        "windDirection": 352,
+        "windSpeed": 1.23
+    }
+]
 ```
