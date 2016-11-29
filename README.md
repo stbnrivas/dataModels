@@ -26,10 +26,10 @@ Contributions should come in the form of pull requests.
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
 [license-url]: LICENSE
 
-# Related Projects 
+## Related Projects 
 
 See:
 
 * [https://github.com/GSMADeveloper/HarmonisedEntityDefinitions](https://github.com/GSMADeveloper/HarmonisedEntityDefinitions)
-* * [https://github.com/GSMADeveloper/HarmonisedEntityReferences](https://github.com/GSMADeveloper/HarmonisedEntityReferences)
+* [https://github.com/GSMADeveloper/HarmonisedEntityReferences](https://github.com/GSMADeveloper/HarmonisedEntityReferences)
 * [schema.org](https://schema.org)
