@@ -7,12 +7,12 @@
 
 This repository contains: 
 * code that allows to expose different harmonized datasets useful for different applications.
-Such datasets are exposed through the [FIWARE NGSI version 2](http://fiware.github.io/context.Orion/api/v2/) API (query).
+Such datasets are exposed through the [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API (query).
 * documentation on harmonized datamodels for smart cities, developed jointly with [OASC](http://oascities.org), and other domains. 
 
 This work is aligned with the results of the
-[GSMA IoT Big Data Ecosystem](http://www.gsma.com/connectedliving/connected-living-mobilising-the-internet-of-things/) Project.
-Such project is working on the harmonization of APIs and data models for fueling IoT and Big Data Ecosystems. 
+[GSMA IoT Big Data Ecosystem](http://www.gsma.com/connectedliving/iot-big-data/) Project.
+Such project is working on the harmonization of APIs and data models for fueling IoT and Big Data Ecosystems. In fact the FIWARE datamodels are a superset of the [GSMA Data Models](http://www.gsma.com/connectedliving/wp-content/uploads/2016/11/CLP.26-v1.0.pdf). 
 
 All the code in this repository is licensed under the MIT License. However each original data source may have a different license.
 So before using the data please check carefully each data license.
@@ -25,3 +25,11 @@ Contributions should come in the form of pull requests.
 
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
 [license-url]: LICENSE
+
+## Related Projects 
+
+See:
+
+* [https://github.com/GSMADeveloper/HarmonisedEntityDefinitions](https://github.com/GSMADeveloper/HarmonisedEntityDefinitions)
+* [https://github.com/GSMADeveloper/HarmonisedEntityReferences](https://github.com/GSMADeveloper/HarmonisedEntityReferences)
+* [schema.org](https://schema.org)
