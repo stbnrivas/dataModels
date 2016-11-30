@@ -2,7 +2,7 @@
 
 This folder contains scripts that give support to expose air quality observed data as NGSI version 2.
 
-The data provided comes from [air quality stations](../PointOfInterest/AirQualityStation) located in different cities in Spain.
+The data provided corresponds to different cities in Spain and the original data source are different  [air quality stations](../PointOfInterest/AirQualityStation) owned managed by municipalities or regional governments.
 
 Please check the original data source before making use of this data in an application. 
 
