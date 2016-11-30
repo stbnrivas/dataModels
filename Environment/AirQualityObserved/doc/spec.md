@@ -190,7 +190,9 @@ The instance described [here](https://docs.google.com/document/d/1lHP7XS-7TNzsxL
 
 What was the air quality observed today at noon UTC at the "Plaza de España" (Madrid) air quality station?
 
-```curl -S -H 'fiware-service:airquality' -H 'fiware-servicepath:/Spain_Madrid' -H 'x-auth-token:<my_token>' "http://130.206.118.244:1027/v2/entities?options=keyValues&q=dateObserved:2016-11-28T12:00;stationCode:'28079004'"```
+```curl -S -H 'fiware-service:airquality' -H 'fiware-servicepath:/Spain_Madrid' -H 'x-auth-token:<my_token>'
+"http://130.206.118.244:1027/v2/entities?options=keyValues
+&q=dateObserved:2016-11-28T12:00;stationCode:'28079004'"```
 
 ## Open Issues
 
