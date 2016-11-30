@@ -166,6 +166,9 @@ def get_air_quality_madrid():
             
             measurand_data = [property_name, str(param_value), unit_code, property_desc]
             stations[station_code][hour]['measurand']['value'].append(','.join(measurand_data))
+          else:
+            if property_name == 'relativeHumidity':
+              param_value = param_value / 100
             
           stations[station_code][hour][property_name] = {
             'value': param_value

@@ -118,7 +118,7 @@ def get_weather_observed_spain():
             'value':get_data(row, 1)
           }
           observation['windSpeed'] = {
-            'value': get_data(row, 2, int)
+            'value': get_data(row, 2, float, 1/0.28)
           }
           observation['windDirection'] = {
             'value': decode_wind_direction(row[3])
