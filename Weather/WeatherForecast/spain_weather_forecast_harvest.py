@@ -35,19 +35,31 @@ postal_codes = {
   '05194': '05123',
   '33300': '33076',
   '41001': '41091',
-  '46005': '46250'
+  '46005': '46250',
+  '08001': '08019',
+  '50001': '50297',
+  '38001': '38038',
+  '35001': '35016',
+  '29001': '29067',
+  '07001': '07024'
 }
 
 localities = {
-  'Valladolid':         '47186',
-  'Madrid':             '28079',
-  'Santander':          '39075',
-  'Palencia':           '34120',
-  u'Venta de Baños':    '34023',
-  'Mediana de Voltoya': '05123',
-  'Villaviciosa':       '33076',
-  'Sevilla':            '41091',
-  'Valencia':           '46250'
+  'Valladolid':                 '47186',
+  'Madrid':                     '28079',
+  'Santander':                  '39075',
+  'Palencia':                   '34120',
+  u'Venta de Baños':            '34023',
+  'Mediana de Voltoya':         '05123',
+  'Villaviciosa':               '33076',
+  'Sevilla':                    '41091',
+  'Valencia':                   '46250',
+  'Barcelona':                  '08019',
+  'Zaragoza':                   '50297',
+  'Santa Cruz de Tenerife':     '38038',
+  'Las Palmas de Gran Canaria': '35016',
+  'Malaga':                     '29067',
+  'Formentera':                 '07024'
 }
 
 # Statistics for tracking purposes
@@ -173,48 +185,55 @@ def get_weather_forecasted():
       
     source = aemet_service.format(param)
     req = urllib2.Request(url=source)
-    f = urllib2.urlopen(req)
-    xml_data = f.read()
-    DOMTree = xml.dom.minidom.parseString(xml_data).documentElement
     
-    address_locality = DOMTree.getElementsByTagName('nombre')[0].firstChild.nodeValue
-    address = { }
-    address['addressCountry'] = country
-    address['postalCode'] = postal_code
-    address['addressLocality'] = address_locality
-    
-    created =  DOMTree.getElementsByTagName('elaborado')[0].firstChild.nodeValue
-    
-    forecasts = DOMTree.getElementsByTagName('prediccion')[0].getElementsByTagName('dia')
-    
-    for forecast in forecasts:
-      date = forecast.getAttribute('fecha')
-      normalizedForecast = parse_aemet_forecast(forecast, date)
-      counter = 1
-      for f in normalizedForecast:
-        f['type'] = 'WeatherForecast'
-        f['id'] = generate_id(postal_code, country, f['validity']['value'])
-        f['address'] = {
-          'value': address,
-          'type':  'PostalAddress'
-        }
-        f['dateIssued'] = {
-          'type': 'DateTime',
-          'value': parser.parse(created).replace(tzinfo=madrid_tz).isoformat()
-        }
-        f['dateRetrieved'] = {
-          'type': 'DateTime',
-          'value': datetime.datetime.now(madrid_tz).replace(microsecond=0).isoformat()
-        }
-        f['source'] = {
-          'value': source,
-          'type': 'URL'
-        }
-        f['dataProvider'] = {
-          'value': 'TEF'
-        }
-        counter += 1
-        out[postal_code].append(f)
+    try:
+      with contextlib.closing(urllib2.urlopen(req)) as f:
+        xml_data = f.read()
+        
+        logger.debug('All AEMET data read for %s', postal_code)
+        
+        DOMTree = xml.dom.minidom.parseString(xml_data).documentElement
+        
+        address_locality = DOMTree.getElementsByTagName('nombre')[0].firstChild.nodeValue
+        address = { }
+        address['addressCountry'] = country
+        address['postalCode'] = postal_code
+        address['addressLocality'] = address_locality
+        
+        created =  DOMTree.getElementsByTagName('elaborado')[0].firstChild.nodeValue
+        
+        forecasts = DOMTree.getElementsByTagName('prediccion')[0].getElementsByTagName('dia')
+        
+        for forecast in forecasts:
+          date = forecast.getAttribute('fecha')
+          normalizedForecast = parse_aemet_forecast(forecast, date)
+          counter = 1
+          for f in normalizedForecast:
+            f['type'] = 'WeatherForecast'
+            f['id'] = generate_id(postal_code, country, f['validity']['value'])
+            f['address'] = {
+              'value': address,
+              'type':  'PostalAddress'
+            }
+            f['dateIssued'] = {
+              'type': 'DateTime',
+              'value': parser.parse(created).replace(tzinfo=madrid_tz).isoformat()
+            }
+            f['dateRetrieved'] = {
+              'type': 'DateTime',
+              'value': datetime.datetime.now(madrid_tz).replace(microsecond=0).isoformat()
+            }
+            f['source'] = {
+              'value': source,
+              'type': 'URL'
+            }
+            f['dataProvider'] = {
+              'value': 'TEF'
+            }
+            counter += 1
+            out[postal_code].append(f)
+    except urllib2.URLError as e:
+      logger.error('Error while retrieving AEMET data for: %s. HTTP Error: %d', postal_code, e.code)
   
   return out
     
@@ -365,6 +384,9 @@ def generate_id(postal_code, country, validity):
 
 def post_data(data):
   for a_postal_code in data:
+    if len(data[a_postal_code]) == 0:
+      continue
+    
     data_obj = {
       'actionType': 'APPEND',
       'entities': data[a_postal_code]
@@ -424,7 +446,7 @@ if __name__ == '__main__':
   post_data(data)
   
   logger.debug('Number of entities persisted: %d', persisted_entities)
-  logger.debug('Number of stations in error: %d', in_error_entities)
+  logger.debug('Number of entities in error: %d', in_error_entities)
   logger.debug('#### Harvesting cycle finished ... ####')
 
 
