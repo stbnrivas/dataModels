@@ -7,81 +7,59 @@ and the [Portuguese Institute for Sea and Atmosphere](http://ipma.pt) (IPMA).
 
 The scripts present in this folder are the following:
 
-* `aemet.py` is the main entry point for providing weather information
-* `ipma.py` contains the Puython code for getting adn formatting the IPMA data
+* `aemet.py` is the main entry point for providing weather information (outdated)
+* `ipma.py` contains the Puython code for getting adn formatting the IPMA data (outdated)
+* `spain_weather_forecast_harvest.py` a script for performing data harvesting for weather forecasts in Spain and publishing the data on an instance of Orion Context Broker. 
 
 Please check data licenses at the original data sources before using this data in an application. 
 
 ## Examples of use
 
-```
-curl http://130.206.83.68:1028/v2/entities?type=WeatherForecast&q=country:PT;addressLocality:Porto
+You can use a FIWARE instance described [here](https://docs.google.com/document/d/1lHP7XS-7TNzsxLa0bNFb-96JnJXh0ecIHS3-H0qMREg/edit?usp=sharing)
+
+What is the weather forecast today in Valencia (Spain) from 17:00 UTC on?
+
+```curl -H 'fiware-service:weather' -H 'fiware-servicepath:/Spain' -H 'x-auth-token:<my_token>'
+http://130.206.118.244:1027/v2/entities?type=WeatherForecast&options=keyValues&q=address.addressLocality:Valencia;validFrom:2016-12-01T17
 ```
 
-```json
-  {
-    "dayMinimum": {
-      "temperature": 6.9
-    },
-    "feelsLikeTemperature": 14.2,
-    "temperature": 15.1,
-    "dateCreated": "2016-03-14T08:27:45",
-    "windDirection": "W",
-    "weatherType": "High clouds",
-    "dayMaximum": {
-      "temperature": 17.3
-    },
-    "windSpeed": 10,
-    "validity": {
-      "to": "2016-03-14T17:00:00",
-      "from": "2016-03-14T16:00:00"
-    },
-    "address": {
-      "addressCountry": "PT",
-      "addressLocality": "Porto"
-    },
-    "type": "WeatherForecast",
-    "id": "PT-Porto-2016-03-14T16:00:00-2016-03-14T17:00:00",
-    "relativeHumidity": 0.59
-  }
-```  
-
-  
-```
-curl http://130.206.83.68:1028/v2/entities?type=WeatherForecast&q=postalCode:39001;country:ES
 ```
 
-```json
 {
-    "feelsLikeTemperature": 7,
-    "dayMinimum": {
-      "feelsLikeTemperature": 5,
-      "temperature": 7,
-      "relativeHumidity": 0.6
-    },
-    "temperature": 7,
-    "dateCreated": "2016-03-14T11:40:02",
-    "type": "WeatherForecast",
-    "address": {
-      "addressCountry": "ES",
-      "postalCode": "39001",
-      "addressLocality": "Santander"
-    },
-    "windSpeed": 0,
-    "validity": {
-      "to": "2016-03-15T00:00:00",
-      "from": "2016-03-14T18:00:00"
-    },
-    "source": "http://www.aemet.es/xml/municipios/localidad_39075.xml",
-    "precipitationProbability": 0,
-    "dayMaximum": {
-      "feelsLikeTemperature": 12,
-      "temperature": 12,
-      "relativeHumidity": 0.85
-    },
-    "weatherType": "Despejado",
-    "windDirection": "C",
-    "id": "39001_ES_2016-03-14_1",
-    "relativeHumidity": 0.85
-}
+        "id": "Spain-WeatherForecast-46005_2016-12-01T18:00:00_2016-12-02T00:00:00",
+        "type": "WeatherForecast",
+        "address":
+        {
+            "addressCountry": "Spain",
+            "postalCode": "46005",
+            "addressLocality": "Valencia"
+        },
+        "dataProvider": "TEF",
+        "dateIssued": "2016-12-01T10:40:01.00Z",
+        "dateRetrieved": "2016-12-01T12:57:24.00Z",
+        "dayMaximum":
+        {
+            "feelsLikeTemperature": 15,
+            "temperature": 15,
+            "relativeHumidity": 0.9
+        },
+        "dayMinimum":
+        {
+            "feelsLikeTemperature": 11,
+            "temperature": 11,
+            "relativeHumidity": 0.7
+        },
+        "feelsLikeTemperature": 12,
+        "precipitationProbability": 0.15,
+        "relativeHumidity": 0.85,
+        "source": "http://www.aemet.es/xml/municipios/localidad_46250.xml",
+        "temperature": 12,
+        "validFrom": "2016-12-01T17:00:00.00Z",
+        "validTo": "2016-12-01T23:00:00.00Z",
+        "validity": "2016-12-01T18:00:00+01:00/2016-12-02T00:00:00+01:00",
+        "weatherType": "overcast",
+        "windDirection": null,
+        "windSpeed": 0
+    }
+
 ```
