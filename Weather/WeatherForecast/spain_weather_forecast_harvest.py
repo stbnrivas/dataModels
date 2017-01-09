@@ -70,22 +70,22 @@ aemet_service    = "http://www.aemet.es/xml/municipios/localidad_{}.xml"
 
 def decode_wind_direction(direction):
   dictionary = {
-    'Norte': 0,
-    'Sur': 180,
-    'Este': 90,
-    'Oeste': -90,
-    'Nordeste': 45,
-    'Noroeste': -45,
-    'Sureste': 135,
-    'Suroeste': -135,
-    'N': 0,
-    'S': 180,
-    'E': 90,
-    'O': -90,
-    'NE': 45,
-    'NO': -45,
-    'SE': 135,
-    'SO': -135
+    'Norte': 180,
+    'Sur': 0,
+    'Este': -90,
+    'Oeste': 90,
+    'Nordeste': -45,
+    'Noroeste': 45,
+    'Sureste': -135,
+    'Suroeste': 135,
+    'N': 180,
+    'S': 0,
+    'E': -90,
+    'O': 90,
+    'NE': -45,
+    'NO': 45,
+    'SE': -135,
+    'SO': 135
   }
   
   if direction in dictionary: 
