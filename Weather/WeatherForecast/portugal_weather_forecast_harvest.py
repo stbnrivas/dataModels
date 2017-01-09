@@ -202,6 +202,10 @@ def get_weather_forecasted_pt(locality):
       }
       
     obj['id'] = 'Portugal' + '-' + 'WeatherForecast' + '-'  + locality + '_' + obj['validFrom']['value'] + '_' + obj['validTo']['value']
+    obj['source'] = {
+      'type': 'URL',
+      'value': 'https://www.ipma.pt'
+    }
       
     out.append(obj)
   
