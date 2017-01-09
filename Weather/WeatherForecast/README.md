@@ -10,6 +10,7 @@ The scripts present in this folder are the following:
 * `aemet.py` is the main entry point for providing weather information (outdated)
 * `ipma.py` contains the Puython code for getting adn formatting the IPMA data (outdated)
 * `spain_weather_forecast_harvest.py` a script for performing data harvesting for weather forecasts in Spain and publishing the data on an instance of Orion Context Broker. 
+* `portugal_weather_forecast_harvest.py` a script for performing data harvesting for weather forecasts in Portugal and publishing the data on an instance of Orion Context Broker. 
 
 Please check data licenses at the original data sources before using this data in an application. 
 
