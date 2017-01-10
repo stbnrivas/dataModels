@@ -13,7 +13,7 @@ Please check data licenses at the original data sources before using this data i
 
 ## Public instance
 
-To get access to a public instance offering weather observed data please have a look at the [GSMA's API Directory](http://apidirectory.connectedliving.gsma.com/api/weather-spain) or (http://apidirectory.connectedliving.gsma.com/api/weather-portugal). 
+To get access to a public instance offering weather observed data please have a look at the [GSMA's API Directory](http://apidirectory.connectedliving.gsma.com). 
 
 The instance described [here](https://docs.google.com/document/d/1lHP7XS-7TNzsxLa0bNFb-96JnJXh0ecIHS3-H0qMREg/edit?usp=sharing) has been set up by the FIWARE Community.
 
