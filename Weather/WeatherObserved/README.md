@@ -1,18 +1,19 @@
 # Weather Observed
 
 Weather observed from the [Spanish National Meteorology Agency](http://aemet.es) (AEMET) is exposed through NGSIv2.
-The Weather observed is provided by [weather stations](../../PointOfInterest/WeatherStation) owned by AEMET. 
+The Weather observed is provided by [weather stations](../../PointOfInterest/WeatherStation) owned by AEMET and by the IPMA (Portuguese Institute for Sea and Atmosphere). 
 
 This folder contains the following scripts:
 
 + `weather_observed.py` .- Contains all the logic to expose the weather observed as an NGSIv2 data model (outdated).
 + `spain_weather_observed_harvest.py` .- Performs data harvesting using AEMET's data site as origin and Orion Context Broker as destination. 
++ `portugal_weather_observed_harvest.py` .- Performs data harvesting using IPMA's data site as origin and Orion Context Broker as destination. 
 
 Please check data licenses at the original data sources before using this data in an application.
 
 ## Public instance
 
-To get access to a public instance offering weather observed data please have a look at the [GSMA's API Directory](http://apidirectory.connectedliving.gsma.com/api/weather-spain). 
+To get access to a public instance offering weather observed data please have a look at the [GSMA's API Directory](http://apidirectory.connectedliving.gsma.com/api/weather-spain) or (http://apidirectory.connectedliving.gsma.com/api/weather-portugal). 
 
 The instance described [here](https://docs.google.com/document/d/1lHP7XS-7TNzsxLa0bNFb-96JnJXh0ecIHS3-H0qMREg/edit?usp=sharing) has been set up by the FIWARE Community.
 
