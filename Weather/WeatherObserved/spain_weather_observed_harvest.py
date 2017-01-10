@@ -44,14 +44,14 @@ FIWARE_SPATH =   '/Spain'
 
 def decode_wind_direction(direction):
   dictionary = {
-    'Norte': 0,
-    'Sur': 180,
-    'Este': 90,
-    'Oeste': -90,
-    'Nordeste': 45,
-    'Noroeste': -45,
-    'Sureste': 135,
-    'Suroeste': -135     
+    'Norte': 180,
+    'Sur': 0,
+    'Este': -90,
+    'Oeste': 90,
+    'Nordeste': -135,
+    'Noroeste': 135,
+    'Sureste': -45,
+    'Suroeste': 45     
   }
   
   if direction in dictionary: 
