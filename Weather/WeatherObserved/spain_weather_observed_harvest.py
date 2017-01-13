@@ -92,7 +92,7 @@ def get_weather_observed_spain():
         csv_data = f.read()
         
         if csv_data.find('initial-scale') <> -1:
-          logger.debug('Skipping: ', station_code)
+          logger.debug('Skipping: %s', station_code)
           continue
         
         logger.debug('Data read successfully: %s', station_code)
