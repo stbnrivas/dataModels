@@ -234,7 +234,7 @@ def build_station(station_num, station_code, hour, row):
   }
   
   valid_from = datetime.datetime(int(row[6]), int(row[7]), int(row[8]), hour)
-  station_data['id'] = 'Madrid-AmbientObserved-' + station_code + '-' + valid_from.isoformat()
+  station_data['id'] = 'Madrid-AirQualityObserved-' + station_code + '-' + valid_from.isoformat()
   valid_to = (valid_from + datetime.timedelta(hours=1))
   
   # Adjust timezones
