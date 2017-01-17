@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://fiware.github.io/dataModels/common-schema.json",
+  "title": "Common definitions for FIWARE Harmonized Data Models",
+  "definitions": {
+    "GSMA-Commons": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "NGSI Entity id"
+        },
+        "dateCreated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "dateModified": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "alternateName": {
+           "type": "string" 
+        },
+        "description": {
+           "type": "string" 
+        },
+        "dataProvider": {
+          "type": "string"
+        }
+      }
+    },
+    "Location-Commons": {
+      "type": "object",
+      "properties": {
+        "location": { "$ref": "http://json-schema.org/geojson/geometry.json#" },
+        "address": {
+          "type": "object",
+          "properties": {
+            "streetAddress": {
+              "type": "string"
+            },
+            "addressLocality": {
+              "type": "string"
+            },
+            "addressRegion": {
+              "type": "string"
+            },
+            "addressCountry": {
+              "type": "string"
+            },
+            "postalCode": {
+              "type": "string"
+            },
+            "postOfficeBoxNumber": {
+              "type": "string"
+            },
+            "areaServed": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
