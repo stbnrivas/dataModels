@@ -142,7 +142,7 @@ mapping for Spanish terms can be found [here](https://github.com/Fiware/dataMode
                 "addressLocality": "Valladolid",
                 "addressCountry": "ES"
             },
-            "atmosfericPressure": 938.9,
+            "barometricPressure": 938.9,
             "dataProvider": "TEF",
             "dateObserved": "2016-11-30T07:00:00.00Z",
             "location":
