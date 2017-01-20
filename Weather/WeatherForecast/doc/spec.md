@@ -114,7 +114,8 @@ the lack of support of Orion Context Broker for datetime intervals, it can be us
         + `feelLikesTemperature`. Maximum feels like temperature. Same semantics and units as `WeatherForecast.feelsLikeTemperature`.
         + `relativeHumidity`. Maximum relative humidity. Same semantics and units as `WeatherForecast.relativeHumidity`.
  
-+ `uVIndexMax` : The maximum UV index for the period, based on the World Health Organization's UV Index measure-
++ `uVIndexMax` : The maximum UV index for the period, based on the World Health Organization's UV Index measure.
+    + Normative references: [http://www.who.int/uv/intersunprogramme/activities/uv_index/en/](http://www.who.int/uv/intersunprogramme/activities/uv_index/en/)
     + Attribute type: [Number](https://schema.org/Number)
     + Optional
 
