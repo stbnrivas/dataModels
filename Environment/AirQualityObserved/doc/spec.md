@@ -78,73 +78,15 @@ measurand name described on the `measurand` array. The structure of such an attr
 
 Certain weather conditions have an influence over the observed air quality. There are two options for representing them:
 
-+ A/ Through a linked entity of type `WeatherObserved` (attribute named `refWeatherObserved`) which will capture the associated weather conditions.
-+ B/ Through a set of attributes which denote the different meteorological conditions under which the air quality data was captured. 
++ A/ Through a linked entity of type `WeatherObserved` (attribute named `refWeatherObserved`).
++ B/ Through a group of weather-related properties already defined by [WeatherObserved](../../../Weather/WeatherObserved/doc/spec.md). 
 
 Below is the description of the attribute to be used for option A/. 
 
 + `refWeatherObserved` : Weather observed associated to the air quality conditions described by this entity.
-    + Attribute type: Reference to a `WeatherObserved` entity.
+    + Attribute type: Reference to a [WeatherObserved](../../../Weather/WeatherObserved/doc/spec.md) entity.
     + Optional
     
-Below is a list of typical weather observed parameters which may be included inline (option B/) by this entity type: 
-    
-+ `temperature` : Air's temperature observed.
-    + Attribute type: [Number](https://schema.org/Number)
-    + Default unit: Degrees centigrades.
-    + Attribute metadata:
-        + `timestamp` : optional timestamp for the observed value. It can be ommitted if the observation time is the same as the one captured
-        by the `dateObserved` attribute at entity level.
-    + Optional
-
-+ `relativeHumidity` : Air's relative humidity observed (percentage, expressed in parts per one).
-    + Attribute type: [Number](https://schema.org/Number)
-    + Allowed values: A number between `0` and `1`. 
-    + Attribute metadata:
-        + `timestamp` : optional timestamp for the observed value. It can be ommitted if the observation time is the same as the one captured
-        by the `dateObserved` attribute at entity level.
-    + Optional
-
-+ `precipitation` : Precipitation level observed.
-    + Attribute type: [Number](https://schema.org/Number)
-    + Default unit: Liters per square meter.
-    + Attribute metadata:
-        + `timestamp` : optional timestamp for the observed value. It can be ommitted if the observation time is the same as the one captured
-        by the `dateObserved` attribute at entity level.
-    + Optional 
-
-+ `windDirection` : The wind direction expressed in decimal degrees compared to geographic North (measured clockwise), encoded as a Number.
-    + Attribute type: [Number](https://schema.org/Number)
-    + Default unit: Decimal degrees
-    + Attribute metadata:
-        + `timestamp` : optional timestamp for the observed value. It can be ommitted if the observation time is the same as the one captured
-        by the `dateObserved` attribute at entity level.
-    + Optional 
-
-+ `windSpeed` : The observed wind speed in m/s, encoded as a Number.
-    + Attribute type: [Number](https://schema.org/Number)
-    + Default unit: meters per second
-    + Attribute metadata:
-        + `timestamp` : optional timestamp for the observed value. It can be ommitted if the observation time is the same as the one captured
-        by the `dateObserved` attribute at entity level.
-    + Optional
-    
-+ `barometricPressure` : The barometric pressure observed measured in Hecto Pascals.
-    + Attribute type: [Number](https://schema.org/Number)
-    + Default unit: Hecto Pascals
-    + Attribute metadata:
-        + `timestamp` : optional timestamp for the observed value. It can be ommitted if the observation time is the same as the one captured
-        by the `dateObserved` attribute at entity level.
-    + Optional 
-
-+ `solarRadiation` : The solar radiation observed measured in Watts per square meter.
-    + Attribute type: [Number](https://schema.org/Number)
-    + Default unit: Watts per square meter
-    + Attribute metadata:
-        + `timestamp` : optional timestamp for the observed value. It can be ommitted if the observation time is the same as the one captured
-        by the `dateObserved` attribute at entity level.
-    + Optional
-
     
 ## Examples of use
 
