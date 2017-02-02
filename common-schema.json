@@ -3,12 +3,17 @@
   "id": "https://fiware.github.io/dataModels/common-schema.json",
   "title": "Common definitions for FIWARE Harmonized Data Models",
   "definitions": {
+    "EntityIdentiferType": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$"
+    },
     "GSMA-Commons": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "NGSI Entity id"
+          "$ref": "#/definitions/EntityIdentiferType"
         },
         "dateCreated": {
           "type": "string",
@@ -64,6 +69,27 @@
               "type": "string"
             }
           }
+        }
+      }
+    },
+    "PhysicalObject-Commons": {
+      "type": "object",
+      "properties": {
+        "color": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string",
+          "format": "uri"
+        },
+        "annotations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "areaServed": {
+          "type": "string"
         }
       }
     }
