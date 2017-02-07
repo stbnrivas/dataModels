@@ -3,7 +3,7 @@
   "id": "https://fiware.github.io/dataModels/common-schema.json",
   "title": "Common definitions for FIWARE Harmonized Data Models",
   "definitions": {
-    "EntityIdentiferType": {
+    "EntityIdentifierType": {
       "type": "string",
       "minLength": 1,
       "maxLength": 256,
@@ -13,7 +13,7 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/EntityIdentiferType"
+          "$ref": "#/definitions/EntityIdentifierType"
         },
         "dateCreated": {
           "type": "string",

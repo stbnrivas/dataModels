@@ -1,5 +1,5 @@
 {
-            "id": "Spain",
+            "id": "Spain-WeatherObserved-Valladolid-2016-11-30T07:00:00.00Z",
             "type": "WeatherObserved",
             "address":
             {
@@ -26,5 +26,6 @@
             "stationName": "Valladolid",
             "temperature": 3.3,
             "windDirection": -45,
-            "windSpeed": 2
+            "windSpeed": 2,
+            "refDevice": "device-0A3478"
 }

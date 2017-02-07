@@ -27,13 +27,13 @@
           "minItems": 1
         },
         "refDevice": {
-          "type": "string"
+          "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
         },
         "refPointOfInterest": {
-          "type": "string"
+          "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
         },
         "refWeatherObserved": {
-          "type": "string"
+          "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
         }
       }
     }
