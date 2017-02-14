@@ -12,6 +12,8 @@ You can see a description of weather forecast parameters provided by AEMET (in S
 
 ## Data Model
 
+A JSON Schema corresponding to this data model can be found [here](http://fiware.github.io/dataModels/Weather/WeatherForecast/schema.json).
+
 + `id` : Unique identifier. 
 
 + `type` : Entity type. It must be equal to `WeatherForecast`.

@@ -6,6 +6,8 @@ Water Quality data model is intended to represent water quality parameters at a 
 
 ## Data Model
 
+A JSON Schema corresponding to this data model can be found [here](http://fiware.github.io/dataModels/Environment/WaterQualityObserved/schema.json).
+
 + `id` : Unique identifier. 
 
 + `type` : Entity type. It must be equal to `WaterQualityObserved`.
