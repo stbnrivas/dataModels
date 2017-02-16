@@ -23,7 +23,7 @@ orion_service = 'http://localhost:1030'
 station_code_exceptions = ['9946X', '1658', '349', '9894X', '1010X', '9198A', '6381', '9720X', 'C619Y', \
 '1178Y', '9111', '9718X', '0244X', '6268X', '3254Y', '6340X', '3386A', '3391', '7012C', '9918X', '8191Y', '5192', '76',\
 '4492E', '1331D', '0171C', '1583X','8210Y', '9814A', '9994X', '9174', '2084Y', 'C917E', '3337U', '2661', '367',\
-'9263I', '5246', '7250X', '2182C', '0229I', '1735X', 'C229X', '9531X', '1561I', '2150H', '0034X']
+'9263I', '5246', '7250X', '2182C', '0229I', '1735X', 'C229X', '9531X', '1561I', '2150H', '0034X', '1036A']
 
 logger = None
 
@@ -207,7 +207,7 @@ def post_station_data_batch(station_code, data):
   
 # Reads station data from CSV file
 def read_station_csv():
-  with contextlib.closing(open('stations-normalized-wgs84.csv', 'rU')) as csvfile:
+  with contextlib.closing(open('../stations-normalized-wgs84.csv', 'rU')) as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
     index = 0
     for row in reader:
