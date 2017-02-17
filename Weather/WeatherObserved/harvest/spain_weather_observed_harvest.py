@@ -88,7 +88,13 @@ def get_weather_observed_spain():
       logger.debug('Requesting data from station: %s', station_code)
       
       req = urllib2.Request(url=source)
-      with contextlib.closing(urllib2.urlopen(req)) as f:
+      try: f = urllib2.urlopen(req)
+      except urllib2.URLError as e:
+        logger.error('Error while calling: %s : %s', source, e)
+        if f <> None:
+          f.close()
+        continue
+    
         csv_data = f.read()
         
         if csv_data.find('initial-scale') <> -1:
@@ -130,7 +136,7 @@ def get_weather_observed_spain():
           observation['precipitation'] = {
             'value': get_data(row, 6)
           }
-          observation['atmosfericPressure'] = {
+          observation['atmosphericPressure'] = {
             'value': get_data(row, 7)
           }
           observation['pressureTendency'] =  {
@@ -164,7 +170,9 @@ def get_weather_observed_spain():
           observation['id'] = 'Spain-WeatherObserved' + '-' + station_code + '-' + date_observed.isoformat()
           
           out.append(observation)
-
+        
+        f.close()
+        
         # A batch of station data is persisted      
         post_station_data_batch(station_code, out)
 
