@@ -95,86 +95,86 @@ def get_weather_observed_spain():
           f.close()
         continue
     
-        csv_data = f.read()
-        
-        if csv_data.find('initial-scale') <> -1:
-          logger.debug('Skipping: %s', station_code)
+      csv_data = f.read()
+      
+      if csv_data.find('initial-scale') <> -1:
+        logger.debug('Skipping: %s', station_code)
+        continue
+      
+      logger.debug('Data read successfully: %s', station_code)
+      
+      csv_file = StringIO.StringIO(csv_data)
+      reader = csv.reader(csv_file, delimiter=',')
+      
+      index = 0
+      for row in reader:
+        if index < 4:
+          index += 1
           continue
         
-        logger.debug('Data read successfully: %s', station_code)
+        observation = {
+          'type': 'WeatherObserved',
+          'stationCode': {
+            'value': station_code
+          },
+          'stationName': {
+            'value': sanitize(station_data[station_code]['name'])
+          }
+        }
+        if len(row) < 2:
+          continue
         
-        csv_file = StringIO.StringIO(csv_data)
-        reader = csv.reader(csv_file, delimiter=',')
+        observation['temperature'] = {
+          'value':get_data(row, 1)
+        }
+        observation['windSpeed'] = {
+          'value': get_data(row, 2, float, 1/0.28)
+        }
+        observation['windDirection'] = {
+          'value': decode_wind_direction(row[3])
+        }
+        observation['precipitation'] = {
+          'value': get_data(row, 6)
+        }
+        observation['atmosphericPressure'] = {
+          'value': get_data(row, 7)
+        }
+        observation['pressureTendency'] =  {
+          'value': get_data(row, 8)
+        }
+        observation['relativeHumidity'] = {
+          'value': get_data(row, 9, factor=100.0)
+        }
         
-        index = 0
-        for row in reader:
-          if index < 4:
-            index += 1
-            continue
-          
-          observation = {
-            'type': 'WeatherObserved',
-            'stationCode': {
-              'value': station_code
-            },
-            'stationName': {
-              'value': sanitize(station_data[station_code]['name'])
-            }
-          }
-          if len(row) < 2:
-            continue
-          
-          observation['temperature'] = {
-            'value':get_data(row, 1)
-          }
-          observation['windSpeed'] = {
-            'value': get_data(row, 2, float, 1/0.28)
-          }
-          observation['windDirection'] = {
-            'value': decode_wind_direction(row[3])
-          }
-          observation['precipitation'] = {
-            'value': get_data(row, 6)
-          }
-          observation['atmosphericPressure'] = {
-            'value': get_data(row, 7)
-          }
-          observation['pressureTendency'] =  {
-            'value': get_data(row, 8)
-          }
-          observation['relativeHumidity'] = {
-            'value': get_data(row, 9, factor=100.0)
-          }
-          
-          date_observed = datetime.datetime.strptime(row[0], '%d/%m/%Y %H:%M')
-          observation['dateObserved'] = {
-            'value': date_observed.replace(tzinfo=madrid_tz).isoformat(),
-            'type': 'DateTime'
-          }
-          observation['source'] = {
-            'value': 'http://www.aemet.es',
-            'type': 'URL'
-          }
-          observation['dataProvider'] = {
-            'value': 'TEF'
-          }
-          observation['address'] = {
-            'value': {
-              'addressLocality': sanitize(station_data[station_code]['address']),
-              'addressCountry': 'ES'
-            },
-            'type': 'PostalAddress'
-          }
-          observation['location'] = station_data[station_code]['location']
-          
-          observation['id'] = 'Spain-WeatherObserved' + '-' + station_code + '-' + date_observed.isoformat()
-          
-          out.append(observation)
+        date_observed = datetime.datetime.strptime(row[0], '%d/%m/%Y %H:%M')
+        observation['dateObserved'] = {
+          'value': date_observed.replace(tzinfo=madrid_tz).isoformat(),
+          'type': 'DateTime'
+        }
+        observation['source'] = {
+          'value': 'http://www.aemet.es',
+          'type': 'URL'
+        }
+        observation['dataProvider'] = {
+          'value': 'TEF'
+        }
+        observation['address'] = {
+          'value': {
+            'addressLocality': sanitize(station_data[station_code]['address']),
+            'addressCountry': 'ES'
+          },
+          'type': 'PostalAddress'
+        }
+        observation['location'] = station_data[station_code]['location']
         
-        f.close()
+        observation['id'] = 'Spain-WeatherObserved' + '-' + station_code + '-' + date_observed.isoformat()
         
-        # A batch of station data is persisted      
-        post_station_data_batch(station_code, out)
+        out.append(observation)
+      
+      f.close()
+        
+      # A batch of station data is persisted      
+      post_station_data_batch(station_code, out)
 
 
 # POST data to an Orion Context Broker instance using NGSIv2 API
