@@ -1,8 +1,8 @@
-# <Data Model Name>
+# {{Data Model Name}}
 
 ## Description
 
-<Data Model Description> 
+{{Data Model Description}}
 
 ## Data Model
 
@@ -20,7 +20,7 @@ A JSON Schema corresponding to this data model can be found <add link to JSON Sc
     + Attribute type: [DateTime](https://schema.org/DateTime)
     + Optional    
 
-<Location and address are two typical attributes that are added here for convenience>
+{{Location and address are two typical attributes that are added here for convenience}}
 
 + `location` : Location of <entity type> represented by a GeoJSON geometry. 
     + Attribute type: `geo:json`.
@@ -31,23 +31,23 @@ A JSON Schema corresponding to this data model can be found <add link to JSON Sc
     + Normative References: [https://schema.org/address](https://schema.org/address)
     + Mandatory if `location` is not present. 
 
-<Below there is a description of a typical attribute>
+{{Below there is a description of a typical attribute}}
 
-+ `<attributeName>` : <Description of the attribute>
-    + Normative References: <Add a normative reference>
-    + Attribute type: <Add here the attribute type>
++ `{{attributeName}}` : {{Description of the attribute}}
+    + Normative References: {{Add a normative reference}}
+    + Attribute type: {{Add here the attribute type}}
     + Attribute metadata:
-        + `<metadata name>` : <Metadata Description>
-    + <Optional/Mandatory>
+        + `{{metadata name}}` : {{Metadata Description}}
+    + {{Optional/Mandatory}}
     
 ## Examples of use
 
-<Provide a JSON example>
+{{Provide a JSON example}}
     
 ## Use it with a real service
 
-<Provide a link to a real service providing data following the harmonized data format>
+{{Provide a link to a real service providing data following the harmonized data format}}
 
 ## Open Issues
 
-<Describe here any open issue>
+{{Describe here any open issue}}
