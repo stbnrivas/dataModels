@@ -12,6 +12,7 @@ import logging.handlers
 import re
 from pytz import timezone
 import contextlib
+import copy
 
 
 # Entity type
@@ -191,6 +192,9 @@ def get_air_quality_madrid():
           data_array.append(data)
       if len(data_array) > 0:
         logger.debug("Retrieved data for %s at %s (last hour)", station, data_array[-1]['dateObserved']['value'])
+        # Last measurement is duplicated to have an entity with the latest measurement obtained
+        last_measurement = data_array[-1]
+        last_measurement['id'] = 'Madrid-AirQualityObserved-' + last_measurement['stationCode']['value'] + '-' + 'latest'
       else: logger.warn('No data retrieved for: %s', station)
       
       post_station_data(station, data_array)
