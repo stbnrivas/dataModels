@@ -6,7 +6,7 @@
 
 ## Data Model
 
-A JSON Schema corresponding to this data model can be found <add link to JSON Schema>
+A JSON Schema corresponding to this data model can be found {{add link to JSON Schema}}
 
 + `id` : Unique identifier. 
 
@@ -22,12 +22,12 @@ A JSON Schema corresponding to this data model can be found <add link to JSON Sc
 
 {{Location and address are two typical attributes that are added here for convenience}}
 
-+ `location` : Location of <entity type> represented by a GeoJSON geometry. 
++ `location` : Location of {{entity type}} represented by a GeoJSON geometry. 
     + Attribute type: `geo:json`.
     + Normative References: [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     + Mandatory if `address` is not defined. 
     
-+ `address` : Civic address of <entity type>
++ `address` : Civic address of {{entity type}}
     + Normative References: [https://schema.org/address](https://schema.org/address)
     + Mandatory if `location` is not present. 
 
