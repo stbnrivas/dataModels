@@ -126,6 +126,10 @@ def get_weather_observed_portugal():
         # A batch of station data is persisted      
         # 
   for station_code in observation_data:
+    if len(observation_data[station_code]) > 0:
+      latest_observation = observation_data[station_code][-1]
+      latest_observation['id'] = 'Portugal-WeatherObserved' + '-' + station_code + '-' + 'latest'
+      
     post_station_data_batch(station_code, observation_data[station_code])
 
 def get_value(value, scale=1):

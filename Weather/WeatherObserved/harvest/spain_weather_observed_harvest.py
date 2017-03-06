@@ -172,6 +172,11 @@ def get_weather_observed_spain():
         out.append(observation)
       
       f.close()
+      
+      # Last observation is tagged as 'latest'
+      if len(out)> 0:
+        latest_observation = out[-1]
+        latest_observation['id'] = 'Spain-WeatherObserved' + '-' + station_code + '-' + 'latest'
         
       # A batch of station data is persisted      
       post_station_data_batch(station_code, out)
