@@ -296,7 +296,7 @@ A public off street parking underground controlled by a barrier.
       "type": "OffStreetParking",
       "name": "Parque de estacionamento Trindade",
       "category": ["underground", "public", "feeCharged", "mediumTerm", "barrierAccess"],
-      "chargeType": ["temporaryFee"],
+      "chargeType": ["temporaryPrice"],
       "requiredPermit": [],
       "layout": ["multiLevel"],
       "maximumParkingDuration": "PT8H",

@@ -69,6 +69,9 @@
               "type": "string"
             }
           }
+        },
+        "areaServed": {
+          "type": "string"
         }
       }
     },
@@ -87,9 +90,6 @@
           "items": {
             "type": "string"
           }
-        },
-        "areaServed": {
-          "type": "string"
         }
       }
     }
