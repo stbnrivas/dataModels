@@ -18,7 +18,7 @@ A garden can be divided into several smaller parts, named flower beds (`parterre
 Usually you will find flower beds in parks, gardens, pedestrian areas or at big highway interchanges.
 [See OpenStreetMap](http://wiki.openstreetmap.org/wiki/Proposed_features/flowerbed)
 
-+ [GreenSpaceRecord](../GreenSpaceRecord/doc/spec.md). This entity contains a harmonised description of the conditions recorded on a particular area or point
++ [GreenspaceRecord](../GreenspaceRecord/doc/spec.md). This entity contains a harmonised description of the conditions recorded on a particular area or point
 inside a garden or related green space. Such record can be associated to a garden, to an specific flower bed, etc.
 
 New entities pending to be defined:
