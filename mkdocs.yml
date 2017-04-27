@@ -35,7 +35,11 @@ pages:
       - 'ParkingGroup'         : 'Parking/ParkingGroup/doc/spec.md'
       - 'ParkingAccess'        : 'Parking/ParkingAccess/doc/spec.md' 
       - 'ParkingSpot'          : 'Parking/ParkingSpot/doc/spec.md'
-  - 'Parks & Gardens'          : 'ParksAndGardens/doc/introduction.md'          
+  - 'Parks & Gardens':
+      - 'Introduction'         : 'ParksAndGardens/doc/introduction.md'
+      - 'Garden'               : 'ParksAndGardens/Garden/doc/spec.md'
+      - 'GardenRecord'         : 'ParksAndGardens/GardenRecord/doc/spec.md'
+      - 'FlowerBed'            : 'ParksAndGardens/FlowerBed/doc/spec.md'
   - 'Points of Interest': 
       - 'WeatherStation'       : 'PointOfInterest/WeatherStation/doc/spec.md'
       - 'AirQualityStation'    : 'PointOfInterest/AirQualityStation/doc/spec.md'
