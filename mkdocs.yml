@@ -38,7 +38,7 @@ pages:
   - 'Parks & Gardens':
       - 'Introduction'         : 'ParksAndGardens/doc/introduction.md'
       - 'Garden'               : 'ParksAndGardens/Garden/doc/spec.md'
-      - 'GardenRecord'         : 'ParksAndGardens/GardenRecord/doc/spec.md'
+      - 'GreenAreaRecord'      : 'ParksAndGardens/GreenAreaRecord/doc/spec.md'
       - 'FlowerBed'            : 'ParksAndGardens/FlowerBed/doc/spec.md'
   - 'Points of Interest': 
       - 'WeatherStation'       : 'PointOfInterest/WeatherStation/doc/spec.md'
