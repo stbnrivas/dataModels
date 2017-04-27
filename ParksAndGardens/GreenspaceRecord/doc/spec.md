@@ -1,8 +1,8 @@
-# GreenAreaRecord
+# GreenspaceRecord
 
 ## Description
 
-This entity contains a harmonised description of the conditions recorded on a particular area or point inside a green area (flower bed, garden, etc.).
+This entity contains a harmonised description of the conditions recorded on a particular area or point inside a greenspace (flower bed, garden, etc.).
 This entity type has been inspired by the `AgriParcelRecord` entity type defined by the GSMA Harmonized Data Models. 
 
 ## Data Model
@@ -11,7 +11,7 @@ A JSON Schema corresponding to this data model can be found {{add link to JSON S
 
 + `id` : Unique identifier. 
 
-+ `type` : Entity type. It must be equal to `GreenAreaRecord`.
++ `type` : Entity type. It must be equal to `GreenspaceRecord`.
 
 + `dateModified` : Last update timestamp of this entity.
     + Attribute type: [DateTime](https://schema.org/DateTime)
@@ -57,7 +57,7 @@ A JSON Schema corresponding to this data model can be found {{add link to JSON S
         by the `dateObserved` attribute at entity level.
     + Optional
 
-+ `refGreenArea` : The garden or flower bed to which this record refers to.
++ `refGreenspace` : The garden or flower bed to which this record refers to.
     + Attribute type: Reference to an entity of type `Garden` or `FlowerBed`.
     + Optional
 
@@ -84,7 +84,7 @@ Below is the description of the attribute to be used for option A/.
 ```json
     {
         "id": "Santander-Garden-Piquio-Record-1",
-        "type": "GreenAreaRecord",
+        "type": "GreenspaceRecord",
         "location": {
             "type": "Point",
             "coordinates": [-3.7836974, 43.4741091]
@@ -92,7 +92,7 @@ Below is the description of the attribute to be used for option A/.
         "temperature": 17,
         "relativeHumidity": 0.87,
         "soilTemperature": 13,
-        "refGreenArea": "Santander-Garden-Piquio"
+        "refGreenspace": "Santander-Garden-Piquio"
     }
 ```
 

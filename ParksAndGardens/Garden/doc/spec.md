@@ -75,7 +75,7 @@ responsible, district, neighbourhood, etc.
     + Optional
     
 + `refRecord` : List of records which contain measurements related to this garden.
-    + Attribute type: List of references to entities of type `GreenAreaRecord`
+    + Attribute type: List of references to entities of type `GreenspaceRecord`
     + Optional
     
 ## Examples of use

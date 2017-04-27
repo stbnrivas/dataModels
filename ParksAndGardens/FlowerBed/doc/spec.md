@@ -79,13 +79,13 @@ to which the trees, or plants in the flower bed belong.
 
  There are two options for representing measurements observed:
 
-+ A/ Through a linked entity of type `GreenAreaRecord` (attribute named `refRecord`).
-+ B/ Through a group of measurement properties already defined by [GreenAreaRecord](../../GreenAreaRecord/doc/spec.md). 
++ A/ Through a linked entity of type `GreenspaceRecord` (attribute named `refRecord`).
++ B/ Through a group of measurement properties already defined by [GreenspaceRecord](../../GreenspaceRecord/doc/spec.md). 
 
 Below is the description of the attribute to be used for option A/. 
     
 + `refRecord` : List of records which contain measurements related to this flower bed.
-    + Attribute type: List of references to entities of type `GreenAreaRecord`
+    + Attribute type: List of references to entities of type `GreenspaceRecord`
     + Optional
 
     
