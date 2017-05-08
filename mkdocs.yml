@@ -40,7 +40,9 @@ pages:
       - 'Garden'               : 'ParksAndGardens/Garden/doc/spec.md'
       - 'GreenspaceRecord'     : 'ParksAndGardens/GreenspaceRecord/doc/spec.md'
       - 'FlowerBed'            : 'ParksAndGardens/FlowerBed/doc/spec.md'
-  - 'Points of Interest': 
+  - 'Points of Interest':
+      - 'Introduction'         : 'PointOfInterest/doc/introduction.md'
+      - 'PointOfInterest'      : 'PointOfInterest/PointOfInterest/doc/spec.md'
       - 'WeatherStation'       : 'PointOfInterest/WeatherStation/doc/spec.md'
       - 'AirQualityStation'    : 'PointOfInterest/AirQualityStation/doc/spec.md'
   -  'Street Lighting':
