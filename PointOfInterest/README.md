@@ -25,6 +25,8 @@ Currently the following categories are supported:
 
 ## Examples of use
 
+This is obsolete and will be updated soon to conform with the latest version of the data model. 
+
 ```
 curl http://130.206.83.68:1027/v2/entities?type=PointOfInterest&q=category:Restaurant
 ```
