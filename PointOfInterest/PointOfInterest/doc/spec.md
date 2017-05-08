@@ -4,11 +4,12 @@
 
 This entity contains a harmonised geographic description of a Point of Interest. This entity is
 used in applications that use spatial data and is applicable to Automotive, Environment,
-Industry and Smart City vertical segments and related IoT applications.
+Industry and Smart City vertical segments and related IoT applications. This data model
+has been created in cooperation with the GSMA and the members of the [IoT Big Data Project](http://www.gsma.com/iot/iot-big-data/). 
 
 ## Data Model
 
-A JSON Schema corresponding to this data model can be found {{add link to JSON Schema}}
+A JSON Schema corresponding to this data model can be found [here](http://fiware.github.io/dataModels/PointOfInterest/PointOfInterest/schema.json)
 
 + `id` : Unique identifier. 
 
@@ -29,12 +30,16 @@ A JSON Schema corresponding to this data model can be found {{add link to JSON S
 + `name` : Name of this point of interest.
     + Normative References: [https://schema.org/name](https://schema.org/name)
     + Mandatory
+    
++ `alternateName` : Alternative name for this point of interest.
+    + Normative References: [https://schema.org/alternateName](https://schema.org/alternateName)
+    + Optional
 
 + `description` : Description of this point of interest.
     + Normative References: [https://schema.org/description](https://schema.org/description]
     + Optional
 
-+ `location` : Location of the point of interest represented by a GeoJSON geometry. 
++ `location` : Location of the point of interest represented by a GeoJSON geometry, usually a `Point`. 
     + Attribute type: `geo:json`.
     + Normative References: [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     + Mandatory if `address` is not defined. 
