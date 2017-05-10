@@ -51,10 +51,12 @@ any property specified by schema.org and which domain is `https://schema.org/Bea
   
  + `width` : Width of this beach.
     + Normative References: [https://schema.org/width](https://schema.org/width)
+    + Default unit: meter
     + Optional
  
  + `length` : Length of this beach.
     + Normative References: [https://schema.org/width](https://schema.org/width)
+    + Default unit: meter
     + Optional
     
 + `beachType` : Type of beach according to different criteria.
@@ -77,7 +79,7 @@ any property specified by schema.org and which domain is `https://schema.org/Bea
 
 + `accessType` : Describes how to get to this beach.
     + Attribute type: List of [Text](https://schema.org/Text)
-    + Allowed values: (`privateVehcle`,  `boat`, `onFoot`, `publicTransport`)
+    + Allowed values: (`privateVehicle`,  `boat`, `onFoot`, `publicTransport`)
     + Optional
 
 + `refSeeAlso` : Reference to one or more related entities.
@@ -86,27 +88,27 @@ any property specified by schema.org and which domain is `https://schema.org/Bea
  
 ## Examples of use
 
-{      
-     "id": " Beach-A-Concha-123456 ",        
-     "type": ”Beach", 
-     "name": "Playa de a Concha",       
-     "description": "La Playa de A Concha se presenta .....",                                          
-     "address": {          
-        "addressCountry": "ES",          
-        "addressLocality": "Vilagarcía de Arousa"        
-     },        
-     "beachType": ["whiteSand", "urban", "calmWaters"],
-     "occupationRate": "high",
-     "facilities": ["promenade", "showers", "cleaningServices", "lifeGuard"],
-     “accessType”: ["privateVehicle", "onFoot", "publicTransport"],
-     "location": {   
-        "type": "Point",          
-        "coordinates": [  -8.768460000000001,   42.60214472222222 ]       
-     }, 
-     “width”: 51,
-     “length”: 450, 
-     "source": "http://www.tourspain.es"
-}
+    {      
+         "id": " Beach-A-Concha-123456 ",        
+         "type": ”Beach", 
+         "name": "Playa de a Concha",       
+         "description": "La Playa de A Concha se presenta .....",                                          
+         "address": {          
+            "addressCountry": "ES",          
+            "addressLocality": "Vilagarcía de Arousa"        
+         },        
+         "beachType": ["whiteSand", "urban", "calmWaters"],
+         "occupationRate": "high",
+         "facilities": ["promenade", "showers", "cleaningServices", "lifeGuard"],
+         “accessType”: ["privateVehicle", "onFoot", "publicTransport"],
+         "location": {   
+            "type": "Point",          
+            "coordinates": [-8.768460000000001, 42.60214472222222]       
+         }, 
+         “width”: 51,
+         “length”: 450, 
+         "source": "http://www.tourspain.es"
+    }
 
     
 ## Use it with a real service
