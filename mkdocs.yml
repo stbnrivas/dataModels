@@ -43,6 +43,7 @@ pages:
   - 'Points of Interest':
       - 'Introduction'         : 'PointOfInterest/doc/introduction.md'
       - 'PointOfInterest'      : 'PointOfInterest/PointOfInterest/doc/spec.md'
+      - 'Beach'                : 'PointOfInterest/Beach/doc/spec.md'
       - 'WeatherStation'       : 'PointOfInterest/WeatherStation/doc/spec.md'
       - 'AirQualityStation'    : 'PointOfInterest/AirQualityStation/doc/spec.md'
   -  'Street Lighting':
