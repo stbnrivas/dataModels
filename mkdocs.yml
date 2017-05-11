@@ -46,6 +46,9 @@ pages:
       - 'Beach'                : 'PointOfInterest/Beach/doc/spec.md'
       - 'WeatherStation'       : 'PointOfInterest/WeatherStation/doc/spec.md'
       - 'AirQualityStation'    : 'PointOfInterest/AirQualityStation/doc/spec.md'
+  -  'PointOfInteracion':
+      - 'SmartPointOfInteraction' : 'PointOfInteraction/SmartPointOfInteraction/doc/spec.md'
+      - 'SmartSpot'               : 'PointOfInteraction/SmartSpot/doc/spec.md'
   -  'Street Lighting':
       - 'Introduction'              : 'StreetLighting/doc/introduction.md'
       - 'Streetlight'               : 'StreetLighting/Streetlight/doc/spec.md'
