@@ -4,7 +4,7 @@
 
 This entity contains a harmonised geographic description of a beach. It is
 used in applications that use spatial data and is applicable to Tourism, Environment,
-and Smart City vertical segments and related IoT applications. 
+and Smart City vertical segments and related IoT applications. Special thanks to [TURESPAÑA](http://www.tourspain.es/en-us/paginas/index.aspx) who provided some examples which inspired the development of this data model.  
 
 ## Data Model
 
