@@ -44,6 +44,7 @@ pages:
       - 'Introduction'         : 'PointOfInterest/doc/introduction.md'
       - 'PointOfInterest'      : 'PointOfInterest/PointOfInterest/doc/spec.md'
       - 'Beach'                : 'PointOfInterest/Beach/doc/spec.md'
+      - 'Museum'               : 'PointOfInterest/Museum/doc/spec.md'
       - 'WeatherStation'       : 'PointOfInterest/WeatherStation/doc/spec.md'
       - 'AirQualityStation'    : 'PointOfInterest/AirQualityStation/doc/spec.md'
   -  'Point Of Interacion':
