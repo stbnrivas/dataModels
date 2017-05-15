@@ -5,8 +5,6 @@ This folder contains all the code related to a harmonized NGSIv2 end point.
 Such endpoint serves entities of type `PointOfInterest`. Data comes from different sources:
 
 * from the city of Porto (Portugal)
-* from AEMET (National Weather Agency from Spain)
-* from Madrid City Council
 
 The scripts present in this folder are:
 
@@ -17,18 +15,18 @@ Please check licenses before using this data in an application.
 
 Currently the following categories are supported:
 
-* ```WeatherStation```
-* ```AirQualityStation```
-* ```Restaurant```
-* ```Hotel```
-* ```ParkingLot```
+* 'OffStreetParking':         '418'
+* 'Restaurant':               '347'
+* 'Hotel':                    '436'
+* 'Museum':                   '311'
+* 'Beach':                    '113'
+* 'TouristInformationCenter': '439'
 
-## Examples of use
 
-This is obsolete and will be updated soon to conform with the latest version of the data model. 
+## Examples of use 
 
 ```
-curl http://130.206.83.68:1027/v2/entities?type=PointOfInterest&q=category:Restaurant
+curl http://130.206.83.68:1027/v2/entities?type=PointOfInterest&q=category:347
 ```
 
 ```json
@@ -36,9 +34,9 @@ curl http://130.206.83.68:1027/v2/entities?type=PointOfInterest&q=category:Resta
     "id": "porto-poi-24043",
     "type": "PointOfInterest",
     "source": "http://fiware-porto.citibrain.com/docs",
-    "category": "Restaurantes",
-    "created": "1970-01-01T00:00:00.000Z",
-    "updated": "2015-11-12T19:35:42.926Z",
+    "category": ["347"],
+    "dateCreated": "1970-01-01T00:00:00.000Z",
+    "dateModified": "2015-11-12T19:35:42.926Z",
     "location": {
       "type": "Point",
       "coordinates": [
