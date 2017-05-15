@@ -26,7 +26,7 @@ Currently the following categories are supported:
 ## Examples of use 
 
 ```
-curl http://130.206.83.68:1027/v2/entities?type=PointOfInterest&q=category:347
+curl http://130.206.118.244:1070/v2/entities?type=PointOfInterest&q=category:347
 ```
 
 ```json
