@@ -15,4 +15,7 @@ shingle, pebbles, cobblestones or sometimes shell fragments, etc.
 which has exhibitions on scientific, historical, cultural topics. Typically open to the public as a tourist attraction.
 May be more heavily involved in acquiring, conserving or researching such topics.
 
-+ `TouristInformationCenter`. A tourist information center which serves as an information source for tourists, travellers and visitors. 
++ `TouristInformationCenter`. A tourist information center which serves as an information source for tourists, travellers and visitors. It can be represented by
+an entity of type `PointOfInterest` which category is equal to `439`.
+Another option is to use the schema.org `TouristInformationCenter` entity type and include those properties which domain is `PointOfInterest` or properties which domain is
+`http://schema.org/TouristInformationCenter`. 
