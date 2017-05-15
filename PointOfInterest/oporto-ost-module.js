@@ -112,8 +112,6 @@ var typeTranslator = {
 }
 
 function translate(aElement) {
-  console.log(JSON.stringify(aElement));
-
   var out = Object.create(null);
   
   out.id = 'porto-poi-' + aElement.id;
@@ -129,8 +127,17 @@ function translate(aElement) {
                     aElement.metadata.description.eng &&
                     aElement.metadata.description.eng.replace(/\r\n/g,'');
    
+  out.address = {
+   streetAddress: aElement.street,
+   addressLocality: aElement.municipality,
+   addressCountry: 'PT'
+  };
+
+  out.areaServed = aElement.parish;
+
   return out;
 }
 
 exports.getData = getData;
 exports.getEntity = getEntity;
+
