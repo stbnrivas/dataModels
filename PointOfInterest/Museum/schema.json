@@ -218,19 +218,23 @@
           "type": "string"
         },
         "openingHoursSpecification": {
-          "properties": {
-            "opens": {
-              "type": "string",
-              "pattern": "[0-9]{2}:[0-9]{2}"
-            },
-            "closes": {
-              "type": "string",
-              "pattern": "[0-9]{2}:[0-9]{2}"
-            },
-            "dayOfWeek": {
-              "type": "string"
+          "type": "array",
+          "items": {
+            "properties": {
+              "opens": {
+                "type": "string",
+                "pattern": "[0-9]{2}:[0-9]{2}"
+              },
+              "closes": {
+                "type": "string",
+                "pattern": "[0-9]{2}:[0-9]{2}"
+              },
+              "dayOfWeek": {
+                "type": "string"
+              }
             }
-          }
+          },
+          "minItems": 1
         },
         "refSeeAlso": {
           "type": "array",
