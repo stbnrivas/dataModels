@@ -15,7 +15,7 @@ Please check licenses before using this data in an application.
 
 Currently the following categories are supported:
 
-* ```OffStreetParking```:          ```418```
+* ```OffStreetParking:          418```
 * ```Restaurant```:                ```347```
 * ```Hotel```:                     ```436```
 * ```Museum```:                    ```311```
