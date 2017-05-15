@@ -135,7 +135,7 @@ Precise semantics might depend on the application or target country or region. F
          },
          "museumType": ["fineArts"],
          "artPeriod": ["contemporary"],
-         "facilities": ["shop", "cloakroom", "guidedTour"],
+         "facilities": ["shop", "cloakRoom", "guidedTour"],
          "location": {   
             "type": "Point",          
             "coordinates": [ 2.1668771521199393, 41.38302235796602]
