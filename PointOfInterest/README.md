@@ -13,7 +13,7 @@ The scripts present in this folder are:
 
 Please check licenses before using this data in an application. 
 
-Currently the following categories are supported: (For other categories please check https://github.com/Factual/places/blob/master/categories/factual_taxonomy.json)
+Currently the following categories are supported: (For a more extended list of categories please check https://github.com/Factual/places/blob/master/categories/factual_taxonomy.json)
 
 * ```OffStreetParking: 418```
 * ```Restaurant:       347```
