@@ -11,7 +11,7 @@ The scripts present in this folder are:
 * `poi-server.js`. Main entry point of the endpoint.
 * `oporto-ost.js`. Contains all the logic needed to interact with [OST Platform](https://www.ost.pt/)
 
-Please check licenses before using this data in an application. 
+Please check the original datasource licenses before using this data in a commercial application. 
 
 Currently the following categories are supported: (For a more extended list of categories please check https://github.com/Factual/places/blob/master/categories/factual_taxonomy.json)
 
