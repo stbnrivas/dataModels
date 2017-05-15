@@ -55,7 +55,7 @@ any property specified by schema.org and which domain is `https://schema.org/Bea
     + Optional
  
  + `length` : Length of this beach.
-    + Normative References: [https://schema.org/width](https://schema.org/width)
+    + Normative References: [https://schema.org/lenght](https://schema.org/lenght)
     + Default unit: meter
     + Optional
     
