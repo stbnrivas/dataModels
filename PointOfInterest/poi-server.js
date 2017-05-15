@@ -53,8 +53,12 @@ app.get('/v2/entities', function (req, resp) {
   
   console.log('Type Requested: ', type);
   
-  var category = '';
-  
+  var category = categoriesMap[type];
+
+  if (!category && type !== 'PointOfInterest') {
+    resp.sendStatus(404);
+    return;
+  } 
   
   var geoRel = req.query.georel;
   var locationOptions = null;
@@ -85,7 +89,7 @@ app.get('/v2/entities', function (req, resp) {
     });
   }
     
-  OportoOST.getData(typesMap[type], category, limit, offset, locationOptions).then(function(result) {
+  OportoOST.getData('pois', category, limit, offset, locationOptions).then(function(result) {
     var limited = result.data.slice(0, limit);
     var linkHeader;
     if (!offset) {
