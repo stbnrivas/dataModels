@@ -37,7 +37,7 @@ any property specified by schema.org and which domain is `https://schema.org/Bea
     + Optional
 
 + `description` : Description of this beach.
-    + Normative References: [https://schema.org/description](https://schema.org/description]
+    + Normative References: [https://schema.org/description](https://schema.org/description)
     + Optional
 
 + `location` : Location of this beach represented by a GeoJSON geometry, usually a `Point` or a Polygon. 
