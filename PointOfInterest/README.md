@@ -26,24 +26,30 @@ Currently the following categories are supported: (For a more extended list of c
 ## Examples of use 
 
 ```
-curl http://130.206.118.244:1070/v2/entities?type=PointOfInterest&q=category:347
+http://130.206.118.244:1050/v2/entities?type=PointOfInterest&q=category:436
 ```
 
 ```json
 {
-    "id": "porto-poi-24043",
-    "type": "PointOfInterest",
-    "source": "http://fiware-porto.citibrain.com/docs",
-    "category": ["347"],
-    "dateCreated": "1970-01-01T00:00:00.000Z",
-    "dateModified": "2015-11-12T19:35:42.926Z",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        -8.6207602,
-        41.1492753
-      ]
-    },
-    "description": "Space with simple lines, a modern and minimalist decor ... "
+        "id": "porto-poi-22897",
+        "type": "PointOfInterest",
+        "source": "http://fiware-porto.citibrain.com/docs",
+        "name": "Belver Beta Porto Hotel",
+        "category":
+        [
+            "436"
+        ],
+        "dateCreated": "1970-01-01T00:00:00.000Z",
+        "dateUpdated": "2015-11-12T20:39:58.336Z",
+        "location":
+        {
+            "type": "Point",
+            "coordinates":
+            [
+                -8.614206,
+                41.178103
+            ]
+        },
+        "description": "The Belver Beta Porto Hotel is ..."
 }
 ```
