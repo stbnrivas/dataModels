@@ -124,7 +124,7 @@ Precise semantics might depend on the application or target country or region. F
 
     {      
          "id": "Museum-Barcelona-MACBA-1234",        
-         "type": Museum", 
+         "type": "Museum", 
          "name": "Museo de Arte Contemporaneo de Barcelona",
          "alternateName": "MACBA",
          "description": "The MACBA was designed by the American architect Richard Meier and inaugurated in 1995.",
