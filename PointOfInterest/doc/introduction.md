@@ -2,7 +2,7 @@
 
 These data models allow to model points of interest and related entity types:
 
-+ `PointOfInterest` : A harmonised geographic description of a point of interest. According to [Wikipedia](https://en.wikipedia.org/wiki/Point_of_interest)
++ [PointOfInterest](../PointOfInterest/spec.md) : A harmonised geographic description of a point of interest. According to [Wikipedia](https://en.wikipedia.org/wiki/Point_of_interest)
 a point of interest, or POI, is a specific point location that someone may find useful or interesting. 
 
 + `Beach` : A harmonised description of a beach.
