@@ -148,12 +148,17 @@ def get_description(DOMTree, index_poi_type):
     
     language = node.getAttribute('language')
     
-    # Assuming name is in Spanish
-    if (language == 'es' or language == 'en') and len(name) == 0:
-      name = sanitize(node.getElementsByTagName('nombre')[1].firstChild.nodeValue)
+    # Getting name
+    if (language == 'es' or language == 'en'):
+      candidate_name = node.getElementsByTagName('nombre')[1].firstChild.nodeValue
+      # Give priority to name in Spanish
+      if language == 'es' and len(candidate_name) > 0:
+        name = sanitize(candidate_name).strip()
+      else if language == 'en' and len(candidate_name) > 0 and len(name) == 0:
+        name = sanitize(candidate_name).strip()
     
     # Obtaining a description in English or Spanish
-    if language == 'es' or language == 'en':
+    
       content_nodes = node.getElementsByTagName('content')
       for content_node in content_nodes:
         if content_node.firstChild != None and content_node.firstChild.nodeValue != None:
