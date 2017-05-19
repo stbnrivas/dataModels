@@ -85,7 +85,12 @@ specific information about this point of interest.
     
 ## Use it with a real service
 
-Coming soon
+The instance described [here](https://docs.google.com/document/d/1lHP7XS-7TNzsxLa0bNFb-96JnJXh0ecIHS3-H0qMREg/edit?usp=sharing) has been set up by the FIWARE Community.
+
+Get POIs around Fira Montjuic (2 Kms around)
+
+```curl -S --header 'fiware-service:poi' --header 'fiware-servicepath:/Spain' --header 'x-auth-token:dd3a796995294dc5b6d7bf2cdb36e15f' “http://130.206.118.244:1027/v2/entities?type=PointOfInterest&attrs=location,name&orderBy=geo:distance&georel=near;maxDistance:2000&geometry=point&coords=41.3730751,2.1482742&options=keyValues”```
+
 
 ## Open Issues
 
