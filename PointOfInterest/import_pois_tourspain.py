@@ -20,6 +20,8 @@ folders = [BEACH_FOLDER, MUSEUM_FOLDER, TOURIST_INFO_FOLDER]
 
 categories_values = ['113', '311', '439']
 categories_names = ['Beach', 'Museum', 'TouristInformationCenter']
+
+description_nodes = ['TipoPlaya', 'TipoMuseo', None]
  
 # Orion service that will store the data
 orion_service = 'http://localhost:1030'
@@ -75,21 +77,13 @@ def transform_data(source_folder_param):
       municipality = sanitize(DOMTree.getElementsByTagName('municipio')[0].firstChild.nodeValue)
       province = sanitize(DOMTree.getElementsByTagName('provincia')[0].firstChild.nodeValue)
       
-      description_nodes = DOMTree.getElementsByTagName('descripcion')
-      found = False
-      for node in description_nodes:
-        if found is True:
-          break
-        content_nodes = node.getElementsByTagName('content')
-        for content_node in content_nodes:
-          if content_node.firstChild != None and content_node.firstChild.nodeValue != None:
-            description = sanitize(content_node.firstChild.nodeValue)
-            found = True
-            break
-      
       id_input = categories_names[index_poi_type] + '-' + a_file + '-' + str(num_processed)
       m = hashlib.md5()
       m.update(id_input.decode())
+      
+      description = get_description(DOMTree, index_poi_type)
+      
+      print description
             
       poi_entity = {
         'id': categories_names[index_poi_type] + '-' + m.hexdigest(),
@@ -134,6 +128,49 @@ def transform_data(source_folder_param):
       num_processed += 1
       
     index_poi_type += 1
+
+
+# Obtains the POI description
+def get_description(DOMTree, index_poi_type):
+  # Calculating a description in English or Spanish
+  description_node_name = description_nodes[index_poi_type]
+  description = ''
+  
+  if description_node_name is None:
+    return description
+  
+  tipo_nodes = DOMTree.getElementsByTagName(description_node_name)
+  found = False
+  
+  for node in tipo_nodes:
+    if found is True:
+      break
+    
+    language = node.getAttribute('language')
+    
+    if language == 'es' or language == 'en':
+      content_nodes = node.getElementsByTagName('content')
+      for content_node in content_nodes:
+        if content_node.firstChild != None and content_node.firstChild.nodeValue != None:
+          text = content_node.firstChild.nodeValue
+          text_filtered = text.strip()
+          
+          m = re.search('^\<p\>(.*?)\<\/p\>', text)
+          if m != None:
+            text_filtered = m.group(1).strip()
+          else:
+            m2 = re.search('^p(.*?)\/p', text)
+            if m2 != None:
+              print 'AQUII'
+              text_filtered = m.group(1).strip()
+
+          description = sanitize(text_filtered)
+          description.replace('<strong>','').replace('</strong>','')
+          if len(description) > 0:
+            found = True
+            break
+            
+  return description
 
 
 def import_data():
