@@ -134,6 +134,9 @@ def transform_data():
 def import_data():
   for poi_type in pois:
     poi_list = pois[poi_type]
+    
+    print poi_type, len(poi_list)
+    
     post_data(poi_list)
 
 
