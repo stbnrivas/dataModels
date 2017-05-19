@@ -154,7 +154,7 @@ def get_description(DOMTree, index_poi_type):
       # Give priority to name in Spanish
       if language == 'es' and len(candidate_name) > 0:
         name = sanitize(candidate_name).strip()
-      else if language == 'en' and len(candidate_name) > 0 and len(name) == 0:
+      elif language == 'en' and len(candidate_name) > 0 and len(name) == 0:
         name = sanitize(candidate_name).strip()
     
     # Obtaining a description in English or Spanish
