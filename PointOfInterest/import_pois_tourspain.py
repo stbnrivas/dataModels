@@ -21,7 +21,7 @@ folders = [BEACH_FOLDER, MUSEUM_FOLDER, TOURIST_INFO_FOLDER]
 categories_values = ['113', '311', '439']
 categories_names = ['Beach', 'Museum', 'TouristInformationCenter']
 
-description_nodes = ['TipoPlaya', 'TipoMuseo', None]
+description_nodes = ['TipoPlaya', 'TipoMuseo', 'TipoOficinaTurismo']
  
 # Orion service that will store the data
 orion_service = 'http://localhost:1030'
@@ -132,9 +132,9 @@ def transform_data(source_folder_param):
 
 # Obtains the POI description
 def get_description(DOMTree, index_poi_type):
-  # Calculating a description in English or Spanish
   description_node_name = description_nodes[index_poi_type]
   description = ''
+  name = ''
   
   if description_node_name is None:
     return description
@@ -147,11 +147,12 @@ def get_description(DOMTree, index_poi_type):
       break
     
     language = node.getAttribute('language')
-    name = ''
     
+    # Assuming name is in Spanish
     if language == 'es':
-      name = sanitize(DOMTree.getElementsByTagName('nombre')[0].firstChild.nodeValue)
+      name = sanitize(node.getElementsByTagName('nombre')[1].firstChild.nodeValue)
     
+    # Obtaining a description in English or Spanish
     if language == 'es' or language == 'en':
       content_nodes = node.getElementsByTagName('content')
       for content_node in content_nodes:
@@ -175,7 +176,7 @@ def get_description(DOMTree, index_poi_type):
           if len(description) > 0:
             found = True
             break
-            
+       
   return (name, description)
 
 
