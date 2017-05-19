@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import with_statement
+import sys
 import os
 import xml.dom.minidom
 import json
@@ -10,10 +11,10 @@ import hashlib
 import urllib2
 import contextlib
 
-SOURCE_FOLDER =       'INECO'
-BEACH_FOLDER =        '20170303_muestra_playas'
-MUSEUM_FOLDER =       '20170303_muestra_museos'
-TOURIST_INFO_FOLDER = '20170303_muestra_oficina_turismo'
+DEFAULT_SOURCE_FOLDER =       'INECO'
+BEACH_FOLDER =                '20170303_muestra_playas'
+MUSEUM_FOLDER =               '20170303_muestra_museos'
+TOURIST_INFO_FOLDER =         '20170303_muestra_oficina_turismo'
 
 folders = [BEACH_FOLDER, MUSEUM_FOLDER, TOURIST_INFO_FOLDER]
 
@@ -38,11 +39,15 @@ in_error_entities = 0
 def sanitize(str_in):
   return re.sub(r"[<(>)\"\'=;]", "", str_in)
 
-def transform_data():
+def transform_data(source_folder_param):
   index_poi_type = 0
   
+  source_folder = source_folder_param
+  if source_folder is None:
+    source_folder = DEFAULT_SOURCE_FOLDER
+  
   for folder in folders:
-    folder = os.path.join(SOURCE_FOLDER, folder)
+    folder = os.path.join(source_folder, folder)
     
     files = os.listdir(folder)
     
@@ -172,7 +177,7 @@ def post_data(data):
 
 
 if __name__ == '__main__':
-  transform_data()
+  transform_data(sys.argv[1])
   import_data()
   
   print "Persisted entities: ", persisted_entities
