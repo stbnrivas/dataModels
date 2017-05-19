@@ -82,8 +82,6 @@ def transform_data(source_folder_param):
       m.update(id_input.decode())
       
       description = get_description(DOMTree, index_poi_type)
-      
-      print description
             
       poi_entity = {
         'id': categories_names[index_poi_type] + '-' + m.hexdigest(),
@@ -161,10 +159,12 @@ def get_description(DOMTree, index_poi_type):
           else:
             m2 = re.search('^p(.*?)\/p', text)
             if m2 != None:
-              print 'AQUII'
               text_filtered = m.group(1).strip()
 
           description = sanitize(text_filtered)
+          # There are more spureous tags in the description
+          # TODO: Remove any markup in the description by using an appropriate
+          # regular expression
           description.replace('<strong>','').replace('</strong>','')
           if len(description) > 0:
             found = True
