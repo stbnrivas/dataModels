@@ -67,7 +67,6 @@ def transform_data(source_folder_param):
       DOMTree = xml.dom.minidom.parseString(xml_data).documentElement
       
       try:
-        name = sanitize(DOMTree.getElementsByTagName('nombre')[1].firstChild.nodeValue)
         longitude = float(DOMTree.getElementsByTagName('longitud')[0].firstChild.nodeValue)
         latitude = float(DOMTree.getElementsByTagName('latitud')[0].firstChild.nodeValue)
       except:
@@ -81,7 +80,10 @@ def transform_data(source_folder_param):
       m = hashlib.md5()
       m.update(id_input.decode())
       
-      description = get_description(DOMTree, index_poi_type)
+      description_data = get_description(DOMTree, index_poi_type)
+      
+      name = description_data[0]
+      description = description_data[1]
             
       poi_entity = {
         'id': categories_names[index_poi_type] + '-' + m.hexdigest(),
@@ -145,6 +147,10 @@ def get_description(DOMTree, index_poi_type):
       break
     
     language = node.getAttribute('language')
+    name = ''
+    
+    if language == 'es':
+      name = sanitize(DOMTree.getElementsByTagName('nombre')[0].firstChild.nodeValue)
     
     if language == 'es' or language == 'en':
       content_nodes = node.getElementsByTagName('content')
@@ -170,7 +176,7 @@ def get_description(DOMTree, index_poi_type):
             found = True
             break
             
-  return description
+  return (name, description)
 
 
 def import_data():
