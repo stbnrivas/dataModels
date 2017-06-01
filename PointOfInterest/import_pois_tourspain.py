@@ -20,14 +20,14 @@ folders = [BEACH_FOLDER, MUSEUM_FOLDER, TOURIST_INFO_FOLDER]
 
 categories_values = ['113', '311', '439']
 categories_names = ['Beach', 'Museum', 'TouristInformationCenter']
-cities_names = ['Barcelona', 'coruna_a', 'malaga', 'sevilla', 'valencia']
+cities_names = ['barcelona', 'coruna_a', 'malaga', 'sevilla', 'valencia']
 
 description_nodes = ['TipoPlaya', 'TipoMuseo', 'TipoOficinaTurismo']
  
 # Orion service that will store the data
 orion_service = 'http://localhost:1030'
 
-FIWARE_SERVICE = 'POI'
+FIWARE_SERVICE = 'poi'
 FIWARE_SPATH   = '/Spain'
 
 MIME_JSON = 'application/json'
@@ -50,84 +50,84 @@ def transform_data(source_folder_param):
     source_folder = DEFAULT_SOURCE_FOLDER
   
   for folder in folders:
-    for city in cities: 
-    folder = os.path.join(source_folder, folder)
-    
-    files = os.listdir(folder)
-    
-    num_processed = 0
-    
     poi_list = []
     pois[categories_names[index_poi_type]] = poi_list
     
-    for a_file in files:
-      full_file_path = os.path.join(folder, a_file)
-      f = open(full_file_path, 'r')
-      xml_data = f.read()
-      f.close()
+    for city in cities: 
+      folder = os.path.join(source_folder, folder, city)
+      
+      files = os.listdir(folder)
+      
+      num_processed = 0
+      
+      for a_file in files:
+        full_file_path = os.path.join(folder, a_file)
+        f = open(full_file_path, 'r')
+        xml_data = f.read()
+        f.close()
+          
+        DOMTree = xml.dom.minidom.parseString(xml_data).documentElement
         
-      DOMTree = xml.dom.minidom.parseString(xml_data).documentElement
-      
-      try:
-        longitude = float(DOMTree.getElementsByTagName('longitud')[0].firstChild.nodeValue)
-        latitude = float(DOMTree.getElementsByTagName('latitud')[0].firstChild.nodeValue)
-      except:
-        num_processed += 1
-        continue
-      
-      municipality = sanitize(DOMTree.getElementsByTagName('municipio')[0].firstChild.nodeValue)
-      province = sanitize(DOMTree.getElementsByTagName('provincia')[0].firstChild.nodeValue)
-      
-      id_input = categories_names[index_poi_type] + '-' + a_file + '-' + str(num_processed)
-      m = hashlib.md5()
-      m.update(id_input.decode())
-      
-      description_data = get_description(DOMTree, index_poi_type)
-      
-      name = description_data[0]
-      description = description_data[1]
-            
-      poi_entity = {
-        'id': categories_names[index_poi_type] + '-' + m.hexdigest(),
-        'type': 'PointOfInterest',
-        'name': {
-          'value': name
-        },
-        'description': {
-          'value': description
-        },
-        'category': {
-          'type': 'List',
-          'value': [
-            categories_values[index_poi_type]
-        ]},
-        'location': {
-          'type': 'geo:json',
-          'value': {
-            'type': 'Point',
-            'coordinates': [longitude, latitude]
+        try:
+          longitude = float(DOMTree.getElementsByTagName('longitud')[0].firstChild.nodeValue)
+          latitude = float(DOMTree.getElementsByTagName('latitud')[0].firstChild.nodeValue)
+        except:
+          num_processed += 1
+          continue
+        
+        municipality = sanitize(DOMTree.getElementsByTagName('municipio')[0].firstChild.nodeValue)
+        province = sanitize(DOMTree.getElementsByTagName('provincia')[0].firstChild.nodeValue)
+        
+        id_input = categories_names[index_poi_type] + '-' + a_file + '-' + str(num_processed)
+        m = hashlib.md5()
+        m.update(id_input.decode())
+        
+        description_data = get_description(DOMTree, index_poi_type)
+        
+        name = description_data[0]
+        description = description_data[1]
+              
+        poi_entity = {
+          'id': categories_names[index_poi_type] + '-' + m.hexdigest(),
+          'type': 'PointOfInterest',
+          'name': {
+            'value': name
+          },
+          'description': {
+            'value': description
+          },
+          'category': {
+            'type': 'List',
+            'value': [
+              categories_values[index_poi_type]
+          ]},
+          'location': {
+            'type': 'geo:json',
+            'value': {
+              'type': 'Point',
+              'coordinates': [longitude, latitude]
+            }
+          },
+          'address': {
+            'type': 'PostalAddress',
+            'value': {
+              'addressRegion': province,
+              'addressLocality': municipality,
+              'addressCountry': 'ES'
+            }
+          },
+          'source': {
+            'type': 'URL',
+            'value': 'http://www.tourspain.es'
+          },
+          'dataProvider': {
+            'value': 'FIWARE Foundation e.V.'
           }
-        },
-        'address': {
-          'type': 'PostalAddress',
-          'value': {
-            'addressRegion': province,
-            'addressLocality': municipality,
-            'addressCountry': 'ES'
-          }
-        },
-        'source': {
-          'type': 'URL',
-          'value': 'http://www.tourspain.es'
-        },
-        'dataProvider': {
-          'value': 'FIWARE Foundation e.V.'
         }
-      }
-      
-      poi_list.append(poi_entity)
-      
-      num_processed += 1
+        
+        poi_list.append(poi_entity)
+        
+        num_processed += 1
       
     index_poi_type += 1
 
