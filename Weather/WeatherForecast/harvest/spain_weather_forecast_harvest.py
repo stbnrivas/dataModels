@@ -41,7 +41,8 @@ postal_codes = {
   '38001': '38038',
   '35001': '35016',
   '29001': '29067',
-  '07001': '07024'
+  '07001': '07024',
+  '15001' : '15030'
 }
 
 localities = {
@@ -59,7 +60,8 @@ localities = {
   'Santa Cruz de Tenerife':     '38038',
   'Las Palmas de Gran Canaria': '35016',
   'Malaga':                     '29067',
-  'Formentera':                 '07024'
+  'Formentera':                 '07024',
+  u'Coruña, A':                 '15030'
 }
 
 # Statistics for tracking purposes
