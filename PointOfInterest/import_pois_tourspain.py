@@ -12,14 +12,15 @@ import urllib2
 import contextlib
 
 DEFAULT_SOURCE_FOLDER =       'INECO'
-BEACH_FOLDER =                '20170303_muestra_playas'
-MUSEUM_FOLDER =               '20170303_muestra_museos'
-TOURIST_INFO_FOLDER =         '20170303_muestra_oficina_turismo'
+BEACH_FOLDER =                '20170510_playas/playas'
+MUSEUM_FOLDER =               '20170510_museos/museos'
+TOURIST_INFO_FOLDER =         '20170510_oficinasturismo/oficina-turismo'
 
 folders = [BEACH_FOLDER, MUSEUM_FOLDER, TOURIST_INFO_FOLDER]
 
 categories_values = ['113', '311', '439']
 categories_names = ['Beach', 'Museum', 'TouristInformationCenter']
+cities_names = ['Barcelona', 'coruna_a', 'malaga', 'sevilla', 'valencia']
 
 description_nodes = ['TipoPlaya', 'TipoMuseo', 'TipoOficinaTurismo']
  
@@ -49,6 +50,7 @@ def transform_data(source_folder_param):
     source_folder = DEFAULT_SOURCE_FOLDER
   
   for folder in folders:
+    for city in cities: 
     folder = os.path.join(source_folder, folder)
     
     files = os.listdir(folder)
