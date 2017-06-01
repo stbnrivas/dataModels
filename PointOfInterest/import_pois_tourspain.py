@@ -20,7 +20,7 @@ folders = [BEACH_FOLDER, MUSEUM_FOLDER, TOURIST_INFO_FOLDER]
 
 categories_values = ['113', '311', '439']
 categories_names = ['Beach', 'Museum', 'TouristInformationCenter']
-cities_names = ['barcelona', 'coruna_a', 'malaga', 'sevilla', 'valencia']
+cities = ['barcelona', 'coruna_a', 'malaga', 'sevilla', 'valencia']
 
 description_nodes = ['TipoPlaya', 'TipoMuseo', 'TipoOficinaTurismo']
  
@@ -54,14 +54,17 @@ def transform_data(source_folder_param):
     pois[categories_names[index_poi_type]] = poi_list
     
     for city in cities: 
-      folder = os.path.join(source_folder, folder, city)
+      city_folder = os.path.join(source_folder, folder, city)
       
-      files = os.listdir(folder)
+      try:
+        files = os.listdir(city_folder)
+      except:
+        continue
       
       num_processed = 0
       
       for a_file in files:
-        full_file_path = os.path.join(folder, a_file)
+        full_file_path = os.path.join(city_folder, a_file)
         f = open(full_file_path, 'r')
         xml_data = f.read()
         f.close()
