@@ -2,8 +2,8 @@
 
 /* Sets up all the data needed for smart parking in Santander */
 
-const ORION_SERVER = 'http://130.206.83.68:1026/v1';
-const ORION_SERVER_V2 = 'http://130.206.83.68:1026/v2';
+const ORION_SERVER = 'http://localhost:1026/v1';
+const ORION_SERVER_V2 = 'http://localhost:1026/v2';
 
 const SANTANDER_SERVER = 'http://mu.tlmat.unican.es:8099/v1'
 
@@ -13,7 +13,9 @@ var Request = require('request');
 var Orion = require('fiware-orion-client'),
     OrionClient = new Orion.Client({
       url: ORION_SERVER,
-      userAgent: 'Test'
+      userAgent: 'Test',
+      service: 'Santander',
+      servicePath: 'parking'
     }),
     SantanderClient = new Orion.Client({
       url: SANTANDER_SERVER,
@@ -100,7 +102,9 @@ function createEntitiesV2(entityList) {
       url: '/op/update/',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Fiware-Service': 'santander',
+        'Fiware-Servicepath': '/parking'
       },
       body: {
         "actionType": "APPEND",
@@ -144,7 +148,7 @@ setupConfig().then(function(config) {
     
     var obj = {
       id:   'santander' + ':' + polygonId,
-      type: 'StreetParking',
+      type: 'OnStreetParking',
       allowedVehicles: {
         value: ['Car']
       },
