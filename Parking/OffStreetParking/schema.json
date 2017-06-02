@@ -138,6 +138,12 @@
 				"minItems": 1,
 				"uniqueItems": true
 			},
+			"priceRatePerMinute": {
+			       "type": "number"
+			},
+			"priceCurrency": {
+			       "type": "string"
+			},			
 			"layout": {
 				"type": "array",
 				"items": {
@@ -344,6 +350,12 @@
 			"provider": {
 				"type": "object"
 			},
+			"measuresPeriod": {
+				"type": "number"
+			},
+			"measuresPeriodUnit": {
+				"type": "string"
+			},			
 			"contactPoint": {
 				"type": "object"
 			},
