@@ -157,15 +157,14 @@ setupConfig().then(function(config) {
       }
     };
     
-    var coordinates = aFeature.geometry.coordinates[0];
-    var polygonCoords = [];
-    coordinates.forEach(function(aCoordinate) {
-      polygonCoords.push(aCoordinate[1] + ',' + aCoordinate[0]);
-    });
+    var coordinates = aFeature.geometry.coordinates;
     
     obj.location = {
-      value: polygonCoords,
-      type: 'geo:polygon'
+      value: {
+        type: 'Polygon',
+        coordinates: coordinates
+      },
+      type: 'geo:json'
     };
     entitiesToCreate.push(obj);
     
