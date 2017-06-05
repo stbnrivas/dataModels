@@ -58,12 +58,12 @@ pages:
       - 'StreetlightControlCabinet' : 'StreetLighting/StreetlightControlCabinet/doc/spec.md'
   - 'Transportation':
       - 'Introduction'           : 'Transportation/doc/introduction.md'
+      - 'BikeHireDockingStation' : 'Transportation/Bike/BikeHireDockingStation/doc/spec.md'
       - 'Road'                   : 'Transportation/Road/doc/spec.md'
       - 'RoadSegment'            : 'Transportation/RoadSegment/doc/spec.md'
       - 'TrafficFlowObserved'    : 'Transportation/TrafficFlowObserved/doc/spec.md'
       - 'Vehicle'                : 'Transportation/Vehicle/Vehicle/doc/spec.md'
       - 'VehicleModel'           : 'Transportation/Vehicle/VehicleModel/doc/spec.md'
-      - 'BikeHireDockingStation' : 'Transportation/Bike/BikeHireDockingStation/doc/spec.md'
   -  'Weather':
       - 'Introduction'         : 'Weather/doc/introduction.md'
       - 'WeatherObserved'      : 'Weather/WeatherObserved/doc/spec.md'
