@@ -62,7 +62,7 @@ pages:
       - 'RoadSegment'            : 'Transportation/RoadSegment/doc/spec.md'
       - 'TrafficFlowObserved'    : 'Transportation/TrafficFlowObserved/doc/spec.md'
       - 'Vehicle'                : 'Transportation/Vehicle/Vehicle/doc/spec.md'
-      - 'VehicleModel'           : 'Transportation/Vehicle/VehicleModel/doc/spec.md',
+      - 'VehicleModel'           : 'Transportation/Vehicle/VehicleModel/doc/spec.md'
       - 'BikeHireDockingStation' : 'Transportation/Bike/BikeHireDockingStation/doc/spec.md'
   -  'Weather':
       - 'Introduction'         : 'Weather/doc/introduction.md'
