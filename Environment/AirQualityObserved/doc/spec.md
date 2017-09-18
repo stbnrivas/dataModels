@@ -105,7 +105,7 @@ the structure of such an attribute will be as follows:
 
 + Attribute name: Equal to the name of the measurand plus the suffix `_Level`, for instance `CO_Level`.
 + Attribute type: [Text](https://schema.org/Text)
-+ Attribute value: one of (`good`, `moderate`, `unhealthyForSensitiveGroups`, `unhealthy`, `veryUnhealthy`, `hazardous`).
++ Attribute value: Example values defined by the USA EPA Agency:(`good`, `moderate`, `unhealthyForSensitiveGroups`, `unhealthy`, `veryUnhealthy`, `hazardous`).
   As this can be different between countries, regulations or implementations, the set of allowed values will depend on the reference specification used.
   It is recommended that implementations use the same naming conventions as exemplified above (lower case starting words, camel case when compound terms are used)
 + Attribute metadata:
