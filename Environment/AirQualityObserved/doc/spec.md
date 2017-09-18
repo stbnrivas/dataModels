@@ -37,6 +37,31 @@ A JSON Schema corresponding to this data model can be found [here](http://fiware
 + `source` : A sequence of characters giving the source of the entity data.
     + Attribute type: [Text](https://schema.org/Text) or [URL](https://schema.org/URL)
     + Optional
+    
++ `airQualityLevel` : Overall qualitative level of health concern corresponding to the air quality observed.
+    + Attribute type: [Text](https://schema.org/Text)
+    + Example values defined by the [USA EPA Agency](https://airnow.gov/index.cfm?action=aqibasics.aqi):
+  (`good`, `moderate`, `unhealthyForSensitiveGroups`, `unhealthy`, `veryUnhealthy`, `hazardous`).
+  As this can be different between countries, regulations or implementations, the set of allowed values will depend on the reference specification used.
+  It is recommended that implementations use the same naming conventions as exemplified above (lower case starting words, camel case when compound terms are used)
+    + Attribute metadata:
+        + `referenceSpecification` : Specification that must be taken as reference when interpreting the supplied qualitative value. 
+            + Type: [Text](https://schema.org/Text) or [URL](https://schema.org/URL)
+            + Mandatory
+    + Optional
+  
++ `airQualityIndex` : Air quality index corresponding to the air quality observed.
+    + Attribute type: [Number](https://schema.org/Number)
+    + Attribute metadata:
+        + `referenceSpecification` : Specification that must be taken as reference when interpreting or calculating the supplied air quality index.
+        + Type: [Text](https://schema.org/Text) or [URL](https://schema.org/URL
+        + Optional
+    + Optional
+  
++ `reliability` : Reliability (percentage, expressed in parts per one) corresponding to the air quality observed.
+    + Attribute type: [Number](https://schema.org/Number)
+    + Allowed values: Interval [0,1]
+    + Optional
 
 + `refDevice` : A reference to the device(s) which captured this observation.
     + Attribute type: Reference to an entity of type `Device`
@@ -48,34 +73,42 @@ A JSON Schema corresponding to this data model can be found [here](http://fiware
 
 ### Representing air pollutants
 
-The number of air pollutants represented can vary. As a result the model prescribes the following attributes to convey those parameters: 
-
-+ `measurand` : An array of strings containing details (see format below) about *each air quality measurand* observed.
-    + Attribute type: List of [Text](https://schema.org/Text).
-    + Allowed values: Each element of the array must be a string with the following format (comma separated list of values):
-`<measurand>, <observedValue>, <unitcode>, <description>`, where:
-        + `measurand` : corresponds to the chemical formula (or mnemonic) of the measurand, ex. CO.
-        + `observedValue` : corresponds to the value for the measurand as a number. 
-        + `unitCode` : The unit code (text) of measurement given using the
-        [UN/CEFACT Common Code](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) (max. 3 characters).
-        For instance, `GP` represents milligrams per cubic meter and `GQ` represents micrograms per cubic meter.
-        + `description` : short description of the measurand.
-        + Examples:
-    `"CO,500,GP,Carbon Monoxide"  "NO,45,GQ,Nitrogen Monoxide" "NO2,69,GQ,Nitrogen Dioxide" "NOx,139,GQ,Nitrogen oxides" "SO2,11,GQ,Sulfur Dioxide"`
-    + Mandatory
-
-+ In order to enable a proper management of the *historical evolution* of the concentrations of the different pollutants,
-*for each* element described by the `measurand` array list there *MAY* be an attribute which name *MUST* be exactly equal to the
-measurand name described on the `measurand` array. The structure of such an attribute will be as follows:
-    + Attribute name: Equal to the name of the measurand, for instance `CO`.
-    + Attribute type: [Number](https://schema.org/Number)
-    + Attribute value: Exactly equal (same unit of measurement) to the value provided in the `measurand` array. 
-    + Attribute metadata:
-        + `timestamp` : optional timestamp for the observed value in ISO8601 format.
+In order to enable a proper management of the the concentrations of the different pollutants,
+*for each* pollutant (measurand) there must be an attribute which name *MUST* be exactly equal the chemical formula (or mnemonic) of the measurand, ex. CO.
+The structure of such an attribute will be as follows:
++ Attribute name: Equal to the name of the measurand, for instance `CO`.
++ Attribute type: [Number](https://schema.org/Number)
++ Attribute value: corresponds to the value for the measurand as a number.
++ Attribute metadata:
+    + `timestamp` : optional timestamp for the observed value in ISO8601 format.
         It can be ommitted if the observation time is the same as the one captured by the `dateObserved` attribute at entity level.
-            + Type: [DateTime](https://schema.org/DateTime)
+        + Type: [DateTime](https://schema.org/DateTime)
+    + `unitCode` : The unit code (text) of measurement given using the
+      [UN/CEFACT Common Code](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) (max. 3 characters).
+      For instance, `GP` represents milligrams per cubic meter and `GQ` represents micrograms per cubic meter.
+        + Type: [Text](https://schema.org/Text)
+        + Mandatory
+    + `description` : short description of the measurand
+        + Type: [Text](https://schema.org/Text)
+        + Optional
 
-    
+### Representing qualitative levels of the different air pollutants
+
+In order to enable a proper management of the qualitative levels of the different pollutants,
+*for each* pollutant (measurand) there might be an attribute which name *MUST* be exactly equal to the concatenation of the
+chemical formula (or mnemonic) of the measurand with the string `_Level`, ex. `CO_Level`. To be more precise, 
+the structure of such an attribute will be as follows:
+  + Attribute name: Equal to the name of the measurand plus the suffix `_Level`, for instance `CO_Level`.
+  + Attribute type: [Text](https://schema.org/Text)
+  + Attribute value: one of (`good`, `moderate`, `unhealthyForSensitiveGroups`, `unhealthy`, `veryUnhealthy`, `hazardous`).
+  + Attribute metadata:
+    + `description` : short description of the measurand and its related qualitative level
+      + Type: [Text](https://schema.org/Text)
+      + Optional
+    + `referenceSpecification` : Specification that must be taken as reference when interpreting the supplied qualitative value. 
+      + Type: [Text](https://schema.org/Text) or [URL](https://schema.org/URL)
+      + Mandatory
+
 ### Representing airquality-related weather conditions
 
 Certain weather conditions have an influence over the observed air quality. There are two options for representing them:
@@ -111,18 +144,15 @@ Below is the description of the attribute to be used for option A/.
       "temperature": 12.2,
       "windDirection": 186,
       "windSpeed": 0.64,
-      "measurand": [
-         "CO, 500, GP, Carbon Monoxide",
-         "NO, 45, GQ, Nitrogen Monoxide",
-         "NO2, 69, GQ, Nitrogen Dioxide",
-         "NOx, 139, GQ, Nitrogen oxides",
-         "SO2, 11, GQ, Sulfur Dioxide"
-      ],
+      "airQualityLevel": "moderate",
+      "reliability": 0.9,
       "CO": 500,
       "NO": 45,
       "NO2": 69,
       "NOx": 139,
       "SO2": 11,
+      "CO_Level": "good",
+      "NO_Level": "moderate",
       "refPointOfInterest": "28079004-Pza. de España"
     }
     
@@ -137,7 +167,3 @@ What was the air quality observed today at noon UTC at the "Plaza de España" (M
 ```curl -S -H 'fiware-service:airquality' -H 'fiware-servicepath:/Spain_Madrid' -H 'x-auth-token:<my_token>'
 "http://130.206.118.244:1027/v2/entities?options=keyValues
 &q=dateObserved:2016-11-28T12:00;stationCode:'28079004'"```
-
-## Open Issues
-
-* Should `measurand` be an `StructuredValue` instead of an array? 
