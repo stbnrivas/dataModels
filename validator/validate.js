@@ -175,6 +175,13 @@ var dive = function(basePath, schemas) {
         schema.validateExamples(fullPath, validate);
       }
 
+      if (path.basename(basePath) != 'dataModels' &&
+          checks.fileExists(fullPath, '^example(-\\d+)?\\.json') &&
+          conf.nconf.get('dmv:contextBroker')) {
+        debug('*dive* check example support');
+        checks.exampleSupported(fullPath);
+      }
+
       //dive in again if recursion is enabled
       var files = fs.readdirSync(basePath);
 
@@ -223,6 +230,8 @@ console.log('*** ValidSchemas ***: ' +
   JSON.stringify(msg.validSchemas, null, '\t'));
 console.log('*** ValidExamples ***: ' +
   JSON.stringify(msg.validExamples, null, '\t'));
+console.log('*** SupportedExamples ***: ' +
+  JSON.stringify(msg.supportedExamples, null, '\t'));
 console.log('*** Warnings ***: ' +
   JSON.stringify(msg.warnings, null, '\t'));
 console.log('*** Errors ***: ' +

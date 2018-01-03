@@ -5,6 +5,7 @@ FIWARE Data Model validator is an utility to help the management of NGSI DataMod
 The FIWARE Data Model validator perform the following checks for each Data Model:
 * validity of JSON Schema
 * validity of JSON Examples
+* support of JSON Examples in Orion Context Broker
 * adherence of Data Model name to FIWARE Data Models guidelines
 * existence of Doc folder
 * existence of JSON Schema
@@ -35,6 +36,8 @@ Command line available options are:
   * `ignore` -  do nothing and do not print warnings.
   * `fail` - print warnings, and fails.         
 * ``-p, --dmv:path``. The path of FIWARE Data Model(s) to be validated (if recursion enabled, it will be the starting point of recursion)
+* ``-c, --dmv:contextBroker``. Enable example testing with Orion Context Broker
+* ``-u, --dmv:contextBrokerUrl``. Orion Context Broker URL for Example testing
 * ``-v, --version``. Print the validator version
 * ``-h, --help``. Print the help message
 
@@ -66,6 +69,8 @@ Options available are:
 * `dmv:loadModelCommonSchemas`: automatically include any file named ``*-schema.json`` in data path.
 * `dmv:ignoreFolders`: The list of folder names that should be ignored. Default value: `['harvest','auxiliary']`
 * `dmv:docFolders`: The list of folder names that are expected to contain Documentation: Default value: `['doc']`
+* `dmv:contextBroker`: Enable JSON example testing with Orion Context Broker. Default value: `false`
+* `dmv:contextBrokerUrl`: The URL for the Orion Context Broker for JSON example testing. Default value: `http://localhost:1026/v2`
 * `ajv:missingRefs`: handling of missing referenced schemas. See [ajv](https://github.com/epoberezkin/ajv) for more details. Option values:
   * `true (default)` - if the reference cannot be resolved during compilation the exception is thrown. The thrown error has properties missingRef (with hash fragment) and missingSchema (without it). Both properties are resolved relative to the current base id (usually schema id, unless it was substituted).
   * `ignore` - to log error during compilation and always pass validation.
@@ -77,6 +82,6 @@ Options available are:
 * `ajv:allErrors`: when `true` check all rules collecting all errors, when `false` return after the first error. See [ajv](https://github.com/epoberezkin/ajv) for more details. Default value: `true`
 
 ## Compiling the validator
-Should you want to change the code of the validator, to install your modified version, you  simple need compile it with the following command:
+Should you want to change the code of the validator, to install your modified version, you simply need to compile it with the following command:
 
 ``npm install -g``
