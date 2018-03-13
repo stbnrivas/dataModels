@@ -8,7 +8,7 @@ features and availability of bikes and free slots.
 ## Data Model
 
 
-A JSON Schema corresponding to this data model can be found [here](http://fiware.github.io/dataModels/Transportation/BikeHire/schema.json).
+A JSON Schema corresponding to this data model can be found [here](https://fiware.github.io/dataModels/Transportation/Bike/BikeHireDockingStation/schema.json).
 
 +   `id` : Unique identifier.
 
@@ -32,7 +32,7 @@ A JSON Schema corresponding to this data model can be found [here](http://fiware
     (Multi)Polygon or Point.
     +   Attribute type: `geo:json`.
     +   Normative References: [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
-    +   Mandatory.
+    +   Mandatory if `address` is not defined.
 
 +   `address` : Registered docking station site civic address.
     +   Normative References: [https://schema.org/address](https://schema.org/address)
