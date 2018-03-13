@@ -98,7 +98,7 @@ A JSON Schema corresponding to this data model can be found [here](https://fiwar
         +   `timestamp` : Timestamp of the last attribute update.
         +   Type: [DateTime](https://schema.org/DateTime)
     +   Allowed values:
-        +   (`working`, `outOfService`, `withIncidence`, `full`, `almostFull`)
+        +   (`working`, `outOfService`, `withIncidence`, `full`, `almostFull`, `empty`, `almostEmpty`)
         +   Or any other application+specific.
     +   Optional
 

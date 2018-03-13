@@ -46,7 +46,9 @@
 						"outOfService",
 						"withIncidence",
 						"full",
-						"almostFull"
+						"almostFull",
+						"empty",
+						"almostEmpty"
 					]
 				},
 				"owner": {
