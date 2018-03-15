@@ -222,7 +222,7 @@ def get_weather_forecasted():
                             'type': 'URL'
                         }
                         f['dataProvider'] = {
-                            'value': 'TEF'
+                            'value': 'FIWARE'
                         }
                         counter += 1
                         out[postal_code].append(f)

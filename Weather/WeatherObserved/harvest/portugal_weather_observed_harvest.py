@@ -109,7 +109,7 @@ def get_weather_observed_portugal():
                     'type': 'URL'
                 }
                 observation['dataProvider'] = {
-                    'value': 'TEF'
+                    'value': 'FIWARE'
                 }
                 observation['location'] = {
                     'value': station_data[station_code]['location'],

@@ -207,6 +207,10 @@ def get_weather_forecasted_pt(locality):
             'type': 'URL',
             'value': 'https://www.ipma.pt'
         }
+        
+        obj['dataProvider'] = {
+            'value': 'FIWARE'
+        }
 
         out.append(obj)
 

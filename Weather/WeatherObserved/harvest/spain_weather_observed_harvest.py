@@ -192,7 +192,7 @@ def get_weather_observed_spain():
                 'type': 'URL'
             }
             observation['dataProvider'] = {
-                'value': 'TEF'
+                'value': 'FIWARE'
             }
             observation['address'] = {
                 'value': {
