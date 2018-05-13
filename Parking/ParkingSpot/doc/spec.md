@@ -58,7 +58,7 @@ to keep backwards compatibility with current FIWARE reference implementations.
     + Optional
 
 + `length` : Length of the parking spot.
-    + Attribute type: [DateTime](https://schema.org/Number)
+    + Attribute type: [Number](https://schema.org/Number)
     + Optional
 
 + `refParkingGroup` : Group to which the parking spot belongs to. For model simplification purposes
