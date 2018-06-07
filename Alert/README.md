@@ -29,7 +29,7 @@ mode (`options=keyValues`).
       40.423852777777775
     ]
   },
-  "dateObserved": "2017-01-02T09:25:55.00Z",
+  "dateIssued": "2017-01-02T09:25:55.00Z",
   "description": "The road is completely blocked for 3kms",
   "alertSource": "https://account.lab.fiware.org/users/8"
 }

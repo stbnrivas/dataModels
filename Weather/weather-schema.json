@@ -4,6 +4,30 @@
   "title": "GSMA / FIWARE - Weather base schema",
   "description": "Common definitions of weather data models",
   "definitions": {
+    "WeatherAlertCategories": {
+      "enum": [
+            "rainfall",
+            "highTemperature",
+            "lowTemperature",
+            "heatWave",
+            "coldWave",
+            "ice",
+            "snow",
+            "wind",
+            "fog",
+            "flood",
+            "tsunami",
+            "tornado",
+            "tropicalCyclone",
+            "hurricane",
+            "snow/ice",
+            "thunderstorms",
+            "coastalEvent",
+            "forestFire",
+            "avalanches",
+            "rain/flood"
+      ]
+    },
     "Weather-AirConditions": {
       "type": "object",
       "properties": {

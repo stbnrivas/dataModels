@@ -37,10 +37,11 @@ found [here](../schema.json).
     + Allowed values:
         + (`trafficJam`, `carAccident`, `carWrongDirection`, `carStopped`,
           `pothole`, `roadClosed`, `roadWorks`, `hazardOnRoad`, `injuredBiker`)
-          (for `traffic` category)
-        + (`rainfall`, `highTemperature`, `lowTemperature`, `heatWave`, `ice`,
+          (for `traffic` category) 
+        + (`rainfall`, `highTemperature`, `lowTemperature`, `heatWave`, `coldWave`, `ice`,
           `snow`, `wind`, `fog`, `flood`, `tsunami`, `tornado`, `tropicalCyclone`,
-          `hurricane` ) (for `weather` category)
+          `hurricane`, `snow/ice`, `thunderstorms`, `coastalEvent`, `forestFire`,
+          `avalanches`, `rain/flood`) (for `weather` category)
         + (`airPollution`, `waterPollution`, `pollenConcentration`)
           (for `environment` category)
         + (`asthmaAttack`, `bumpedPatient`, `fallenPatient`, `heartAttack` )
@@ -57,7 +58,7 @@ found [here](../schema.json).
     + Attribute type: [Address](https://schema.org/address)
     + Mandatory if `location` is not present.
 
-+ `dateObserved` : The date and time the observation of the alert
++ `dateIssued` : The date and time the alert was issued by the alert generator
   in ISO8601 UTC format.
     + Attribute type: [DateTime](https://schema.org/DateTime).
     + Normative References: [ISO8601](https://www.iso.org/standard/40874.html)
@@ -115,7 +116,7 @@ mode (`options=keyValues`).
         40.423852777777775
       ]
   },
-  "dateObserved": "2017-01-02T09:25:55.00Z",
+  "dateIssued": "2017-01-02T09:25:55.00Z",
   "description": "The road is completely blocked for 3kms",
   "alertSource": "https://account.lab.fiware.org/users/8"
 }
@@ -136,7 +137,7 @@ mode (`options=keyValues`).
       40.423852777777775
     ]
   },
-  "dateObserved": "2017-04-25T09:25:55.00Z",
+  "dateIssued": "2017-04-25T09:25:55.00Z",
   "description": "Potential robbery in main building",
   "alertSource": "Camera1234",
   "data": {

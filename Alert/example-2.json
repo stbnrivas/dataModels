@@ -7,7 +7,7 @@
      "type": "Point",
      "coordinates": [-3.712247222222222, 40.423852777777775]
   },
-  "dateObserved": "2017-04-25T09:25:55.00Z",
+  "dateIssued": "2017-04-25T09:25:55.00Z",
   "description": "Potential robbery in main building",
   "alertSource": "Camera1234",
   "data": {
