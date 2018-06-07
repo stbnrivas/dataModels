@@ -11,7 +11,7 @@ extra_css: ["https://fiware.org/style/fiware_readthedocs.css"]
 pages:
   - 'Home': index.md
   - 'Guidelines'  : guidelines.md
-  - 'Alerts'
+  - 'Alerts':
       - 'Alert'                        : 'Alert/doc/spec.md'
   - 'Building':
       - 'Introduction'                 : 'Building/doc/introduction.md'
