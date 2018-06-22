@@ -15,3 +15,5 @@
  + [gtfs:AccessPoint](./AccessPoint/doc/spec.md)
  + [gtfs:Route](./Route/doc/spec.md)
  + [gtfs:Trip](./Trip/doc/spec.md)
+ + [gtfs:StopTime](./StopTime/doc/spec.md)
+ 
