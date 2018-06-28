@@ -85,7 +85,7 @@ See [https://developers.google.com/transit/gtfs/reference/#routestxt](https://de
 | `route_type`            | `routeType`           | `gtfs:routeType`    |                                                            |
 | `route_desc`            | `description`         | `dct:description`   |                                                            |
 | `route_url`             | `page`                | `foaf:page`         |                                                            |
-| `route_color`           | `routeColor`          | `gtfs:color`        | Agency's [address](https://schema.org/address). Schema.org |
+| `route_color`           | `routeColor`          | `gtfs:color`        |                                                            |
 | `route_text_color`      | `routeTextColor`      | `gtfs:textColor`    |                                                            |
 | `route_sort_order`      | `routeSortOrder`      |                     |                                                            |
 
