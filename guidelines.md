@@ -1,6 +1,6 @@
 # Data models guidelines
 
-This is a set of guidelines for defining new data models. Further information and a guideline update can be found at [D2.2 Synhronicity IOT LSP](https://synchronicity-iot.eu/wp-content/uploads/2018/05/synchronicity_d2_2_guidelines_for_the_definition_of_oasc_shared_data_models.pdf)
+This is a set of guidelines for defining new data models. Further information and a guideline update can be found at [D2.2 Synhronicity IoT LSP](https://synchronicity-iot.eu/wp-content/uploads/2018/05/synchronicity_d2_2_guidelines_for_the_definition_of_oasc_shared_data_models.pdf)
 
 ## Syntax
 
