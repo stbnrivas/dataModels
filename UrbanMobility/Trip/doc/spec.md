@@ -20,7 +20,7 @@ See [https://developers.google.com/transit/gtfs/reference/#tripstxt](https://dev
   + Attribute type: [DateTime](https://schema.org/DateTime)
   + Read-Only. Automatically generated.
   
- + `headSign`: Same as GTFS `trip_headsign`.
++ `headSign`: Same as GTFS `trip_headsign`.
   + Attribute type: Property. [Text](https://schema.org/Text).
   + Optional 
   
