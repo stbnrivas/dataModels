@@ -19,4 +19,6 @@
  + [gtfs:Service](./Service/doc/spec.md)
  + [gtfs:CalendarRule](./CalendarRule/doc/spec.md)
  + [gtfs:CalendarDateRule](./CalendarDateRule/doc/spec.md)
+ + [gtfs:Frequency](./Frequency/doc/spec.md)
+ + [gtfs:TransferRule](./TransferRule/doc/spec.md)
  
