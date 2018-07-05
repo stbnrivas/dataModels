@@ -69,6 +69,20 @@ pages:
       - TrafficFlowObserved    : Transportation/TrafficFlowObserved/doc/spec.md
       - Vehicle                : Transportation/Vehicle/Vehicle/doc/spec.md
       - VehicleModel           : Transportation/Vehicle/VehicleModel/doc/spec.md
+  - UrbanMobility:
+      - Introduction           : UrbanMobility/doc/introduction.md
+      - gtfs:Agency            : UrbanMobility/Agency/doc/spec.md
+      - gtfs:Stop              : UrbanMobility/Stop/doc/spec.md
+      - gtfs:Station           : UrbanMobility/Station/doc/spec.md
+      - gtfs:AccessPoint       : UrbanMobility/AccessPoint/doc/spec.md
+      - gtfs:Route             : UrbanMobility/Route/doc/spec.md
+      - gtfs:Trip              : UrbanMobility/Trip/doc/spec.md
+      - gtfs:StopTime          : UrbanMobility/StopTime/doc/spec.md
+      - gtfs:Service           : UrbanMobility/Service/doc/spec.md
+      - gtfs:CalendarRule      : UrbanMobility/CalendarRule/doc/spec.md
+      - gtfs:CalendarDateRule  : UrbanMobility/CalendarDateRule/doc/spec.md
+      - gtfs:Frequency         : UrbanMobility/Frequency/doc/spec.md
+      - gtfs:TransferRule      : UrbanMobility/TransferRule/doc/spec.md
   -  Weather:
       - Introduction         : Weather/doc/introduction.md
       - WeatherObserved      : Weather/WeatherObserved/doc/spec.md
