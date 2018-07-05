@@ -47,7 +47,7 @@ mode (`options=keyValues`).
 Contributions should come in the form of pull requests. 
 
 New data models should be added under a folder structured as follows:
-- `docs/`
+- `specs/`
   - `NewModel/`
     - `doc/`
       - `spec.md`: A data model description based on the [data model template](datamodel_template.md), e.g. [spec.md of WeatherObserved](Weather/WeatherObserved/doc/spec.md).
