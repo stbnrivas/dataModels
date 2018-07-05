@@ -50,10 +50,10 @@ New data models should be added under a folder structured as follows:
 - `specs/`
   - `NewModel/`
     - `doc/`
-      - `spec.md`: A data model description based on the [data model template](datamodel_template.md), e.g. [spec.md of WeatherObserved](Weather/WeatherObserved/doc/spec.md).
-    - `README.md`: A summary file (as an extract from the spec file), e.g. [README.md of WeatherObserved](Weather/WeatherObserved/README.md)
+      - `spec.md`: A data model description based on the [data model template](datamodel_template.md), e.g. [spec.md of WeatherObserved](specs/Weather/WeatherObserved/doc/spec.md).
+    - `README.md`: A summary file (as an extract from the spec file), e.g. [README.md of WeatherObserved](specs/Weather/WeatherObserved/README.md)
     - `schema.json`: The JSON Schema definition, e.g. [schema.json of WeatherObserved](Weather/WeatherObserved/schema.json)
-    - `example.json`: One or more JSON example file, e.g. [example.json of WeatherObserved](Weather/WeatherObserved/example.json)
+    - `example.json`: One or more JSON example file, e.g. [example.json of WeatherObserved](specs/Weather/WeatherObserved/example.json)
 
 The name of the folder should match the entity type used in the JSON Schema (e.g. `NewModel`). For data models including more entities, a hierarchical folder should be used. The father folder can include common JSON schemas shared among the entities. e.g.:
 
@@ -76,7 +76,7 @@ The name of the folder should match the entity type used in the JSON Schema (e.g
       - `schema.json`
       - `example.json`
 
-To facilitate contributions and their validation, we developed a tool that is also used for the Continuous Integration of FIWARE Data Models. The FIWARE IWARE Data Model validator checks the adherence of each data model to the [FIWARE Data Models guidelines](guidelines.md).
+To facilitate contributions and their validation, we developed a tool that is also used for the Continuous Integration of FIWARE Data Models. The FIWARE IWARE Data Model validator checks the adherence of each data model to the [FIWARE Data Models guidelines](specs/guidelines.md).
 
 For using it just install it through npm: 
 
