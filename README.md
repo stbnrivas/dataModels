@@ -7,7 +7,7 @@
 [![Support badge](https://img.shields.io/badge/support-askbot-yellowgreen.svg)](http://ask.fiware.org)
 
 This repository contains: 
-* [JSON Schemas and documentation](./specs) on harmonized datamodels for smart cities, developed jointly with [OASC](http://oascities.org), and other domains. 
+* [JSON Schemas and documentation](./specs/README.md) on harmonized datamodels for smart cities, developed jointly with [OASC](http://oascities.org), and other domains. 
 * code that allows to expose different harmonized datasets useful for different applications.
 Such datasets are exposed through the [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API (query).
 
