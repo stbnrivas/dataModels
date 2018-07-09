@@ -9,7 +9,7 @@
 This repository contains: 
 * code that allows to expose different harmonized datasets useful for different applications.
 Such datasets are exposed through the [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API (query).
-* JSON Schemas and documentation on harmonized datamodels for smart cities, developed jointly with [OASC](http://oascities.org), and other domains. 
+* [JSON Schemas and documentation](./specs) on harmonized datamodels for smart cities, developed jointly with [OASC](http://oascities.org), and other domains. 
 
 This work is aligned with the results of the
 [GSMA IoT Big Data](http://www.gsma.com/connectedliving/iot-big-data/) Project.
