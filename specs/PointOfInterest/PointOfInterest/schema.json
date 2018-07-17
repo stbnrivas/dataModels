@@ -23,6 +23,9 @@
           },
           "minItems": 1
         },
+        "contactPoint": {
+          "type": "object"
+        },
         "refSeeAlso": {
           "type": "array",
           "items": {

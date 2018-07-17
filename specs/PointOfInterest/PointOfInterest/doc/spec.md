@@ -54,6 +54,10 @@ A JSON Schema corresponding to this data model can be found [here](http://fiware
     For instance the value `113` corresponds to beaches, and the value `311` corresponds to museums. 
     + Mandatory
     
++ `contactPoint` :  Contact point of this point of interest.
+    + Normative references: [https://schema.org/contactPoint](https://schema.org/contactPoint)
+    + Optional    
+    
 + `refSeeAlso` : Reference to one or more related entities that may provide extra,
 specific information about this point of interest.
     + Attribute type: List of References
