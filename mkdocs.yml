@@ -51,8 +51,6 @@ pages:
       - PointOfInterest      : PointOfInterest/PointOfInterest/doc/spec.md
       - Beach                : PointOfInterest/Beach/doc/spec.md
       - Museum               : PointOfInterest/Museum/doc/spec.md
-      - WeatherStation       : PointOfInterest/WeatherStation/doc/spec.md
-      - AirQualityStation    : PointOfInterest/AirQualityStation/doc/spec.md
   -  Point Of Interacion:
       - SmartPointOfInteraction : PointOfInteraction/SmartPointOfInteraction/doc/spec.md
       - SmartSpot               : PointOfInteraction/SmartSpot/doc/spec.md
@@ -70,6 +68,7 @@ pages:
       - TrafficFlowObserved    : Transportation/TrafficFlowObserved/doc/spec.md
       - Vehicle                : Transportation/Vehicle/Vehicle/doc/spec.md
       - VehicleModel           : Transportation/Vehicle/VehicleModel/doc/spec.md
+      - EVChargingStation      : Transportation/EVChargingStation/doc/spec.md
   - UrbanMobility:
       - Introduction           : UrbanMobility/doc/introduction.md
       - gtfs:Agency            : UrbanMobility/Agency/doc/spec.md
