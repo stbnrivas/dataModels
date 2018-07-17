@@ -12,7 +12,7 @@
  Whenever possible the NGSI attributes map directly to GTFS fields. Nonethless for some Entity Types extra attributes are suggested in order
  to better support the data model using the NGSI information model. 
  
- ## General rules
+## General rules
  
  Entity Attributes (Properties or Relationships) are subject to the restrictions defined by the
  [GTFS specification](https://developers.google.com/transit/gtfs/reference/#term-definitions)
