@@ -149,30 +149,29 @@ mode (`options=keyValues`).
 ## Examples of use
 
 ```json
-	{
-	   "id": "urn:ngsi-ld:EVChargingStation:ValladolI+D_Covaresa",
-	   "type": "EVChargingStation",
-	   "name": "Agencia de Innovación",
-	   "location": {
-		   "coordinates": [-4.747901, 41.618265],
-		   "type": "Point"
-	   },
-	   "capacity": 2,
-     "socketType": ["Wall_Euro"],
-	   "address": {
-		   "streetAddress": "Paseo de Zorrilla, 191",
-		   "addressLocality": "Valladolid",
-		   "addressCountry": "España"
-	   },
-	   "contactPoint": {
-       "email": "vehiculoelectrico@ava.es"
-     },
-     "owner": "Ayuntamiento de Valladolid",
-     "operator": "Iberdrola",
-     "allowedVehicleType": ["car"],
-     "chargeType": ["free"],
-     "source": "https://openchargemap.org/"
-	}
+{
+   "id": "urn:ngsi-ld:EVChargingStation:ValladolI+D_Covaresa",
+   "type": "EVChargingStation",
+   "name": "Agencia de Innovación",
+   "location": {
+     "coordinates": [-4.747901, 41.618265],
+     "type": "Point"
+   },
+   "capacity": 2,
+   "socketType": ["Wall_Euro"],
+   "address": {
+     "streetAddress": "Paseo de Zorrilla, 191",
+     "addressLocality": "Valladolid",
+     "addressCountry": "España"
+   },
+   "contactPoint": {
+     "email": "vehiculoelectrico@ava.es"
+   },
+   "operator": "Iberdrola",
+   "allowedVehicleType": ["car"],
+   "chargeType": ["free"],
+   "source": "https://openchargemap.org/"
+}
 ```
 
 ## Use it with a real service
