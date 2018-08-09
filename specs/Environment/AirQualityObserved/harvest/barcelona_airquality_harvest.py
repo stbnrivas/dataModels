@@ -215,7 +215,6 @@ def get_air_quality_barcelona(target_stations):
             if a_station not in stations_to_retrieve_data:
                 continue
         data_for_station = entity_data[a_station]
-        print(len(data_for_station))
         if len(data_for_station):
             last_measurement = data_for_station[-1]
             last_measurement['id'] = 'Barcelona-AirQualityObserved' + \
