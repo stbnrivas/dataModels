@@ -22,7 +22,7 @@ A vehicle.
 This is different than the vehicle category (see below).
     + Attribute type: [Text](https://schema.org/Text)
     + Allowed Values: The following values defined by *VehicleTypeEnum* and *VehicleTypeEnum2*,
-    [DATEX 2 version 2.3](http://www.datex2.eu/sites/www.datex2.eu/files/DATEXIISchema_2_2_2_1.zip):
+    [DATEX 2 version 2.3](http://d2docs.ndwcloud.nu/_static/umlmodel/v2.3/index.htm):
         + (`agriculturalVehicle`, `bicycle`, `bus`, `minibus`, `car`, `caravan`, `tram`, `tanker`,
            `carWithCaravan`, `carWithTrailer`, `lorry`, `moped`, `tanker`,
            `motorcycle`, `motorcycleWithSideCar`, `motorscooter`, `trailer`, `van`, `caravan`, `constructionOrMaintenanceVehicle`)
