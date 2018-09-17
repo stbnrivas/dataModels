@@ -1,0 +1,19 @@
+{
+  "id": "urn:ngsi-ld:CrowdFlowObserved:Valladolid_1",
+  "type": "CrowdFlowObserved",
+  "dateObserved": "2018-08-07T11:10:00/2018-08-07T11:15:00",
+  "dateObservedFrom": "2018-08-07T11:10:00Z",
+  "dateObservedTo": "2018-08-07T11:15:00Z",
+  "peopleCount": 100,
+  "averageHeadwayTime": 5,
+  "congested": false,
+  "direction": "inbound",
+  "location": {
+    "type": "Polygon",
+    "coordinates": [
+        [   
+            [0, 0], [10, 10], [10, 0], [0, 0]
+        ]
+    ]
+  }
+}
