@@ -89,29 +89,7 @@ which will capture the associated weather conditions.
 a [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API implementation, you need to use the `keyValues`
 mode (`options=keyValues`).
 
-## Examples of use
-
-```json
-{
-        "id": "Vitoria-NoiseLevelObserved-2016-12-28T11:00:00_2016-12-28T12:00:00",
-        "type": "NoiseLevelObserved",
-        "LAS": 91.6,
-        "LAeq": 67.8,
-        "LAeq_d": 65.4,
-        "LAmax": 94.5,
-        "dateObservedFrom": "2016-12-28T11:00:00.00Z",
-        "dateObservedTo": "2016-12-28T12:00:00.00Z",
-        "location": {
-            "type": "Point",
-            "coordinates": [
-                -2.698,
-                42.8491
-            ]
-        }
-}
-```
-
-(In NGSIv2 normalized format)
+## Examples of use 1 (Normalized Format)
 
 ```json
     {
@@ -166,6 +144,29 @@ mode (`options=keyValues`).
       }
     }
 ```
+
+## Examples of use 2 (?options=keyValues simplified representation for data consumers)
+
+```json
+{
+        "id": "Vitoria-NoiseLevelObserved-2016-12-28T11:00:00_2016-12-28T12:00:00",
+        "type": "NoiseLevelObserved",
+        "LAS": 91.6,
+        "LAeq": 67.8,
+        "LAeq_d": 65.4,
+        "LAmax": 94.5,
+        "dateObservedFrom": "2016-12-28T11:00:00.00Z",
+        "dateObservedTo": "2016-12-28T12:00:00.00Z",
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                -2.698,
+                42.8491
+            ]
+        }
+}
+```
+
 
 ## Open Issues
 

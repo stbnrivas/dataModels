@@ -197,7 +197,74 @@ responsible, district, neighbourhood, etc.
 a [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API implementation, you need to use the `keyValues`
 mode (`options=keyValues`).
 
-## Example
+## Examples of use 1 (Normalized Format)
+
+```json
+{
+    "id": "vehicle:WasteManagement:1",
+    "type": "Vehicle", 
+    "category": {
+        "value": [
+            "municipalServices"
+        ]
+    }, 
+    "vehicleType": {
+        "value": "lorry"
+    }, 
+    "name": {
+        "value": "C Recogida 1"
+    }, 
+    "vehiclePlateIdentifier": {
+        "value": "3456ABC"
+    }, 
+    "refVehicleModel": {
+        "type": "Relationship", 
+        "value": "vehiclemodel:econic"
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "Point", 
+            "coordinates": [
+                -3.164485591715449, 
+                40.62785133667262
+            ]
+        },
+        "metadata": {
+            "timestamp": {
+                "type": "DateTime",
+                "value": "2018-09-27T12:00:00"
+            }
+        }
+    }, 
+    "areaServed": {
+        "value": "Centro"
+    }, 
+    "serviceStatus": {
+        "value": "onRoute"
+    }, 
+    "cargoWeight": {
+        "value": 314
+    }, 
+    "speed": {
+        "value": 50,
+        "metadata": {
+            "timestamp": {
+                "type": "DateTime",
+                "value": "2018-09-27T12:00:00"
+            }
+        }
+    },  
+    "serviceProvided": {
+        "value": [
+            "garbageCollection", 
+            "wasteContainerCleaning"
+        ]
+    }
+}
+```
+
+## Examples of use 2 (?options=keyValues simplified representation for data consumers)
 
     {
       "id": "vehicle:WasteManagement:1",
@@ -211,12 +278,12 @@ mode (`options=keyValues`).
       "name": "C Recogida 1",
       "speed": 50,
       "cargoWeight": 314,
-      "serviceStatus": "onRoute, garbageCollection",
-      "serviceProvided": ["gargabeCollection", "wasteContainerCleaning"],
+      "serviceStatus": "onRoute",
+      "serviceProvided": ["garbageCollection", "wasteContainerCleaning"],
       "areaServed": "Centro",
       "refVehicleModel": "vehiclemodel:econic",
       "vehiclePlateIdentifier": "3456ABC"
-    }
+}
     
 ## Test it with a real service
 
@@ -225,4 +292,4 @@ T.B.D.
 ## Issues
 
 * Taxonomy of service types
-* What vehicle special usage categories are defined by the different countries? 
+* Vehicle special usage categories as defined by different countries have not been clarified

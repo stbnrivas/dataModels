@@ -61,7 +61,55 @@ The coordinates shall be obtained from the `shapes.txt` feed file as per the val
     + Optional
 
 
-### Example
+### Example 1 (Normalized Format)
+
+```json
+{
+    "id": "urn:ngsi-ld:gtfs:Trip:Spain:Malaga:1",
+    "type": "gtfs:Trip", 
+    "direction": {
+        "value": 0
+    }, 
+    "headSign": {
+        "value": "San Andr\u00e9s"
+    }, 
+    "hasRoute": {
+        "type": "Relationship", 
+        "value": "urn:ngsi-ld:gtfs:Route:Spain:Malaga:1"
+    }, 
+    "hasService": {
+        "type": "Relationship", 
+        "value": "urn:ngsi-ld:gtfs:Service:Malaga_LAB"
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "LineString", 
+            "coordinates": [
+                [
+                    -4.421394, 
+                    36.73826
+                ], 
+                [
+                    -4.421428, 
+                    36.73825
+                ], 
+                [
+                    -4.421505, 
+                    36.738186
+                ], 
+                [
+                    -4.421525, 
+                    36.738033
+                ]
+            ]
+        }
+    }
+}
+```
+
+### Example 2 (?options=keyValues simplified representation for data consumers)
+
 
 ```json
 {

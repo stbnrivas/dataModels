@@ -124,7 +124,50 @@ A JSON Schema corresponding to this data model can be found [here](https://fiwar
 a [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API implementation, you need to use the `keyValues`
 mode (`options=keyValues`).
 
-## Examples of use
+## Examples of use 1 (Normalized Format)    
+
+```json
+{
+    "id": "Bcn-BikeHireDockingStation-1",
+    "type": "BikeHireDockingStation", 
+    "status": {
+        "value": "working"
+    }, 
+    "availableBikeNumber": {
+        "value": 20,
+        "metadata": {
+            "timestamp": {
+                "type": "DateTime",
+                "value": "2018-09-25T12:00:00"
+            }
+        }
+    }, 
+    "freeSlotNumber": {
+        "value": 10
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "Point", 
+            "coordinates": [
+                2.180042, 
+                41.397952
+            ]
+        }
+    }, 
+    "address": {
+        "type": "PostalAddress", 
+        "value": {
+            "addressCountry": "ES", 
+            "addressLocality": "Barcelona", 
+            "streetAddress": "Gran Via Corts Catalanes,760"
+        }
+    }
+}
+```
+
+
+## Examples of use 2 (?options=keyValues simplified representation for data consumers)
 
 Bike hire docking station real time data in Malaga
 
@@ -149,7 +192,7 @@ Bike hire docking station real time data in Malaga
 
 ## Use it with a real service
 
-Ongoing implementation in Cedus project for Rennes and Málaga. Expected by 2017Q2.
+T.B.D. 
 
 ## Open Issues
 

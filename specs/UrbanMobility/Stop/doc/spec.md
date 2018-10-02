@@ -64,7 +64,36 @@ It represents a GTFS `stop` which `location_type` shall be equal to `0`.
     + Attribute type: Relationship. It shall point to an Entity of Type [gtfs:Agency](../../Agency/doc/spec.md)
     + Mandatory
 
-### Examples
+### Example 1 (Normalized Format)
+
+```json
+{
+    "id": "urn:ngsi-ld:gtfs:Stop:Malaga_101",
+    "type": "gtfs:Stop", 
+    "code": {
+        "value": "101"
+    }, 
+    "operatedBy": {
+        "type": "Relationship",
+        "value": "urn:ngsi-ld:gtfs:Agency:Malaga_EMT"
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "Point", 
+            "coordinates": [
+                -4.424393, 
+                36.716872
+            ]
+        }
+    }, 
+    "name": {
+        "value": "Alameda Principal Sur"
+    }
+}
+```
+
+### Example 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {

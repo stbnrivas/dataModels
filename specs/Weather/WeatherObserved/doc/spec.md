@@ -142,7 +142,77 @@ mapping for Spanish terms can be found [here](https://github.com/Fiware/dataMode
 a [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API implementation, you need to use the `keyValues`
 mode (`options=keyValues`).
 
-## Examples of use
+## Examples of use 1 (Normalized Format)
+
+```json
+{
+    "id": "Spain-WeatherObserved-Valladolid-2016-11-30T07:00:00.00Z",
+    "type": "WeatherObserved", 
+    "dateObserved": {
+        "type": "DateTime", 
+        "value": "2016-11-30T07:00:00.00Z"
+    }, 
+    "illuminance": {
+        "value": 1000
+    }, 
+    "temperature": {
+        "value": 3.3
+    }, 
+    "precipitation": {
+        "value": 0
+    }, 
+    "atmosphericPressure": {
+        "value": 938.9
+    }, 
+    "pressureTendency": {
+        "value": 0.5
+    }, 
+    "refDevice": {
+        "type": "Relationship", 
+        "value": "device-0A3478"
+    }, 
+    "source": {
+        "value": "http://www.aemet.es"
+    }, 
+    "windSpeed": {
+        "value": 2
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "Point", 
+            "coordinates": [
+                -4.754444444, 
+                41.640833333
+            ]
+        }
+    }, 
+    "stationName": {
+        "value": "Valladolid"
+    }, 
+    "address": {
+        "type": "PostalAddress", 
+        "value": {
+            "addressLocality": "Valladolid", 
+            "addressCountry": "ES"
+        }
+    }, 
+    "stationCode": {
+        "value": "2422"
+    }, 
+    "dataProvider": {
+        "value": "TEF"
+    }, 
+    "windDirection": {
+        "value": -45
+    },  
+    "relativeHumidity": {
+        "value": 1
+    }
+}
+```
+
+## Examples of use 2 (?options=keyValues simplified representation for data consumers)
 
 ```
 {
@@ -184,12 +254,6 @@ mode (`options=keyValues`).
 To get access to a public instance offering weather observed data please have a look at the [GSMA's API Directory](http://apidirectory.connectedliving.gsma.com/api/weather-spain). 
 
 The instance described [here](https://docs.google.com/document/d/1lHP7XS-7TNzsxLa0bNFb-96JnJXh0ecIHS3-H0qMREg/edit?usp=sharing) has been set up by the FIWARE Community.
-
-What was the weather observed today at 07:00 UTC in Valladolid (Spain)?
-
-```curl -H 'fiware-service:weather' -H 'fiware-servicepath:/Spain' -H 'x-auth-token:<my_token>'
-"http://130.206.118.244:1027/v2/entities?type=WeatherObserved
-&q=dateObserved:2016-11-30T07:00;address.addressLocality:Valladolid&options=keyValues"```
 
 ## Open Issues
 

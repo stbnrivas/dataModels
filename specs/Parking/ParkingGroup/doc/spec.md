@@ -170,7 +170,86 @@ Applications *SHOULD* inspect the value of this property at parent's level if it
 a [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API implementation, you need to use the `keyValues`
 mode (`options=keyValues`).
 
-## Examples of use
+## Examples of use 1 (Normalized Format)
+
+```json
+{
+    "id": "daoiz-velarde-1-5-disabled",
+    "type": "ParkingGroup",  
+    "category": {
+        "value": [
+            "onstreet", 
+            "adjacentSpaces", 
+            "onlyDisabled"
+        ]
+    }, 
+    "refParkingSite": {
+        "type": "Relationship", 
+        "value": "daoiz-velarde-1-5"
+    }, 
+    "permitActiveHours": {
+        "value": "null"
+    }, 
+    "requiredPermit": {
+        "value": "disabledPermit"
+    }, 
+    "allowedVehicleType": {
+        "value": "car"
+    }, 
+    "availableSpotNumber": {
+        "value": 1,
+        "metadata": {
+            "timestamp": {
+                "type": "DateTime",
+                "value": "2018-09-12T12:00:00"
+            }
+        }
+    }, 
+    "totalSpotNumber": {
+        "value": 2
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "Polygon", 
+            "coordinates": [
+                [
+                    [
+                        -3.80356167695194, 
+                        43.46296641666926
+                    ], 
+                    [
+                        -3.803161973253841, 
+                        43.46301091092682
+                    ], 
+                    [
+                        -3.803147082548618, 
+                        43.462879859445884
+                    ], 
+                    [
+                        -3.803536474744068, 
+                        43.462838666196674
+                    ], 
+                    [
+                        -3.80356167695194, 
+                        43.46296641666926
+                    ]
+                ]
+            ]
+        }
+    }, 
+    "chargeType": {
+        "value": [
+            "free"
+        ]
+    }, 
+    "description": {
+        "value": "Two parking spots reserved for disabled people"
+    }
+}
+```
+
+## Examples of use 2 (?options=keyValues simplified representation for data consumers)
 
 A group of parking spots especially for disabled people. 
 

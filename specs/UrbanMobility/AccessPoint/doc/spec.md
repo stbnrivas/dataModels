@@ -35,7 +35,42 @@ The following Attributes shall be as mandated by [gtfs:Stop](../../Stop/doc/spec
 + `hasParentStation`
 
 
-### Examples
+### Examples of use 1 (Normalized Format)
+
+```json
+{ 
+    "id": "urn:ngsi-ld:AccessPoint:Madrid:acc_4_1_3",
+    "type": "gtfs:AccessPoint",
+    "name": {
+        "value": "Bravo Murillo"
+    }, 
+    "hasParentStation": {
+        "type": "Relationship", 
+        "value": "urn:ngsi-ld:Station:Madrid:est_90_21"
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "Point", 
+            "coordinates": [
+                -3.69036, 
+                40.46629
+            ]
+        }
+    }, 
+    "address": {
+        "type": "PostalAddress", 
+        "value": {
+            "addressLocality": "Madrid", 
+            "addressCountry": "ES", 
+            "streetAddress": "Calle de Bravo Murillo 377", 
+            "type": "PostalAddress"
+        }
+    }
+}
+```
+
+### Examples of use 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {

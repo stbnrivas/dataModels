@@ -8,7 +8,6 @@
     "coordinates": [-3.6892,40.4669]
   },
   "address": {
-    "type": "PostalAddress",
     "streetAddress": "Paseo de la Castellana 189",
     "addressLocality": "Madrid",
     "addressCountry": "ES"

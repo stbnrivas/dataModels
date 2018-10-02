@@ -51,7 +51,31 @@ It shall point to the URL of the original GTFS feed used to generate this Entity
     + Attribute type: Property. [PostalAddress](https://schema.org/PostalAddress)
     + Optional
 
-### Example
+### Example of use 1 (Normalized Format)
+
+```json
+{
+    "id": "urn:ngsi-ld:gtfs:Agency:Malaga_EMT",
+    "type": "gtfs:Agency", 
+    "name": {
+        "value": "Empresa Malague\u00f1a de Transportes"
+    }, 
+    "language": {
+        "value": "ES"
+    }, 
+    "page": {
+        "value": "http://www.emtmalaga.es/"
+    }, 
+    "source": {
+        "value": "http://datosabiertos.malaga.eu/dataset/lineas-y-horarios-bus-google-transit/resource/24e86888-b91e-45bf-a48c-09855832fd52"
+    }, 
+    "timezone": {
+        "value": "Europe/Madrid"
+    }
+}
+```
+
+### Example of use 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {

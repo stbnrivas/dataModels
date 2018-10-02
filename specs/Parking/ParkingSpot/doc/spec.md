@@ -94,7 +94,47 @@ to keep backwards compatibility with current FIWARE reference implementations.
 a [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API implementation, you need to use the `keyValues`
 mode (`options=keyValues`).
 
-## Examples of use
+## Examples of use 1 (Normalized Format)
+
+```json
+{
+    "id": "santander:daoiz_velarde_1_5:3",
+    "type": "ParkingSpot",
+    "status": {
+        "value": "free",
+        "metadata": {
+            "timestamp": {
+                "type": "DateTime",
+                "value": "2018-09-21T12:00:00"
+            }
+        }
+    }, 
+    "category": {
+        "value": [
+            "onstreet"
+        ]
+    }, 
+    "refParkingSite": {
+        "type": "Relationship", 
+        "value": "santander:daoiz_velarde_1_5"
+    }, 
+    "name": {
+        "value": "A-13"
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "Point", 
+            "coordinates": [
+                -3.80356167695194, 
+                43.46296641666926
+            ]
+        }
+    } 
+}
+```
+
+## Examples of use 2 (?options=keyValues simplified representation for data consumers)
 
     {
       "id": "santander:daoiz_velarde_1_5:3",
@@ -105,7 +145,7 @@ mode (`options=keyValues`).
         "coordinates": [-3.80356167695194, 43.46296641666926]
       },
       "status": "free",
-      "category: ["onstreet"],
+      "category": ["onstreet"],
       "refParkingSite": "santander:daoiz_velarde_1_5"
     }
 

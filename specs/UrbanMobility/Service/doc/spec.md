@@ -33,8 +33,26 @@ It represents a transportation service which is available for one or more routes
     + Attribute type: Relationship. It shall point to an Entity of Type [gtfs:Agency](../../Agency/doc/spec.md)
     + Mandatory
   
+### Examples of use 1 (Normalized Format)
 
-### Examples
+```json
+{
+    "id": "urn:ngsi-ld:Service:Malaga:LAB", 
+    "type": "gtfs:Service", 
+    "operatedBy": {
+        "type": "Relationship",
+        "value": "urn:ngsi-ld:gtfs:Agency:Malaga_EMT"
+    }, 
+    "name": {
+        "value": "LAB"
+    }, 
+    "description": {
+        "value": "Laborables"
+    }
+}
+```
+
+### Examples of use 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {

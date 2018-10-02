@@ -42,7 +42,47 @@ The specification for the following attributes is the one mandanted by [gtfs:Sto
 + `address`
 + `hasParentStation` 
 
-### Example
+### Example 1 (Normalized Format)
+
+```json
+{
+    "id": "urn:ngsi-ld:Station:Madrid:est_90_21",
+    "type": "gtfs:Station", 
+    "code": {
+        "value": "21"
+    }, 
+    "name": {
+        "value": "Intercambiador de Plaza de Castilla"
+    }, 
+    "hasStop": {
+        "type": "Relationship", 
+        "value": [
+            "urn:ngsi-ld:gtfs:Stop:Madrid_par_4_1"
+        ]
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "Point", 
+            "coordinates": [
+                -3.6892, 
+                40.4669
+            ]
+        }
+    }, 
+    "address": {
+        "type": "PostalAddress", 
+        "value": {
+            "addressLocality": "Madrid", 
+            "addressCountry": "ES", 
+            "streetAddress": "Paseo de la Castellana 189"
+        }
+    }
+}
+```
+
+
+### Example 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {
@@ -55,7 +95,6 @@ The specification for the following attributes is the one mandanted by [gtfs:Sto
     "coordinates": [-3.6892,40.4669]
   },
   "address": {
-    "type": "PostalAddress",
     "streetAddress": "Paseo de la Castellana 189",
     "addressLocality": "Madrid",
     "addressCountry": "ES"

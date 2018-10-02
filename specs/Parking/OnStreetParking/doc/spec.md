@@ -181,7 +181,104 @@ This value must aggregate free spots from all groups devoted to special parking 
 a [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API implementation, you need to use the `keyValues`
 mode (`options=keyValues`).
 
-## Examples of use
+## Examples of use 1 (Normalized Format)
+
+```json
+{
+    "id": "santander:daoiz_velarde_1_5", 
+    "type": "OnStreetParking",
+    "category": {
+        "value": [
+            "blueZone", 
+            "shortTerm", 
+            "forDisabled"
+        ]
+    }, 
+    "permitActiveHours": {
+        "value": {
+            "blueZonePermit": "Mo, Tu, We, Th, Fr, Sa 09:00-20:00"
+        }
+    }, 
+    "requiredPermit": {
+        "value": [
+            "blueZonePermit", 
+            "disabledPermit"
+        ]
+    }, 
+    "allowedVehicleType": {
+        "value": "car"
+    }, 
+    "chargeType": {
+        "value": [
+            "temporaryFee"
+        ]
+    }, 
+    "refParkingGroup": {
+        "type": "Relationship", 
+        "value": [
+            "daoiz-velarde-1-5-main", 
+            "daoiz-velarde-1-5-disabled"
+        ]
+    }, 
+    "totalSpotNumber": {
+        "value": 6
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "Polygon", 
+            "coordinates": [
+                [
+                    [
+                        -3.80356167695194, 
+                        43.46296641666926
+                    ], 
+                    [
+                        -3.803161973253841, 
+                        43.46301091092682
+                    ], 
+                    [
+                        -3.803147082548618, 
+                        43.462879859445884
+                    ], 
+                    [
+                        -3.803536474744068, 
+                        43.462838666196674
+                    ], 
+                    [
+                        -3.80356167695194, 
+                        43.46296641666926
+                    ]
+                ]
+            ]
+        }
+    }, 
+    "areaServed": {
+        "value": "Zona Centro"
+    }, 
+    "maximumAllowedStay": {
+        "value": "PT2H"
+    }, 
+    "dateModified": {
+        "type": "DateTime", 
+        "value": "2016-06-02T09:25:55.00Z"
+    }, 
+    "extraSpotNumber": {
+        "value": 2
+    }, 
+    "availableSpotNumber": {
+        "value": 3,
+        "metadata": {
+            "timestamp": {
+                "value": "2018-09-12T12:00:00",
+                "type": "DateTime"
+            }
+        }
+    }
+}
+```
+
+## Examples of use 2
 
 An on street parking which contains a group of parking spots reserved for disabled people.
 At root entity level is announced that special parking spots for disabled are present and two of them free. 
@@ -217,7 +314,7 @@ Main `OnstreetParking` entity.
         ]
       },
       "areaServed": "Zona Centro",
-      "refParkingGroup: ["daoiz-velarde-1-5-main", daoiz-velarde-1-5-disabled"]
+      "refParkingGroup": ["daoiz-velarde-1-5-main", "daoiz-velarde-1-5-disabled"]
     }
 ```
 

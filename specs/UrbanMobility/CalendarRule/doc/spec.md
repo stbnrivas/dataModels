@@ -71,7 +71,50 @@ It can be obtained from the field `end_date` of [calendar.txt](https://developer
     + Mandatory
   
 
-### Examples
+### Examples of use 1 (Normalized Format)
+
+```json
+{
+    "id": "urn:ngsi-ld:CalendarRule:Madrid:Rule1267",
+    "type": "gtfs:CalendarRule", 
+    "startDate": {
+        "value": "2018-01-01"
+    }, 
+    "endDate": {
+        "value": "2019-01-01"
+    }, 
+    "name": {
+        "value": "Rule Hospital Service 1"
+    }, 
+    "monday": {
+        "value": true
+    }, 
+    "tuesday": {
+        "value": true
+    }, 
+    "friday": {
+        "value": true
+    }, 
+    "wednesday": {
+        "value": true
+    }, 
+    "thursday": {
+        "value": true
+    },  
+    "sunday": {
+        "value": false
+    }, 
+    "hasService": {
+        "type": "Relationship", 
+        "value": "urn:ngsi-ld:Service:Madrid:Hospital_1"
+    }, 
+    "saturday": {
+        "value": false
+    }
+}
+```
+
+### Example of use 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {

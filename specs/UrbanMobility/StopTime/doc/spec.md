@@ -59,9 +59,38 @@ See [https://developers.google.com/transit/gtfs/reference/#stop_timestxt](https:
 + `timepoint`: Same as GTFS `timepoint`.
     + Attribute type: Property. [Text](https://schema.org/Text)
     + Optional
-  
 
-### Example
+### Example of Use 1 (Normalized Format)
+
+```json
+{
+    "id": "urn:ngsi-ld:gtfs:StopTime:Spain:Madrid:EMT:FE0010011_737",
+    "type": "gtfs:StopTime", 
+    "departureTime": {
+        "value": "07:04:24"
+    }, 
+    "hasTrip": {
+        "type": "Relationship", 
+        "value": "urn:ngsi-ld:gtfs:Trip:Madrid:EMT:FE0010011"
+    }, 
+    "stopSequence": {
+        "value": 4
+    }, 
+    "distanceTravelled": {
+        "value": 759
+    }, 
+    "arrivalTime": {
+        "value": "07:04:24"
+    }, 
+    "hasStop": {
+        "type": "Relationship", 
+        "value": "urn:ngsi-ld:gtfs:Stop:Madrid:EMT:737"
+    }
+}
+```
+
+
+### Example of Use 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {

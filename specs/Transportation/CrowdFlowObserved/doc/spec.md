@@ -87,7 +87,59 @@ the lack of support of Orion Context Broker for datetime intervals, it can be us
     + Optional
 
 
-### Example
+### Example 1 (Normalized Format)
+
+```json
+{
+    "id": "urn:ngsi-ld:CrowdFlowObserved:Valladolid_1", 
+    "type": "CrowdFlowObserved", 
+    "dateObserved": {
+        "value": "2018-08-07T11:10:00/2018-08-07T11:15:00"
+    }, 
+    "direction": {
+        "value": "inbound"
+    }, 
+    "dateObservedFrom": {
+        "type": "DateTime", 
+        "value": "2018-08-07T11:10:00Z"
+    }, 
+    "peopleCount": {
+        "value": 100
+    }, 
+    "averageHeadwayTime": {
+        "value": 5
+    }, 
+    "dateObservedTo": {
+        "type": "DateTime", 
+        "value": "2018-08-07T11:15:00Z"
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "LineString", 
+            "coordinates": [
+                [
+                    -4.73735395519672, 
+                    41.6538181849672
+                ], 
+                [
+                    -4.73414858659993, 
+                    41.6600594193478
+                ], 
+                [
+                    -4.73447575302641, 
+                    41.659585195093
+                ]
+            ]
+        }
+    }, 
+    "congested": {
+        "value": false
+    }
+}
+```
+
+### Example 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {
@@ -100,11 +152,17 @@ the lack of support of Orion Context Broker for datetime intervals, it can be us
   "congested": false,
   "direction": "inbound",
   "location": {
-    "type": "Polygon",
+    "type": "LineString",
     "coordinates": [
-        [   
-            [0, 0], [10, 10], [10, 0], [0, 0]
-        ]
+      [
+        -4.73735395519672, 41.6538181849672
+      ],
+      [
+        -4.73414858659993, 41.6600594193478
+      ],
+      [
+        -4.73447575302641, 41.659585195093
+      ]
     ]
   }
 }

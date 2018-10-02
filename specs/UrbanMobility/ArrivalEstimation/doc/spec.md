@@ -50,8 +50,33 @@ whilst the vehicle is servicing a particular route.
     + Attribute type: Property. [Text](https://schema.org/Text)
     + Mandatory
 
+### Examples of use 1 (Normalized Format)
 
-### Examples
+```json
+{
+    "id": "urn:ngsi-ld:ArrivalEstimation:L5C1_Stop74_1",
+    "type": "ArrivalEstimation",
+    "hasTrip": {
+        "type": "Relationship", 
+        "value": "urn:ngsi-ld:gtfs:Trip:tus:5C1"
+    }, 
+    "headSign": {
+        "value": "Plaza Italia"
+    }, 
+    "remainingTime": {
+        "value": "PT8M5S"
+    }, 
+    "hasStop": {
+        "type": "Relationship", 
+        "value": "urn:ngsi-ld:gtfs:Stop:tus:74"
+    }, 
+    "remainingDistance": {
+        "value": 1200
+    }
+}
+```
+
+### Examples of use 2  (?options=keyValues simplified representation for data consumers)
 
 ```json
 {

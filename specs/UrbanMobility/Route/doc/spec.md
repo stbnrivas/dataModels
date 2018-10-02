@@ -58,8 +58,32 @@ See [https://developers.google.com/transit/gtfs/reference/#routestxt](https://de
     + Attribute type: Relationship. It shall point to an Entity of Type [gtfs:Agency](../../Agency/doc/spec.md)
     + Mandatory
    
+### Example of use 1 (Normalized Format)
 
-### Example
+```json
+{
+    "id": "urn:ngsi-ld:gtfs:Route:Spain:Malaga:1",
+    "type": "gtfs:Route", 
+    "name": {
+        "value": "Parque del Sur _ Alameda Principal _ San Andr\u00e9s"
+    }, 
+    "shortName": {
+        "value": "1"
+    }, 
+    "page": {
+        "value": "http://www.emtmalaga.es/emt-mobile/informacionLinea.html"
+    }, 
+    "routeType": {
+        "value": "3"
+    }, 
+    "operatedBy": {
+        "type": "Relationship",
+        "value": "urn:ngsi-ld:gtfs:Agency:Malaga_EMT"
+    }
+}
+```
+
+### Examples of use 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {

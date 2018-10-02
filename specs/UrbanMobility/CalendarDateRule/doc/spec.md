@@ -40,7 +40,29 @@ See [https://developers.google.com/transit/gtfs/reference/#calendar_datestxt](ht
     + Attribute type: Property. [Text](https://schema.org/Text)
     + Mandatory
 
-### Examples
+### Example of use 1 (Normalized Format)
+
+```json
+{
+    "id": "urn:ngsi-ld:CalendarDateRule:Malaga:Rule67",
+    "type": "gtfs:CalendarDateRule", 
+    "name": {
+        "value": "Rule Fair Area"
+    }, 
+    "exceptionType": {
+        "value": "1"
+    }, 
+    "hasService": {
+        "type": "Relationship", 
+        "value": "urn:ngsi-ld:Service:Malaga:FairArea_1"
+    }, 
+    "appliesOn": {
+        "value": "2018-03-19"
+    }
+}
+```
+
+### Example of use 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {

@@ -308,7 +308,86 @@ all the zones.
 a [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API implementation, you need to use the `keyValues`
 mode (`options=keyValues`).
 
-## Examples of use
+## Examples of use 1 (Normalized Format)
+
+```json
+{
+    "id": "porto-ParkingLot-23889",
+    "type": "OffStreetParking",
+    "category": {
+        "value": [
+            "underground", 
+            "public", 
+            "feeCharged", 
+            "mediumTerm", 
+            "barrierAccess"
+        ]
+    }, 
+    "layout": {
+        "value": [
+            "multiLevel"
+        ]
+    }, 
+    "name": {
+        "value": "Parque de estacionamento Trindade"
+    }, 
+    "requiredPermit": {
+        "value": []
+    }, 
+    "allowedVehicleType": {
+        "value": [
+            "car"
+        ]
+    }, 
+    "availableSpotNumber": {
+        "value": 132,
+        "metadata": {
+            "timestamp": {
+                "type": "DateTime",
+                "value": "2018-09-21T12:00:00"
+            }
+        }
+    }, 
+    "totalSpotNumber": {
+        "value": 414
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "Point", 
+            "coordinates": [
+                -8.60961198807, 
+                41.150691773
+            ]
+        }
+    }, 
+    "chargeType": {
+        "value": [
+            "temporaryPrice"
+        ]
+    }, 
+    "address": {
+        "type": "PostalAddress", 
+        "value": {
+            "addressLocality": "Porto", 
+            "addressCountry": "Portugal", 
+            "streetAddress": "Rua de Fernandes Tom\u00e1s"
+        }
+    }, 
+    "maximumParkingDuration": {
+        "value": "PT8H"
+    }, 
+    "dateModified": {
+        "type": "DateTime", 
+        "value": "2016-06-02T09:25:55.00Z"
+    }, 
+    "description": {
+        "value": "Municipal car park located near the Trindade metro station and the Town Hall"
+    }
+}
+```
+
+## Examples of use 2
 
 A public off street parking underground controlled by a barrier. 
 

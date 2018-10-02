@@ -146,7 +146,66 @@ A JSON Schema corresponding to this data model can be found [here](https://fiwar
 a [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API implementation, you need to use the `keyValues`
 mode (`options=keyValues`).
 
-## Examples of use
+## Examples of 1 (Normalized Format)
+
+```json
+{
+    "id": "urn:ngsi-ld:EVChargingStation:ValladolI+D_Covaresa",
+    "type": "EVChargingStation", 
+    "socketType": {
+        "value": [
+            "Wall_Euro"
+        ]
+    }, 
+    "capacity": {
+        "value": 2
+    }, 
+    "name": {
+        "value": "Agencia de Innovaci\u00f3n"
+    }, 
+    "allowedVehicleType": {
+        "value": [
+            "car"
+        ]
+    }, 
+    "source": {
+        "value": "https://openchargemap.org/"
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "Point", 
+            "coordinates": [
+                -4.747901, 
+                41.618265
+            ]
+        }
+    }, 
+    "chargeType": {
+        "value": [
+            "free"
+        ]
+    }, 
+    "address": {
+        "type": "PostalAddress", 
+        "value": {
+            "addressLocality": "Valladolid", 
+            "addressCountry": "Espa\u00f1a", 
+            "streetAddress": "Paseo de Zorrilla, 191"
+        }
+    }, 
+    "operator": {
+        "value": "Iberdrola"
+    }, 
+    "contactPoint": {
+        "value": {
+            "email": "vehiculoelectrico@ava.es"
+        }
+    }
+}
+```
+
+## Examples of use 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {

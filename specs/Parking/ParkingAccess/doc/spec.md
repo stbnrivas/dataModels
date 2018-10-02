@@ -64,7 +64,43 @@ Represents an access point to a parking site, normally an offstreet parking.
 a [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API implementation, you need to use the `keyValues`
 mode (`options=keyValues`).
 
-## Examples of use
+## Examples of use 1 (Normalized Format)
+
+```json
+{
+    "id": "accesspoint-trinidade-1",
+    "type": "ParkingAccess", 
+    "category": {
+        "value": [
+            "vehicleEntrance"
+        ]
+    }, 
+    "name": {
+        "value": "Trinidade main entrance"
+    }, 
+    "location": {
+        "type": "geo:json", 
+        "value": {
+            "type": "Point", 
+            "coordinates": [
+                -8.60961198807, 
+                41.150691773
+            ]
+        }
+    }, 
+    "refOffStreetParking": {
+        "type": "Relationship", 
+        "value": "porto-OffStreetParking-23889"
+    }, 
+    "features": {
+        "value": [
+            "barrier"
+        ]
+    }
+}
+```
+
+## Examples of use 2 (?options=keyValues simplified representation for data consumers)
   
     {
       "id": "accesspoint-trinidade-1",

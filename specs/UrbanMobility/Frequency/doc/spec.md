@@ -50,7 +50,35 @@ See [https://developers.google.com/transit/gtfs/reference/#frequenciestxt](https
     + Attribute type: Property. [Boolean](https://schema.org/Boolean). 
     + Optional
     
-### Example
+### Example of use 1 (Normalized Format)
+
+```json
+{
+    "id": "urn:ngsi-ld:gtfs:Frequency:Malaga:Linea1",
+    "type": "gtfs:Frequency", 
+    "description": {
+        "value": "Cada 10 minutos"
+    }, 
+    "hasTrip": {
+        "type": "Relationship", 
+        "value": "urn:ngsi-ld:gtfs:Trip:Spain:Malaga:1"
+    }, 
+    "headwaySeconds": {
+        "value": 600
+    }, 
+    "startTime": {
+        "value": "07:00:00"
+    }, 
+    "endTime": {
+        "value": "10:25:00"
+    }, 
+    "name": {
+        "value": "Laborables"
+    }
+}
+```
+
+### Example of use 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {

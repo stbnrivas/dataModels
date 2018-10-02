@@ -103,6 +103,11 @@ module.exports = {
 
     try {
       files.forEach(function(fileName) {
+        // Skipping normalized JSON files from the schema validation as it only supports
+        // keyValues mode
+        if (fileName.match(/normalized(-\d+)?\.json$/)) {
+          return;
+        }
         var data = openFile(fileName, 'example ' + fileName);
         if (typeof validate != 'function') {
          debug("*validateExamples* - " + fileName +

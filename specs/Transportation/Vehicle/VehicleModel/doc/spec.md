@@ -100,18 +100,49 @@ duration with the given vehicle (e.g. liters per 100 km).
 a [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API implementation, you need to use the `keyValues`
 mode (`options=keyValues`).
 
-## Examples
+## Examples of Use 1 (Normalized Format)
+
+```json
+{
+    "id": "vehiclemodel:econic",
+    "type": "VehicleModel",
+    "name": {
+        "value": "MBenz-Econic2014"
+    },
+    "cargoVolume": {
+        "value": 1000
+    }, 
+    "modelName": {
+        "value": "Econic"
+    }, 
+    "brandName": {
+        "value": "Mercedes Benz"
+    },
+    "manufacturerName": {
+        "value": "Daimler"
+    }, 
+    "fuelType": {
+        "value": "diesel"
+    }, 
+    "vehicleType": {
+        "value": "lorry"
+    }
+}
+```
+
+## Examples of Use 2 (?options=keyValues simplified representation for data consumers)
 
     {
       "id": "vehiclemodel:econic",
       "type": "VehicleModel",
+      "name": "MBenz-Econic2014",
       "brandName": "Mercedes Benz",
       "modelName": "Econic",
+      "manufacturerName": "Daimler",
       "vehicleType": "lorry",
       "cargoVolume": 1000,
       "fuelType": "diesel"
     }
-
 
 ## Test it with a real service
 

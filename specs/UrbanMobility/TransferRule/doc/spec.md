@@ -46,7 +46,33 @@ See [https://developers.google.com/transit/gtfs/reference/#transferstxt](https:/
     + Default unit: seconds
     + Optional   
         
-### Example
+### Example 1 (Normalized Format)
+
+```json
+{
+    "id": "urn:ngsi-ld:gtfs:TransferRule:Malaga:Linea1_Linea5",
+    "type": "gtfs:TransferRule", 
+    "transferType": {
+        "value": "0"
+    }, 
+    "minimumTransferTime": {
+        "value": 10
+    }, 
+    "hasDestination": {
+        "type": "Relationship", 
+        "value": "urn:ngsi-ld:gtfs:Stop:Malaga_508"
+    }, 
+    "hasOrigin": {
+        "type": "Relationship", 
+        "value": "urn:ngsi-ld:gtfs:Stop:Malaga_101"
+    }, 
+    "name": {
+        "value": "L1_L5"
+    }
+}
+```
+
+### Example 2 (?options=keyValues simplified representation for data consumers)
 
 ```json
 {
