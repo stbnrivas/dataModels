@@ -1,60 +1,61 @@
 /* handle warning and error messages */
 
-'use strict';
+const path = require('path');
 
-var path = require('path');
+const warnings = {};
+const errors = {};
+const validSchemas = {};
+const validExamples = {};
+const supportedExamples = {};
 
-var warnings = {};
-var errors = {};
-var validSchemas = {};
-var validExamples = {};
-var supportedExamples = {};
-
-var addMessageToMap = function(modelPath, message, map) {
-  var rootModel = getRootModelName(modelPath);
-  var fullMessage = modelPath + ': ' + message;
-  if (map[rootModel] != null)
-  map[rootModel].push(fullMessage);
-  else
-  map[rootModel] = [fullMessage];
+const addMessageToMap = function(modelPath, message, map) {
+  const rootModel = getRootModelName(modelPath);
+  const fullMessage = modelPath + ': ' + message;
+  if (map[rootModel] != null) {
+    map[rootModel].push(fullMessage);
+  } else {
+    map[rootModel] = [fullMessage];
+  }
   return true;
 };
 
 //given a path, retrieve the name of the root model
-var getRootModelName = function(fullPath) {
-  var index = fullPath.indexOf(path.sep);
-  if (index > 0) return fullPath.substring(0, index);
-  else return fullPath;
+const getRootModelName = function(fullPath) {
+  const index = fullPath.indexOf(path.sep);
+  if (index > 0) {
+    return fullPath.substring(0, index);
+  }
+  return fullPath;
 };
 
 module.exports = {
-  warnings: warnings,
-  errors: errors,
-  validSchemas: validSchemas,
-  validExamples: validExamples,
-  supportedExamples: supportedExamples,
+  warnings,
+  errors,
+  validSchemas,
+  validExamples,
+  supportedExamples,
 
   //add warning to the warnings map for a given model
-  addWarning: function(modelPath, message) {
+  addWarning(modelPath, message) {
     return addMessageToMap(modelPath, message, warnings);
   },
 
   //add error to the errors map for a given model
-  addError: function(modelPath, message) {
+  addError(modelPath, message) {
     return addMessageToMap(modelPath, message, errors);
   },
 
   //add valid schema to the valid schemas map for a given model
-  addValidSchema: function(modelPath, message) {
+  addValidSchema(modelPath, message) {
     return addMessageToMap(modelPath, message, validSchemas);
   },
 
   //add valid example to the valid examples map for a given model
-  addValidExample: function(modelPath, message) {
+  addValidExample(modelPath, message) {
     return addMessageToMap(modelPath, message, validExamples);
   },
   //add valid example to the valid examples map for a given model
-  addSupportedExample: function(modelPath, message) {
+  addSupportedExample(modelPath, message) {
     return addMessageToMap(modelPath, message, supportedExamples);
-  }
+  },
 };
