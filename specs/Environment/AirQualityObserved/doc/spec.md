@@ -134,7 +134,10 @@ Below is the description of the attribute to be used for option A/.
 a [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) API implementation, you need to use the `keyValues`
 mode (`options=keyValues`).
 
-## Examples of use 1 (Normalized Format)
+## Examples
+### Normalized  Example
+
+Normalized NGSI response
 
 ```json
 {
@@ -237,40 +240,44 @@ mode (`options=keyValues`).
     }
 }
 ```
-    
-## Examples of use 2 (?options=keyValues simplified representation for data consumers)
 
-    {
-      "id": "Madrid-AmbientObserved-28079004-2016-03-15T11:00:00",
-      "type": "AirQualityObserved",
-      "address": {
+### key-value pairs Example
+
+Sample uses simplified representation for data consumers `?options=keyValues`
+
+```json
+{
+    "id": "Madrid-AmbientObserved-28079004-2016-03-15T11:00:00",
+    "type": "AirQualityObserved",
+    "address": {
         "addressCountry": "ES",
         "addressLocality": "Madrid",
         "streetAddress": "Plaza de España"
-      },
-      "dateObserved": "2016-03-15T11:00:00/2016-03-15T12:00:00",
-      "location": {
+    },
+    "dateObserved": "2016-03-15T11:00:00/2016-03-15T12:00:00",
+    "location": {
         "type": "Point",
         "coordinates": [-3.712247222222222, 40.423852777777775]
-      },
-      "source": "http://datos.madrid.es",
-      "precipitation": 0,
-      "relativeHumidity": 0.54,
-      "temperature": 12.2,
-      "windDirection": 186,
-      "windSpeed": 0.64,
-      "airQualityLevel": "moderate",
-      "reliability": 0.9,
-      "CO": 500,
-      "NO": 45,
-      "NO2": 69,
-      "NOx": 139,
-      "SO2": 11,
-      "CO_Level": "good",
-      "NO_Level": "moderate",
-      "refPointOfInterest": "28079004-Pza. de España"
-    }
-    
+    },
+    "source": "http://datos.madrid.es",
+    "precipitation": 0,
+    "relativeHumidity": 0.54,
+    "temperature": 12.2,
+    "windDirection": 186,
+    "windSpeed": 0.64,
+    "airQualityLevel": "moderate",
+    "reliability": 0.9,
+    "CO": 500,
+    "NO": 45,
+    "NO2": 69,
+    "NOx": 139,
+    "SO2": 11,
+    "CO_Level": "good",
+    "NO_Level": "moderate",
+    "refPointOfInterest": "28079004-Pza. de España"
+}
+```
+
 ## Use it with a real service
 
 To get access to a public instance offering air quality observed data please have a look at the [GSMA's API Directory](http://apidirectory.connectedliving.gsma.com/api/air-quality-spain). 
