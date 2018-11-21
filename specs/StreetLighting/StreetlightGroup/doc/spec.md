@@ -20,9 +20,11 @@ The data model is defined as shown below:
     -   Mandatory
 
 -   `areaServed` : Higher level area to which the streetlight group belongs to.
-    It can be used to group per responsible, district, neighbourhood, etc. +
-    Normative References:
-    [https://schema.org/areaServed](https://schema.org/areaServed) + Optional
+    It can be used to group per responsible, district, neighbourhood, etc.
+
+    -   Attribute type: [Text](https://schema.org/Text)
+    -   Normative References: [https://schema.org/areaServed](https://schema.org/areaServed)
+    -   Optional
 
 -   `powerState` : Streetlight group's power state.
 
@@ -34,10 +36,10 @@ The data model is defined as shown below:
     -   Allowed values: one Of (`on`, `off`, `low`, `bootingUp`)
     -   Optional
 
--   `refStreetlightCabinetController` : Streetlight group's cabinet controller
+-   `refStreetlightControlCabinet` : Streetlight group's control cabinet
 
     -   Attribute type : Reference to a
-        [StreetlightCabinetController](../../StreetlightCabinetController/doc/spec.md)
+        [StreetlightControlCabinet](../../StreetlightControlCabinet/doc/spec.md)
         entity.
     -   Optional
 
@@ -62,7 +64,7 @@ The data model is defined as shown below:
 -   `switchingOnHours` : Switching on hours. It is used normally to set special
     schedules for certain dates.
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute Type: List of [StructuredValue](http://schema.org/StructuredValue)
     -   Subproperties:
         -   `from` : Starting date (it can be yearless).
             -   Type: [Date](https://schema.org/Date)
@@ -149,7 +151,7 @@ API implementation, you need to use the `keyValues` mode (`options=keyValues`).
           [ [102.0, 2.0], [103.0, 3.0] ]
         ]
       },
-      "powerStatus": "on",
+      "powerState": "on",
       "areaServed": "Calle Comercial Centro",
       "circuitId": "C-456-A467",
       "dateLastSwitchingOn":  "2016-07-07T19:59:06.618Z",
