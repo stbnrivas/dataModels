@@ -30,22 +30,61 @@ https://github.com/Factual/places/blob/master/categories/factual_taxonomy.json)
 ## Examples of use
 
 ```
-http://130.206.118.244:1050/v2/entities?type=PointOfInterest&q=category:436
+http://iotbd-v2.lab.fiware.org/v2/entities?type=PointOfInterest&q=category=='311'&limit=1
 ```
 
 ```json
-{
-    "id": "porto-poi-22897",
-    "type": "PointOfInterest",
-    "source": "http://fiware-porto.citibrain.com/docs",
-    "name": "Belver Beta Porto Hotel",
-    "category": ["436"],
-    "dateCreated": "1970-01-01T00:00:00.000Z",
-    "dateUpdated": "2015-11-12T20:39:58.336Z",
-    "location": {
-        "type": "Point",
-        "coordinates": [-8.614206, 41.178103]
-    },
-    "description": "The Belver Beta Porto Hotel is ..."
-}
+[
+    {
+        "id": "Museum-b24a98d7fd0e4f37947add846d75fc9b",
+        "type": "PointOfInterest",
+        "address": {
+            "type": "PostalAddress",
+            "value": {
+                "addressLocality": "Barcelona",
+                "addressRegion": "Barcelona",
+                "addressCountry": "ES"
+            },
+            "metadata": {}
+        },
+        "category": {
+            "type": "List",
+            "value": [
+                "311"
+            ],
+            "metadata": {}
+        },
+        "dataProvider": {
+            "type": "Text",
+            "value": "FIWARE Foundation e.V.",
+            "metadata": {}
+        },
+        "description": {
+            "type": "Text",
+            "value": "El Museo de lastrong Sagrada Familia /strongofrece multitud de elementos y objetos que permiten comprender el significado y la complejidad de la gran obra de Gaudí. A través de planos, dibujos originales, maquetas reconstruidas y distintas piezas, el visitante descubrirá más a fondo el proceso de creación de este impresionante templo, que se ha convertido en el símbolo de strongBarcelona/strong. Desde el museo, que se encuentra situado en el interior de la iglesia, también se puede admirar la sepultura de Gaudí.",
+            "metadata": {}
+        },
+        "location": {
+            "type": "geo:json",
+            "value": {
+                "type": "Point",
+                "coordinates": [
+                    2.174492788,
+                    41.402942517
+                ]
+            },
+            "metadata": {}
+        },
+        "name": {
+            "type": "Text",
+            "value": "Museo del Templo Expiatorio de la Sagrada Familia",
+            "metadata": {}
+        },
+        "source": {
+            "type": "URL",
+            "value": "http://www.tourspain.es",
+            "metadata": {}
+        }
+    }
+]
 ```
