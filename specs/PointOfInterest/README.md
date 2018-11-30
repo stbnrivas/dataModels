@@ -61,7 +61,7 @@ http://iotbd-v2.lab.fiware.org/v2/entities?type=PointOfInterest&q=category=='311
         },
         "description": {
             "type": "Text",
-            "value": "El Museo de lastrong Sagrada Familia /strongofrece multitud de elementos y objetos que permiten comprender el significado y la complejidad de la gran obra de Gaudí. A través de planos, dibujos originales, maquetas reconstruidas y distintas piezas, el visitante descubrirá más a fondo el proceso de creación de este impresionante templo, que se ha convertido en el símbolo de strongBarcelona/strong. Desde el museo, que se encuentra situado en el interior de la iglesia, también se puede admirar la sepultura de Gaudí.",
+            "value": "El Museo de la Sagrada Familia ofrece multitud de elementos y objetos que permiten comprender el significado y la complejidad de la gran obra de Gaudí. A través de planos, dibujos originales, maquetas reconstruidas y distintas piezas, el visitante descubrirá más a fondo el proceso de creación de este impresionante templo, que se ha convertido en el símbolo de Barcelona. Desde el museo, que se encuentra situado en el interior de la iglesia, también se puede admirar la sepultura de Gaudí.",
             "metadata": {}
         },
         "location": {
