@@ -204,7 +204,7 @@ New data models should be added under a folder structured as follows:
                 [data model template](../datamodel_template.md), e.g.
                 [spec.md of WeatherObserved](./Weather/WeatherObserved/doc/spec.md).
         -   `README.md`: A summary file (as an extract from the spec file), e.g.
-            [README.md of WeatherObserved](./Weather/WeatherObserved/README.md)
+            [README.md of WeatherObserved](https://github.com/fiware/dataModels/specs/Weather/WeatherObserved/README.md)
         -   `schema.json`: The JSON Schema definition, e.g.
             [schema.json of WeatherObserved](./Weather/WeatherObserved/schema.json)
         -   `example.json`: One or more JSON example file, e.g.
