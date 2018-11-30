@@ -202,13 +202,13 @@ New data models should be added under a folder structured as follows:
         -   `doc/`
             -   `spec.md`: A data model description based on the
                 [data model template](datamodel_template.md), e.g.
-                [spec.md of WeatherObserved](specs/Weather/WeatherObserved/doc/spec.md).
+                [spec.md of WeatherObserved](./Weather/WeatherObserved/doc/spec.md).
         -   `README.md`: A summary file (as an extract from the spec file), e.g.
-            [README.md of WeatherObserved](specs/Weather/WeatherObserved/README.md)
+            [README.md of WeatherObserved](./Weather/WeatherObserved/README.md)
         -   `schema.json`: The JSON Schema definition, e.g.
-            [schema.json of WeatherObserved](specs/Weather/WeatherObserved/schema.json)
+            [schema.json of WeatherObserved](./Weather/WeatherObserved/schema.json)
         -   `example.json`: One or more JSON example file, e.g.
-            [example.json of WeatherObserved](specs/Weather/WeatherObserved/example.json)
+            [example.json of WeatherObserved](./Weather/WeatherObserved/example.json)
 
 The name of the folder should match the entity type used in the JSON Schema
 (e.g. `NewModel`). For data models including more entities, a hierarchical
