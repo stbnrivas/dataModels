@@ -101,7 +101,7 @@ The data model is defined as shown below:
     for some reason. 
   - Attribute type: [Number](https://schema.org) 
   - Attribute metadata: 
-  - `timestamp` : Timestamp which captures when the vehicle was
+    - `timestamp` : Timestamp which captures when the vehicle was
     heading towards such direction. This value can also appear as a FIWARE
     [TimeInstant](https://github.com/telefonicaid/iotagent-node-lib/blob/master/README.md#the-timeinstant-element) 
     - Type: [DateTime](http://schema.org/DateTime) or `ISO8601` (legacy). 
