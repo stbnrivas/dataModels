@@ -66,14 +66,19 @@ The data model is defined as shown below:
     `guarded`, `barrierAccess`, `gateAccess`, `freeAccess`,
     `forElectricalCharging`, `onlyResidents`, `onlyWithPermit`, `forEmployees`,
     `forVisitors`, `forCustomers`, `forStudents`, `forMembers`, `forDisabled`,
-    `forResidents`, `underground`, `ground`)
+    `forResidents`, `underground`, `ground`, `other`)
     - The semantics of the `forxxx`
     values is that the parking offers specific spots subject to that particular
     condition.
     - The semantics of the `onlyxxx`values is that the parking only
     allows to park on that particular condition.
-    - Other application-specific
+    - Other application-specific can be conveyed through the `extCategory` attribute. 
   - Mandatory
+  
+- `extCategory` : Extended category(ies). See `category`.
+  - Attribute type: List of
+    [Text](http://schema.org/Text)
+  - Optional
 
 - `allowedVehicleType` : Vehicle type(s) allowed. The first element of this
     array _MUST_ be the principal vehicle type allowed. Free spot numbers of
