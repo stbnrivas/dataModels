@@ -18,13 +18,16 @@ The data model is defined as shown below:
 
     -   It shall be equal to `gtfs:Trip`.
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
@@ -65,8 +68,10 @@ The data model is defined as shown below:
 
 -   `location`: The geographical shape associated to the trip encoded as GeoJSON
     `LineString` or `MultiLineString`. The coordinates shall be obtained from
-    the `shapes.txt` feed file as per the value of `shape_id`. + Attribute type:
-    GeoProperty. `geo:json` + Optional
+    the `shapes.txt` feed file as per the value of `shape_id`.
+
+    -   Attribute type: GeoProperty. `geo:json`
+    -   Optional
 
 -   `hasRoute`: Same as `route_id`.
 

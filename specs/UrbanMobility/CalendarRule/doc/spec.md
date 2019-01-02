@@ -17,13 +17,16 @@ The data model is defined as shown below:
 
     -   It shall be equal to `gtfs:CalendarRule`
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
@@ -96,15 +99,18 @@ The data model is defined as shown below:
 
 -   `startDate`: Start date of this rule in `YYYY-MM-DD` format. It can be
     obtained from the field `start_date` of
-    [calendar.txt](https://developers.google.com/transit/gtfs/reference/#calendartxt). +
-    Attribute type: Property.
-    [https://schema.org/Date](https://schema.org/Date). + Mandatory
+    [calendar.txt](https://developers.google.com/transit/gtfs/reference/#calendartxt).
+
+    -   Attribute type: Property.
+        [https://schema.org/Date](https://schema.org/Date).
+    -   Mandatory
 
 -   `endDate`: End date of this rule in `YYYY-MM-DD` format. It can be obtained
     from the field `end_date` of
-    [calendar.txt](https://developers.google.com/transit/gtfs/reference/#calendartxt). +
-    Attribute type: Property.
-    [https://schema.org/Date](https://schema.org/Date). + Mandatory
+    [calendar.txt](https://developers.google.com/transit/gtfs/reference/#calendartxt).
+    -   Attribute type: Property.
+        [https://schema.org/Date](https://schema.org/Date).
+    -   Mandatory
 
 ### Examples of use 1 (Normalized Format)
 

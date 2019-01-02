@@ -13,13 +13,16 @@ The data model is defined as shown below:
 
 -   `type` : Entity type. It must be equal to `VehicleModel`.
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `name` : Name given to this vehicle model.
 
@@ -86,9 +89,12 @@ The data model is defined as shown below:
 
 -   `fuelConsumption` : The amount of fuel consumed for traveling a particular
     distance or temporal duration with the given vehicle (e.g. liters per 100
-    km). + Normative References:
-    [https://schema.org/fuelConsumption](https://schema.org/fuelConsumption) +
-    Default unit: liters per 100 kilometer. + Optional
+    km).
+
+    -   Normative References:
+        [https://schema.org/fuelConsumption](https://schema.org/fuelConsumption)
+    -   Default unit: liters per 100 kilometer.
+    -   Optional
 
 -   `height` : Vehicle's height.
 

@@ -27,8 +27,9 @@ A JSON Schema corresponding to this data model can be found
 
 -   `taxon` : Used to indicate the biological
     [taxon](http://en.wikipedia.org/wiki/en:taxon) to which the trees, or plants
-    in the flower bed belong. + Attribute type: List of
-    [Text](https://schema.org/Text) + Optional
+    in the flower bed belong.
+    -   Attribute type: List of [Text](https://schema.org/Text)
+    -   Optional
 -   `category` : Category of this flower bed.
     -   Attribute type: List of [Text](https://schema.org/Text)
     -   Allowed values: (`hedge`, `lawnArea`, `portable`, `urbanTreeSpot`) or

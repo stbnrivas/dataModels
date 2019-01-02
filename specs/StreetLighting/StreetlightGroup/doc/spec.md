@@ -11,13 +11,16 @@ The data model is defined as shown below:
 
 -   `type` : It must be equal to `StreetlightGroup`.
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `location` : Streetlight's group location represented by a GeoJSON
     (multi)geometry.
@@ -31,16 +34,17 @@ The data model is defined as shown below:
     It can be used to group per responsible, district, neighbourhood, etc.
 
     -   Attribute type: [Text](https://schema.org/Text)
-    -   Normative References: [https://schema.org/areaServed](https://schema.org/areaServed)
+    -   Normative References:
+        [https://schema.org/areaServed](https://schema.org/areaServed)
     -   Optional
 
 -   `powerState` : Streetlight group's power state.
 
     -   Attribute type: [Text](http://schema.org/Text)
-    -   Attribute metadata:
-        -   `timestamp` : Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp` : Timestamp when the last update of
+        the attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Allowed values: one Of (`on`, `off`, `low`, `bootingUp`)
     -   Optional
 
@@ -54,37 +58,40 @@ The data model is defined as shown below:
 -   `dateLastSwitchingOn` : Timestamp of the last switching on.
 
     -   Attribute Type: [DateTime](http://schema.org/DateTime)
-    -   Attribute metadata:
-        -   `timestamp` : Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp` : Timestamp when the last update of
+        the attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `dateLastSwitchingOff` : Timestamp of the last switching off.
 
     -   Attribute Type: [DateTime](http://schema.org/DateTime)
-    -   Attribute metadata:
-        -   `timestamp` : Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp` : Timestamp when the last update of
+        the attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `switchingOnHours` : Switching on hours. It is used normally to set special
     schedules for certain dates.
 
-    -   Attribute Type: List of [StructuredValue](http://schema.org/StructuredValue)
-    -   Subproperties:
-        -   `from` : Starting date (it can be yearless).
-            -   Type: [Date](https://schema.org/Date)
-        -   `to` : Ending date (it can be yearless)
-            -   Type: [Date](https://schema.org/Date)
-        -   `hours` : Hours.
-            -   Normative References: Value must be compliant with
-                [https://schema.org/openingHours](https://schema.org/openingHours)
-    -   Attribute metadata:
-        -   `timestamp` : Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute Type: List of
+        [StructuredValue](http://schema.org/StructuredValue)
+    -   Subproperties: 
+        - `from` : Starting date (it can be yearless). 
+            - Type:
+        [Date](https://schema.org/Date) 
+        - `to` : Ending date (it can be
+        yearless) 
+            - Type: [Date](https://schema.org/Date) 
+        - `hours` : Hours.
+        - Normative References: Value must be compliant with
+        [https://schema.org/openingHours](https://schema.org/openingHours)
+    -   Attribute metadata: 
+        - `timestamp` : Timestamp when the last update of
+        the attribute happened.
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `switchingMode` : Switching mode.
@@ -93,9 +100,9 @@ The data model is defined as shown below:
     -   Allowed values: (`night-ON`, `night-OFF`, `night-LOW`, `always-ON`,
         `day-ON`, `day-OFF`, `day-LOW`)
     -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `illuminanceLevel` : Relative illuminance level setting for the group.
@@ -103,19 +110,19 @@ The data model is defined as shown below:
     -   Attribute Type: [Number](http://schema.org/Number)
     -   Allowed values: A number between 0 and 1.
     -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+        - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `activeProgramId` : Identifier of the active program for this streetlight
     group.
 
     -   Attribute type: [Text](https://schema.org/Text)
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `dateModified` : Timestamp of the last update made to this entity.

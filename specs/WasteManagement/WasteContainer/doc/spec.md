@@ -13,13 +13,16 @@ A JSON Schema corresponding to this data model can be found
 
 -   `type` : Entity type. It must be equal to `WasteContainer`.
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `location` : Container's location represented by a GeoJSON Point.
 
@@ -37,88 +40,121 @@ A JSON Schema corresponding to this data model can be found
 -   `fillingLevel` : Filling level of the container (percentage, expressed in
     parts per one). When the container is full it must be equal to `1.0`. When
     the container is empty it must be equal to `0.0`. If it is not possible to
-    determine the current filling level it must be equal to `null`. + Attribute
-    type: [Number](http://schema.org/Number) + Attribute metadata: +
-    `timestamp`: Timestamp when the last update of the attribute happened. +
-    Type: [DateTime](http://schema.org/DateTime) + `TimeInstant` :
-    [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
-    saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
-    to keep backwards compatibility with current FIWARE reference
-    implementations. + Type: [DateTime](https://schema.org/DateTime). There can
-    be production environmments where the attribute type is equal to the
-    `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.
+    determine the current filling level it must be equal to `null`.
 
-    -   Allowed values: Interval [0,1]. + Optional
+    -   Attribute type: [Number](http://schema.org/Number)
+    -   Attribute metadata:
+        -   `timestamp`: Timestamp when the last update of the attribute
+            happened.
+            -   Type: [DateTime](http://schema.org/DateTime)
+        -   `TimeInstant` :
+            [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
+            saved by FIWARE's IoT Agents. Note: This attribute has not been
+            harmonized to keep backwards compatibility with current FIWARE
+            reference implementations.
+            -   Type: [DateTime](https://schema.org/DateTime). There can be
+                production environmments where the attribute type is equal to
+                the `ISO8601` string. If so, it must be considered as a synonym
+                of `DateTime`.
+    -   Allowed values: Interval [0,1].
+    -   Optional
 
 -   `fullnessThreshold` : The level at which the container will generate a
     warning (percentage, expressed in parts per one). If the filling level
-    passes this threshold, action should be taken to clean the container. +
-    Attribute type: [Number](http://schema.org/Number) + Attribute metadata: +
-    `timestamp`: Timestamp when the last update of the attribute happened. +
-    Type: [DateTime](http://schema.org/DateTime) + `TimeInstant` :
-    [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
-    saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
-    to keep backwards compatibility with current FIWARE reference
-    implementations. + Type: [DateTime](https://schema.org/DateTime). There can
-    be production environmments where the attribute type is equal to the
-    `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.
+    passes this threshold, action should be taken to clean the container.
 
-    -   Allowed values: Interval [0,1]. + Optional
+    -   Attribute type: [Number](http://schema.org/Number)
+    -   Attribute metadata:
+        -   `timestamp`: Timestamp when the last update of the attribute
+            happened.
+            -   Type: [DateTime](http://schema.org/DateTime)
+        -   `TimeInstant` :
+            [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
+            saved by FIWARE's IoT Agents. Note: This attribute has not been
+            harmonized to keep backwards compatibility with current FIWARE
+            reference implementations.
+            -   Type: [DateTime](https://schema.org/DateTime). There can be
+                production environmments where the attribute type is equal to
+                the `ISO8601` string. If so, it must be considered as a synonym
+                of `DateTime`.
+    -   Allowed values: Interval [0,1].
+    -   Optional
 
--   `cargoWeight` : Weight of the container load. + Attribute type:
-    [Number](http://schema.org/Number) + Attribute metadata: + `timestamp`:
-    Timestamp when the last update of the attribute happened. + Type:
-    [DateTime](http://schema.org/DateTime) + `TimeInstant` :
-    [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
-    saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
-    to keep backwards compatibility with current FIWARE reference
-    implementations. + Type: [DateTime](https://schema.org/DateTime). There can
-    be production environmments where the attribute type is equal to the
-    `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.
+-   `cargoWeight` : Weight of the container load.
 
-    -   Default Unit: Kilograms. + See also:
-        [https://schema.org/weight](https://schema.org/weight) + Optional
+    -   Attribute type: [Number](http://schema.org/Number)
+    -   Attribute metadata:
 
--   `temperature` : Temperature inside the container. + Attribute type:
-    [Number](http://schema.org/Number) + Attribute metadata: + `timestamp`:
-    Timestamp when the last update of the attribute happened. + Type:
-    [DateTime](http://schema.org/DateTime) + `TimeInstant` :
-    [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
-    saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
-    to keep backwards compatibility with current FIWARE reference
-    implementations. + Type: [DateTime](https://schema.org/DateTime). There can
-    be production environmments where the attribute type is equal to the
-    `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.
+        -   `timestamp`: Timestamp when the last update of the attribute
+            happened.
+            -   Type:[DateTime](http://schema.org/DateTime)
+        -   `TimeInstant` :
+            [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
+            saved by FIWARE's IoT Agents. Note: This attribute has not been
+            harmonized to keep backwards compatibility with current FIWARE
+            reference implementations.
+            -   Type: [DateTime](https://schema.org/DateTime). There can be
+                production environmments where the attribute type is equal to
+                the `ISO8601` string. If so, it must be considered as a synonym
+                of `DateTime`.
 
-    -   Default unit: Celsius Degrees. + Optional
+    -   Default Unit: Kilograms.
+    -   See also: [https://schema.org/weight](https://schema.org/weight)
+    -   Optional
 
--   `methaneConcentration` : Methane (CH4) concentration inside the container. +
-    Attribute type: [Number](http://schema.org/Number) + Attribute metadata: +
-    `timestamp`: Timestamp when the last update of the attribute happened. +
-    Type: [DateTime](http://schema.org/DateTime) + `TimeInstant` :
-    [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
-    saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
-    to keep backwards compatibility with current FIWARE reference
-    implementations. + Type: [DateTime](https://schema.org/DateTime). There can
-    be production environmments where the attribute type is equal to the
-    `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.
+-   `temperature` : Temperature inside the container.
 
-    -   Default unit: Micrograms per cubic meter. + Optional
+    -   Attribute type: [Number](http://schema.org/Number)
+    -   Attribute metadata:
+
+        -   `timestamp`: Timestamp when the last update of the attribute
+            happened.
+            -   Type: [DateTime](http://schema.org/DateTime)
+        -   `TimeInstant` :
+            [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
+            saved by FIWARE's IoT Agents. Note: This attribute has not been
+            harmonized to keep backwards compatibility with current FIWARE
+            reference implementations.
+            -   Type: [DateTime](https://schema.org/DateTime). There can be
+                production environmments where the attribute type is equal to
+                the `ISO8601` string. If so, it must be considered as a synonym
+                of `DateTime`.
+
+    -   Default unit: Celsius Degrees.
+    -   Optional
+
+-   `methaneConcentration` : Methane (CH4) concentration inside the container.
+
+    -   Attribute type: [Number](http://schema.org/Number)
+    -   Attribute metadata: -`timestamp`: Timestamp when the last update of the
+        attribute happened. - Type: [DateTime](http://schema.org/DateTime)
+
+        -   `TimeInstant` :
+            [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
+            saved by FIWARE's IoT Agents. Note: This attribute has not been
+            harmonized to keep backwards compatibility with current FIWARE
+            reference implementations. - Type:
+            [DateTime](https://schema.org/DateTime). There can be production
+            environmments where the attribute type is equal to the `ISO8601`
+            string. If so, it must be considered as a synonym of `DateTime`.
+
+    -   Default unit: Micrograms per cubic meter.
+    -   Optional
 
 -   `storedWasteOrigin` : Origin of the waste stored.
 
     -   Attribute type: [Text](http://schema.org/Text)
     -   Allowed values: one Of (`household`, `municipal`, `industrial`,
-        `construction`, `hostelry`, `agriculture`, `other`)
-        -   Or any other value which does not fit within the former.
+        `construction`, `hostelry`, `agriculture`, `other`) - Or any other value
+        which does not fit within the former.
     -   Optional
 
 -   `storedWasteKind` : Kind/s of waste stored by the container.
 
     -   Attribute type: List of [Text](http://schema.org/Text)
     -   Allowed values: (`organic`, `inorganic`, `glass`, `oil`, `plastic`,
-        `metal`, `paper`, `batteries`, `electronics`, `hazardous`, `other`)
-        -   Or any other value which does not fit within the former.
+        `metal`, `paper`, `batteries`, `electronics`, `hazardous`, `other`) - Or
+        any other value which does not fit within the former.
     -   Optional
 
 -   `storedWasteCode` : As per the regulation, waste codes which precisely
@@ -200,48 +236,60 @@ A JSON Schema corresponding to this data model can be found
 -   `isleId` : Identifier (or name) of the isle where the container is placed.
     This attribute should be used when entities of type `WasteContainerIsle` are
     not being modelled specifically. Otherwise, `refWasteContainerIsle` should
-    be used. + Attribute Type: [Text](http://schema.org/Text) + Optional
+    be used.
+
+    -   Attribute Type: [Text](http://schema.org/Text)
+    -   Optional
 
 -   `category` : Container's category.
 
     -   Attribute type: List of [Text](https://schema.org/Text)
-    -   Allowed Values:
-        -   All values allowed for the `category` property of
-            [WasteContainerModel](../../WasteContainerModel/doc/spec.md).
-        -   `fixed`. Container is fixed to a wall, support or handle.
-        -   `underground`. Container is placed underground.
-        -   `ground`. Container is placed at ground level.
-        -   `portable`. Container can be moved around a certain extent.
-        -   Any other value which captures an aspect not covered by those
-            referred above.
+    -   Allowed Values: - All values allowed for the `category` property of
+        [WasteContainerModel](../../WasteContainerModel/doc/spec.md). - `fixed`.
+        Container is fixed to a wall, support or handle. - `underground`.
+        Container is placed underground. - `ground`. Container is placed at
+        ground level. - `portable`. Container can be moved around a certain
+        extent. - Any other value which captures an aspect not covered by those
+        referred above.
 
--   `status` : Container's status from the point of view of safety. + Attribute
-    type: [Text](https://schema.org/Text) + Allowed Values: + `ok`. Container is
-    where it must be and stands properly. + `lidOpen`. Container's lid has been
-    opened and not closed after a certain amount of time. + `dropped`. Container
-    has been dropped for some reason. + `moved`. Container has been moved from
-    its regular position and has not come back. + `vandalized`. Container has
-    been damaged or destroyed due to vandalism. + `burning`. Container is
-    burning and an immediate action has to be taken. + Attribute metadata: +
-    `timestamp`: Timestamp when the last update of the attribute happened. +
-    Type: [DateTime](http://schema.org/DateTime) + `TimeInstant` :
-    [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
-    saved by FIWARE's IoT Agents. Note: This attribute has not been harmonized
-    to keep backwards compatibility with current FIWARE reference
-    implementations. + Type: [DateTime](https://schema.org/DateTime). There can
-    be production environmments where the attribute type is equal to the
-    `ISO8601` string. If so, it must be considered as a synonym of `DateTime`.
+-   `status` : Container's status from the point of view of safety.
+
+    -   Attribute type: [Text](https://schema.org/Text)
+    -   Allowed Values:
+        -   `ok`. Container is where it must be and stands properly.
+        -   `lidOpen`. Container's lid has been opened and not closed after a
+            certain amount of time.
+        -   `dropped`. Container has been dropped for some reason.
+        -   `moved`. Container has been moved from its regular position and has
+            not come back.
+        -   `vandalized`. Container has been damaged or destroyed due to
+            vandalism.
+        -   `burning`. Container is burning and an immediate action has to be
+            taken.
+    -   Attribute metadata:
+
+        -   `timestamp`: Timestamp when the last update of the attribute
+            happened.
+            -   Type: [DateTime](http://schema.org/DateTime)
+        -   `TimeInstant` :
+            [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
+            saved by FIWARE's IoT Agents. Note: This attribute has not been
+            harmonized to keep backwards compatibility with current FIWARE
+            reference implementations.
+            -   Type: [DateTime](https://schema.org/DateTime). There can be
+                production environmments where the attribute type is equal to
+                the `ISO8601` string. If so, it must be considered as a synonym
+                of `DateTime`.
 
     -   Optional
 
 -   `color` : Container's color
 
     -   Attribute type: [Text](https://schema.org/Text)
-    -   Allowed Values:
-        -   A color keyword as specified by
-            [W3C Color Keywords](https://www.w3.org/TR/SVG/types.html#ColorKeywords)
-        -   A color value as specified by
-            [W3C Color Data Type](https://www.w3.org/TR/SVG/types.html#BasicDataTypes)
+    -   Allowed Values: - A color keyword as specified by
+        [W3C Color Keywords](https://www.w3.org/TR/SVG/types.html#ColorKeywords) -
+        A color value as specified by
+        [W3C Color Data Type](https://www.w3.org/TR/SVG/types.html#BasicDataTypes)
     -   See also: [https://schema.org/color](https://schema.org/color)
     -   Optional
 
@@ -264,10 +312,11 @@ A JSON Schema corresponding to this data model can be found
     -   Optional
 
 -   `areaServed` : Higher level area to which the container belongs to. It can
-    be used to group containers per responsible, district, neighbourhood, etc. +
-    Normative References:
-    [https://pending.schema.org/areaServed](https://pending.schema.org/areaServed) +
-    Optional
+    be used to group containers per responsible, district, neighbourhood, etc.
+
+    -   Normative References:
+        [https://pending.schema.org/areaServed](https://pending.schema.org/areaServed)
+    -   Optional
 
 -   `dateModified` : Last update timestamp of this entity
 
@@ -278,10 +327,12 @@ A JSON Schema corresponding to this data model can be found
     [Timestamp](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
     saved by FIWARE's IoT Agent as per dynamic IoT data arrival. Note: This
     attribute has not been harmonized to keep backwards compatibility with
-    current FIWARE reference implementations. + Attribute type:
-    [DateTime](https://schema.org/DateTime). There can be production
-    environmments where the attribute type is equal to the `ISO8601` string. If
-    so, it must be considered as a synonym of `DateTime`.
+    current FIWARE reference implementations.
+
+    -   Attribute type: [DateTime](https://schema.org/DateTime). There can be
+        production environmments where the attribute type is equal to the
+        `ISO8601` string. If so, it must be considered as a synonym of
+        `DateTime`.
 
     -   Optional
 

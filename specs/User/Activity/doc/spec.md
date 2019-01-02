@@ -24,13 +24,16 @@ A JSON Schema corresponding to this data model can be found
 
 -   `type` : Entity type. It must be equal to `UserActivity`.
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
 
@@ -87,16 +90,16 @@ API implementation, you need to use the `keyValues` mode (`options=keyValues`).
 
 ## Examples of use
 
-```
+```json
 {
-  "id": "UserActivity1",
-  "type": "UserActivity",
-  "activityType": "Drive",
-  "description": "User1 drive Car1 to Office1",
-  "dateActivityStarted": "2016-11-30T07:00:00.00Z",
-  "refObject": "Car1",
-  "refTarget": "Office1",
-  "refAgent": "User1"
+    "id": "UserActivity1",
+    "type": "UserActivity",
+    "activityType": "Drive",
+    "description": "User1 drive Car1 to Office1",
+    "dateActivityStarted": "2016-11-30T07:00:00.00Z",
+    "refObject": "Car1",
+    "refTarget": "Office1",
+    "refAgent": "User1"
 }
 ```
 

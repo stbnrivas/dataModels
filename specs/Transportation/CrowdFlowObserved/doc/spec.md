@@ -17,9 +17,11 @@ The data model is defined as shown below:
 
     -   It shall be equal to `CrowdFlowObserved`.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `dateCreated` : Entity's creation timestamp. (`createdAt` in NGSI-LD)
 
@@ -63,9 +65,11 @@ The data model is defined as shown below:
     format. It can be represented by an specific time instant or by an ISO8601
     interval. As a workaround for the lack of support of Orion Context Broker
     for datetime intervals, it can be used two separate attributes:
-    `dateObservedFrom`, `dateObservedTo`. + Attribute type:
-    [DateTime](https://schema.org/DateTime) or an ISO8601 interval represented
-    as [Text](https://schema.org/Text). + Mandatory
+    `dateObservedFrom`, `dateObservedTo`.
+
+    -   Attribute type: [DateTime](https://schema.org/DateTime) or an ISO8601
+        interval represented as [Text](https://schema.org/Text).
+    -   Mandatory
 
 -   `dateObservedFrom` : Observation period start date and time. See
     `dateObserved`.

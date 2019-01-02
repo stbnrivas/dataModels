@@ -14,13 +14,16 @@ The data model is defined as shown below:
 
 -   `type` : Entity type. It must be equal to `TrafficFlowObserved`.
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `location` : Location of this traffic flow observation represented by a
     GeoJSON geometry.
@@ -139,14 +142,18 @@ The data model is defined as shown below:
 -   `laneDirection` : Usual direction of travel in the lane referred by this
     observation. This attribute is useful when the observation is not
     referencing any road segment, allowing to know the direction of travel of
-    the traffic flow observed. + Attribute type:
-    [Text](https://schema.org/Text) + Allowed values: (`forward`, `backward`).
-    See [RoadSegment.laneUsage](../../RoadSegment/doc/spec.md) for a description
-    of the semantics of these values. + Optional
+    the traffic flow observed.
+
+    -   Attribute type: [Text](https://schema.org/Text)
+    -   Allowed values: (`forward`, `backward`). See
+        [RoadSegment.laneUsage](../../RoadSegment/doc/spec.md) for a description
+        of the semantics of these values.
+    -   Optional
 
 -   `reversedLane`: Flags whether traffic in the lane was reversed during the
-    observation period. The absence of this attribute means no lane reversion. +
-    Attribute type: [Boolean](https://schema.org/Boolean) + Optional
+    observation period. The absence of this attribute means no lane reversion.
+    -   Attribute type: [Boolean](https://schema.org/Boolean)
+    -   Optional
 
 **Note**: JSON Schemas only capture the NGSI simplified representation, this
 means that to test the JSON schema examples with a

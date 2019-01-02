@@ -21,9 +21,11 @@ A JSON Schema corresponding to this data model can be found
 
 -   `type` : Entity type. It must be equal to `WeatherForecast`.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
 
@@ -59,8 +61,9 @@ A JSON Schema corresponding to this data model can be found
 -   `validity` : Includes the validity period for this forecast as a ISO8601
     time interval. As a workaround for the lack of support of Orion Context
     Broker for datetime intervals, it can be used two separate attributes:
-    `validFrom`, `validTo`. + Attribute type: [Text](https://schema.org/Text) +
-    Mandatory
+    `validFrom`, `validTo`.
+    -   Attribute type: [Text](https://schema.org/Text)
+    -   Mandatory
 -   `validFrom` : Validity period start date and time.
     -   Attribute type: [DateTime](https://schema.org/DateTime).
     -   Optional
@@ -126,25 +129,27 @@ A JSON Schema corresponding to this data model can be found
 -   `dayMinimum` : Minimum values forecasted for the reported period.
 
     -   Attribute type: [StructuredValue](https://schema.org/StructuredValue)
-    -   Subattributes:
-        -   `temperature` : Minimum temperature. Same semantics and units as
-            `WeatherForecast.temperature`.
-        -   `feelLikesTemperature`. Minimum feels like temperature. Same
-            semantics and units as `WeatherForecast.feelsLikeTemperature`.
-        -   `relativeHumidity`. Minimum relative humidity. Same semantics and
-            units as `WeatherForecast.relativeHumidity`.
+    -   Subattributes: 
+        - `temperature` : Minimum temperature. Same semantics and
+        units as `WeatherForecast.temperature`. 
+        - `feelLikesTemperature`.
+        Minimum feels like temperature. Same semantics and units as
+        `WeatherForecast.feelsLikeTemperature`. 
+        - `relativeHumidity`. Minimum
+        relative humidity. Same semantics and units as
+        `WeatherForecast.relativeHumidity`.
     -   Optional
 
 -   `dayMaximum` : Maximum values for the reported period.
 
     -   Attribute type: [StructuredValue](https://schema.org/StructuredValue)
-    -   Subattributes:
-        -   `temperature` : Maximum temperature. See
-            `WeatherForecast.temperature` for description and units.
-        -   `feelLikesTemperature`. Maximum feels like temperature. Same
-            semantics and units as `WeatherForecast.feelsLikeTemperature`.
-        -   `relativeHumidity`. Maximum relative humidity. Same semantics and
-            units as `WeatherForecast.relativeHumidity`.
+    -   Subattributes: 
+        - `temperature` : Maximum temperature. See
+        `WeatherForecast.temperature` for description and units. 
+        - `feelLikesTemperature`. Maximum feels like temperature. Same semantics
+        and units as `WeatherForecast.feelsLikeTemperature`. 
+        - `relativeHumidity`. Maximum relative humidity. Same semantics and units
+        as `WeatherForecast.relativeHumidity`.
 
 -   `uVIndexMax` : The maximum UV index for the period, based on the World
     Health Organization's UV Index measure.

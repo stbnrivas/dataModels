@@ -16,13 +16,16 @@ The data model is defined as shown below:
 
 -   `type` : It must be equal to `Streetlight`.
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `location` : Streetlight's location represented by a GeoJSON Point.
 
@@ -42,13 +45,16 @@ The data model is defined as shown below:
     etc.
 
     -   Attribute type: [Text](https://schema.org/Text)
-    -   Normative References: [https://schema.org/areaServed](https://schema.org/areaServed)
+    -   Normative References:
+        [https://schema.org/areaServed](https://schema.org/areaServed)
     -   Optional
 
 -   `circuit` : The circuit to which this streetlight connects to and gets power
     from. Typically it will contain an identifier that will allow to obtain more
-    information about such circuit. + Attribute type:
-    [Text](http://schema.org/Text) + Optional
+    information about such circuit.
+
+    -   Attribute type: Text](http://schema.org/Text)
+    -   Optional
 
 -   `refStreetlightModel` : Streetlight's model.
 
@@ -68,28 +74,29 @@ The data model is defined as shown below:
 
     -   Attribute type: [Text](http://schema.org/Text)
     -   Allowed values: one Of (`ok`, `defectiveLamp`, `columnIssue`,
-        `brokenLantern`)
-        -   Or any other value meaningful to the application and not covered by
-            the values above.
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+        `brokenLantern`) 
+        - Or any other value meaningful to the application and
+        not covered by the values above.
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Mandatory
 
 -   `powerState` : Streetlight's power state.
 
     -   Attribute type: [Text](http://schema.org/Text)
-    -   Attribute metadata:
-        -   `timestamp` : Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp` : Timestamp when the last update of
+        the attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Allowed values: one Of (`on`, `off`, `low`, `bootingUp`)
     -   Optional
 
 -   `refDevice` : Reference to the device(s) used to monitor this streetligth.
 
-    -   Attribute type: List of Reference to entity(ies) of type [Device](../../../Device/Device/doc/spec.md)
+    -   Attribute type: List of Reference to entity(ies) of type
+        [Device](../../../Device/Device/doc/spec.md)
     -   Optional
 
 -   `refStreetlightGroup` : Streetlight's group, if this streetlight belongs to
@@ -103,28 +110,28 @@ The data model is defined as shown below:
     it will mean that the lamp has never been changed.
 
     -   Attribute Type: [DateTime](http://schema.org/DateTime)
-    -   Attribute metadata:
-        -   `timestamp` : Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp` : Timestamp when the last update of
+        the attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `dateLastSwitchingOn` : Timestamp of the last switching on.
 
     -   Attribute Type: [DateTime](http://schema.org/DateTime)
-    -   Attribute metadata:
-        -   `timestamp` : Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp` : Timestamp when the last update of
+        the attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `dateLastSwitchingOff` : Timestamp of the last switching off.
 
     -   Attribute Type: [DateTime](http://schema.org/DateTime)
-    -   Attribute metadata:
-        -   `timestamp` : Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp` : Timestamp when the last update of
+        the attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `controllingMethod` : The method used to control this streetlight.
@@ -167,8 +174,8 @@ The data model is defined as shown below:
     -   Attribute type:
     -   Allowed values: oneOf (`façade`, `sidewalk`, `pedestrianPath`, `road`,
         `playground`, `park`, `garden`, `bridge`, `tunnel`, `parking`,
-        `centralIsland`) + Or any other value with semantics not covered by the
-        above list.
+        `centralIsland`) 
+        - Or any other value with semantics not covered by the above list.
 
 -   `lanternHeight` : Lantern's height. In columns with many arms this can vary
     between streetlights. Another variation source of this property are
@@ -181,10 +188,10 @@ The data model is defined as shown below:
 -   `illuminanceLevel` : Relative illuminance level setting.
     -   Attribute Type: [Number](http://schema.org/Number)
     -   Allowed values: A number between 0 and 1.
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 **Note**: JSON Schemas only capture the NGSI simplified representation, this

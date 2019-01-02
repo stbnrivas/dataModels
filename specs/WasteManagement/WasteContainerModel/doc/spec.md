@@ -13,18 +13,23 @@ The data model is defined as shown below:
 
 -   `type`: Entity Type. It must be equal to `WasteContainerModel`.
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `name`. Name given to this container model. It is a "well-known",
     mnemotechnic or codename. This attribute is different than `modelName` which
-    conveys the formal model name given by the manufacturer. + Normative
-    References: [https://schema.org/name](https://schema.org/name) + Mandatory
+    conveys the formal model name given by the manufacturer.
+
+    -   Normative References: [https://schema.org/name](https://schema.org/name)
+    -   Mandatory
 
 -   `width`. Width of the container.
 
@@ -77,12 +82,13 @@ The data model is defined as shown below:
 -   `category`. Container’s category.
 
     -   Attribute type: List of [Text](https://schema.org/Text).
-    -   Allowed values (Informative):
-        -   `dumpster`. See
-            [https://en.wikipedia.org/wiki/Dumpster](https://en.wikipedia.org/wiki/Dumpster)
-        -   `trashCan`.
-        -   `wheelieBin`.
-        -   Any other category relevant for the application.
+    -   Allowed values (Informative): 
+        - `dumpster`. See
+        [https://en.wikipedia.org/wiki/Dumpster](https://en.wikipedia.org/wiki/Dumpster) 
+        - `trashCan`. 
+        - `wheelieBin`. 
+        - Any other category relevant for the
+        application.
     -   Optional
 
 -   `insertHolesNumber`. Number of insert holes the container has.
@@ -109,8 +115,11 @@ The data model is defined as shown below:
 
 -   `modelName`. Name of the model as given by the manufacturer. This attribute
     is different than `name` which is just a codename usually given by
-    municipalities. + Attribute type: [Text](https://schema.org/Text) + See
-    also: [https://schema.org/model](https://schema.org/model) + Optional
+    municipalities.
+
+    -   Attribute type: [Text](https://schema.org/Text)
+    -   See also: [https://schema.org/model](https://schema.org/model)
+    -   Optional
 
 -   `manufacturerName`. Name of the manufacturer.
 
@@ -127,11 +136,11 @@ The data model is defined as shown below:
 -   `colors`. Available colors.
 
     -   Attribute type: List of [Text](https://schema.org/Text)
-    -   Allowed Values:
-        -   A color keyword as specified by
-            [W3C Color Keywords](https://www.w3.org/TR/SVG/types.html#ColorKeywords)
-        -   A color value as specified by
-            [W3C Color Data Type](https://www.w3.org/TR/SVG/types.html#BasicDataTypes)
+    -   Allowed Values: 
+        - A color keyword as specified by
+        [W3C Color Keywords](https://www.w3.org/TR/SVG/types.html#ColorKeywords) 
+        - A color value as specified by
+        [W3C Color Data Type](https://www.w3.org/TR/SVG/types.html#BasicDataTypes)
     -   See also: [https://schema.org/color](https://schema.org/color)
     -   Optional
 

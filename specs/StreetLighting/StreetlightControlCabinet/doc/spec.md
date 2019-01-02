@@ -11,13 +11,16 @@ The data model is defined as shown below:
 
 -   `type` : It must be equal to `StreetlightControlCabinet`.
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `location` : Control cabinet's location represented by a GeoJSON point.
 
@@ -79,11 +82,9 @@ The data model is defined as shown below:
 
     -   Attribute type: List of [Text](https://schema.org/Text)
     -   Allowed Values: Those technical values considered meaningful by
-        applications.
-        -   `astronomicalClock` .- The control cabinet includes an astronomical
-            clock to deal with switching hours.
-        -   `individualControl` .- The control cabinet allows to control street
-            lights individually.
+        applications. 
+        - `astronomicalClock` . The control cabinet includes an astronomical clock to deal with switching hours. 
+        - `individualControl`. The control cabinet allows to control street lights individually.
 
 -   `compliantWith`. A list of standards to which the cabinet controller is
     compliant with (ex. `IP54`)
@@ -97,9 +98,11 @@ The data model is defined as shown below:
     -   Attribute type: List of [Text](https://schema.org/Text)
     -   Optional
 
--   `refDevice` : Reference to the device(s) used to monitor this control cabinet.
+-   `refDevice` : Reference to the device(s) used to monitor this control
+    cabinet.
 
-    -   Attribute type: List of Reference to entity(ies) of type [Device](../../../Device/Device/doc/spec.md)
+    -   Attribute type: List of Reference to entity(ies) of type
+        [Device](../../../Device/Device/doc/spec.md)
     -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
@@ -134,13 +137,14 @@ The data model is defined as shown below:
 -   `workingMode` : Working mode for this cabinet controller.
 
     -   Attribute type: [Text](http://schema.org/Text)
-    -   Allowed values:
-        -   `automatic` : The cabinet controller decides automatically when
-            light groups are switched on and off. Manual operation is not
-            allowed.
-        -   `manual` : Human intervention is required for switching on and off.
-        -   `semiautomatic` : The same as `automatic` but in this case manual
-            intervention is allowed.
+    -   Allowed values: 
+        - `automatic` : The cabinet controller decides
+        automatically when light groups are switched on and off. Manual
+        operation is not allowed. 
+        - `manual` : Human intervention is required
+        for switching on and off. 
+        - `semiautomatic` : The same as `automatic`
+        but in this case manual intervention is allowed.
     -   Mandatory
 
 -   `maximumPowerAvailable` : The maximum power available (by contract) for the
@@ -155,10 +159,10 @@ The data model is defined as shown below:
 
     -   Attribute type: [Number](https://schema.org/Number)
     -   Default unit: Kilowatts per hour (kWh).
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `energyCost` : Cost of the energy consumed by the circuits controlled since
@@ -167,18 +171,20 @@ The data model is defined as shown below:
     -   Attribute type: [Number](https://schema.org/Number)
     -   Default currency: Euros. (Other currencies might be expressed using a
         metadata attribute)
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+        - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `reactiveEnergyConsumed` : Energy consumed (with regards to reactive power)
-    by circuits since the metering start date (`dateMeteringStarted`). +
-    Attribute type: [Number](https://schema.org/Number) + Default unit:
-    KiloVolts-Ampere-Reactive per hour (kVArh). + Attribute metadata: +
-    `timestamp`: Timestamp when the last update of the attribute happened. +
-    Type: [DateTime](http://schema.org/DateTime) + Optional
+    by circuits since the metering start date (`dateMeteringStarted`). 
+    -   Attribute type: [Number](https://schema.org/Number) 
+        - Default unit: KiloVolts-Ampere-Reactive per hour (kVArh). 
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the attribute happened.
+            - Type: [DateTime](http://schema.org/DateTime
+    -   Optional
 
 -   `dateMeteringStarted` : The starting date for metering energy consumed.
 
@@ -190,10 +196,9 @@ The data model is defined as shown below:
 
     -   Attribute type: [Number](https://schema.org/Number)
     -   Default unit: Kilowatts per hour (kWh).
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp which reflects the date and time at which the
-            referred reading was obtained.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp which reflects the date and
+        time at which the referred reading was obtained.    - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `meterReadingPeriod` : The periodicity of energy consumed meter readings in
@@ -212,10 +217,10 @@ The data model is defined as shown below:
 
     -   Attribute Type: [Number](http://schema.org/Number)
     -   Default unit: KiloWatts (kW).
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `totalReactivePower` : Reactive power currently consumed (counting all
@@ -223,10 +228,10 @@ The data model is defined as shown below:
 
     -   Attribute Type: [Number](http://schema.org/Number)
     -   Default unit: KiloVolts-Ampere-Reactive (kVArh).
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `activePower` : Active power consumed per phase. The actual values will be
@@ -235,10 +240,10 @@ The data model is defined as shown below:
 
     -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: Kilowatts (kW)
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `reactivePower` : Reactive power. The actual values will be conveyed by
@@ -247,30 +252,30 @@ The data model is defined as shown below:
 
     -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: KiloVolts-Ampere-Reactive (kVArh)
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `powerFactor` : Power factor.
 
     -   Attribute Type: [Number](http://schema.org/Number)
     -   Allowed values: A number between -1 and 1.
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `cosPhi` : "Cosin of phi" parameter.
 
     -   Attribute Type: [Number](http://schema.org/Number)
     -   Allowed values: A number between -1 and 1.
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `intensity` : Electric intensity. The actual values will be conveyed by one
@@ -281,10 +286,10 @@ The data model is defined as shown below:
 
     -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: Ampers (A)
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `voltage` : Electric tension. The actual values will be conveyed by one
@@ -295,10 +300,10 @@ The data model is defined as shown below:
 
     -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: Volts (V)
-    -   Attribute metadata:
-        -   `timestamp`: Timestamp when the last update of the attribute
-            happened.
-            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute metadata: 
+        - `timestamp`: Timestamp when the last update of the
+        attribute happened. 
+            - Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `thdrVoltage` : Total harmonic distortion (R) of The name of each

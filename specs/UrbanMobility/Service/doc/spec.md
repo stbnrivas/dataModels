@@ -9,24 +9,28 @@ at certain dates.
 
 The data model is defined as shown below:
 
--   `id`: Entity ID + It shall be
-    `urn:ngsi-ld:gtfs:Service:<service_identifier>`. It can be derived from the
-    `service_id` field of
-    [trips.txt](https://developers.google.com/transit/gtfs/reference/#tripstxt)
-    and/or
-    [calendar.txt](https://developers.google.com/transit/gtfs/reference/#calendartxt)
+-   `id`: Entity ID
+
+    -   It shall be `urn:ngsi-ld:gtfs:Service:<service_identifier>`. It can be
+        derived from the `service_id` field of
+        [trips.txt](https://developers.google.com/transit/gtfs/reference/#tripstxt)
+        and/or
+        [calendar.txt](https://developers.google.com/transit/gtfs/reference/#calendartxt)
 
 -   `type`: Entity Type
 
     -   It shall be equal to `gtfs:Service`
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `dateCreated`: Entity's creation timestamp.
 

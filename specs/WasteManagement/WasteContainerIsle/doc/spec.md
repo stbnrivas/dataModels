@@ -12,13 +12,16 @@ The data model is defined as shown below:
 
 -   `type` : Entity type. It must be equal to `WasteContainerIsle`.
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `location` : Location of the isle represented by a GeoJSON Polygon.
 
@@ -52,11 +55,11 @@ The data model is defined as shown below:
 -   `features` : A list of features provided by the isle.
 
     -   Attribute type: List of [Text](http://schema.org/Text).
-    -   Allowed values:
-        -   `containerFix`. Allows to fix containers to a permanent position.
-        -   `fenced`. The isle is properly fenced.
-        -   `underground`. The isle allows to hold buried containers.
-        -   Any other value meaningful to the application.
+    -   Allowed values: 
+            - `containerFix`. Allows to fix containers to a permanent position.
+            - `fenced`. The isle is properly fenced. 
+            - `underground`. The isle allows to hold buried containers.
+            - Any other value meaningful to the application.
     -   Optional
 
 -   `refWasteContainer` : List of containers present in the isle.
@@ -67,8 +70,10 @@ The data model is defined as shown below:
     -   Optional
 
 -   `areaServed` : Higher level area to which the isle belongs to. It can be
-    used to group isles per responsible, district, neighbourhood, etc. +
-    Attribute type: [Text](https://schema.org/Text) + Optional
+    used to group isles per responsible, district, neighbourhood, etc.
+
+    -   Attribute type: [Text](https://schema.org/Text)
+    -   Optional
 
 -   `dateModified` : Last update timestamp of this entity
 

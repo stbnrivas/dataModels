@@ -18,13 +18,16 @@ The data model is defined as shown below:
 
     -   It shall be equal to `ArrivalEstimation`
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
@@ -53,11 +56,11 @@ The data model is defined as shown below:
 
     -   Attribute type: Property. [Text](https://schema.org/Text). Remaining
         time shall be encoded as a ISO8601 duration. Ex. `"PT8M5S"`.
-    -   Attribute Metadata:
-        -   `timestamp` (mapped to `observedAt` in NGSI-LD). Timestamp of the
-            last attribute update
-            -   Type: [DateTime](https://schema.org/DateTime)
-            -   Mandatory
+    -   Attribute Metadata: 
+        - `timestamp` (mapped to `observedAt` in NGSI-LD).
+        Timestamp of the last attribute update 
+            - Type: [DateTime](https://schema.org/DateTime) 
+            - Mandatory
     -   Mandatory
 
 -   `remainingDistance`: It shall contain the remaining distance (in meters) of
@@ -65,11 +68,11 @@ The data model is defined as shown below:
 
     -   Attribute type: Property. Positive Number.
         [https://schema.org/Number](https://schema.org/Number)
-    -   Attribute metadata:
-        -   `timestamp` (mapped to `observedAt` in NGSI-LD). Timestamp of the
-            last attribute update
-            -   Type: [DateTime](https://schema.org/DateTime)
-            -   Mandatory
+    -   Attribute metadata: 
+        - `timestamp` (mapped to `observedAt` in NGSI-LD).
+        Timestamp of the last attribute update 
+            - Type: [DateTime](https://schema.org/DateTime) 
+            - Mandatory
     -   Default Unit: Meters
     -   Optional
 

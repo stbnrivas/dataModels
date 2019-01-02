@@ -74,8 +74,8 @@ A JSON Schema corresponding to this data model can be found
     -   Normative references: [https://schema.org/openingHours]
     -   Optional
 -   `areaServed` : Higher level area to which the garden belongs to. It can be
-    used to group gardens per responsible, district, neighbourhood, etc. +
-    Attribute type: [Text](https://schema.org/Text) Optional
+    used to group gardens per responsible, district, neighbourhood, etc.
+    -   Attribute type: [Text](https://schema.org/Text) Optional
 -   `dateLastWatering` : Timestamp which corresponds to the last watering of
     this garden.
 

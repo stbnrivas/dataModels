@@ -16,13 +16,16 @@ A JSON Schema corresponding to this data model can be found
 
 -   `type` : Entity type. It must be equal to `BikeHireDockingStation`.
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
@@ -85,9 +88,9 @@ A JSON Schema corresponding to this data model can be found
     -   Attribute type: [Number](http://schema.org/Number)
     -   Allowed values: A positive integer number, including 0. It must lower or
         equal than `totalSlotNumber`.
-    -   Metadata:
-        -   `timestamp` : Timestamp of the last attribute update.
-        -   Type: [DateTime](https://schema.org/DateTime)
+    -   Metadata: 
+        - `timestamp` : Timestamp of the last attribute update. 
+            - Type: [DateTime](https://schema.org/DateTime)
     -   Optional
 
 -   `outOfServiceSlotNumber` : The number of slots that are out of order and
@@ -96,19 +99,19 @@ A JSON Schema corresponding to this data model can be found
 
     -   Attribute type: [Number](http://schema.org/Number)
     -   Allowed values: A positive integer number, including 0.
-    -   Metadata:
-        -   `timestamp` : Timestamp of the last attribute update
-        -   Type: [DateTime](https://schema.org/DateTime)
-    -   Optional
+    -   Metadata: 
+        - `timestamp` : Timestamp of the last attribute update 
+            - Type: [DateTime](https://schema.org/DateTime)
+        -   Optional
 
 -   `availableBikeNumber` : The number of bikes available in the bike hire
     docking station to be hired by users.
 
     -   Attribute type: [Number](http://schema.org/Number)
     -   Allowed values: A positive integer number, including 0.
-    -   Metadata:
-        -   `timestamp` : Timestamp of the last attribute update.
-        -   Type: [DateTime](https://schema.org/DateTime)
+    -   Metadata: 
+        - `timestamp` : Timestamp of the last attribute update. 
+            - Type: [DateTime](https://schema.org/DateTime)
     -   Optional
 
 -   `openingHours` : Opening hours of the docking station.
@@ -120,13 +123,13 @@ A JSON Schema corresponding to this data model can be found
 -   `status` : Status of the bike hire docking station.
 
     -   Attribute type: List of [Text](http://schema.org/Text)
-    -   Metadata:
-        -   `timestamp` : Timestamp of the last attribute update.
-        -   Type: [DateTime](https://schema.org/DateTime)
-    -   Allowed values:
-        -   (`working`, `outOfService`, `withIncidence`, `full`, `almostFull`,
-            `empty`, `almostEmpty`)
-        -   Or any other application+specific.
+    -   Metadata: 
+        - `timestamp` : Timestamp of the last attribute update. 
+            - Type: [DateTime](https://schema.org/DateTime)
+    -   Allowed values: 
+        - (`working`, `outOfService`, `withIncidence`, `full`,
+        `almostFull`, `empty`, `almostEmpty`) 
+        - Or any other application+specific.
     -   Optional
 
 -   `areaServed` : Area served by this docking station. Precise semantics can

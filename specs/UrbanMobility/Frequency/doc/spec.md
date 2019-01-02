@@ -17,13 +17,16 @@ The data model is defined as shown below:
 
     -   It shall be equal to `gtfs:Frequency`.
 
-- `source` : A sequence of characters giving the source of the entity data.
-  - Attribute type: Text or URL
-  - Optional
+-   `source` : A sequence of characters giving the source of the entity data.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+    -   Attribute type: Text or URL
+    -   Optional
+
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
@@ -70,8 +73,9 @@ The data model is defined as shown below:
 
 -   `exactTimes`: Same as GTFS `exact_times` but encoded as a Boolean: `false`:
     Frequency-based trips are not exactly scheduled. `true`: Frequency-based
-    trips are exactly scheduled. + Attribute type: Property.
-    [Boolean](https://schema.org/Boolean). + Optional
+    trips are exactly scheduled.
+    -   Attribute type: Property. [Boolean](https://schema.org/Boolean).
+    -   Optional
 
 ### Example of use 1 (Normalized Format)
 

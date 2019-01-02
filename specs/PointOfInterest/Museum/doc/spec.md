@@ -2,13 +2,14 @@
 
 ## Description
 
-
 <!-- textlint-disable no-dead-link -->
+
 This entity contains a harmonised geographic description of a museum. It is used
 in applications that use spatial data and is applicable to Tourism, Cultural,
 and Smart City vertical segments and related IoT applications. Special thanks to
-[TURESPAÑA](https://www.tourspain.es/en-us) who provided some
-examples which inspired the development of this data model.
+[TURESPAÑA](https://www.tourspain.es/en-us) who provided some examples which
+inspired the development of this data model.
+
 <!-- textlint-enable no-dead-link -->
 
 ## Data Model
@@ -24,9 +25,11 @@ used by applications.
 
 -   `type` : Entity type. It must be equal to `Museum`.
 
-- `dataProvider` : Specifies the URL to information about the provider of this information
-  - Attribute type: URL
-  - Optional
+-   `dataProvider` : Specifies the URL to information about the provider of this
+    information
+
+    -   Attribute type: URL
+    -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
 
@@ -95,23 +98,24 @@ used by applications.
 -   `historicalPeriod` : Corresponds to the historical period(s) of the
     exhibitions made by this museum.
     -   Attribute type: List of [Text](https://schema.org/Text)
-    -   Allowed values:
-        -   A ISO8601 time interval. For example `1920/1940`. The second element
-            of the interval can be left empty to denote "till now".
-        -   A comma separated list of years, for instance `1620,1625,1718`.
-        -   A century, represented by a year pattern, for instance `19xx` would
-            correspond to the twentieth century. And `196x` would correspond to
-            the sixties decade.
+    -   Allowed values: 
+        - An ISO8601 time interval. For example `1920/1940`. The
+        second element of the interval can be left empty to denote "till now". 
+        - A comma separated list of years, for instance `1620,1625,1718`. 
+        - A century, represented by a year pattern, for instance `19xx` would
+        correspond to the twentieth century. And `196x` would correspond to the
+        sixties decade.
     -   Optional
 -   `artPeriod` : Corresponds to the art period(s) of the exhibitions made by
     this museum.
 
     -   Attribute type: List of [Text](https://schema.org/Text)
-    -   Allowed values:
-        -   Those defined by
-            [Wikipedia](https://en.wikipedia.org/wiki/Art_periods).
-        -   Any other extended value needed by an application and not described
-            by the above resource.
+    -   Allowed values: 
+        - Those defined by
+        [Wikipedia](https://en.wikipedia.org/wiki/Art_periods). 
+        - Any other
+        extended value needed by an application and not described by the above
+        resource.
     -   Optional
 
 -   `buildingType` : Type of building that hosts the museum.
@@ -151,8 +155,9 @@ used by applications.
 
 -   `touristArea` : Tourist area at which this museum is located. Precise
     semantics might depend on the application or target country or region. For
-    instance `Costa del Sol`. + Attribute type:
-    [Text](https://schema.org/Text) + Optional
+    instance `Costa del Sol`.
+    -   Attribute type: [Text](https://schema.org/Text)
+    -   Optional
 -   `contactPoint` : Contact point for the museum.
 
     -   Attribute type:
