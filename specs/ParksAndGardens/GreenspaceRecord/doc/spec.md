@@ -141,6 +141,10 @@ Normalized NGSI response
     }, 
     "relativeHumidity": {
         "value": 0.87
+    },
+    "dateObserved": {
+        "type": "DateTime",
+        "value": "2019-01-15T12:00:00Z"
     }
 }
 ```
@@ -160,7 +164,8 @@ Sample uses simplified representation for data consumers `?options=keyValues`
     "temperature": 17,
     "relativeHumidity": 0.87,
     "soilTemperature": 13,
-    "refGreenspace": "Santander-Garden-Piquio"
+    "refGreenspace": "Santander-Garden-Piquio",
+    "dateObserved": "2019-01-15T12:00:00Z"
 }
 ```
 

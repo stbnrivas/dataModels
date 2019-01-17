@@ -37,26 +37,29 @@
           "minimum": 0
         },
         "allowedVehicleType": {
-          "type": "string",
-          "enum": [
-            "agriculturalVehicle",
-            "bicycle",
-            "bus",
-            "car",
-            "caravan",
-            "carWithCaravan",
-            "carWithTrailer",
-            "constructionOrMaintenanceVehicle",
-            "lorry",
-            "moped",
-            "motorcycle",
-            "motorcycleWithSideCar",
-            "motorscooter",
-            "tanker",
-            "trailer",
-            "van",
-            "anyVehicle"
-          ]
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "agriculturalVehicle",
+              "bicycle",
+              "bus",
+              "car",
+              "caravan",
+              "carWithCaravan",
+              "carWithTrailer",
+              "constructionOrMaintenanceVehicle",
+              "lorry",
+              "moped",
+              "motorcycle",
+              "motorcycleWithSideCar",
+              "motorscooter",
+              "tanker",
+              "trailer",
+              "van",
+              "anyVehicle"
+            ]
+          }
         },
         "totalLaneNumber": {
           "type": "number",

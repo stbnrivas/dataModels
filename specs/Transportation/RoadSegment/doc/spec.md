@@ -215,9 +215,7 @@ Normalized NGSI response
     "id": "Spain-RoadSegment-A62-osm-24702186",
     "type": "RoadSegment",
     "category": {
-        "value": [
-            "oneway"
-        ]
+        "value": "oneway"
     }, 
     "endPoint": {
         "value": {
@@ -312,7 +310,7 @@ points just to make the example shorter.
     "id": "Spain-RoadSegment-A62-osm-24702186",
     "type": "RoadSegment",
     "name": "Valladolid-Dueñas",
-    "category": ["oneway"],
+    "category": "oneway",
     "refRoad": "Spain-Road-A62",
     "totalLaneNumber": 2,
     "maximumAllowedSpeed": 120,
