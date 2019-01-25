@@ -73,7 +73,13 @@ The data model is defined as shown below:
 
     -   Attribute type: List of references to entities of type
         [RoadSegment](../../RoadSegment/doc/spec.md).
-    -   MAndatory
+    -   Mandatory if `location` is not defined
+
+-   `location` : A GeoJSON (multi)line string which defines this road.
+
+    -   Normative References:  [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
+    -   Attribute type: `geo:json`
+    -   Mandatory if `refRoadSegment` is not defined  
 
 -   `length` : Total length of this road in kilometers.
 
