@@ -36,7 +36,7 @@ def find_node(schema, node_name):
     if isinstance(schema, list):
         for instance in schema:
             res = find_node(instance, node_name)
-            if res <> None:
+            if res is not None:
                 result = res
                 break
     elif isinstance(schema, dict):
@@ -46,14 +46,14 @@ def find_node(schema, node_name):
                 break
             else:
                 res = find_node(schema[member], node_name)
-                if res <> None:
+                if res is not None:
                     result = res
                     break
 
     return result
 
 
-# extract the properties dictionary
+# extracts the properties dictionary
 def extract_properties(schema):
     properties = find_node(schema, 'properties')
 
@@ -63,13 +63,34 @@ def extract_properties(schema):
         return out
 
     for p in properties:
-        if p <> "type":
+        if p != "type":
             out.append(p)
 
     return out
 
+ # extracts the entity type
+
+
+def extract_entity_type(schema):
+    out = None
+
+    properties = find_node(schema, 'properties')
+
+    if properties is not None and 'type' in properties:
+        type_node = properties['type']
+
+        out = type_node['enum'][0]
+
+    return out
+
+
+# extracts the enumerations
+def extract_enumerations(schema):
+    return []
 
 # Generates the LD @context for a list of properties with the URI prefix
+
+
 def generate_ld_context(properties, uri_prefix):
     context = {}
 
@@ -96,6 +117,12 @@ def generate_ld_context(properties, uri_prefix):
 # Extracts from the schema the relevant JSON-LD @context
 def schema_2_ld_context(schema, uri_prefix):
     properties = extract_properties(schema)
+    entity_type = extract_entity_type(schema)
+    enumerations = extract_enumerations(schema)
+
+    if (entity_type is not None):
+        properties.append(entity_type)
+
     ld_context = generate_ld_context(properties, uri_prefix)
 
     return ld_context
