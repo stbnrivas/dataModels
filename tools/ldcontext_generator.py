@@ -74,7 +74,7 @@ def generate_ld_context(properties, uri_prefix):
     context = {}
 
     if properties is None:
-        return ld_context
+        return context
 
     for p in properties:
         if p.startswith('ref'):
