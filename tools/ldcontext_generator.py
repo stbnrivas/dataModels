@@ -128,7 +128,7 @@ def schema_2_ld_context(schema, uri_prefix):
 
 def process_file(input_file, uri_prefix):
     if (os.path.isfile(input_file) and input_file.endswith('schema.json')):
-        print (input_file)
+        print(input_file)
         aggregate_ld_context(input_file, uri_prefix)
     elif os.path.isdir(input_file):
         for f in (os.listdir(input_file)):
@@ -146,7 +146,7 @@ def aggregate_ld_context(f, uri_prefix):
 
 
 def write_context_file():
-    print ('writing LD @context...')
+    print('writing LD @context...')
 
     ld_context = {
         '@context': aggregated_context
