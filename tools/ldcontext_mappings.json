@@ -1,0 +1,9 @@
+{
+  "name": "http://schema.org/name",
+  "alternativeName": "http://schema.org/alternativeName",
+  "description": "http://schema.org/description",
+  "openingHours": "http://schema.org/openingHours",
+  "address": "http://schema.org/address",
+  "areaServed": "http://schema.org/areaServed",
+  "location": "http://uri.etsi.org/ngsi-ld/location"
+}

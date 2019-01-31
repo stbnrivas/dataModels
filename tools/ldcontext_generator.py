@@ -1,12 +1,16 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
-Extracts the properties of a JSON Schema converting them into terms of a JSON-LD @Context
+Extracts the properties, types and  enumerations of a JSON Schema
+converting them into terms of a JSON-LD @Context
+
+Copyright (c) 2019 FIWARE Foundation e.V.
+
+Author: José M. Cantera
 """
 
 import sys
 import json
-import ntpath
 import os
 
 # Here the aggregated @context will be stored
@@ -78,18 +82,36 @@ def extract_entity_type(schema):
     if properties is not None and 'type' in properties:
         type_node = properties['type']
 
-        out = type_node['enum'][0]
+        if 'enum' in type_node and len(type_node['enum']) > 0:
+            out = type_node['enum'][0]
 
     return out
 
 
 # extracts the enumerations
 def extract_enumerations(schema):
-    return []
+    out = []
+
+    properties = find_node(schema, 'properties')
+
+    if properties is None:
+        return out
+
+    for p in properties:
+        if p != 'type':
+            prop = properties[p]
+            enum = find_node(prop, 'enum')
+            if enum is not None:
+                if isinstance(enum, list):
+                    for item in enum:
+                        if isinstance(item, str):
+                            out.append(item)
+
+    return out
 
 
 # Generates the LD @context for a list of properties with the URI prefix
-def generate_ld_context(properties, uri_prefix):
+def generate_ld_context(properties, uri_prefix, predefined_mappings):
     context = {}
 
     if properties is None:
@@ -106,6 +128,8 @@ def generate_ld_context(properties, uri_prefix):
                 '@type': 'http://uri.etsi.org/ngsi-ld/DateTime',
                 '@id': uri_prefix + '/' + p
             }
+        elif p in predefined_mappings:
+            context[p] = predefined_mappings[p]
         else:
             context[p] = uri_prefix + '/' + p
 
@@ -113,7 +137,7 @@ def generate_ld_context(properties, uri_prefix):
 
 
 # Extracts from the schema the relevant JSON-LD @context
-def schema_2_ld_context(schema, uri_prefix):
+def schema_2_ld_context(schema, uri_prefix, predefined_mappings):
     properties = extract_properties(schema)
     entity_type = extract_entity_type(schema)
     enumerations = extract_enumerations(schema)
@@ -121,32 +145,36 @@ def schema_2_ld_context(schema, uri_prefix):
     if (entity_type is not None):
         properties.append(entity_type)
 
-    ld_context = generate_ld_context(properties, uri_prefix)
+    all_properties = properties + enumerations
+
+    ld_context = generate_ld_context(
+        all_properties, uri_prefix, predefined_mappings)
 
     return ld_context
 
 
-def process_file(input_file, uri_prefix):
+def process_file(input_file, uri_prefix, predefined_mappings):
     if (os.path.isfile(input_file) and input_file.endswith('schema.json')):
         print(input_file)
-        aggregate_ld_context(input_file, uri_prefix)
+        aggregate_ld_context(input_file, uri_prefix, predefined_mappings)
     elif os.path.isdir(input_file):
         for f in (os.listdir(input_file)):
-            process_file(os.path.join(input_file, f), uri_prefix)
+            process_file(os.path.join(input_file, f),
+                         uri_prefix, predefined_mappings)
 
 
-def aggregate_ld_context(f, uri_prefix):
+def aggregate_ld_context(f, uri_prefix, predefined_mappings):
     global aggregated_context
 
     schema = read_json(f)
-    ld_context = schema_2_ld_context(schema, uri_prefix)
+    ld_context = schema_2_ld_context(schema, uri_prefix, predefined_mappings)
 
     for p in ld_context:
         aggregated_context[p] = ld_context[p]
 
 
 def write_context_file():
-    print('writing LD @context...')
+    print('writing LD @context...' + ' size: ' + str(len(aggregated_context)))
 
     ld_context = {
         '@context': aggregated_context
@@ -157,7 +185,10 @@ def write_context_file():
 
 def main(args):
     uri_prefix = args[2]
-    process_file(args[1], uri_prefix)
+
+    predefined_mappings = read_json('ldcontext_mappings.json')
+
+    process_file(args[1], uri_prefix, predefined_mappings)
 
     write_context_file()
 
