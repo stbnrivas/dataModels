@@ -30,17 +30,6 @@ The data model is defined as shown below:
 
 -   `dateCreated` : Entity's creation timestamp
 
-    -   Attribute type: Text or URL
-    -   Optional
-
--   `dataProvider` : Specifies the URL to information about the provider of this
-    information
-
-    -   Attribute type: URL
-    -   Optional
-
--   `dateCreated` : Entity's creation timestamp
-
     -   Attribute type: [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
