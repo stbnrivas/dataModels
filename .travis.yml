@@ -33,6 +33,7 @@ matrix:
       before_script:
         - npm run lint -C ./validator
         - node ./validator/validate.js -i common-schema.json -i geometry-schema.json -i specs/Weather/weather-schema.json -i specs/Alert/alert-schema.json -p specs -c true
+        - npm test -C ./validator
       script:
         - true
 
