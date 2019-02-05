@@ -33,7 +33,6 @@ matrix:
       before_script:
         - npm run lint -C ./validator
         - node ./validator/validate.js -i common-schema.json -i geometry-schema.json -i specs/Weather/weather-schema.json -i specs/Alert/alert-schema.json -p specs -c true
-        - npm test -C ./validator
       script:
         - true
 
@@ -44,4 +43,4 @@ notifications:
     on_success: always
     on_failure: never
     urls:
-      secure: Cj4XhZn8fWu32mHXzWOwdflmR4VCOs3W2vmO1J6hCktnhwgyyvqiUBXlKsvPQQiqyKGc6Z+8FD4Pt/nscoR50lxWM3wZ++lSPLFVH3YtrO8iMRolKTuQYNSF3jbeYPo0zaSdCXqmGCnZ5VCzUo+bf/l3JSMGc/d5yU7RLgRJjrI89pgkyFuOI5Cs15AfTJxw4lHYjcybh87Oqz8k0zsCb9nJf/l/3gLE5spD6vbn9G85ORsSAz0Quf0BioVSBg8Wm52gPrvi5XaK1FWxIO3LU8Lf42XX0ACuVNSbxPiMxc/TJBTSzOvsWGC/wjMSDeTjZWJrcRqs73HyJJAVDTYqmCatx6rOd2gauM/6EMuOuAUV5q0emx/umbjrVBeA6WyVAx4P9GIy06yfiR6ngRChAP5Xh7vAh8sKFa8pEenVTXS0dEIXTso+ivfQxZzwYzKOXoejm37FKuN2qdgWFlq925s9LhHcfPd0uRryaekyb8fGGFuhNbsZaprCgON+PRCptYV/pRhA1IF353qkwZqd0zPEIV+LLTJbBhztgEtnaqfcE6lei3Tk2kuSxHygd2QclWIz8SXxo8pOyUnidHPqQz1k4It3ChbRmgsnwKA1LrW9qXf0zY16Yd+lH5T0mawZhucJZ1CYD6MT1a51Nnd3hx4ghdZR1EZin3aORY4OltQ=
+      secure: ePst22ZyFX1ak7/GfpvPtdDw8fkdJN/dAQcPcOFFIrCPu5ciIsmhsml2lAFEtj4MHRHYTYlW2+rbWFgO7ByiZmQHmo5lLdQhzpgBRVVB5Rp6YYBJ7paXU6Kr5kQ3CtQ9FeZcMCkI/GaMBeV3ECVYDzfpyAbPOoe9YimoHvhV5/3BYMPJZULJEY6ZPgg06MQY0Gn0zy880ULfkbLGK5WfSCFa7ovbxvfzgGhB9WV7ddJ/mpRo0d73Yt2NQbboM2TB1PrVEt7XvakqY2++u+VymVQQQ1b2Xb6jWcFeAI9rkxGiw1PrkivnlYbvzw5U2U9M8mtxNKcqIN1LS2Kbz23u10RuTVX8rTsEOurFqr3GDVkqP8QVF+QfwQxHlLTCbYYshzKoofL4H28pNFymmnwh8U1KxiF7dZ2ubTJG6No+uevjWZ+XGSsYt7F0bH331E2tqamJenEDOmbYOgWi9eqIM4w/XoRNUWwnRDZA/Yrzn34TqHL1N9QrkOF+BGpiWrNMvUFDVY6RuvcBTj1dZcgUZU33RR/1vEQt2A7HYaAVjgxYXLtesfWHAjuPMNlbIWFN6T2DKnPvaTUGYYC8sbpFRviRoptQ8ll/txmz6N4T5p1RHGfxYXsMreBtZgUmNduzld6RXEpyr7HnXX9Dh8GOs91qxURnOl3eZM+YI7yT0VU=
