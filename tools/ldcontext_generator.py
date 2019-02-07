@@ -12,6 +12,7 @@ Author: José M. Cantera
 import sys
 import json
 import os
+from datetime import datetime
 
 # Here the aggregated @context will be stored
 aggregated_context = {
@@ -177,7 +178,8 @@ def write_context_file():
     print('writing LD @context...' + ' size: ' + str(len(aggregated_context)))
 
     ld_context = {
-        '@context': aggregated_context
+        '@context': aggregated_context,
+        'generatedAt': datetime.now().replace(microsecond=0).isoformat()
     }
 
     write_json(ld_context, 'context.jsonld')
