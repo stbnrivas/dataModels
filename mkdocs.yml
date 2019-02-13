@@ -74,18 +74,18 @@ pages:
       - EVChargingStation      : Transportation/EVChargingStation/doc/spec.md
   - UrbanMobility:
       - Introduction           : UrbanMobility/doc/introduction.md
-      - gtfs:Agency            : UrbanMobility/Agency/doc/spec.md
-      - gtfs:Stop              : UrbanMobility/Stop/doc/spec.md
-      - gtfs:Station           : UrbanMobility/Station/doc/spec.md
-      - gtfs:AccessPoint       : UrbanMobility/AccessPoint/doc/spec.md
-      - gtfs:Route             : UrbanMobility/Route/doc/spec.md
-      - gtfs:Trip              : UrbanMobility/Trip/doc/spec.md
-      - gtfs:StopTime          : UrbanMobility/StopTime/doc/spec.md
-      - gtfs:Service           : UrbanMobility/Service/doc/spec.md
-      - gtfs:CalendarRule      : UrbanMobility/CalendarRule/doc/spec.md
-      - gtfs:CalendarDateRule  : UrbanMobility/CalendarDateRule/doc/spec.md
-      - gtfs:Frequency         : UrbanMobility/Frequency/doc/spec.md
-      - gtfs:TransferRule      : UrbanMobility/TransferRule/doc/spec.md
+      - GtfsAgency            : UrbanMobility/GtfsAgency/doc/spec.md
+      - GtfsStop              : UrbanMobility/GtfsStop/doc/spec.md
+      - GtfsStation           : UrbanMobility/GtfsStation/doc/spec.md
+      - GtfsAccessPoint       : UrbanMobility/GtfsAccessPoint/doc/spec.md
+      - GtfsRoute             : UrbanMobility/GtfsRoute/doc/spec.md
+      - GtfsTrip              : UrbanMobility/GtfsTrip/doc/spec.md
+      - GtfsStopTime          : UrbanMobility/GtfsStopTime/doc/spec.md
+      - GtfsService           : UrbanMobility/GtfsService/doc/spec.md
+      - GtfsCalendarRule      : UrbanMobility/GtfsCalendarRule/doc/spec.md
+      - GtfsCalendarDateRule  : UrbanMobility/GtfsCalendarDateRule/doc/spec.md
+      - GtfsFrequency         : UrbanMobility/GtfsFrequency/doc/spec.md
+      - GtfsTransferRule      : UrbanMobility/GtfsTransferRule/doc/spec.md
       - ArrivalEstimation      : UrbanMobility/ArrivalEstimation/doc/spec.md
   -  Weather:
       - Introduction         : Weather/doc/introduction.md
