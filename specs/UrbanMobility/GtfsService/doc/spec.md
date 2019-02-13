@@ -11,7 +11,7 @@ The data model is defined as shown below:
 
 -   `id`: Entity ID
 
-    -   It shall be `urn:ngsi-ld:gtfs:Service:<service_identifier>`. It can be
+    -   It shall be `urn:ngsi-ld:GtfsService:<service_identifier>`. It can be
         derived from the `service_id` field of
         [trips.txt](https://developers.google.com/transit/gtfs/reference/#tripstxt)
         and/or
@@ -19,7 +19,7 @@ The data model is defined as shown below:
 
 -   `type`: Entity Type
 
-    -   It shall be equal to `gtfs:Service`
+    -   It shall be equal to `GtfsService`
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
@@ -66,7 +66,7 @@ Normalized NGSI response
 ```json
 {
     "id": "urn:ngsi-ld:GtfsService:Malaga:LAB",
-    "type": "gtfs:Service",
+    "type": "GtfsService",
     "operatedBy": {
         "type": "Relationship",
         "value": "urn:ngsi-ld:GtfsAgency:Malaga_EMT"
