@@ -65,13 +65,12 @@ The data model is defined as shown below:
     -   Attribute type: Relationship. It shall point to an Entity of Type
         [GtfsService](../../GtfsService/doc/spec.md)
     -   Optional
+    
+-   `hasShape`: Same as GTFS `shape_id`.
 
--   `location`: The geographical shape associated to the trip encoded as GeoJSON
-    `LineString` or `MultiLineString`. The coordinates shall be obtained from
-    the `shapes.txt` feed file as per the value of `shape_id`.
-
-    -   Attribute type: GeoProperty. `geo:json`
-    -   Optional
+    -   Attribute type: Relationship. It shall point to an Entity of Type
+        [GtfsShape](../../GtfsShape/doc/spec.md)
+    -   Optional    
 
 -   `hasRoute`: Same as `route_id`.
 
@@ -116,17 +115,9 @@ Normalized NGSI response
         "type": "Relationship",
         "value": "urn:ngsi-ld:GtfsService:Malaga_LAB"
     },
-    "location": {
-        "type": "geo:json",
-        "value": {
-            "type": "LineString",
-            "coordinates": [
-                [-4.421394, 36.73826],
-                [-4.421428, 36.73825],
-                [-4.421505, 36.738186],
-                [-4.421525, 36.738033]
-            ]
-        }
+    "hasShape": {
+        "type": "Relationship",
+        "value": "urn:ngsi-ld:GtfsShape:Shape01"
     }
 }
 ```
@@ -142,16 +133,8 @@ Sample uses simplified representation for data consumers `?options=keyValues`
     "hasService": "urn:ngsi-ld:GtfsService:Malaga_LAB",
     "headSign": "San Andrés",
     "direction": "0",
-    "hasRoute": "urn:ngsi-ld:GtfsRoute:Spain:Malaga:1",
-    "location": {
-        "type": "LineString",
-        "coordinates": [
-            [-4.421394, 36.73826],
-            [-4.421428, 36.73825],
-            [-4.421505, 36.738186],
-            [-4.421525, 36.738033]
-        ]
-    }
+    "hasRoute": "urn:ngsi-ld:gtfs:Route:Spain:Malaga:1",
+    "hasShape": "urn:ngsi-ld:GtfsShape:Shape01"
 }
 ```
 
@@ -164,7 +147,6 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 | `trip_headsign`         | `headSign`             | `gtfs:headsign`             |                                                         |
 | `trip_short_name`       | `shortName`            | `gtfs:shortName`            |                                                         |
 | `direction_id`          | `direction`            | `gtfs:direction`            |                                                         |
-| `shape_id`              | `location`             | `gtfs:shape`                | Coordinates shall be taken from `shapes.txt` feed file. |
 | `block_id`              | `block`                | `gtfs:block`                |                                                         |
 | `wheelchair_accessible` | `wheelchairAccessible` | `gtfs:wheelchairAccessible` |                                                         |
 | `bikes_allowed`         | `bikesAllowed`         | `gtfs:bikesAllowed`         |                                                         |
@@ -175,5 +157,6 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 | :----------- | :------------- | :------------- | :------------------------------------------------- |
 | `route_id`   | `hasRoute`     |                |                                                    |
 | `service_id` | `hasService`   | `gtfs:service` | It shall point to an Entity of Type `GtfsService` |
+| `shape_id`   | `hasShape`     | `gtfs:shape`   | It shall point to an Entity of Type `GtfsShape`   |
 
 ### Open issues

@@ -14,29 +14,9 @@
     "hasService": {
         "type": "Relationship", 
         "value": "urn:ngsi-ld:GtfsService:Malaga_LAB"
-    }, 
-    "location": {
-        "type": "geo:json", 
-        "value": {
-            "type": "LineString", 
-            "coordinates": [
-                [
-                    -4.421394, 
-                    36.73826
-                ], 
-                [
-                    -4.421428, 
-                    36.73825
-                ], 
-                [
-                    -4.421505, 
-                    36.738186
-                ], 
-                [
-                    -4.421525, 
-                    36.738033
-                ]
-            ]
-        }
+    },
+    "hasShape": {
+        "type": "Relationship",
+        "value": "urn:ngsi-ld:GtfsShape:Shape01"
     }
 }

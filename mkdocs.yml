@@ -86,7 +86,8 @@ pages:
       - GtfsCalendarDateRule  : UrbanMobility/GtfsCalendarDateRule/doc/spec.md
       - GtfsFrequency         : UrbanMobility/GtfsFrequency/doc/spec.md
       - GtfsTransferRule      : UrbanMobility/GtfsTransferRule/doc/spec.md
-      - ArrivalEstimation      : UrbanMobility/ArrivalEstimation/doc/spec.md
+      - GtfsShape             : UrbanMobility/GtfsShape/doc/spec.md
+      - ArrivalEstimation     : UrbanMobility/ArrivalEstimation/doc/spec.md
   -  Weather:
       - Introduction         : Weather/doc/introduction.md
       - WeatherObserved      : Weather/WeatherObserved/doc/spec.md
