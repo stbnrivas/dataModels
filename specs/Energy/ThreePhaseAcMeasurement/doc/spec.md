@@ -135,7 +135,7 @@ A JSON Schema corresponding to this data model can be found
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
             happened.
-            -   Type: [DateTime](http://schema.org/DateTime
+            -   Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `totalActiveEnergyExport` : Total energy exported since metering started
