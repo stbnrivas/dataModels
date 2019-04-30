@@ -371,22 +371,22 @@
 			"averageSpotWidth": {
 				"type": "number",
 				"minimum": 0,
-				"exclusiveMinimum": true
+				"exclusiveMinimum": 0
 			},
 			"averageSpotLength": {
 				"type": "number",
 				"minimum": 0,
-				"exclusiveMinimum": true
+				"exclusiveMinimum": 0
 			},
 			"maximumAllowedHeight": {
 				"type": "number",
 				"minimum": 0,
-				"exclusiveMinimum": true
+				"exclusiveMinimum": 0
 			},
 			"maximumAllowedWidth": {
 				"type": "number",
 				"minimum": 0,
-				"exclusiveMinimum": true
+				"exclusiveMinimum": 0
 			},
 			"refParkingAccess": {
 				"$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"

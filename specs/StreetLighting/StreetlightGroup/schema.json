@@ -48,14 +48,14 @@
                 "type": "string",
                 "oneOf": [
                   {"format": "date"},
-                  {"format": "ext-date-yearless"}
+                  {"$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/DateYearLess"}
                 ]
               },
               "to": {
                 "type": "string",
                 "oneOf": [
                   {"format": "date"},
-                  {"format": "ext-date-yearless"}
+                  {"$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/DateYearLess"}
                 ]
               },
               "hours": {
