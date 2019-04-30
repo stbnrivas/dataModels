@@ -9,15 +9,16 @@ const msg = require('./message.js');
 const conf = require('./conf.js');
 const debug = require('debug')('schema');
 
-const addSchemas = function(fileList, method, fileType) {
+const addSchemas = function(fileList, ajv, fileType) {
   if (!fileList) {
     return;
   }
   const files = getFiles(fileList);
-  files.forEach(function(file) {
-    const schema = openFile(file, fileType);
-    method(schema);
-  });
+
+  for (let j = 0; j < files.length; j++) {
+    const schema = openFile(files[j], fileType);
+    ajv.addSchema(schema);
+  }
 };
 
 //load  a list of files, supports regex
@@ -70,7 +71,7 @@ module.exports = {
     const schema = openFile(file, 'schema');
     const ajv = new Ajv(conf.ajvOptions);
 
-    addSchemas(commonSchemas, ajv.addSchema, 'schema');
+    addSchemas(commonSchemas, ajv, 'schema');
     let validate;
     try {
       validate = ajv.compile(schema);
