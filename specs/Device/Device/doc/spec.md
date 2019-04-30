@@ -185,6 +185,19 @@ The data model is defined as shown below:
             -   Type: [DateTime](http://schema.org/DateTime)
     -   Optional
 
+-   `rssi` : Received signal strength indicator for a wireless enabled device.
+    It must be equal to `1.0` when the signal strength is maximum. `0.0` when
+    signal is missing. `-1.0` when it cannot be determined.
+
+    -   Type: [Number](https://schema.org/Number)
+    -   Allowed values: Interval \[0,1\] and -1
+    -   Attribute metadata:
+        -   `timestamp`: Timestamp when the last update of the attribute
+            happened. This value can also appear as a FIWARE
+            [TimeInstant](https://github.com/telefonicaid/iotagent-node-lib#TimeInstant)
+            -   Type: [DateTime](http://schema.org/DateTime)
+    -   Optional
+
 -   `deviceState` : State of this device from an operational point of view. Its
     value can be vendor dependent.
 
@@ -274,6 +287,9 @@ Normalized NGSI response
         "type": "Relationship",
         "value": "myDevice-wastecontainer-sensor-345"
     },
+    "rssi": {
+        "value": 0.86
+    },
     "controlledProperty": {
         "value": ["fillingLevel", "temperature"]
     },
@@ -309,6 +325,7 @@ Sample uses simplified representation for data consumers `?options=keyValues`
         "batteryLevel": 0.75,
         "serialNumber": "9845A",
         "refDeviceModel":"myDevice-wastecontainer-sensor-345",
+        "rssi": 0.86,
         "value": "l=0.22;t=21.2",
         "deviceState": "ok",
         "dateFirstUsed": "2014-09-11T11:00:00Z",
