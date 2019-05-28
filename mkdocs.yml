@@ -23,8 +23,8 @@ pages:
       - BuildingOperation            : Building/BuildingOperation/doc/spec.md
   - Civic Issue Tracking:
       - Introduction                 : IssueTracking/doc/introduction.md
-      - Open311:ServiceType          : IssueTracking/Open311_ServiceType/doc/spec.md 
-      - Open311:ServiceRequest       : IssueTracking/Open311_ServiceRequest/doc/spec.md
+      - Open311ServiceType           : IssueTracking/Open311_ServiceType/doc/spec.md 
+      - Open311ServiceRequest        : IssueTracking/Open311_ServiceRequest/doc/spec.md
   - Device:                           
       - Introduction           : Device/doc/introduction.md
       - Device                 : Device/Device/doc/spec.md
