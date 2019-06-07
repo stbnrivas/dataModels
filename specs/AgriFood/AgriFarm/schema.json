@@ -16,7 +16,7 @@
                     "description": "NGSI Entity Type"
                 },
                 "landLocation": {
-                    "$ref": "http://json-schema.org/geojson/geometry.json#",
+                    "$ref": "http://geojson.org/schema/Geometry.json#",
                     "description": "Geometry defining the boundaries of the farm land"
                 },
                 "contactPoint": {

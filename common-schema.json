@@ -79,7 +79,7 @@
     "Location-Commons": {
       "type": "object",
       "properties": {
-        "location": { "$ref": "http://json-schema.org/geojson/geometry.json#" },
+        "location": { "$ref": "http://geojson.org/schema/Geometry.json#" },
         "address": {
           "type": "object",
           "properties": {

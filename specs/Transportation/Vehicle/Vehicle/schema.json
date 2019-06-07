@@ -64,7 +64,7 @@
           }
         },
         "previousLocation": {
-          "$ref": "http://json-schema.org/geojson/geometry.json#",
+          "$ref": "http://geojson.org/schema/Geometry.json#",
           "description": "The start point of this road segment encoded as a GeoJSON point"
         },
         "speed": {

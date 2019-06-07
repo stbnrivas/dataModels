@@ -90,7 +90,7 @@
             ]
           }
         },
-        "containedInPlace": { "$ref": "http://json-schema.org/geojson/geometry.json#" },
+        "containedInPlace": { "$ref": "http://geojson.org/schema/Geometry.json#" },
         "occupier": {
           "type": "array",
           "items": {

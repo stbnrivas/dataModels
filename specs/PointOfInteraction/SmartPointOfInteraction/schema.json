@@ -33,7 +33,7 @@
 				"description": "Defines the type of interaction"
 			},
 			"areaCovered": { 
-				"$ref": "http://json-schema.org/geojson/geometry.json#",
+				"$ref": "http://geojson.org/schema/Geometry.json#",
 				"description": "Defines the area covered by the Smart Point of Interaction using geoJSON format"
 			},
 			"applicationUrl": {

@@ -21,11 +21,11 @@
           "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
         },
         "startPoint": {
-          "$ref": "http://json-schema.org/geojson/geometry.json#",
+          "$ref": "http://geojson.org/schema/Geometry.json#",
           "description": "The start point of this road segment encoded as a GeoJSON point"
         },
         "endPoint": {
-          "$ref": "http://json-schema.org/geojson/geometry.json#",
+          "$ref": "http://geojson.org/schema/Geometry.json#",
           "description": "The end point of this road segment encoded as a GeoJSON point"
         },
         "startKilometer": {

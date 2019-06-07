@@ -5,7 +5,9 @@
   "description": "GTFS Shape",
   "type": "object",
   "allOf": [
-    { "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/GSMA-Commons" },
+    {
+      "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/GSMA-Commons"
+    },
     {
       "properties": {
         "type": {
@@ -24,28 +26,14 @@
           "minItems": 1
         },
         "location": {
-           "type": "object",
-           "oneOf": [{
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": ["LineString"]
-                },
-                "coordinates": { "$ref": "http://json-schema.org/geojson/geometry.json#/definitions/lineString" }
-              }
+          "oneOf": [
+            {
+              "$ref": "http://geojson.org/schema/Geometry.json#LineString"
             },
             {
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "enum": ["MultiLineString"]
-                  },
-                  "coordinates": {
-                    "type": "array",
-                    "items": { "$ref": "http://json-schema.org/geojson/geometry.json#/definitions/lineString" }
-                  }
-                }
-           }]
+              "$ref": "http://geojson.org/schema/Geometry.json#MultiLineString"
+            }
+          ]
         }
       }
     }
