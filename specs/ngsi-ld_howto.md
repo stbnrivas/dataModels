@@ -200,9 +200,11 @@ implicit (and **cannot be overwritten**).
 
 ## API Examples
 
-### Creating an Entity (`application/ld+json`)
+### Entity Creation (`application/ld+json`)
 
 Observe that the request MIME type is set to `application/ld+json`. The `@context` contains two parts: the ETSI Core `@context` and the FIWARE Data Models `@context'. The ETSI core `@context` part could have been omitted as it is always implict. 
+
+Note: When using application/ld+json the payload must always contain a @context member. 
 
 ```
 curl -X GET \
@@ -248,9 +250,11 @@ curl -X GET \
 }'
 ```
 
-### Creating an Entity (`application/json`)
+### Entity Creation (`application/json`)
 
 In this case the payload should not contain any `@context` member, since the `@context` is conveyed as a `Link` header in the request. It is noteworthy, that only one `Link` header pointing to `@context` is allowed. That's why only the FIWARE Data Models `@context` is provided in a Link header. Remember that the ETSI Core `@context` is implicit. 
+
+Note: If no Link header is provided the Entity members will be mapped to the Default @context which implies that they will be under the `example.org/ngsi-ld` namespace.
 
 ```
 curl -X POST \
@@ -292,4 +296,61 @@ curl -X POST \
     }'
 ```
 
+### Entity Retrieval (`application/ld+json`)
 
+GET requests should always contain a `Link` header to the corresponding `@context`, so that the Broker can be informed of what is the `@context` of a query. If a `Link` header is not provided, in this case, the resulting JSON object would have long URIs as member keys and not the short names that were used when creating the Entity. 
+
+Note: If no `Link` header is provided the default `@context` will be used. Remember that the default `@context` maps every JSON member to the `example.org/ngsi-ld` namespace. 
+
+```
+curl -X GET \
+  http://localhost:3000/ngsi-ld/v1/entities/urn:ngsi-ld:ParkingSpot:santander:daoiz_velarde_1_5:3 \
+  -H 'Accept: application/ld+json' \
+  -H 'Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"' \
+```
+
+Response will contain what is shown below. Observe that this response does not include any `Link` header as it is `application/ld+json`, and, therefore, the `@context` is already a member. 
+
+```
+Content-Type: application/ld+json
+
+[
+    {
+        "id": "urn:ngsi-ld:ParkingSpot:santander:daoiz_velarde_1_5:3",
+        "type": "ParkingSpot",
+        "status": {
+            "type": "Property",
+            "value": "free",
+            "observedAt": "2018-09-21T12:00:00Z"
+        },
+        "category": {
+            "type": "Property",
+            "value": [
+                "onstreet"
+            ]
+        },
+        "refParkingSite": {
+            "type": "Relationship",
+            "object": "urn:ngsi-ld:ParkingSite:santander:daoiz_velarde_1_5"
+        },
+        "name": {
+            "type": "Property",
+            "value": "A-13"
+        },
+        "location": {
+            "type": "GeoProperty",
+            "value": {
+                "type": "Point",
+                "coordinates": [
+                    -3.80356167695194,
+                    43.46296641666926
+                ]
+            }
+        },
+        "@context": [
+            "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+            "https://schema.lab.fiware.org/ld/context"
+        ]
+    }
+]
+```
