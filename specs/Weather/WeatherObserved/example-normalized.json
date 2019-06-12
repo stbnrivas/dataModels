@@ -1,64 +1,64 @@
 {
     "id": "Spain-WeatherObserved-Valladolid-2016-11-30T07:00:00.00Z",
-    "type": "WeatherObserved", 
+    "type": "WeatherObserved",
     "dateObserved": {
-        "type": "DateTime", 
+        "type": "DateTime",
         "value": "2016-11-30T07:00:00.00Z"
-    }, 
+    },
     "illuminance": {
         "value": 1000
-    }, 
+    },
     "temperature": {
         "value": 3.3
-    }, 
+    },
     "precipitation": {
         "value": 0
-    }, 
+    },
     "atmosphericPressure": {
         "value": 938.9
-    }, 
+    },
     "pressureTendency": {
         "value": 0.5
-    }, 
+    },
     "refDevice": {
-        "type": "Relationship", 
+        "type": "Relationship",
         "value": "device-0A3478"
-    }, 
+    },
     "source": {
         "value": "http://www.aemet.es"
-    }, 
+    },
     "windSpeed": {
         "value": 2
-    }, 
+    },
     "location": {
-        "type": "geo:json", 
+        "type": "geo:json",
         "value": {
-            "type": "Point", 
+            "type": "Point",
             "coordinates": [
-                -4.754444444, 
+                -4.754444444,
                 41.640833333
             ]
         }
-    }, 
+    },
     "stationName": {
         "value": "Valladolid"
-    }, 
+    },
     "address": {
-        "type": "PostalAddress", 
+        "type": "PostalAddress",
         "value": {
-            "addressLocality": "Valladolid", 
+            "addressLocality": "Valladolid",
             "addressCountry": "ES"
         }
-    }, 
+    },
     "stationCode": {
         "value": "2422"
-    }, 
+    },
     "dataProvider": {
         "value": "TEF"
-    }, 
+    },
     "windDirection": {
         "value": -45
-    },  
+    },
     "relativeHumidity": {
         "value": 1
     },
