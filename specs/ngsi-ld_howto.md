@@ -255,7 +255,7 @@ In this case the payload should not contain any `@context` member, since the `@c
 ```
 curl -X POST \
   http://localhost:3000/ngsi-ld/v1/entities/ \
-  -H 'Link: "https://schema.lab.fiware.org/ld/context"; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"' \
+  -H 'Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"' \
   -H 'content-length: 884' \
   -d '{
         "id": "urn:ngsi-ld:ParkingSpot:santander:daoiz_velarde_1_5:3",
