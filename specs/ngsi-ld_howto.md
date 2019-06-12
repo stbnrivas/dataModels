@@ -202,7 +202,7 @@ implicit (and **cannot be overwritten**).
 
 ### Entity Creation (`application/ld+json`)
 
-Observe that the request MIME type is set to `application/ld+json`. The `@context` contains two parts: the ETSI Core `@context` and the FIWARE Data Models `@context. The ETSI core `@context` part could have been omitted as it is always implicit (and cannot be overwritten). 
+Observe that the request MIME type is set to `application/ld+json`. The `@context` contains two parts: the ETSI Core `@context` and the FIWARE Data Models `@context`. The ETSI core `@context` part could have been omitted as it is always implicit (and cannot be overwritten). 
 
 Note: When using `application/ld+json` the payload must always contain a `@context` member. 
 
