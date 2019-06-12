@@ -142,7 +142,7 @@ published by FIWARE at the suggested URL.
         "object": "urn:ngsi-ld:PointOfInterest:RZ:MainSquare"
     },
     "@context": [
-        "https://schema.lab.fiware.org/ld/jsonldcontext.jsonld",
+        "https://schema.lab.fiware.org/ld/context",
         "http://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
     ]
 }
@@ -170,18 +170,18 @@ published by FIWARE at the suggested URL.
         }
     },
     "@context": [
-        "https://schema.lab.fiware.org/ld/jsonldcontext.jsonld",
+        "https://schema.lab.fiware.org/ld/context",
         "http://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
     ]
 }
 ```
 
-The content of the JSON-LD `@context` could contain the mappings enumerated
-below. Observe that `refPointOfInterest` is labelled as an `@id`, as it is
+The content of the JSON-LD `@context` would contain the mappings enumerated
+below, plus many others. Observe that `refPointOfInterest` is labelled as an `@id`, as it is
 actually pointing to another Entity (linked data). On the other hand, there are
 certain terms such as `location` or `unitCode` which are not included in the
 `@context`, as they pertain to the Core JSON-LD `@context` which is always
-implicit (and cannot be overwritten).
+implicit (and **cannot be overwritten**).
 
 ```json
 {
@@ -197,3 +197,98 @@ implicit (and cannot be overwritten).
     }
 }
 ```
+
+## API Examples
+
+### Creating an Entity (application/ld+json)
+
+Observe that the request MIME type is set to `application/ld+json`. The `@context` contains two parts: the ETSI Core `@context` and the FIWARE Data Models `@context'. The ETSI core `@context` part could have been omitted as it is always implict. 
+
+```
+curl -X GET \
+  http://localhost:3000/ngsi-ld/v1/entities/ \
+  -H 'Content-Type: application/ld+json' \
+  -H 'Content-Length: 903' \
+  -d '{
+    "id": "urn:ngsi-ld:ParkingSpot:santander:daoiz_velarde_1_5:3",
+    "type": "ParkingSpot",
+    "status": {
+        "type": "Property",
+        "value": "free",
+        "observedAt": "2018-09-21T12:00:00Z"
+    },
+    "category": {
+        "type": "Property",
+        "value": [
+            "onstreet"
+        ]
+    },
+    "refParkingSite": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:ParkingSite:santander:daoiz_velarde_1_5"
+    },
+    "name": {
+        "type": "Property",
+        "value": "A-13"
+    },
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Point",
+            "coordinates": [
+                -3.80356167695194,
+                43.46296641666926
+            ]
+        }
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}'
+```
+
+### Creating an Entity (application/json)
+
+In this case the payload should not contain any `@context` member, since the `@context` is conveyed as a `Link` header in the request. It is noteworthy, that only one `Link` header pointing to `@context` is allowed. That's why only the FIWARE Data Models `@context` is provided in a Link header. Remember that the ETSI Core `@context` is implicit. 
+
+```
+curl -X POST \
+  http://localhost:3000/ngsi-ld/v1/entities/ \
+  -H 'Link: "https://schema.lab.fiware.org/ld/context"; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"' \
+  -H 'content-length: 884' \
+  -d '{
+        "id": "urn:ngsi-ld:ParkingSpot:santander:daoiz_velarde_1_5:3",
+        "type": "ParkingSpot",
+        "status": {
+            "type": "Property",
+            "value": "free",
+            "observedAt": "2018-09-21T12:00:00Z"
+        },
+        "category": {
+            "type": "Property",
+            "value": [
+                "onstreet"
+            ]
+        },
+        "refParkingSite": {
+            "type": "Relationship",
+            "object": "urn:ngsi-ld:ParkingSite:santander:daoiz_velarde_1_5"
+        },
+        "name": {
+            "type": "Property",
+            "value": "A-13"
+        },
+        "location": {
+            "type": "GeoProperty",
+            "value": {
+                "type": "Point",
+                "coordinates": [
+                    -3.80356167695194,
+                    43.46296641666926
+                ]
+            }
+        }
+    }'
+```
+
