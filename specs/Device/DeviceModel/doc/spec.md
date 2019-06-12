@@ -46,6 +46,15 @@ The data model is defined as shown below:
     -   `multimedia` : A device designed to display, store, record or play
         multimedia content such as audio, images, animation, video.
         [https://w3id.org/saref#Multimedia](https://w3id.org/saref#Multimedia)
+    -   `implement`: A device used or needed in a given activity; tool, instrument, utensil, etc.
+        [https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/ImplementConfiguration.cs](https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/ImplementConfiguration.cs)
+    -   `irrSystem`: A mobile or fixed irrigation system such as a center pivot, linear,
+         traveling gun, solid set, etc.
+         [https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/IrrSystemConfiguration.cs](https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/IrrSystemConfiguration.cs)
+    -   `irrSection`: A section of an IrrSystem. Different enough from a regular section.
+        [https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/IrrSectionConfiguration.cs](https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/IrrSectionConfiguration.cs)
+    -   `endgun`: A device attached to an irrigation system that projects water beyond it
+        [https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/EndgunConfiguration.cs](https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/EndgunConfiguration.cs)
     -   Mandatory
 
 -   `deviceClass` : Class of constrained device as specified by RFC 7228. If the
@@ -71,7 +80,8 @@ The data model is defined as shown below:
         `conductivity`, `conductance`, `tss`, `tds`, `turbidity`, `salinity`,
         `orp`, `cdom`, `waterPollution`, `location`, `speed`, `heading`,
         `weight`, `waterConsumption`, `gasComsumption`,
-        `electricityConsumption`, `soilMoisture`, `trafficFlow`)
+        `electricityConsumption`, `soilMoisture`, `trafficFlow`, `eatingActivity`,
+        `milking`, `movementActivity`)
     -   Mandatory
 
 -   `function` : The functionality necessary to accomplish the task for which a
