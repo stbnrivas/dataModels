@@ -200,7 +200,7 @@ implicit (and **cannot be overwritten**).
 
 ## API Examples
 
-### Creating an Entity (application/ld+json)
+### Creating an Entity (`application/ld+json`)
 
 Observe that the request MIME type is set to `application/ld+json`. The `@context` contains two parts: the ETSI Core `@context` and the FIWARE Data Models `@context'. The ETSI core `@context` part could have been omitted as it is always implict. 
 
@@ -248,7 +248,7 @@ curl -X GET \
 }'
 ```
 
-### Creating an Entity (application/json)
+### Creating an Entity (`application/json`)
 
 In this case the payload should not contain any `@context` member, since the `@context` is conveyed as a `Link` header in the request. It is noteworthy, that only one `Link` header pointing to `@context` is allowed. That's why only the FIWARE Data Models `@context` is provided in a Link header. Remember that the ETSI Core `@context` is implicit. 
 
@@ -291,4 +291,5 @@ curl -X POST \
         }
     }'
 ```
+
 
