@@ -314,7 +314,6 @@ Response will contain what is shown below. Observe that this response does not i
 ```
 Content-Type: application/ld+json
 
-[
     {
         "id": "urn:ngsi-ld:ParkingSpot:santander:daoiz_velarde_1_5:3",
         "type": "ParkingSpot",
@@ -352,5 +351,4 @@ Content-Type: application/ld+json
             "https://schema.lab.fiware.org/ld/context"
         ]
     }
-]
 ```
