@@ -74,11 +74,9 @@ A JSON Schema corresponding to this data model can be found
     -   Optional
 
 -   `weatherType` : The observed weather type. It is represented by a comma
-    separated list of weather statuses, for instance `overcast, lightRain`. A
-    proposed mapping for Spanish terms can be found
-    [here](https://github.com/Fiware/dataModels/blob/master/specs/Weather/WeatherForecast/harvest/spain_weather_forecast_harvest.py#L135). +
-    Attribute type: [Text](https://schema.org/Text)
-
+    separated list of weather statuses, for instance `overcast, lightRain`.
+    
+    -   Attribute type: [Text](https://schema.org/Text)
     -   Allowed values: A combination of (`clearNight`,`sunnyDay`,
         `slightlyCloudy`, `partlyCloudy`, `mist`, `fog`, `highClouds`, `cloudy`,
         `veryCloudy`, `overcast`, `lightRainShower`, `drizzle`, `lightRain`,

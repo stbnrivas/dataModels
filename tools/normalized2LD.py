@@ -17,7 +17,8 @@ import json
 from rfc3987 import parse
 from entity_print import print_json_string
 
-ld_context = 'https://fiware.github.io/dataModels/ldContext/fiware-ld-context.jsonld'
+ld_context = 'https://schema.lab.fiware.org/ld/context'
+etsi_core_context = 'https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld'
 
 
 def ngsild_uri(type_part, id_part):
@@ -31,8 +32,9 @@ def ld_id(entity_id, entity_type):
     out = entity_id
     try:
         d = parse(entity_id, rule='URI')
-        if d['authority'] is None:
-            out = ngsild_uri(entity_type, entity_id)
+        scheme = d['scheme']
+        if scheme != 'urn' and scheme != 'http' and scheme != 'https':
+            raise ValueError
     except ValueError:
         out = ngsild_uri(entity_type, entity_id)
 
@@ -44,6 +46,9 @@ def ld_object(attribute_name, entity_id):
     out = entity_id
     try:
         d = parse(entity_id, rule='URI')
+        scheme = d['scheme']
+        if scheme != 'urn' and scheme != 'http' and scheme != 'https':
+            raise ValueError
     except ValueError:
         entity_type = ''
         if attribute_name.startswith('ref'):
@@ -57,7 +62,7 @@ def ld_object(attribute_name, entity_id):
 # Do all the transformation work
 def normalized_2_LD(entity):
     out = {
-        '@context': ld_context
+        '@context': [etsi_core_context, ld_context]
     }
 
     for key in entity:
@@ -69,6 +74,14 @@ def normalized_2_LD(entity):
             out[key] = entity[key]
             continue
 
+        if key == 'dateCreated':
+            out['createdAt'] = normalize_date(entity[key]['value'])
+            continue
+
+        if key == 'dateModified':
+            out['modifiedAt'] = normalize_date(entity[key]['value'])
+            continue
+
         attr = entity[key]
         out[key] = {}
         ld_attr = out[key]
@@ -78,7 +91,13 @@ def normalized_2_LD(entity):
             ld_attr['value'] = attr['value']
         else:
             ld_attr['type'] = 'Relationship'
-            ld_attr['object'] = ld_object(key, attr['value'])
+            aux_obj = attr['value']
+            if isinstance(aux_obj, list):
+                ld_attr['object'] = list()
+                for obj in aux_obj:
+                    ld_attr['object'].append(ld_object(key, obj))
+            else:
+                ld_attr['object'] = ld_object(key, str(aux_obj))
 
         if key == 'location':
             ld_attr['type'] = 'GeoProperty'
@@ -86,7 +105,7 @@ def normalized_2_LD(entity):
         if 'type' in attr and attr['type'] == 'DateTime':
             ld_attr['value'] = {
                 '@type': 'DateTime',
-                '@value': attr['value']
+                '@value': normalize_date(attr['value'])
             }
 
         if 'type' in attr and attr['type'] == 'PostalAddress':
@@ -97,15 +116,24 @@ def normalized_2_LD(entity):
 
             for mkey in metadata:
                 if mkey == 'timestamp':
-                    ld_attr['observedAt'] = metadata[mkey]['value']
+                    ld_attr['observedAt'] = normalize_date(metadata[mkey]['value'])
                 elif mkey == 'unitCode':
                     ld_attr['unitCode'] = metadata[mkey]['value']
                 else:
-                    sub_attr = {}
+                    sub_attr = dict()
                     # Metadata which are Relationships is assumed not to be there
                     sub_attr['type'] = 'Property'
                     sub_attr['value'] = metadata[mkey]['value']
                     ld_attr[mkey] = sub_attr
+
+    return out
+
+
+def normalize_date(date_str):
+    out = date_str
+
+    if not date_str.endswith('Z'):
+        out += 'Z'
 
     return out
 

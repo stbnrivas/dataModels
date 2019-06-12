@@ -31,8 +31,25 @@ def print_json_string(entity):
 
     entity_cloned = deepcopy(entity)
 
+    if 'modifiedAt' in entity:
+        entity_only_modified_at = {
+            'modifiedAt': entity['modifiedAt'],
+        }
+        out += "," + json.dumps(entity_only_modified_at, indent=4)[1:-2]
+
+        del entity_cloned['modifiedAt']
+
+    if 'createdAt' in entity:
+        entity_only_created_at = {
+            'createdAt': entity['createdAt'],
+        }
+        out += "," + json.dumps(entity_only_created_at, indent=4)[1:-2]
+
+        del entity_cloned['createdAt']
+
     del entity_cloned['id']
     del entity_cloned['type']
+
     if '@context' in entity_cloned:
         del entity_cloned['@context']
 
