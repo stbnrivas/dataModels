@@ -212,8 +212,8 @@ The data model is defined as shown below:
 
 -   `owner` : Vehicle's owner.
 
-    -   Attribute Type: [https://schema.org/Person](https://schema.org/Person)
-        or [https://schema.org/Organization](https://schema.org/Organization)
+    -   Attribute Type: list of references to entities of type [https://schema.org/Person](https://schema.org/Person)
+        or [https://schema.org/Organization](https://schema.org/Organization) or List of URIs
     -   Optional
 
 -   `feature` : Feature(s) incorporated by the vehicle.

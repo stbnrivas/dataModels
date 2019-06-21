@@ -353,9 +353,6 @@
 				"minItems": 1,
 				"uniqueItems": true
 			},
-			"owner": {
-				"type": "string"
-			},
 			"provider": {
 				"type": "object"
 			},

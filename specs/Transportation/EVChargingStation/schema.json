@@ -77,15 +77,6 @@
 						"almostEmpty"
 					]
 				},
-				"owner": {
-					"anyOf":[{
-						"type": "string",
-						"format": "uri"
-					},
-					{
-						"type": "string"
-					}]
-				},
 				"areaServed": {
 					"type": "string"
 				},

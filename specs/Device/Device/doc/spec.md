@@ -243,7 +243,7 @@ The data model is defined as shown below:
 
 -   `owner` : The owners of a Device.
     -   Attribute type: List of references to [Person](http://schema.org/Person)
-        or [Organization](https://schema.org/Organization).
+        or [Organization](https://schema.org/Organization) or List of URIs.
     -   Optional
 
 **Note**: JSON Schemas only capture the NGSI simplified representation, this

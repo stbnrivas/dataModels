@@ -108,9 +108,6 @@
         "color": {
           "type": "string"
         },
-        "owner": {
-          "type": "string"
-        },
         "feature": {
           "type": "array",
           "items": {

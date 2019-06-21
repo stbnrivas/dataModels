@@ -88,9 +88,6 @@
         "responsible": {
           "type": "string"
         },
-        "owner": {
-          "type": "string"
-        },
         "dateServiceStarted": {
           "type": "string",
           "format": "date-time"

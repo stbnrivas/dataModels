@@ -382,7 +382,7 @@ The data model is defined as shown below:
 
 -   `owner` : Parking site's owner.
 
-    -   Attribute type: [Text](http://schema.org/Text)
+    -   Attribute type: List of [Text](http://schema.org/Text) or List of URIs
     -   Optional
 
 -   `provider` : Parking site service provider.

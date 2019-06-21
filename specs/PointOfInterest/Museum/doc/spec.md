@@ -84,7 +84,7 @@ used by applications.
     -   Optional
 -   `owner` : Museum's owner.
 
-    -   Attribute type: [Text](https://schema.org/Text) or a reference to an
+    -   Attribute type: List of [Text](https://schema.org/Text) or List of URIs or a List of references to an
         entity of type [Person](https://schema.org/Person) or
         [Organization](https://schema.org/Organization)
     -   Optional
