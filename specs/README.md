@@ -3,6 +3,7 @@
 This folder contains the specification of FIWARE Data Models for the following
 themes:
 
+-   [Agrifood](./Agrifood)
 -   [Alert](./Alert)
 -   [Building](./Building)
 -   [Device](./Device)
