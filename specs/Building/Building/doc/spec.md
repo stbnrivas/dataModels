@@ -97,10 +97,9 @@ The following attribute has been introduced:
     -   Attribute type: List of [Opening Hours](http://schema.org/openingHours)
     -   Optional
 
-**Note**: JSON Schemas only capture the NGSI simplified representation, this
-means that to test the JSON schema examples with a
-[FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable)
-API implementation, you need to use the `keyValues` mode (`options=keyValues`).
+**Note**: JSON Schemas are intended to capture the data type and associated
+constraints of the different Attributes, regardless their final representation
+format in NGSI(v2, LD).
 
 ## Examples
 
