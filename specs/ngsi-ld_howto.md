@@ -177,11 +177,11 @@ published by FIWARE at the suggested URL.
 ```
 
 The content of the JSON-LD `@context` would contain the mappings enumerated
-below, plus many others. Observe that `refPointOfInterest` is labelled as an `@id`, as it is
-actually pointing to another Entity (linked data). On the other hand, there are
-certain terms such as `location` or `unitCode` which are not included in the
-`@context`, as they pertain to the Core JSON-LD `@context` which is always
-implicit (and **cannot be overwritten**).
+below, plus many others. Observe that `refPointOfInterest` is labelled as an
+`@id`, as it is actually pointing to another Entity (linked data). On the other
+hand, there are certain terms such as `location` or `unitCode` which are not
+included in the `@context`, as they pertain to the Core JSON-LD `@context` which
+is always implicit (and **cannot be overwritten**).
 
 ```json
 {
@@ -202,9 +202,13 @@ implicit (and **cannot be overwritten**).
 
 ### Entity Creation (`application/ld+json`)
 
-Observe that the request MIME type is set to `application/ld+json`. The `@context` contains two parts: the ETSI Core `@context` and the FIWARE Data Models `@context`. The ETSI core `@context` part could have been omitted as it is always implicit (and cannot be overwritten). 
+Observe that the request MIME type is set to `application/ld+json`. The
+`@context` contains two parts: the ETSI Core `@context` and the FIWARE Data
+Models `@context`. The ETSI core `@context` part could have been omitted as it
+is always implicit (and cannot be overwritten).
 
-Note: When using `application/ld+json` the payload must always contain a `@context` member. 
+Note: When using `application/ld+json` the payload must always contain a
+`@context` member.
 
 ```
 curl -X GET \
@@ -252,9 +256,15 @@ curl -X GET \
 
 ### Entity Creation (`application/json`)
 
-In this case the payload should not contain any `@context` member, since the `@context` is conveyed as a `Link` header in the request. It is noteworthy, that only one `Link` header pointing to the JSON-LD `@context` is allowed. That's why only the FIWARE Data Models URI `@context` is provided as the target of a Link header. Remember that the ETSI Core `@context` is always implicit. 
+In this case the payload should not contain any `@context` member, since the
+`@context` is conveyed as a `Link` header in the request. It is noteworthy, that
+only one `Link` header pointing to the JSON-LD `@context` is allowed. That's why
+only the FIWARE Data Models URI `@context` is provided as the target of a Link
+header. Remember that the ETSI Core `@context` is always implicit.
 
-Note: If no `Link` header is provided the Entity members will be mapped to the Default `@context` which implies that they will be under the `example.org/ngsi-ld` namespace.
+Note: If no `Link` header is provided the Entity members will be mapped to the
+Default `@context` which implies that they will be under the
+`example.org/ngsi-ld` namespace.
 
 ```
 curl -X POST \
@@ -298,9 +308,15 @@ curl -X POST \
 
 ### Entity Retrieval (`application/ld+json`)
 
-GET requests should **always** contain a `Link` header to the corresponding `@context`, so that the Broker can be informed of what is the `@context` of a query. In this case if a `Link` header had not been provided, the resulting JSON object would have contained long URIs as member keys, and not the short names that were used when creating the Entity. 
+GET requests should **always** contain a `Link` header to the corresponding
+`@context`, so that the Broker can be informed of what is the `@context` of a
+query. In this case if a `Link` header had not been provided, the resulting JSON
+object would have contained long URIs as member keys, and not the short names
+that were used when creating the Entity.
 
-Note: Remember that if no `Link` header is provided the default `@context` will be used. The default `@context` maps every JSON member to the `http://example.org/ngsi-ld` dummy namespace. 
+Note: Remember that if no `Link` header is provided the default `@context` will
+be used. The default `@context` maps every JSON member to the
+`http://example.org/ngsi-ld` dummy namespace.
 
 ```
 curl -X GET \
@@ -309,7 +325,10 @@ curl -X GET \
   -H 'Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"' \
 ```
 
-Response will contain what is shown below (headers and payload). Observe that this response does not include any `Link` header as it is indeed `application/ld+json`, and, therefore, the `@context` is already a payload member. 
+Response will contain what is shown below (headers and payload). Observe that
+this response does not include any `Link` header as it is indeed
+`application/ld+json`, and, therefore, the `@context` is already a payload
+member.
 
 ```
 Content-Type: application/ld+json
@@ -355,9 +374,15 @@ Content-Type: application/ld+json
 
 ### Entity Retrieval (`application/json`)
 
-GET requests should **always** contain a `Link` header to the corresponding `@context`, so that the Broker can be informed of what is the `@context` of a query. In this case if a `Link` header had not been provided the resulting JSON object would have contained long URIs as member keys and not the short names that were used when creating the Entity. 
+GET requests should **always** contain a `Link` header to the corresponding
+`@context`, so that the Broker can be informed of what is the `@context` of a
+query. In this case if a `Link` header had not been provided the resulting JSON
+object would have contained long URIs as member keys and not the short names
+that were used when creating the Entity.
 
-Note: If no `Link` header is provided the default `@context` will be used. Remember that the default `@context` maps every JSON member to the `http://example.org/ngsi-ld` dummy namespace. 
+Note: If no `Link` header is provided the default `@context` will be used.
+Remember that the default `@context` maps every JSON member to the
+`http://example.org/ngsi-ld` dummy namespace.
 
 ```
 curl -X GET \
@@ -366,7 +391,9 @@ curl -X GET \
   -H 'Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"' \
 ```
 
-Response will contain what is shown below. Observe that this response **does include** the `Link` header, as it is `application/json`, and, therefore, the `@context` does not appear as a member of the JSON payload. 
+Response will contain what is shown below. Observe that this response **does
+include** the `Link` header, as it is `application/json`, and, therefore, the
+`@context` does not appear as a member of the JSON payload.
 
 ```
 Content-Type: application/json
@@ -406,4 +433,3 @@ Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json
     }
 }
 ```
-

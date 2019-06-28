@@ -13,8 +13,8 @@
 ### Introduction
 
 This document describes the IoT-BD instance developed under the
-[GSMA IoT Big Data Project](https://www.gsma.com/iot/iot-big-data/),
-part of GSMA’s Connected Living Programme.
+[GSMA IoT Big Data Project](https://www.gsma.com/iot/iot-big-data/), part of
+GSMA’s Connected Living Programme.
 
 ### Public Data sources
 
@@ -71,6 +71,7 @@ conditions and licenses expressed by the original data sources. In the table
 below, for each data source you can find a link to them.
 
 <!-- textlint-disable terminology -->
+
 | Data source                                                | Terms and Conditions                                                                                                                                               |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Generalidad de Cataluña                                    | [http://web.gencat.cat/ca/menu-ajuda/ajuda/avis_legal/](http://web.gencat.cat/ca/menu-ajuda/ajuda/avis_legal) (Spanish)                                            |
@@ -80,6 +81,7 @@ below, for each data source you can find a link to them.
 | The Network of European Meteorological Services (EUMETNET) | [http://www.meteoalarm.eu/terms.php?lang=en_UK](http://www.meteoalarm.eu/terms.php?lang=en_UK) (English)                                                           |
 | Ineco                                                      |                                                                                                                                                                    |
 | FIWARE Foundation e.V.                                     |                                                                                                                                                                    |
+
 <!-- textlint-enable terminology -->
 
 ### Data and IoT Device providers
@@ -104,10 +106,12 @@ purposes without the consent of their owners.
 ### Useful links
 
 <!-- textlint-disable terminology -->
+
 | Information                    | URL                                                                                                    |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------ |
 | Harmonized data models by GSMA | [https://github.com/GSMADeveloper/NGSI-LD-Entities](https://github.com/GSMADeveloper/NGSI-LD-Entities) |
 | Data model by FIWARE           | [https://www.fiware.org/developers/data-models/](https://www.fiware.org/developers/data-models/)       |
+
 <!-- textlint-enable terminology -->
 
 ### Harmonized data published
@@ -121,7 +125,6 @@ Below there is a description of the harmonized data currently published
 | WeatherForecast    | weather        | Weather forecasts from Spain and Portugal    |
 | Alert              | weather        | Weather alerts from Spain                    |
 | PointOfInterest    | poi            | Points of interest in Spain                  |
-
 
 ### Examples
 
