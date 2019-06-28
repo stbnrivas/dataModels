@@ -211,7 +211,7 @@ Note: When using `application/ld+json` the payload must always contain a
 `@context` member.
 
 ```
-curl -X GET \
+curl -X POST \
   http://localhost:3000/ngsi-ld/v1/entities/ \
   -H 'Content-Type: application/ld+json' \
   -H 'Content-Length: 903' \
@@ -509,7 +509,7 @@ Remember that the default `@context` maps every JSON member to the
 
 ```
 curl -X GET \
-  http://localhost:3000/ngsi-ld/v1/entities/?type=ParkingSport&q=status==free&attrs=name,location \
+  http://localhost:3000/ngsi-ld/v1/entities/?type=ParkingSpot&q=status==free&attrs=name,location \
   -H 'Accept: application/json' \
   -H 'Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"' \
 ```
