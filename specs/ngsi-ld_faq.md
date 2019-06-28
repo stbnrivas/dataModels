@@ -132,7 +132,7 @@ See the example above. In essence an Attribute of type `GeoProperty` plus a
         "value": 22
     },
     "@context": [
-        "https://schema.lab.fiware.org/ld/jsonldcontext.jsonld",
+        "https://schema.lab.fiware.org/ld/context",
         "http://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
     ]
 }
@@ -169,16 +169,15 @@ For instance, the Link header to address the FIWARE Data Models would be:
 ```
 Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"
 ```
-** Please note that only one JSON-LD Link header is allowed per HTTP Request ** 
+**Please note that only one JSON-LD Link header is allowed per HTTP Request** 
 
 ### Q: Is the `@context` mandatory?
 
-For JSON-LD content, yes. (`application/ld+json`). For JSON content (`application/json`) it can
-**only** be specified through the JSON-LD HTTP Link header. 
+For JSON-LD content (`application/ld+json`), yes it shall accompany each Entity payload as a `@context` member. For JSON content (`application/json`) it can **only** be specified through the JSON-LD HTTP Link header. 
 
-** Please note that only one JSON-LD Link header is allowed per HTTP Request ** 
+**Please note that only one JSON-LD Link header is allowed per HTTP Request** 
 
-### Q: If I have an `@context` which references multiple URIs how I can provide it as part of the Link header?
+### Q: If I have a `@context` which references multiple URIs how can I reference it through the HTTP `Link` header?
 
 As the `Link` header can only reference one JSON-LD `@context` it is necessary to create a **wrapper** `@context`. 
 
@@ -201,15 +200,22 @@ then you can reference it from a HTTP `Link` header. Please note that in many ca
 Nothing. Entity IDs have to be percent encoded as mandated by IETF
 specifications.
 
+### Q: What is the Core `@context`?
+
+It is the JSON-LD `@context` where all the NGSI-LD API Core terms are defined. It
+can be found at
+[https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld](https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld)
+
+**The Core `@context` terms cannot be overwritten by applications**
+
 ### Q: Where I can find the Default `@context`?
 
 [Here](https://forge.etsi.org/gitlab/NGSI-LD/NGSI-LD/raw/master/defaultContext/defaultContext.jsonld)
 
 The Default `@context` includes the Core `@context`. 
 
-### Q: What is the Core `@context`?
+### Do I always need to provide the Core `@context` when invoking API operations? 
 
-It is the JSON-LD `@context` where all the NGSI-LD API Core terms are defined. It
-can be found at
-[https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld](http://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld)
+It **is not** necessary. The Core `@context` is always implicit when processing API requests. Hlowever, when generating API responses the Core `@context` is always included to facilitate the work of JSON-LD processors that may be upstream. 
+
 
