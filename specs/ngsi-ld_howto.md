@@ -33,7 +33,7 @@ terms to URIs, so that vocabularies can be used to define terms unambiguously.
 First of all, each Data Model shall have a JSON-LD `@context`, providing an
 unambiguous definition by mapping terms to URIs. For practicality reasons, it is
 recommended to have a unique `@context` resource, containing all terms, subject
-to be used in every FIWARE Data Model, the same way as schema.org does. The
+to be used in every FIWARE Data Model, the same way as http://schema.org does. The
 following steps have to be followed in order to migrate existing NGSI v2
 instantiations of the FIWARE Data Models to NGSI-LD:
 
@@ -143,7 +143,7 @@ published by FIWARE at the suggested URL.
     },
     "@context": [
         "https://schema.lab.fiware.org/ld/context",
-        "http://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
     ]
 }
 ```
@@ -171,7 +171,7 @@ published by FIWARE at the suggested URL.
     },
     "@context": [
         "https://schema.lab.fiware.org/ld/context",
-        "http://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
     ]
 }
 ```
@@ -205,7 +205,7 @@ is always implicit (and **cannot be overwritten**).
 Observe that the request MIME type is set to `application/ld+json`. The
 `@context` contains two parts: the ETSI Core `@context` and the FIWARE Data
 Models `@context`. The ETSI core `@context` part could have been omitted as it
-is always implicit (and cannot be overwritten).
+is always **implicit** (and cannot be overwritten).
 
 Note: When using `application/ld+json` the payload must always contain a
 `@context` member.
@@ -258,12 +258,12 @@ curl -X GET \
 
 In this case the payload should not contain any `@context` member, since the
 `@context` is conveyed as a `Link` header in the request. It is noteworthy, that
-only one `Link` header pointing to the JSON-LD `@context` is allowed. That's why
+**only one `Link` header pointing to the JSON-LD `@context` is allowed**. That's why
 only the FIWARE Data Models URI `@context` is provided as the target of a Link
 header. Remember that the ETSI Core `@context` is always implicit.
 
 Note: If no `Link` header is provided the Entity members will be mapped to the
-Default `@context` which implies that they will be under the
+Default `@context` which implies that they will be under the dummy
 `example.org/ngsi-ld` namespace.
 
 ```
@@ -310,9 +310,11 @@ curl -X POST \
 
 GET requests should **always** contain a `Link` header to the corresponding
 `@context`, so that the Broker can be informed of what is the `@context` of a
-query. In this case if a `Link` header had not been provided, the resulting JSON
+query. 
+
+*In this case if a `Link` header had not been provided, the resulting JSON
 object would have contained long URIs as member keys, and not the short names
-that were used when creating the Entity.
+that were used when creating the Entity.*
 
 Note: Remember that if no `Link` header is provided the default `@context` will
 be used. The default `@context` maps every JSON member to the
@@ -328,7 +330,7 @@ curl -X GET \
 Response will contain what is shown below (headers and payload). Observe that
 this response does not include any `Link` header as it is indeed
 `application/ld+json`, and, therefore, the `@context` is already a payload
-member.
+member. The Core `@context` is referenced 
 
 ```
 Content-Type: application/ld+json
@@ -394,6 +396,8 @@ curl -X GET \
 Response will contain what is shown below. Observe that this response **does
 include** the `Link` header, as it is `application/json`, and, therefore, the
 `@context` does not appear as a member of the JSON payload.
+
+Please note that the assumption below is that the FIWARE `@context` subsumes (wraps the Core `@context`). 
 
 ```
 Content-Type: application/json
