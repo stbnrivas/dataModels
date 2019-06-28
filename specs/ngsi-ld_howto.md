@@ -33,8 +33,8 @@ terms to URIs, so that vocabularies can be used to define terms unambiguously.
 First of all, each Data Model shall have a JSON-LD `@context`, providing an
 unambiguous definition by mapping terms to URIs. For practicality reasons, it is
 recommended to have a unique `@context` resource, containing all terms, subject
-to be used in every FIWARE Data Model, the same way as http://schema.org does. The
-following steps have to be followed in order to migrate existing NGSI v2
+to be used in every FIWARE Data Model, the same way as http://schema.org does.
+The following steps have to be followed in order to migrate existing NGSI v2
 instantiations of the FIWARE Data Models to NGSI-LD:
 
 -   NGSI v2 entity `id` attributes have to be converted to URIs, preferably
@@ -258,9 +258,9 @@ curl -X GET \
 
 In this case the payload should not contain any `@context` member, since the
 `@context` is conveyed as a `Link` header in the request. It is noteworthy, that
-**only one `Link` header pointing to the JSON-LD `@context` is allowed**. That's why
-only the FIWARE Data Models URI `@context` is provided as the target of a Link
-header. Remember that the ETSI Core `@context` is always implicit.
+**only one `Link` header pointing to the JSON-LD `@context` is allowed**. That's
+why only the FIWARE Data Models URI `@context` is provided as the target of a
+Link header. Remember that the ETSI Core `@context` is always implicit.
 
 Note: If no `Link` header is provided the Entity members will be mapped to the
 Default `@context` which implies that they will be under the dummy
@@ -310,11 +310,11 @@ curl -X POST \
 
 GET requests should **always** contain a `Link` header to the corresponding
 `@context`, so that the Broker can be informed of what is the `@context` of a
-query or retrieval operation. 
+query or retrieval operation.
 
-*In this case if a `Link` header had not been provided, the resulting JSON
+_In this case if a `Link` header had not been provided, the resulting JSON
 object would have contained long URIs as member keys, and not the short names
-that were used when creating the Entity. (as per the `@context` provided)*
+that were used when creating the Entity. (as per the `@context` provided)_
 
 Note: Remember that if no `Link` header is provided the default `@context` will
 be used. The default `@context` maps every JSON member to the
@@ -330,7 +330,7 @@ curl -X GET \
 Response will contain what is shown below (headers and payload). Observe that
 this response does not include any `Link` header as it is indeed
 `application/ld+json`, and, therefore, the `@context` is already a payload
-member. 
+member.
 
 ```
 Content-Type: application/ld+json
@@ -378,9 +378,9 @@ Content-Type: application/ld+json
 
 GET requests should **always** contain a `Link` header to the corresponding
 `@context`, so that the Broker can be informed of what is the `@context` of a
-query or retrieval operation. In this case if a `Link` header had not been provided the resulting JSON
-object would have contained long URIs as member keys and not the short names
-that were used when creating the Entity.
+query or retrieval operation. In this case if a `Link` header had not been
+provided the resulting JSON object would have contained long URIs as member keys
+and not the short names that were used when creating the Entity.
 
 Note: If no `Link` header is provided the default `@context` will be used.
 Remember that the default `@context` maps every JSON member to the
@@ -396,7 +396,6 @@ curl -X GET \
 Response will contain what is shown below. Observe that this response **does
 include** the `Link` header, as it is `application/json`, and, therefore, the
 `@context` does not appear as a member of the JSON payload.
-
 
 ```
 Content-Type: application/json
@@ -441,10 +440,11 @@ Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json
 
 GET requests should **always** contain a `Link` header to the corresponding
 `@context`, so that the Broker can be informed of what is the `@context` of a
-query. 
+query.
 
-*In this case if a `Link` header had not been provided, **there would not have been query results**,
-as all the Query terms would have been mapped to the default `@context` and no matching would have happened.*
+_In this case if a `Link` header had not been provided, **there would not have
+been query results**, as all the Query terms would have been mapped to the
+default `@context` and no matching would have happened._
 
 Note: Remember that if no `Link` header is provided the default `@context` will
 be used. The default `@context` maps every JSON member to the
@@ -460,8 +460,9 @@ curl -X GET \
 Response will contain what is shown below (headers and payload). Observe that
 this response does not include any `Link` header as it is indeed
 `application/ld+json`, and, therefore, the `@context` is already a payload
-member of the matching Entities. The Core `@context` is referenced and included for the sake of completeness although in this particular case, 
-as the FIWARE Data Models already contains the Core `@context` that could have been omitted. 
+member of the matching Entities. The Core `@context` is referenced and included
+for the sake of completeness although in this particular case, as the FIWARE
+Data Models already contains the Core `@context` that could have been omitted.
 
 ```
 Content-Type: application/ld+json
@@ -496,10 +497,11 @@ Content-Type: application/ld+json
 
 GET requests should **always** contain a `Link` header to the corresponding
 `@context`, so that the Broker can be informed of what is the `@context` of a
-query. 
+query.
 
-*In this case if a `Link` header had not been provided, there would not have been query results,
-as all the Query terms would have been mapped to the default `@context` and no matching would have happened.*
+_In this case if a `Link` header had not been provided, there would not have
+been query results, as all the Query terms would have been mapped to the default
+`@context` and no matching would have happened._
 
 Note: If no `Link` header is provided the default `@context` will be used.
 Remember that the default `@context` maps every JSON member to the
@@ -513,9 +515,8 @@ curl -X GET \
 ```
 
 Response will contain what is shown below. Observe that this response **does
-include** the `Link` header, as its MIME type is `application/json`, and, therefore, the
-`@context` does not appear as a member of the JSON payload.
-
+include** the `Link` header, as its MIME type is `application/json`, and,
+therefore, the `@context` does not appear as a member of the JSON payload.
 
 ```
 Content-Type: application/json
