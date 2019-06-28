@@ -310,11 +310,11 @@ curl -X POST \
 
 GET requests should **always** contain a `Link` header to the corresponding
 `@context`, so that the Broker can be informed of what is the `@context` of a
-query. 
+query or retrieval operation. 
 
 *In this case if a `Link` header had not been provided, the resulting JSON
 object would have contained long URIs as member keys, and not the short names
-that were used when creating the Entity.*
+that were used when creating the Entity. (as per the `@context` provided)*
 
 Note: Remember that if no `Link` header is provided the default `@context` will
 be used. The default `@context` maps every JSON member to the
@@ -330,7 +330,7 @@ curl -X GET \
 Response will contain what is shown below (headers and payload). Observe that
 this response does not include any `Link` header as it is indeed
 `application/ld+json`, and, therefore, the `@context` is already a payload
-member. The Core `@context` is referenced 
+member. 
 
 ```
 Content-Type: application/ld+json
@@ -378,7 +378,7 @@ Content-Type: application/ld+json
 
 GET requests should **always** contain a `Link` header to the corresponding
 `@context`, so that the Broker can be informed of what is the `@context` of a
-query. In this case if a `Link` header had not been provided the resulting JSON
+query or retrieval operation. In this case if a `Link` header had not been provided the resulting JSON
 object would have contained long URIs as member keys and not the short names
 that were used when creating the Entity.
 
@@ -397,7 +397,6 @@ Response will contain what is shown below. Observe that this response **does
 include** the `Link` header, as it is `application/json`, and, therefore, the
 `@context` does not appear as a member of the JSON payload.
 
-Please note that the assumption below is that the FIWARE `@context` subsumes (wraps the Core `@context`). 
 
 ```
 Content-Type: application/json
@@ -436,4 +435,110 @@ Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json
         }
     }
 }
+```
+
+### Query Entities (`application/ld+json`)
+
+GET requests should **always** contain a `Link` header to the corresponding
+`@context`, so that the Broker can be informed of what is the `@context` of a
+query. 
+
+*In this case if a `Link` header had not been provided, **there would not have been query results**,
+as all the Query terms would have been mapped to the default `@context` and no matching would have happened.*
+
+Note: Remember that if no `Link` header is provided the default `@context` will
+be used. The default `@context` maps every JSON member to the
+`http://example.org/ngsi-ld` dummy namespace.
+
+```
+curl -X GET \
+  http://localhost:3000/ngsi-ld/v1/entities/?type=ParkingSpot&q=status==free&attrs=name,location \
+  -H 'Accept: application/ld+json' \
+  -H 'Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"' \
+```
+
+Response will contain what is shown below (headers and payload). Observe that
+this response does not include any `Link` header as it is indeed
+`application/ld+json`, and, therefore, the `@context` is already a payload
+member of the matching Entities. The Core `@context` is referenced and included for the sake of completeness although in this particular case, 
+as the FIWARE Data Models already contains the Core `@context` that could have been omitted. 
+
+```
+Content-Type: application/ld+json
+
+[
+    {
+        "id": "urn:ngsi-ld:ParkingSpot:santander:daoiz_velarde_1_5:3",
+        "type": "ParkingSpot",
+        "name": {
+            "type": "Property",
+            "value": "A-13"
+        },
+        "location": {
+            "type": "GeoProperty",
+            "value": {
+                "type": "Point",
+                "coordinates": [
+                    -3.80356167695194,
+                    43.46296641666926
+                ]
+            }
+        },
+        "@context": [
+            "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+            "https://schema.lab.fiware.org/ld/context"
+        ]
+    }
+]
+```
+
+### Query Entities (`application/json`)
+
+GET requests should **always** contain a `Link` header to the corresponding
+`@context`, so that the Broker can be informed of what is the `@context` of a
+query. 
+
+*In this case if a `Link` header had not been provided, there would not have been query results,
+as all the Query terms would have been mapped to the default `@context` and no matching would have happened.*
+
+Note: If no `Link` header is provided the default `@context` will be used.
+Remember that the default `@context` maps every JSON member to the
+`http://example.org/ngsi-ld` dummy namespace.
+
+```
+curl -X GET \
+  http://localhost:3000/ngsi-ld/v1/entities/?type=ParkingSport&q=status==free&attrs=name,location \
+  -H 'Accept: application/json' \
+  -H 'Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"' \
+```
+
+Response will contain what is shown below. Observe that this response **does
+include** the `Link` header, as its MIME type is `application/json`, and, therefore, the
+`@context` does not appear as a member of the JSON payload.
+
+
+```
+Content-Type: application/json
+Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"
+
+[
+    {
+        "id": "urn:ngsi-ld:ParkingSpot:santander:daoiz_velarde_1_5:3",
+        "type": "ParkingSpot",
+        "name": {
+            "type": "Property",
+            "value": "A-13"
+        },
+        "location": {
+            "type": "GeoProperty",
+            "value": {
+                "type": "Point",
+                "coordinates": [
+                    -3.80356167695194,
+                    43.46296641666926
+                ]
+            }
+        }
+    }
+]
 ```
