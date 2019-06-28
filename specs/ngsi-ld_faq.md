@@ -9,21 +9,21 @@ In summary, the main differences are the following:
 
 -   The underlying Data Model is the
     [Property Graph Data Model](https://github.com/Fiware/NGSI-LD_Wrapper/blob/master/doc/instantiation.png).
--   Entity IDs shall be URIs (URLs or URNs).
+-   Entity IDs shall be **URIs** (URLs or URNs).
 -   The `metadata` dictionary disappears. Metadata are represented by nested
     Properties of Properties.
--   There is some "metadata" standardised (`unitCode`, `observedAt`, ...)
+-   There is some "metadata" standardised (`unitCode` for expressing units, `observedAt` for expressing timestamps, ...)
 -   There is a new type of Attribute `Relationship` intended to link one Entity
     to another Entity. That is done through the `object` member.
 -   Geospatial properties are represented using the Attribute type
     `GeoProperty`.
 -   The `type` of Attributes can only be `Property`, `Relationship` or
     `GeoProperty`.
--   A JSON-LD `@context` (a hash used to map member names to URIs) can be added
+-   A JSON-LD `@context` (a hash map used to map member names to URIs) can be added
     to Entities to provide Fully Qualified Names (URIs) associated to terms.
-    That is somewhat "similar" to XML namespaces.
--   Overall the REST API is quite similar (even simpler) than the NGSI v2,
-    although subscription payloads change a bit (but they are the same in
+    That is somewhat "similar" to the concept of XML namespaces.
+-   Overall the REST API is quite similar (even simpler) than NGSI v2,
+    although subscription and registration payloads change a bit (but they are the same in
     essence).
 
 ### Q: Could you give me some examples of NGSI-LD payloads?
@@ -53,19 +53,19 @@ In summary, the main differences are the following:
         "object": "urn:ngsi-ld:PointOfInterest:RZ:MainSquare"
     },
     "@context": [
-        "https://schema.lab.fiware.org/ld/jsonldcontext.jsonld",
-        "http://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
+        "https://schema.lab.fiware.org/ld/context",
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
     ]
 }
 ```
 
-Additional examples can be found
-[here](https://github.com/Fiware/NGSI-LD_Tests/blob/master/contextProvision/create_entity_with_ldcontext_test.js#L16)
+For each FIWARE Data Model there is an example Entity encoding it in NGSI-LD. For instance, 
+[here](https://github.com/FIWARE/dataModels/blob/master/specs/PointOfInterest/Museum/example-normalized-ld.jsonld)
 
 ### Q: Could you give me some examples of a JSON-LD `@context`?
 
 You can find an example
-[here](https://schema.lab.fiware.org/ld/jsonldcontext.jsonld).
+[here](https://schema.lab.fiware.org/ld/context).
 
 ### Q: What is a Property of a Property / Relationship and all the combinations?
 
@@ -81,7 +81,8 @@ scenario.
 
 It is a "timestamp" associated to a Property or Relationship. See the example
 below. In NGSI v2 it is usually specified using the `timestamp` metadata
-attribute.
+attribute. Remember that in NGSI-LD timestamps **must** always be expressed using 
+UTC i.e. a trailing 'Z' **must** always be present. 
 
 ```json
 {
@@ -137,7 +138,7 @@ See the example above. In essence an Attribute of type `GeoProperty` plus a
 
 ### Q: Is `application/json` a supported MIME type?
 
-Yes, indeed. However, the `@context` has to be externally provided, or no
+Yes, indeed. However, when using it the `@context` has to be externally provided, or no
 `@context` at all. In the latter case Entities will be under the Default
 `@context`. You can see an example
 [here](https://github.com/Fiware/NGSI-LD_Tests/blob/master/contextProvision/create_entity_with_ldcontext_test.js#L18)
@@ -148,22 +149,31 @@ Nothing, i.e. if you are working in your own application and your data model is
 somewhat "private" that is perfectly OK. It is somewhat similar as using XML
 content without namespaces.
 
+However, we recommend to use JSON-LD @context and that can be easily abstracted out by a convenience library. 
+
 ### Q: What is the JSON-LD Link header?
 
 It is a standard HTTP Link Header intended to provide a `@context` in two
-scenarios: 1. when `application/json` is used as MIME type. 2. in GET and DELETE
-operations to specify what is the `@context to be used for mapping types or
+scenarios: 
+
+* when `application/json` is used as MIME type. 
+* in GET and DELETE operations to specify what is the `@context to be used for mapping types or
 attribute names to Fully Qualified Names (URIs).
 
 ### Q: Could you put an example of a JSON-LD HTTP Link Header?
 
-You can see an example
-[here](https://github.com/Fiware/NGSI-LD_Tests/blob/master/contextConsumption/query_entities_with_ld_context_test.js#L13)
+For instance, the Link header to address the FIWARE Data Models would be: 
+
+```
+Link: <https://schema.lab.fiware.org/ld/context>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"
+```
 
 ### Q: Is the `@context` mandatory?
 
 For JSON-LD content, yes. (`application/ld+json`). For JSON content it can
-**only** be specified through the JSON-LD HTTP Link header.
+**only** be specified through the JSON-LD HTTP Link header. 
+
+** Please note that only one JSON-LD Link header is allowed per HTTP Request ** 
 
 ### Q: What happens if an Entity ID is a URL and I use it in a resource `/entities/{entityId}`?
 
@@ -178,4 +188,4 @@ specifications.
 
 It is the JSON-LD `@context` where all the NGSI-LD Core terms are defined. It
 can be found at
-[http://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld](http://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld)
+[https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld](http://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld)
