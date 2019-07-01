@@ -104,7 +104,7 @@ a trailing 'Z' **must** always be present.
         }
     },
     "@context": [
-        "https://schema.lab.fiware.org/ld/jsonldcontext.jsonld",
+        "https://schema.lab.fiware.org/ld/context",
         "http://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
     ]
 }
