@@ -119,6 +119,41 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:GtfsTransferRule:Malaga:Linea1_Linea5",
+    "type": "GtfsTransferRule",
+    "transferType": {
+        "type": "Property",
+        "value": "0"
+    },
+    "minimumTransferTime": {
+        "type": "Property",
+        "value": 10
+    },
+    "hasDestination": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:GtfsStop:Malaga_508"
+    },
+    "hasOrigin": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:GtfsStop:Malaga_101"
+    },
+    "name": {
+        "type": "Property",
+        "value": "L1_L5"
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Summary of mappings to GTFS
 
 ### Properties

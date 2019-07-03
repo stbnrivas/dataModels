@@ -20,12 +20,14 @@
         "value": 638344
     }, 
     "updated_datetime": {
+        "type": "DateTime",
         "value": "2010-04-14T06:37:38-08:00"
     }, 
     "address_string": {
         "value": "Calle San Juan Bautista, 2"
     }, 
     "requested_datetime": {
+        "type": "DateTime",
         "value": "2010-04-14T06:37:38-08:00"
     }, 
     "location": {

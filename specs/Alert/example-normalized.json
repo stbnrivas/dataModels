@@ -1,6 +1,14 @@
 {
     "id": "Alert:1",
     "type": "Alert",
+    "dateCreated": {
+        "type": "DateTime",
+        "value": "2019-06-06T12:06:06"
+    },
+    "dateModified": {
+        "type": "DateTime",
+        "value": "2019-06-07T12:07:06"
+    },
     "category": {
         "value": "traffic"
     }, 

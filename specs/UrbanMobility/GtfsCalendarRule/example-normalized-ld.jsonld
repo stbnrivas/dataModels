@@ -3,11 +3,17 @@
     "type": "GtfsCalendarRule",
     "startDate": {
         "type": "Property",
-        "value": "2018-01-01"
+        "value": {
+            "@type": "Date",
+            "@value": "2018-01-01"
+        }
     },
     "endDate": {
         "type": "Property",
-        "value": "2019-01-01"
+        "value": {
+            "@type": "Date",
+            "@value": "2019-01-01"
+        }
     },
     "name": {
         "type": "Property",

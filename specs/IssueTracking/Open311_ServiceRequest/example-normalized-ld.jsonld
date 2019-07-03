@@ -27,7 +27,10 @@
     },
     "updated_datetime": {
         "type": "Property",
-        "value": "2010-04-14T06:37:38-08:00"
+        "value": {
+            "@type": "DateTime",
+            "@value": "2010-04-14T06:37:38-08:00"
+        }
     },
     "address_string": {
         "type": "Property",
@@ -35,7 +38,10 @@
     },
     "requested_datetime": {
         "type": "Property",
-        "value": "2010-04-14T06:37:38-08:00"
+        "value": {
+            "@type": "DateTime",
+            "@value": "2010-04-14T06:37:38-08:00"
+        }
     },
     "location": {
         "type": "GeoProperty",

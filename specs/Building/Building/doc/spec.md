@@ -290,6 +290,175 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:Building:building-a85e3da145c1",
+    "type": "Building",
+    "modifiedAt": "2016-08-08T10:18:16Z",
+    "createdAt": "2016-08-08T10:18:16Z",
+    "category": {
+        "type": "Property",
+        "value": [
+            "office"
+        ]
+    },
+    "floorsBelowGround": {
+        "type": "Property",
+        "value": 0
+    },
+    "description": {
+        "type": "Property",
+        "value": "Office block"
+    },
+    "floorsAboveGround": {
+        "type": "Property",
+        "value": 7
+    },
+    "occupier": {
+        "type": "Relationship",
+        "object": [
+            "urn:ngsi-ld:Person:9830f692-7677-11e6-838b-4f9fb3dc5a4f"
+        ]
+    },
+    "mapUrl": {
+        "type": "Property",
+        "value": "http://www.example.com"
+    },
+    "source": {
+        "type": "Property",
+        "value": "http://www.example.com"
+    },
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        100,
+                        0
+                    ],
+                    [
+                        101,
+                        0
+                    ],
+                    [
+                        101,
+                        1
+                    ],
+                    [
+                        100,
+                        1
+                    ],
+                    [
+                        100,
+                        0
+                    ]
+                ]
+            ]
+        }
+    },
+    "address": {
+        "type": "Property",
+        "value": {
+            "addressLocality": "London",
+            "postalCode": "EC4N 8AF",
+            "streetAddress": "25 Walbrook",
+            "type": "PostalAddress"
+        }
+    },
+    "owner": {
+        "type": "Relationship",
+        "object": [
+            "urn:ngsi-ld:Person:cdfd9cb8-ae2b-47cb-a43a-b9767ffd5c84",
+            "urn:ngsi-ld:Person:1be9cd61-ef59-421f-a326-4b6c84411ad4"
+        ]
+    },
+    "openingHours": {
+        "type": "Property",
+        "value": [
+            {
+                "dayOfWeek": "http://schema.org/Sunday",
+                "closes": "17:00:00",
+                "opens": "09:00:00"
+            },
+            {
+                "dayOfWeek": "http://schema.org/Saturday",
+                "closes": "17:00:00",
+                "opens": "09:00:00"
+            },
+            {
+                "dayOfWeek": "http://schema.org/Thursday",
+                "closes": "17:00:00",
+                "opens": "09:00:00"
+            },
+            {
+                "dayOfWeek": "http://schema.org/Tuesday",
+                "closes": "17:00:00",
+                "opens": "09:00:00"
+            },
+            {
+                "dayOfWeek": "http://schema.org/Friday",
+                "closes": "17:00:00",
+                "opens": "09:00:00"
+            },
+            {
+                "dayOfWeek": "http://schema.org/Monday",
+                "closes": "17:00:00",
+                "opens": "09:00:00"
+            },
+            {
+                "dayOfWeek": "http://schema.org/Wednesday",
+                "closes": "17:00:00",
+                "opens": "09:00:00"
+            }
+        ]
+    },
+    "dataProvider": {
+        "type": "Property",
+        "value": "OperatorA"
+    },
+    "containedInPlace": {
+        "type": "Property",
+        "value": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        100,
+                        0
+                    ],
+                    [
+                        101,
+                        0
+                    ],
+                    [
+                        101,
+                        1
+                    ],
+                    [
+                        100,
+                        1
+                    ],
+                    [
+                        100,
+                        0
+                    ]
+                ]
+            ]
+        }
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Test it with a real service
 
 T.B.D.

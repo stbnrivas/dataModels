@@ -312,6 +312,60 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:WaterQualityObserved:waterqualityobserved:Sevilla:D1",
+    "type": "WaterQualityObserved",
+    "dateObserved": {
+        "type": "Property",
+        "value": {
+            "@type": "DateTime",
+            "@value": "2017-01-31T06:45:00Z"
+        }
+    },
+    "temperature": {
+        "type": "Property",
+        "value": 24.4
+    },
+    "NO3": {
+        "type": "Property",
+        "value": 0.01
+    },
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Point",
+            "coordinates": [
+                -5.993307,
+                37.362882
+            ]
+        }
+    },
+    "pH": {
+        "type": "Property",
+        "value": 7.4
+    },
+    "measurand": {
+        "type": "Property",
+        "value": [
+            "NO3, 0.01, M1, Concentration of Nitrates"
+        ]
+    },
+    "conductivity": {
+        "type": "Property",
+        "value": 0.005
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Test it with real services
 
 ## Open issues

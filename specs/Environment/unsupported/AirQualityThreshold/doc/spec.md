@@ -24,3 +24,9 @@ format in NGSI(v2, LD).
     "source": "http://www.airqualitynow.eu/"
 }
 ```
+
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json

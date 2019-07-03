@@ -147,6 +147,43 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:GtfsStop:Malaga_101",
+    "type": "GtfsStop",
+    "code": {
+        "type": "Property",
+        "value": "101"
+    },
+    "operatedBy": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:GtfsAgency:Malaga_EMT"
+    },
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Point",
+            "coordinates": [
+                -4.424393,
+                36.716872
+            ]
+        }
+    },
+    "name": {
+        "type": "Property",
+        "value": "Alameda Principal Sur"
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Summary of mappings to GTFS
 
 ### Properties

@@ -112,6 +112,48 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:AccessPoint:Madrid:acc_4_1_3",
+    "type": "GtfsAccessPoint",
+    "name": {
+        "type": "Property",
+        "value": "Bravo Murillo"
+    },
+    "hasParentStation": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:GtfsStation:Madrid:est_90_21"
+    },
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Point",
+            "coordinates": [
+                -3.69036,
+                40.46629
+            ]
+        }
+    },
+    "address": {
+        "type": "Property",
+        "value": {
+            "addressLocality": "Madrid",
+            "addressCountry": "ES",
+            "streetAddress": "Calle de Bravo Murillo 377",
+            "type": "PostalAddress"
+        }
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Summary of mappings to GTFS
 
 ### Properties

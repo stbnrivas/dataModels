@@ -120,39 +120,41 @@ Normalized NGSI response
 
 ```json
 {
-    "id": "urn:ngsi-ld:GtfsCalendarRule:Madrid:Rule1267",
-    "type": "GtfsCalendarRule",
+    "id": "urn:ngsi-ld:CalendarRule:Madrid:Rule1267",
+    "type": "GtfsCalendarRule", 
     "startDate": {
+        "type": "Date",
         "value": "2018-01-01"
-    },
+    }, 
     "endDate": {
+        "type": "Date",
         "value": "2019-01-01"
-    },
+    }, 
     "name": {
         "value": "Rule Hospital Service 1"
-    },
+    }, 
     "monday": {
         "value": true
-    },
+    }, 
     "tuesday": {
         "value": true
-    },
+    }, 
     "friday": {
         "value": true
-    },
+    }, 
     "wednesday": {
         "value": true
-    },
+    }, 
     "thursday": {
         "value": true
-    },
+    },  
     "sunday": {
         "value": false
-    },
+    }, 
     "hasService": {
-        "type": "Relationship",
+        "type": "Relationship", 
         "value": "urn:ngsi-ld:GtfsService:Madrid:Hospital_1"
-    },
+    }, 
     "saturday": {
         "value": false
     }
@@ -178,6 +180,71 @@ Sample uses simplified representation for data consumers `?options=keyValues`
     "sunday": false,
     "startDate": "2018-01-01",
     "endDate": "2019-01-01"
+}
+```
+
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:CalendarRule:Madrid:Rule1267",
+    "type": "GtfsCalendarRule",
+    "startDate": {
+        "type": "Property",
+        "value": {
+            "@type": "Date",
+            "@value": "2018-01-01"
+        }
+    },
+    "endDate": {
+        "type": "Property",
+        "value": {
+            "@type": "Date",
+            "@value": "2019-01-01"
+        }
+    },
+    "name": {
+        "type": "Property",
+        "value": "Rule Hospital Service 1"
+    },
+    "monday": {
+        "type": "Property",
+        "value": true
+    },
+    "tuesday": {
+        "type": "Property",
+        "value": true
+    },
+    "friday": {
+        "type": "Property",
+        "value": true
+    },
+    "wednesday": {
+        "type": "Property",
+        "value": true
+    },
+    "thursday": {
+        "type": "Property",
+        "value": true
+    },
+    "sunday": {
+        "type": "Property",
+        "value": false
+    },
+    "hasService": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:GtfsService:Madrid:Hospital_1"
+    },
+    "saturday": {
+        "type": "Property",
+        "value": false
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
 }
 ```
 

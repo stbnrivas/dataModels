@@ -126,6 +126,54 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:GtfsStation:Madrid:est_90_21",
+    "type": "GtfsStation",
+    "code": {
+        "type": "Property",
+        "value": "21"
+    },
+    "name": {
+        "type": "Property",
+        "value": "Intercambiador de Plaza de Castilla"
+    },
+    "hasStop": {
+        "type": "Relationship",
+        "object": [
+            "urn:ngsi-ld:GtfsStop:Madrid_par_4_1"
+        ]
+    },
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Point",
+            "coordinates": [
+                -3.6892,
+                40.4669
+            ]
+        }
+    },
+    "address": {
+        "type": "Property",
+        "value": {
+            "addressLocality": "Madrid",
+            "addressCountry": "ES",
+            "streetAddress": "Paseo de la Castellana 189",
+            "type": "PostalAddress"
+        }
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Summary of mappings to GTFS
 
 ### Properties

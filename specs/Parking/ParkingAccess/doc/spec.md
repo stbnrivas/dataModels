@@ -161,6 +161,51 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:ParkingAccess:accesspoint-trinidade-1",
+    "type": "ParkingAccess",
+    "category": {
+        "type": "Property",
+        "value": [
+            "vehicleEntrance"
+        ]
+    },
+    "name": {
+        "type": "Property",
+        "value": "Trinidade main entrance"
+    },
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Point",
+            "coordinates": [
+                -8.60961198807,
+                41.150691773
+            ]
+        }
+    },
+    "refOffStreetParking": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:OffStreetParking:porto-OffStreetParking-23889"
+    },
+    "features": {
+        "type": "Property",
+        "value": [
+            "barrier"
+        ]
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Test it with a real service
 
 ## Open issues

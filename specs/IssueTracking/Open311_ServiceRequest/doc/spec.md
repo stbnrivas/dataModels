@@ -143,49 +143,57 @@ Normalized NGSI response
     "type": "Open311ServiceRequest",
     "status": {
         "value": "closed"
-    },
+    }, 
     "description": {
         "value": "Acera en mal estado con bordillo partido en dos"
-    },
+    }, 
     "service_code": {
         "value": 234
-    },
+    }, 
     "status_notes": {
         "value": "Duplicate request."
-    },
+    }, 
     "service_name": {
         "value": "Aceras"
-    },
+    }, 
     "service_request_id": {
         "value": 638344
-    },
+    }, 
     "updated_datetime": {
+        "type": "DateTime",
         "value": "2010-04-14T06:37:38-08:00"
-    },
+    }, 
     "address_string": {
         "value": "Calle San Juan Bautista, 2"
-    },
+    }, 
     "requested_datetime": {
+        "type": "DateTime",
         "value": "2010-04-14T06:37:38-08:00"
-    },
+    }, 
     "location": {
-        "type": "geo:json",
+        "type": "geo:json", 
         "value": {
-            "type": "Point",
-            "coordinates": [-3.164485591715449, 40.62785133667262]
+            "type": "Point", 
+            "coordinates": [
+                -3.164485591715449, 
+                40.62785133667262
+            ]
         }
-    },
+    }, 
     "attributes": {
         "value": {
-            "ISSUE_TYPE": ["Bordillo"]
+            "ISSUE_TYPE": [
+                "Bordillo"
+            ]
         }
-    },
+    }, 
     "expected_datetime": {
+        "type": "DateTime",
         "value": "2010-04-15T06:37:38-08:00"
-    },
+    }, 
     "agency_responsible": {
         "value": "Ayuntamiento de Ciudad"
-    },
+    }, 
     "media_url": {
         "value": "http://exaple.org/media/638344.jpg"
     }
@@ -219,6 +227,96 @@ Sample uses simplified representation for data consumers `?options=keyValues`
         "coordinates": [-3.164485591715449, 40.62785133667262]
     },
     "media_url": "http://exaple.org/media/638344.jpg"
+}
+```
+
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:Open311ServiceRequest:service-request:638344",
+    "type": "Open311ServiceRequest",
+    "status": {
+        "type": "Property",
+        "value": "closed"
+    },
+    "description": {
+        "type": "Property",
+        "value": "Acera en mal estado con bordillo partido en dos"
+    },
+    "service_code": {
+        "type": "Property",
+        "value": 234
+    },
+    "status_notes": {
+        "type": "Property",
+        "value": "Duplicate request."
+    },
+    "service_name": {
+        "type": "Property",
+        "value": "Aceras"
+    },
+    "service_request_id": {
+        "type": "Property",
+        "value": 638344
+    },
+    "updated_datetime": {
+        "type": "Property",
+        "value": {
+            "@type": "DateTime",
+            "@value": "2010-04-14T06:37:38-08:00"
+        }
+    },
+    "address_string": {
+        "type": "Property",
+        "value": "Calle San Juan Bautista, 2"
+    },
+    "requested_datetime": {
+        "type": "Property",
+        "value": {
+            "@type": "DateTime",
+            "@value": "2010-04-14T06:37:38-08:00"
+        }
+    },
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Point",
+            "coordinates": [
+                -3.164485591715449,
+                40.62785133667262
+            ]
+        }
+    },
+    "attributes": {
+        "type": "Property",
+        "value": {
+            "ISSUE_TYPE": [
+                "Bordillo"
+            ]
+        }
+    },
+    "expected_datetime": {
+        "type": "Property",
+        "value": {
+            "@type": "DateTime",
+            "@value": "2010-04-15T06:37:38-08:00Z"
+        }
+    },
+    "agency_responsible": {
+        "type": "Property",
+        "value": "Ayuntamiento de Ciudad"
+    },
+    "media_url": {
+        "type": "Property",
+        "value": "http://exaple.org/media/638344.jpg"
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
 }
 ```
 

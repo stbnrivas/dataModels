@@ -222,6 +222,56 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:DeviceModel:myDevice-wastecontainer-sensor-345",
+    "type": "DeviceModel",
+    "category": {
+        "type": "Property",
+        "value": [
+            "sensor"
+        ]
+    },
+    "function": {
+        "type": "Property",
+        "value": [
+            "sensing"
+        ]
+    },
+    "modelName": {
+        "type": "Property",
+        "value": "S4Container 345"
+    },
+    "name": {
+        "type": "Property",
+        "value": "myDevice Sensor for Containers 345"
+    },
+    "brandName": {
+        "type": "Property",
+        "value": "myDevice"
+    },
+    "manufacturerName": {
+        "type": "Property",
+        "value": "myDevice Inc."
+    },
+    "controlledProperty": {
+        "type": "Property",
+        "value": [
+            "fillingLevel",
+            "temperature"
+        ]
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Test it with a real service
 
 ## Issues

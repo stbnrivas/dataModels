@@ -138,6 +138,41 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:GtfsTrip:Spain:Malaga:1",
+    "type": "GtfsTrip",
+    "direction": {
+        "type": "Property",
+        "value": 0
+    },
+    "headSign": {
+        "type": "Property",
+        "value": "San Andr\u00e9s"
+    },
+    "hasRoute": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:GtfsRoute:Spain:Malaga:1"
+    },
+    "hasService": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:GtfsService:Malaga_LAB"
+    },
+    "hasShape": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:GtfsShape:Shape01"
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Summary of mappings to GTFS
 
 ### Properties

@@ -426,6 +426,74 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:WasteContainer:wastecontainer:Fleming:12a",
+    "type": "WasteContainer",
+    "status": {
+        "type": "Property",
+        "value": "ok"
+    },
+    "category": {
+        "type": "Property",
+        "value": [
+            "underground"
+        ]
+    },
+    "dateLastEmptying": {
+        "type": "Property",
+        "value": {
+            "@type": "DateTime",
+            "@value": "2016-06-21T15:05:59.408Z"
+        }
+    },
+    "serialNumber": {
+        "type": "Property",
+        "value": "ab56kjl"
+    },
+    "nextActuationDeadline": {
+        "type": "Property",
+        "value": "2016-06-28T15:05:59.408Z"
+    },
+    "refWasteContainerIsle": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:WasteContainerIsle:wastecontainerisle:Fleming:12"
+    },
+    "refDevice": {
+        "type": "Relationship",
+        "object": [
+            "urn:ngsi-ld:Device:device-Fleming:12a:1"
+        ]
+    },
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Point",
+            "coordinates": [
+                -3.164485591715449,
+                40.62785133667262
+            ]
+        }
+    },
+    "fillingLevel": {
+        "type": "Property",
+        "value": 0.4
+    },
+    "refWasteContainerModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:WasteContainerModel:wastecontainermodel:c1"
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Test it with real services
 
 ## Open issues

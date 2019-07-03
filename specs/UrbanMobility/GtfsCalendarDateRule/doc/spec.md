@@ -108,6 +108,37 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:CalendarDateRule:Malaga:Rule67",
+    "type": "GtfsCalendarDateRule",
+    "name": {
+        "type": "Property",
+        "value": "Rule Fair Area"
+    },
+    "exceptionType": {
+        "type": "Property",
+        "value": "1"
+    },
+    "hasService": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:GtfsService:Malaga:FairArea_1"
+    },
+    "appliesOn": {
+        "type": "Property",
+        "value": "2018-03-19"
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Summary of mappings to GTFS
 
 | GTFS Field       | NGSI Attribute  | LinkedGTFS           | Comment |

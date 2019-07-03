@@ -94,6 +94,33 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:Service:Malaga:LAB",
+    "type": "GtfsService",
+    "operatedBy": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:GtfsAgency:Malaga_EMT"
+    },
+    "name": {
+        "type": "Property",
+        "value": "LAB"
+    },
+    "description": {
+        "type": "Property",
+        "value": "Laborables"
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Summary of mappings to GTFS
 
 ### Properties

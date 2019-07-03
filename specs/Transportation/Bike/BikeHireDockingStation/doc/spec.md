@@ -229,6 +229,53 @@ Bike hire docking station real time data in Malaga
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:BikeHireDockingStation:Bcn-BikeHireDockingStation-1",
+    "type": "BikeHireDockingStation",
+    "status": {
+        "type": "Property",
+        "value": "working"
+    },
+    "availableBikeNumber": {
+        "type": "Property",
+        "value": 20,
+        "observedAt": "2018-09-25T12:00:00Z"
+    },
+    "freeSlotNumber": {
+        "type": "Property",
+        "value": 10
+    },
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Point",
+            "coordinates": [
+                2.180042,
+                41.397952
+            ]
+        }
+    },
+    "address": {
+        "type": "Property",
+        "value": {
+            "addressCountry": "ES",
+            "addressLocality": "Barcelona",
+            "streetAddress": "Gran Via Corts Catalanes,760",
+            "type": "PostalAddress"
+        }
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Use it with a real service
 
 T.B.D.

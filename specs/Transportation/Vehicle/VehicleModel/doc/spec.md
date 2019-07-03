@@ -203,6 +203,49 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 }
 ```
 
+### LD Example
+
+Sample uses the NGSI-LD representation
+
+```json
+{
+    "id": "urn:ngsi-ld:VehicleModel:vehiclemodel:econic",
+    "type": "VehicleModel",
+    "name": {
+        "type": "Property",
+        "value": "MBenz-Econic2014"
+    },
+    "cargoVolume": {
+        "type": "Property",
+        "value": 1000
+    },
+    "modelName": {
+        "type": "Property",
+        "value": "Econic"
+    },
+    "brandName": {
+        "type": "Property",
+        "value": "Mercedes Benz"
+    },
+    "manufacturerName": {
+        "type": "Property",
+        "value": "Daimler"
+    },
+    "fuelType": {
+        "type": "Property",
+        "value": "diesel"
+    },
+    "vehicleType": {
+        "type": "Property",
+        "value": "lorry"
+    },
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "https://schema.lab.fiware.org/ld/context"
+    ]
+}
+```
+
 ## Test it with a real service
 
 ## Open issues
