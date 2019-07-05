@@ -73,7 +73,7 @@ The data model is defined as shown below:
     "availability": "Mo,Tu,We,Th,Fr,Sa 09:00-20:00".
 
     -   Attribute type: [Text](https://schema.org/Text)
-    -   Mandatory. It can be `null`.
+    -   Mandatory. 
 
 -   `refSmartPointOfInteraction` : Reference to the Smart Point of Interaction
     which includes this Smart Spot.
