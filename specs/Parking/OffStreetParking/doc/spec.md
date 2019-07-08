@@ -132,7 +132,7 @@ The data model is defined as shown below:
     needed to park. When a permit is composed by more than one item (and) they
     can be combined with a ",". For instance "residentPermit,disabledPermit"
     stays that both, at the same time, a resident and a disabled permit are
-    needed to park. If empty or `null`, no permit is needed.
+    needed to park. If the list is empty no permit is needed.
 
     -   Attribute type: List of [Text](http://schema.org/Text)
     -   Allowed values: The following, defined by the _PermitTypeEnum_
@@ -151,7 +151,7 @@ The data model is defined as shown below:
     -   Optional
 
 -   `maximumParkingDuration` : Maximum allowed stay at site, on a general basis,
-    encoded as a ISO8601 duration. A `null` or empty value indicates an
+    encoded as a ISO8601 duration. An empty value or when non present indicates an
     indefinite duration.
 
     -   Attribute type: [Text](http://schema.org/Text)
@@ -653,7 +653,7 @@ Urban Deterrent (xxxx and ride) parking. Free. 2 hours at a maximum.
     "chargeType": ["freeParking"],
     "allowedVehicleType": ["car"],
     "maximumParkingDuration": "PT2H",
-    "requiredPermit": null,
+    "requiredPermit": [],
     "areaServed": "Centro",
     "address": {
         "streetAddress": "Calle La India",
@@ -676,7 +676,7 @@ Long stay parking. Maximum 4 days. Charging depends on time spent.
     "chargeType": ["temporaryPrice"],
     "allowedVehicleType": ["car"],
     "maximumParkingDuration": "P4D",
-    "requiredPermit": null,
+    "requiredPermit": [],
     "address": {
         "streetAddress": "Paseo de Zorrilla, 96",
         "addressLocality": "Valladolid",
@@ -719,7 +719,7 @@ Two different groups are needed:
     "category": ["offstreet", "shortTerm"],
     "totalSpotNumber": 150,
     "availableSpotNumber": 40,
-    "requiredPermit": null,
+    "requiredPermit": [],
     "refParkingSite": "parking-example-234",
     "allowedVehicleType": "car",
     "maximumParkingDuration": "PT2H"
@@ -745,7 +745,7 @@ Two different groups are needed:
     "requiredPermit": "residentPermit",
     "refParkingSite": "parking-example-234",
     "allowedVehicleType": "car",
-    "maximumParkingDuration": null
+    "maximumParkingDuration": ""
     /* Other required fields (Check model) */
 }
 ```

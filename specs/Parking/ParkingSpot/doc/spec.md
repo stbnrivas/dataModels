@@ -67,13 +67,13 @@ The data model is defined as shown below:
     -   Attribute type: `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
-    -   Mandatory. Not nullable (if `address` is not defined).
+    -   Mandatory. (if `address` is not defined).
 
 -   `address` : Registered parking spot civic address.
 
     -   Normative References:
         [https://schema.org/address](https://schema.org/address)
-    -   Mandatory. Not nullable (if `location` is not defined).
+    -   Mandatory. (if `location` is not defined).
 
 -   `status` : Status of the parking spot from the point of view of occupancy.
 

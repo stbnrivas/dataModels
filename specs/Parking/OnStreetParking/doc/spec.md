@@ -96,7 +96,7 @@ The data model is defined as shown below:
     needed to park. When a permit is composed by more than one item (and) they
     can be combined with a ",". For instance "residentPermit,disabledPermit"
     stays that both, at the same time, a resident and a disabled permit are
-    needed to park. If empty or `null`, no permit is needed.
+    needed to park. If list is empty, no permit is needed.
 
     -   Attribute type: List of [Text](http://schema.org/Text)
     -   Allowed values: The following, defined by the _PermitTypeEnum_
@@ -107,23 +107,23 @@ The data model is defined as shown below:
             `maintenanceVehiclePermit`, `roadWorksPermit`, `taxiPermit`,
             `transportationPermit`, `noPermitNeeded`)
         -   Any other application-specific
-    -   Mandatory. It can be `null`.
+    -   Mandatory. 
 
 -   `permitActiveHours` : This attribute allows to capture situations when a
     permit is only needed at specific hours or days of week. It is an structured
     value which must contain a subproperty per each required permit, indicating
-    when the permit is active. If nothing specified (or `null`) for a permit it
-    will mean that a permit is always required. `null`or empty object means
+    when the permit is active. If nothing specified for a permit it
+    will mean that a permit is always required. An empty JSON Object means
     always active. The syntax must be conformant with schema.org
     [opening hours specification](https://schema.org/openingHours). For
     instance, a blue zone which is only active on dayweeks will be encoded as
     "blueZonePermit": "Mo,Tu,We,Th,Fr,Sa 09:00-20:00".
 
     -   Attribute type: [StructuredValue](http://schema.org/StructuredValue)
-    -   Mandatory. It can be `null`.
+    -   Mandatory. 
 
 -   `maximumParkingDuration` : Maximum allowed stay at site encoded as a ISO8601
-    duration. A `null` or empty value indicates an indefinite duration.
+    duration. An empty value indicates an indefinite duration.
 
     -   Attribute type: [Text](http://schema.org/Text)
     -   Optional
