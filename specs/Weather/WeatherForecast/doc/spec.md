@@ -232,9 +232,6 @@ Normalized NGSI response
         "type": "DateTime",
         "value": "2016-12-01T17:00:00.00Z"
     },
-    "windDirection": {
-        "value": null
-    },
     "relativeHumidity": {
         "value": 0.85
     }
@@ -276,7 +273,6 @@ Sample uses simplified representation for data consumers `?options=keyValues`
     "validTo": "2016-12-01T23:00:00.00Z",
     "validity": "2016-12-01T18:00:00+01:00/2016-12-02T00:00:00+01:00",
     "weatherType": "overcast",
-    "windDirection": null,
     "windSpeed": 0
 }
 ```
@@ -373,10 +369,6 @@ Sample uses the NGSI-LD representation
             "@type": "DateTime",
             "@value": "2016-12-01T17:00:00.00Z"
         }
-    },
-    "windDirection": {
-        "type": "Property",
-        "value": null
     },
     "relativeHumidity": {
         "type": "Property",

@@ -141,7 +141,7 @@ Normalized NGSI response
                 ],
                 "variable": true,
                 "order": 1,
-                "datatype_description": null
+                "datatype_description": ""
             }
         ]
     }
@@ -170,7 +170,7 @@ Sample uses simplified representation for data consumers `?options=keyValues`
             "code": "ISSUE_TYPE",
             "datatype": "singlevaluelist",
             "required": true,
-            "datatype_description": null,
+            "datatype_description": "",
             "order": 1,
             "description": "What is the identified problem at the sidewalk?",
             "values": [
@@ -245,7 +245,7 @@ Sample uses the NGSI-LD representation
                 ],
                 "variable": true,
                 "order": 1,
-                "datatype_description": null
+                "datatype_description": ""
             }
         ]
     },

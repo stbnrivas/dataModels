@@ -15,7 +15,7 @@
         "code": "ISSUE_TYPE",
         "datatype": "singlevaluelist",
         "required": true,
-        "datatype_description": null,
+        "datatype_description": "",
         "order": 1,
         "description": "What is the identified problem at the sidewalk?",
         "values": [
