@@ -173,11 +173,11 @@ The data model is defined as shown below:
     -   Optional
 
 -   `batteryLevel` : Device's battery level. It must be equal to `1.0` when
-    battery is full. `0.0` when battery ìs empty. `null` when cannot be
+    battery is full. `0.0` when battery ìs empty. `-1` when transiently cannot be
     determined.
 
     -   Type: [Number](https://schema.org/Number)
-    -   Allowed values: Interval \[0,1\]
+    -   Allowed values: Interval \[0,1\] or -1
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
             happened. This value can also appear as a FIWARE

@@ -58,8 +58,7 @@ The data model is defined as shown below:
     -   Mandatory
 
 -   `deviceClass` : Class of constrained device as specified by RFC 7228. If the
-    device is not a constrained device this property can be left as `null` or
-    undefined.
+    device is not a constrained device this property shall not be present.
 
     -   Attribute type: [Text](https://schema.org/Text)
     -   Normative References:

@@ -109,9 +109,17 @@
           ]
         },
         "batteryLevel": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1
+          "oneOf": [
+            {
+               "type": "number",
+               "minimum": 0,
+               "maximum": 1    
+            },
+            {
+              "type": "number",
+              "const": -1
+            }
+          ]
         },
         "rssi": {
           "oneOf": [
