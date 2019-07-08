@@ -106,8 +106,7 @@ The data model is defined as shown below:
         [StreetlightGroup](../../StreetlightGroup/doc/spec.md) entity.
     -   Optional
 
--   `dateLastLampChange` : Timestamp of the last change of lamp made. If `null`
-    it will mean that the lamp has never been changed.
+-   `dateLastLampChange` : Timestamp of the last change of lamp made.
 
     -   Attribute Type: [DateTime](http://schema.org/DateTime)
     -   Attribute metadata:
