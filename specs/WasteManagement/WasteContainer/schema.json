@@ -115,12 +115,15 @@
           "type": "string"
         },
         "status": {
-          "type": ["string", "null"],
+          "type": "string",
           "enum": [
             "ok",
             "lidOpen",
             "dropped",
-            "moved"
+            "moved",
+            "bandalized",
+            "burning",
+            "unknown"
           ]
         },
         "refWasteContainerModel": {
