@@ -40,6 +40,7 @@ section.
 
 -   When possible reuse schema.org data types (`Text`, `Number`, `DateTime`,
     `StructuredValue`, etc.).
+-   Remember that `null` is not allowed in NGSI-LD and therefore should be avoided as a value. 
 
 ## Attribute definition
 
@@ -47,8 +48,8 @@ section.
     good idea to leave it open for applications to extend the list, provided the
     new value is not semantically covered by any of the existing ones.
 
--   State clearly what attributes are mandatory and what are optional. If needed
-    state clearly what is the meaning of a `null` value.
+-   State clearly what attributes are mandatory and what are optional. Remember that 
+    `null` value should be avoided as it is prohibited in NGSI-LD.
 
 ## Units
 
@@ -82,7 +83,9 @@ section.
 
     which contains a reference to an entity of type `StreetlightModel`. This
     option has been extensively used by data models initially intended to be
-    used with NGSI v2 . + B/ Name the attribute using a verb (plus optionally an
+    used with NGSI v2 . 
+    
+        + B/ Name the attribute using a verb (plus optionally an
     object) such as `hasStop`, `operatedBy`, `hasTrip`, etc. This option is the
     one advocated by NGSI-LD, as in NGSI-LD URNs are used to identify entities,
     and NGSI-LD URNs already convey the type of the target entity, for instance
@@ -99,13 +102,13 @@ be considered as the recommended one and A option is to some extent
 -   Use the `date` prefix for naming entity attributes representing dates (or
     complete timestamps). Ex. `dateLastEmptying`.
 
--   `dateCreated` must be used to denote the (digital) entity's creation date.
+-   `dateCreated` (`createdAt` in NGSI-LD) must be used to denote the (digital) entity's creation date.
 
--   `dateModified` must be used to denote the (digital) entity's last update
+-   `dateModified` (`modifiedAt` in NGSI-LD) must be used to denote the (digital) entity's last update
     date.
 
 -   `dateCreated` and `dateModified` are special entity attributes provided
-    off-the-shelf by NGSI v2 implementations. Be careful because they can be
+    off-the-shelf by NGSI implementations. Be careful because they can be
     different than the actual creation or update date of the real world entity
     represented by its corresponding digital entity.
 
