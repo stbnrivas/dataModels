@@ -21,12 +21,12 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 The following fields defined by Open 311 are allowed to be attributes of this
@@ -92,7 +92,7 @@ following property must be added:
 
 -   `location` : Location of the area on which this service request is
     concerned.
-    -   Attribute type: GeoJSON geometry.
+    -   Attribute type: Property. GeoJSON geometry.
     -   Mandatory if the service request is geolocated.
 
 Additionally, applications might use the following standard schema.org
@@ -124,7 +124,7 @@ consistency with `ServiceType`):
     corresponding `ServiceType`. The key-value is always an array of strings. If
     an attribute is singled valued then such array will only contain one
     element.
-    -   Attribute type: [StructuredValue](https://schema.org/StructuredValue).
+    -   Attribute type: Property. [StructuredValue](https://schema.org/StructuredValue).
     -   Optional
 
 **Note**: JSON Schemas are intended to capture the data type and associated
@@ -143,57 +143,52 @@ Normalized NGSI response
     "type": "Open311ServiceRequest",
     "status": {
         "value": "closed"
-    }, 
+    },
     "description": {
         "value": "Acera en mal estado con bordillo partido en dos"
-    }, 
+    },
     "service_code": {
         "value": 234
-    }, 
+    },
     "status_notes": {
         "value": "Duplicate request."
-    }, 
+    },
     "service_name": {
         "value": "Aceras"
-    }, 
+    },
     "service_request_id": {
         "value": 638344
-    }, 
+    },
     "updated_datetime": {
         "type": "DateTime",
         "value": "2010-04-14T06:37:38-08:00"
-    }, 
+    },
     "address_string": {
         "value": "Calle San Juan Bautista, 2"
-    }, 
+    },
     "requested_datetime": {
         "type": "DateTime",
         "value": "2010-04-14T06:37:38-08:00"
-    }, 
+    },
     "location": {
-        "type": "geo:json", 
+        "type": "geo:json",
         "value": {
-            "type": "Point", 
-            "coordinates": [
-                -3.164485591715449, 
-                40.62785133667262
-            ]
+            "type": "Point",
+            "coordinates": [-3.164485591715449, 40.62785133667262]
         }
-    }, 
+    },
     "attributes": {
         "value": {
-            "ISSUE_TYPE": [
-                "Bordillo"
-            ]
+            "ISSUE_TYPE": ["Bordillo"]
         }
-    }, 
+    },
     "expected_datetime": {
         "type": "DateTime",
         "value": "2010-04-15T06:37:38-08:00"
-    }, 
+    },
     "agency_responsible": {
         "value": "Ayuntamiento de Ciudad"
-    }, 
+    },
     "media_url": {
         "value": "http://exaple.org/media/638344.jpg"
     }
@@ -284,18 +279,13 @@ Sample uses the NGSI-LD representation
         "type": "GeoProperty",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -3.164485591715449,
-                40.62785133667262
-            ]
+            "coordinates": [-3.164485591715449, 40.62785133667262]
         }
     },
     "attributes": {
         "type": "Property",
         "value": {
-            "ISSUE_TYPE": [
-                "Bordillo"
-            ]
+            "ISSUE_TYPE": ["Bordillo"]
         }
     },
     "expected_datetime": {

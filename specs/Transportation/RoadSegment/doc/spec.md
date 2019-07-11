@@ -33,22 +33,22 @@ The data model is defined as shown below:
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `source` : The source of this data.
 
-    -   Attribute type: [URL](https://schema.org/URL)
+    -   Attribute type: Property. [URL](https://schema.org/URL)
     -   Optional
 
 -   `name` : Name given to this road segment.
@@ -64,13 +64,13 @@ The data model is defined as shown below:
 
 -   `refRoad` : Road to which this road segment belongs to.
 
-    -   Attribute type: A reference to an entity of type
+    -   Attribute type: Property. A reference to an entity of type
         [Road](../../Road/doc/spec.md).
     -   Mandatory
 
 -   `location` : A GeoJSON (multi)line string which defines this road segment.
 
-    -   Attribute type: `geo:json`.
+    -   Attribute type: GeoProperty. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Mandatory
@@ -78,14 +78,14 @@ The data model is defined as shown below:
 -   `startPoint` : The start point of this road segment encoded as a GeoJSON
     point.
 
-    -   Attribute type: `geo:json`
+    -   Attribute type: Property. `geo:json`
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Mandatory
 
 -   `endPoint` : The endpoint of this road segment encoded as a GeoJSON point.
 
-    -   Attribute type: `geo:json`
+    -   Attribute type: Property. `geo:json`
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Mandatory
@@ -93,19 +93,19 @@ The data model is defined as shown below:
 -   `startKilometer` : The kilometer number (measured from the road's start
     point) where this road segmnent starts.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Optional
 
 -   `endKilometer` : The kilometer number (measured from the road's start point)
     where this road segment ends.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Optional
 
 -   `allowedVehicleType` : Vehicle type(s) allowed to transit through this road
     segment.
 
-    -   Attribute type: List of [Text](https://schema.org/Text)
+    -   Attribute type: Property. List of [Text](https://schema.org/Text)
     -   Allowed values: The following values defined by _VehicleTypeEnum_,
         [DATEX 2 version 2.3](http://d2docs.ndwcloud.nu/): -
         (`agriculturalVehicle`, `bicycle`, `bus`, `car`, `caravan`,
@@ -116,13 +116,13 @@ The data model is defined as shown below:
 
 -   `totalLaneNumber` : Total number of lanes offered by this road segment.
 
-    -   Attribute type: [Number](https://schema.org/Number). Integer greater
+    -   Attribute type: Property. [Number](https://schema.org/Number). Integer greater
         than 0.
     -   Mandatory
 
 -   `length` : Total length of this road segment in kilometers.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   See also [https://schema.org/length](https://schema.org/length)
     -   Default unit: Kilometer (Km)
     -   Optional
@@ -131,21 +131,21 @@ The data model is defined as shown below:
     segment. More restrictive limits might be applied to specific vehicle types
     (trucks, caravans, etc.).
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Kilometer per hour (Km/h).
     -   Optional
 
 -   `minimumAllowedSpeed` : Minimum allowed speed while transiting this road
     segment.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Kilometer per hour (Km/h).
     -   Optional
 
 -   `maximumAllowedHeight` : Maximum allowed height for vehicles transiting this
     road segment.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   See also: [https://schema.org/height](https://schema.org/height)
     -   Default unit: Meter (m)
     -   Optional
@@ -153,7 +153,7 @@ The data model is defined as shown below:
 -   `maximumAllowedWeight` : Maximum allowed weight for vehicles transiting this
     road segment.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   See also: [https://schema.org/weight](https://schema.org/weight)
     -   Default unit: Kilogram (Kg)
     -   Optional
@@ -168,7 +168,7 @@ The data model is defined as shown below:
 -   `laneUsage` : This attribute can be used to convey specific parameters
     describing each lane.
 
-    -   Attribute type: List of [Text](https://schema.org/Text)
+    -   Attribute type: Property. List of [Text](https://schema.org/Text)
     -   Allowed values: It must contain a string per road segment lane. The
         element 0 of the array must contain the information of lane 1, and so
         on. Format of the referred string must be:
@@ -182,7 +182,7 @@ The data model is defined as shown below:
     -   Optional
 
 -   `category` : Allows to convey extra characteristics of a road segment.
-    -   Attribute type: List of [Text](https://schema.org/Text)
+    -   Attribute type: Property. List of [Text](https://schema.org/Text)
     -   Allowed values:
         -   `oneway` : Flags whether the road segment can only be used in one
             direction. If not present it means road segment can be used in both
@@ -332,10 +332,7 @@ Sample uses the NGSI-LD representation
         "type": "Property",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -4.55167335377909,
-                41.8570461783071
-            ]
+            "coordinates": [-4.55167335377909, 41.8570461783071]
         }
     },
     "name": {
@@ -346,23 +343,12 @@ Sample uses the NGSI-LD representation
         "type": "Property",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -4.7299180606009,
-                41.6844918725019
-            ]
+            "coordinates": [-4.7299180606009, 41.6844918725019]
         }
     },
     "allowedVehicleType": {
         "type": "Property",
-        "value": [
-            "car",
-            "bus",
-            "lorry",
-            "trailer",
-            "tanker",
-            "van",
-            "caravan"
-        ]
+        "value": ["car", "bus", "lorry", "trailer", "tanker", "van", "caravan"]
     },
     "source": {
         "type": "Property",
@@ -377,22 +363,10 @@ Sample uses the NGSI-LD representation
         "value": {
             "type": "LineString",
             "coordinates": [
-                [
-                    -4.7299180606009,
-                    41.6844918725019
-                ],
-                [
-                    -4.72855890957602,
-                    41.6860596957855
-                ],
-                [
-                    -4.5520357341647,
-                    41.8569278186523
-                ],
-                [
-                    -4.55167335377909,
-                    41.8570461783071
-                ]
+                [-4.7299180606009, 41.6844918725019],
+                [-4.72855890957602, 41.6860596957855],
+                [-4.5520357341647, 41.8569278186523],
+                [-4.55167335377909, 41.8570461783071]
             ]
         }
     },
@@ -410,10 +384,7 @@ Sample uses the NGSI-LD representation
     },
     "laneUsage": {
         "type": "Property",
-        "value": [
-            "forward",
-            "forward"
-        ]
+        "value": ["forward", "forward"]
     },
     "@context": [
         "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",

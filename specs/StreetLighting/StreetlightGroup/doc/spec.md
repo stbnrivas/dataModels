@@ -13,19 +13,19 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `location` : Streetlight's group location represented by a GeoJSON
     (multi)geometry.
 
-    -   Attribute type: `geo:json`.
+    -   Attribute type: GeoProperty. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/draft-ietf-geojson-03](https://tools.ietf.org/html/draft-ietf-geojson-03)
     -   Mandatory
@@ -33,14 +33,14 @@ The data model is defined as shown below:
 -   `areaServed` : Higher level area to which the streetlight group belongs to.
     It can be used to group per responsible, district, neighbourhood, etc.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Normative References:
         [https://schema.org/areaServed](https://schema.org/areaServed)
     -   Optional
 
 -   `powerState` : Streetlight group's power state.
 
-    -   Attribute type: [Text](http://schema.org/Text)
+    -   Attribute type: Property. [Text](http://schema.org/Text)
     -   Attribute metadata:
         -   `timestamp` : Timestamp when the last update of the attribute
             happened.
@@ -116,7 +116,7 @@ The data model is defined as shown below:
 -   `activeProgramId` : Identifier of the active program for this streetlight
     group.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Relationship. [Text](https://schema.org/Text)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
             happened.
@@ -137,11 +137,11 @@ The data model is defined as shown below:
 -   `annotations` : A field reserved for annotations (incidences, remarks,
     etc.).
 
-    -   Attribute type: List of [Text](https://schema.org/Text)
+    -   Attribute type: Property. List of [Text](https://schema.org/Text)
     -   Optional
 
 -   `refStreetlight` : List of streetlight entities belonging to this group.
-    -   Attribute type: List of references to entities fo type
+    -   Attribute type: Relationship. List of references to entities fo type
         [Streetlight](../../Streetlight/doc/spec.md)
     -   Allowed values: There must topographical integrity between the location
         of the group and of the individual streetlights.
@@ -287,26 +287,8 @@ Sample uses the NGSI-LD representation
         "value": {
             "type": "MultiLineString",
             "coordinates": [
-                [
-                    [
-                        100.0,
-                        0.0
-                    ],
-                    [
-                        101.0,
-                        1.0
-                    ]
-                ],
-                [
-                    [
-                        102.0,
-                        2.0
-                    ],
-                    [
-                        103.0,
-                        3.0
-                    ]
-                ]
+                [[100.0, 0.0], [101.0, 1.0]],
+                [[102.0, 2.0], [103.0, 3.0]]
             ]
         }
     },

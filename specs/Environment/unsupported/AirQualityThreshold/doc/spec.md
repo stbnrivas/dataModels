@@ -30,3 +30,5 @@ format in NGSI(v2, LD).
 Sample uses the NGSI-LD representation
 
 ```json
+
+```

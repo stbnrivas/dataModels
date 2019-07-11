@@ -19,36 +19,36 @@ A JSON Schema corresponding to this data model can be found
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateCreated` : Entity's creation timestamp.
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: [Text](https://schema.org/Text) or
+    -   Attribute type: Property. [Text](https://schema.org/Text) or
         [URL](https://schema.org/URL)
     -   Optional
 
 -   `location` : Location of the area concerned by this record and represented
     by a GeoJSON geometry.
-    -   Attribute type: `geo:json`.
+    -   Attribute type: GeoProperty. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Mandatory
 -   `dateObserved` : The date and time of this observation in ISO8601 UTCformat.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime).
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime).
     -   Mandatory
 
 -   `soilTemperature` : The observed soil temperature in Celsius degrees.
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Celsius degrees.
     -   Attribute metadata:
         -   `timestamp` : optional timestamp for the observed value. It can be
@@ -58,7 +58,7 @@ A JSON Schema corresponding to this data model can be found
 -   `soilMoistureVwc` : The observed soil moisture measured as Volumetric Water
     Content, VWC (percentage, expressed in parts per one).
 
-    -   Attribute type: [Number](https://schema.org/Number) between 0 and 1.
+    -   Attribute type: Property. [Number](https://schema.org/Number) between 0 and 1.
     -   Attribute metadata:
         -   `timestamp` : optional timestamp for the observed value. It can be
             omitted if the observation time is the same as the one captured by
@@ -68,7 +68,7 @@ A JSON Schema corresponding to this data model can be found
 -   `soilMoistureEc` : The observed soild moisture measured as Electrical
     Conductivity, EC in units of Siemens per meter (S/m).
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Siemens per meter (S/m).
     -   Attribute metadata:
         -   `timestamp` : optional timestamp for the observed value. It can be
@@ -78,12 +78,12 @@ A JSON Schema corresponding to this data model can be found
 
 -   `refGreenspace` : The garden or flower bed to which this record refers to.
 
-    -   Attribute type: Reference to an entity of type `Garden` or `FlowerBed`.
+    -   Attribute type: Relationship. Reference to an entity of type `Garden` or `FlowerBed`.
     -   Optional
 
 -   `refDevice` : The device or devices used to obtain the data expressed by
     this record.
-    -   Attribute type: Reference to an entity of type `Device`
+    -   Attribute type: Relationship. Reference to an entity of type `Device`
     -   Optional
 
 ### Representing related weather conditions
@@ -100,7 +100,7 @@ Below is the description of the attribute to be used for option A/.
 
 -   `refWeatherObserved` : Weather observed associated to the measurements
     described by this entity.
-    -   Attribute type: Reference to a
+    -   Attribute type: Relationship. Reference to a
         [WeatherObserved](../../../Weather/WeatherObserved/doc/spec.md) entity.
     -   Optional
 
@@ -189,10 +189,7 @@ Sample uses the NGSI-LD representation
         "type": "GeoProperty",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -3.7836974,
-                43.4741091
-            ]
+            "coordinates": [-3.7836974, 43.4741091]
         }
     },
     "relativeHumidity": {

@@ -27,29 +27,29 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `announcedUrl` : URL broadcasted by the device.
 
-    -   Attribute type: [URL](https://schema.org/URL)
+    -   Attribute type: Property. [URL](https://schema.org/URL)
     -   Mandatory
 
 -   `signalStrength` : Signal strength to adjust the announcement range.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Allowed values: "lowest", "medium" or "highest".
     -   Mandatory
 
 -   `bluetoothChannel` : Bluetooth channels where to transmit the announcement.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Allowed values: "37", "38", "39", "37,38", "38,39", "37,39" or
         "37,38,39".
     -   Mandatory
@@ -72,12 +72,12 @@ The data model is defined as shown below:
     a service which is only active on dayweeks will be encoded as
     "availability": "Mo,Tu,We,Th,Fr,Sa 09:00-20:00".
 
-    -   Attribute type: [Text](https://schema.org/Text)
-    -   Mandatory. 
+    -   Attribute type: Property. [Text](https://schema.org/Text)
+    -   Mandatory.
 
 -   `refSmartPointOfInteraction` : Reference to the Smart Point of Interaction
     which includes this Smart Spot.
-    -   Attribute type: Reference to an entity of type
+    -   Attribute type: Relationship. Reference to an entity of type
         [SmartPointOfInteraction](../../SmartPointOfInteraction/doc/spec.md)
     -   Optional
 

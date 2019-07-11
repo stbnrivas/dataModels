@@ -33,9 +33,10 @@ terms to URIs, so that vocabularies can be used to define terms unambiguously.
 First of all, each Data Model shall have a JSON-LD `@context`, providing an
 unambiguous definition by mapping terms to URIs. For practicality reasons, it is
 recommended to have a unique `@context` resource, containing all terms, subject
-to be used in every FIWARE Data Model, the same way as [http://schema.org](http://schema.org) does.
-The following steps have to be followed in order to migrate existing NGSI v2
-instantiations of the FIWARE Data Models to NGSI-LD:
+to be used in every FIWARE Data Model, the same way as
+[http://schema.org](http://schema.org) does. The following steps have to be
+followed in order to migrate existing NGSI v2 instantiations of the FIWARE Data
+Models to NGSI-LD:
 
 -   NGSI v2 entity `id` attributes have to be converted to URIs, preferably
     using the NGSI-LD URN

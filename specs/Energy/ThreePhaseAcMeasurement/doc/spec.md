@@ -40,13 +40,13 @@ A JSON Schema corresponding to this data model can be found
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `name` : Name given to the measurement location or target.
@@ -63,7 +63,7 @@ A JSON Schema corresponding to this data model can be found
 -   `location` : location of the measurement target represented by a GeoJSON
     point.
 
-    -   Attribute type: `geo:json`.
+    -   Attribute type: Property. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/draft-ietf-geojson-03](https://tools.ietf.org/html/draft-ietf-geojson-03)
     -   Optional
@@ -83,30 +83,30 @@ A JSON Schema corresponding to this data model can be found
 
 -   `refDevice` : Device(s) used to obtain the measurement.
 
-    -   Attribute type: List of Reference to entity(ies) of type
+    -   Attribute type: Property. List of Reference to entity(ies) of type
         [Device](../../../Device/Device/doc/spec.md)
     -   Optional
 
 -   `refTargetDevice` : Device(s) for which the measurement was taken.
 
-    -   Attribute type: List of Reference to entity(ies) of type
+    -   Attribute type: Relationship. List of Reference to entity(ies) of type
         [Device](../../../Device/Device/doc/spec.md)
     -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `totalActiveEnergyImport` : Total energy imported i.e. consumed since
     metering started (since `dateEnergyMeteringStarted`).
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: kilowatt hour (kWh).
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -118,7 +118,7 @@ A JSON Schema corresponding to this data model can be found
     regards to fundamental frequency reactive power) since the metering start
     date (`dateEnergyMeteringStarted`).
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
         -   Default unit: kilovolt-ampere-reactive-hour (kVArh).
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -130,7 +130,7 @@ A JSON Schema corresponding to this data model can be found
     regards to apparent power) since the metering start date
     (`dateEnergyMeteringStarted`).
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
         -   Default unit: kilovolt-ampere-hour (kVAh).
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -141,7 +141,7 @@ A JSON Schema corresponding to this data model can be found
 -   `totalActiveEnergyExport` : Total energy exported since metering started
     (since `dateEnergyMeteringStarted`).
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: kilowatt hour (kWh).
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -152,7 +152,7 @@ A JSON Schema corresponding to this data model can be found
 -   `totalReactiveEnergyExport` : Total fundamental frequency reactive energy
     exported since metering started (since `dateEnergyMeteringStarted`).
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: kilovolt-ampere-reactive-hour (kVArh).
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -163,7 +163,7 @@ A JSON Schema corresponding to this data model can be found
 -   `totalApparentEnergyExport` : Total energy exported (with regards to
     apparent power) since the metering start date (`dateEnergyMeteringStarted`).
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
         -   Default unit: kilovolt-ampere-hour (kVAh).
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -256,7 +256,7 @@ A JSON Schema corresponding to this data model can be found
 
 -   `frequency` : The frequency of the circuit.
 
-    -   Attribute type: [Number](http://schema.org/Number)
+    -   Attribute type: Property. [Number](http://schema.org/Number)
     -   Default unit: Hertz (Hz)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -967,9 +967,7 @@ Sample uses the NGSI-LD representation
     },
     "refDevice": {
         "type": "Relationship",
-        "object": [
-            "urn:ngsi-ld:Device:Device:eQL-EDF3GL-2006201705"
-        ]
+        "object": ["urn:ngsi-ld:Device:Device:eQL-EDF3GL-2006201705"]
     },
     "name": {
         "type": "Property",

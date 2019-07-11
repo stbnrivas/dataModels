@@ -14,18 +14,18 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `category` : Device's category(ies).
 
-    -   Attribute type: List of [Text](https://schema.org/Text)
+    -   Attribute type: Property. List of [Text](https://schema.org/Text)
     -   Allowed values, one of the following or any other meaningful to the
         application:
     -   `sensor` : A device that detects and responds to events or changes in
@@ -46,21 +46,24 @@ The data model is defined as shown below:
     -   `multimedia` : A device designed to display, store, record or play
         multimedia content such as audio, images, animation, video.
         [https://w3id.org/saref#Multimedia](https://w3id.org/saref#Multimedia)
-    -   `implement`: A device used or needed in a given activity; tool, instrument, utensil, etc.
+    -   `implement`: A device used or needed in a given activity; tool,
+        instrument, utensil, etc.
         [https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/ImplementConfiguration.cs](https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/ImplementConfiguration.cs)
-    -   `irrSystem`: A mobile or fixed irrigation system such as a center pivot, linear,
-         traveling gun, solid set, etc.
-         [https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/IrrSystemConfiguration.cs](https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/IrrSystemConfiguration.cs)
-    -   `irrSection`: A section of an IrrSystem. Different enough from a regular section.
+    -   `irrSystem`: A mobile or fixed irrigation system such as a center pivot,
+        linear, traveling gun, solid set, etc.
+        [https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/IrrSystemConfiguration.cs](https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/IrrSystemConfiguration.cs)
+    -   `irrSection`: A section of an IrrSystem. Different enough from a regular
+        section.
         [https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/IrrSectionConfiguration.cs](https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/IrrSectionConfiguration.cs)
-    -   `endgun`: A device attached to an irrigation system that projects water beyond it
+    -   `endgun`: A device attached to an irrigation system that projects water
+        beyond it
         [https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/EndgunConfiguration.cs](https://github.com/ADAPT/ADAPT/blob/develop/source/ADAPT/Equipment/EndgunConfiguration.cs)
     -   Mandatory
 
 -   `deviceClass` : Class of constrained device as specified by RFC 7228. If the
     device is not a constrained device this property shall not be present.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Normative References:
         [RFC7228](https://tools.ietf.org/html/rfc7228#section-3)
     -   Allowed values: (`C0`, `C1`, `C2`)
@@ -69,7 +72,7 @@ The data model is defined as shown below:
 -   `controlledProperty` : Anything that can be sensed, measured or controlled
     by.
 
-    -   Attribute type: List of [Text](https://schema.org/Text)
+    -   Attribute type: Property. List of [Text](https://schema.org/Text)
     -   Allowed values: (some of this values are defined as instances of the
         class `Property` in SAREF)
     -   (`temperature`, `humidity`, `light`, `motion`, `fillingLevel`,
@@ -79,22 +82,22 @@ The data model is defined as shown below:
         `conductivity`, `conductance`, `tss`, `tds`, `turbidity`, `salinity`,
         `orp`, `cdom`, `waterPollution`, `location`, `speed`, `heading`,
         `weight`, `waterConsumption`, `gasComsumption`,
-        `electricityConsumption`, `soilMoisture`, `trafficFlow`, `eatingActivity`,
-        `milking`, `movementActivity`)
+        `electricityConsumption`, `soilMoisture`, `trafficFlow`,
+        `eatingActivity`, `milking`, `movementActivity`)
     -   Mandatory
 
 -   `function` : The functionality necessary to accomplish the task for which a
     Device is designed. A device can be designed to perform more than one
     function. Defined by [SAREF](https://w3id.org/saref#Function).
 
-    -   Attribute type: List of [Text](https://schema.org/Text)
+    -   Attribute type: Property. List of [Text](https://schema.org/Text)
     -   Allowed values: (`levelControl`, `sensing`, `onOff`, `openClose`,
         `metering`, `eventNotification`), from SAREF.
     -   Optional
 
 -   `supportedProtocol` : Supported protocol(s) or networks.
 
-    -   Attribute type: List of [Text](https://schema.org/Text).
+    -   Attribute type: Property. List of [Text](https://schema.org/Text).
     -   Allowed values: (`ul20`, `mqtt`, `lwm2m`, `http`, `websocket`, `onem2m`,
         `sigfox`, `lora`, `nb-iot`, `ec-gsm-iot`, `lte-m`, `cat-m`, `3g`,
         `grps`) or any other value meaningful for an application.
@@ -102,7 +105,7 @@ The data model is defined as shown below:
 
 -   `supportedUnits` : Units of measurement supported by the device.
 
-    -   Attribute type: List of [Text](https://schema.org/Text).
+    -   Attribute type: Property. List of [Text](https://schema.org/Text).
     -   Allowed values: The unit code (text) of measurement given using the
         [UN/CEFACT Common Code](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes)
         (max. 3 characters).
@@ -111,7 +114,7 @@ The data model is defined as shown below:
 -   `energyLimitationClass` : Device's class of energy limitation as per
     RFC 7228.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Normative References:
         [RFC7228](https://tools.ietf.org/html/rfc7228#page-11)
     -   Allowed values: (`E0`, `E1`, `E2`, `E9`)
@@ -119,19 +122,19 @@ The data model is defined as shown below:
 
 -   `brandName` : Device's brand name.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/brand](https://schema.org/brand)
     -   Mandatory
 
 -   `modelName` : Device's model name.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/model](https://schema.org/model)
     -   Mandatory
 
 -   `manufacturerName` : Device's manufacturer name.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/model](https://schema.org/model)
     -   Mandatory
 
@@ -147,7 +150,7 @@ The data model is defined as shown below:
 
 -   `documentation` : A link to device's documentation.
 
-    -   Attribute type: [URL](https://schema.org/URL)
+    -   Attribute type: Property. [URL](https://schema.org/URL)
     -   Optional
 
 -   `image` : A link to an image depicting the concerned device.
@@ -158,11 +161,11 @@ The data model is defined as shown below:
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateCreated` : Entity's creation timestamp.
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 **Note**: JSON Schemas are intended to capture the data type and associated
@@ -231,15 +234,11 @@ Sample uses the NGSI-LD representation
     "type": "DeviceModel",
     "category": {
         "type": "Property",
-        "value": [
-            "sensor"
-        ]
+        "value": ["sensor"]
     },
     "function": {
         "type": "Property",
-        "value": [
-            "sensing"
-        ]
+        "value": ["sensing"]
     },
     "modelName": {
         "type": "Property",
@@ -259,10 +258,7 @@ Sample uses the NGSI-LD representation
     },
     "controlledProperty": {
         "type": "Property",
-        "value": [
-            "fillingLevel",
-            "temperature"
-        ]
+        "value": ["fillingLevel", "temperature"]
     },
     "@context": [
         "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",

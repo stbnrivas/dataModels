@@ -24,16 +24,16 @@ A JSON Schema corresponding to this data model can be found
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateCreated` : Entity's creation timestamp.
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 -   `name` : Name given to the weather forecast location.
 
@@ -42,7 +42,7 @@ A JSON Schema corresponding to this data model can be found
 
 -   `location` : Location of the weather observation represented by a GeoJSON
     geometry.
-    -   Attribute type: `geo:json`.
+    -   Attribute type: Property. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Mandatory if `address` is not defined.
@@ -52,33 +52,33 @@ A JSON Schema corresponding to this data model can be found
     -   Mandatory if `location` is not present.
 -   `dateRetrieved` : The date and time the forecast was retrieved in ISO8601
     UTC format.
-    -   Attribute type: [DateTime](https://schema.org/DateTime).
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime).
     -   Mandatory
 -   `dateIssued` : The date and time the forecast was issued by the
     meteorological bureau in ISO8601 UTC format.
-    -   Attribute type: [DateTime](https://schema.org/DateTime).
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime).
     -   Mandatory
 -   `validity` : Includes the validity period for this forecast as a ISO8601
     time interval. As a workaround for the lack of support of Orion Context
     Broker for datetime intervals, it can be used two separate attributes:
     `validFrom`, `validTo`.
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Mandatory
 -   `validFrom` : Validity period start date and time.
-    -   Attribute type: [DateTime](https://schema.org/DateTime).
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime).
     -   Optional
 -   `validTo` : Validity period end date and time.
-    -   Attribute type: [DateTime](https://schema.org/DateTime).
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime).
     -   Optional
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: [Text](https://schema.org/Text) or
+    -   Attribute type: Property. [Text](https://schema.org/Text) or
         [URL](https://schema.org/URL)
     -   Optional
 
 -   `refPointOfInterest` : A reference to a point of interest associated to this
     forecast.
-    -   Attribute type: Reference to an entity of type `PointOfInterest`
+    -   Attribute type: Relationship. Reference to an entity of type `PointOfInterest`
     -   Optional
 -   `weatherType` : The forecasted weather type.
     -   See [WeatherObserved.weatherType](../../WeatherObserved/doc/spec.md) for
@@ -96,7 +96,7 @@ A JSON Schema corresponding to this data model can be found
     -   Optional
 -   `feelsLikeTemperature` : Feels like temperature forecasted.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Degrees centigrades.
     -   Optional
 
@@ -111,7 +111,7 @@ A JSON Schema corresponding to this data model can be found
 -   `precipitationProbability` : The probability of precipitation, expressed as
     a number between 0 ≤ precipitationProbability ≤ 1.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Optional
 
 -   `windDirection` : Wind direction forecasted
@@ -128,7 +128,7 @@ A JSON Schema corresponding to this data model can be found
 
 -   `dayMinimum` : Minimum values forecasted for the reported period.
 
-    -   Attribute type: [StructuredValue](https://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](https://schema.org/StructuredValue)
     -   Subattributes:
         -   `temperature` : Minimum temperature. Same semantics and units as
             `WeatherForecast.temperature`.
@@ -140,7 +140,7 @@ A JSON Schema corresponding to this data model can be found
 
 -   `dayMaximum` : Maximum values for the reported period.
 
-    -   Attribute type: [StructuredValue](https://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](https://schema.org/StructuredValue)
     -   Subattributes:
         -   `temperature` : Maximum temperature. See
             `WeatherForecast.temperature` for description and units.
@@ -153,7 +153,7 @@ A JSON Schema corresponding to this data model can be found
     Health Organization's UV Index measure.
     -   Normative references:
         [http://www.who.int/uv/intersunprogramme/activities/uv_index/en/](http://www.who.int/uv/intersunprogramme/activities/uv_index/en/)
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Optional
 
 **Note**: JSON Schemas are intended to capture the data type and associated

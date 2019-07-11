@@ -35,15 +35,10 @@ curl -X GET \
             "addressLocality": "Hierro Aeropuerto",
             "addressRegion": "Santa Cruz de Tenerife"
         },
-        "category": [
-            "WeatherStation"
-        ],
+        "category": ["WeatherStation"],
         "id": "WeatherStation-ES-C929I",
         "location": {
-            "coordinates": [
-                -17.8889,
-                27.8189
-            ],
+            "coordinates": [-17.8889, 27.8189],
             "type": "Point"
         },
         "source": "http://www.aemet.es",

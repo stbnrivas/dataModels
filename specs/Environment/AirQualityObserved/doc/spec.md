@@ -18,22 +18,22 @@ A JSON Schema corresponding to this data model can be found
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `location` : Location of the air quality observation represented by a
     GeoJSON geometry.
-    -   Attribute type: `geo:json`.
+    -   Attribute type: GeoProperty. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Mandatory if `address` is not defined.
@@ -46,7 +46,7 @@ A JSON Schema corresponding to this data model can be found
 	
 -   `dateObserved` : The date and time of this observation in ISO8601 UTCformat.
     It can be represented by an specific time instant or by an ISO8601 interval.
-    -   Attribute type: [DateTime](https://schema.org/DateTime) or an ISO8601
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime) or an ISO8601
         interval represented as [Text](https://schema.org/Text).
     -   Mandatory
 	
@@ -58,13 +58,13 @@ A JSON Schema corresponding to this data model can be found
     -   Optional
 
 -   `source` : A sequence of characters giving the source of the entity data.
-    -   Attribute type: [Text](https://schema.org/Text) or
+    -   Attribute type: Property. [Text](https://schema.org/Text) or
         [URL](https://schema.org/URL)
     -   Optional
 -   `airQualityLevel` : Overall qualitative level of health concern
     corresponding to the air quality observed.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Example values defined by the
         [USA EPA Agency](https://airnow.gov/index.cfm?action=aqibasics.aqi):
         (`good`, `moderate`, `unhealthyForSensitiveGroups`, `unhealthy`,
@@ -84,7 +84,7 @@ A JSON Schema corresponding to this data model can be found
 -   `airQualityIndex` : Air quality index corresponding to the air quality
     observed.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Attribute metadata:
         -   `referenceSpecification` : Specification that must be taken as
             reference when interpreting or calculating the supplied air quality
@@ -97,18 +97,18 @@ A JSON Schema corresponding to this data model can be found
 -   `reliability` : Reliability (percentage, expressed in parts per one)
     corresponding to the air quality observed.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Allowed values: Interval \[0,1\]
     -   Optional
 
 -   `refDevice` : A reference to the device(s) which captured this observation.
 
-    -   Attribute type: Reference to an entity of type `Device`
+    -   Attribute type: Relationship. Reference to an entity of type `Device`
     -   Optional
 
 -   `refPointOfInterest` : A reference to a point of interest (usually an air
     quality station) associated to this observation.
-    -   Attribute type: Reference to an entity of type `PointOfInterest`
+    -   Attribute type: Relationship. Reference to an entity of type `PointOfInterest`
     -   Optional
 
 ### Representing air pollutants
@@ -183,7 +183,7 @@ Below is the description of the attribute to be used for option A/.
 
 -   `refWeatherObserved` : Weather observed associated to the air quality
     conditions described by this entity.
-    -   Attribute type: Reference to a
+    -   Attribute type: Relationship. Reference to a
         [WeatherObserved](../../../Weather/WeatherObserved/doc/spec.md) entity.
     -   Optional
 
@@ -393,10 +393,7 @@ Sample uses the NGSI-LD representation
         "type": "GeoProperty",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -3.712247222222222,
-                40.423852777777775
-            ]
+            "coordinates": [-3.712247222222222, 40.423852777777775]
         }
     },
     "airQualityIndex": {
@@ -440,5 +437,5 @@ Sample uses the NGSI-LD representation
 }
 ```
 
-You can read about public instance offering information about observed air quality
-[here](../../../gsma.md).
+You can read about public instance offering information about observed air
+quality [here](../../../gsma.md).

@@ -26,23 +26,23 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `name` : Name given to this road, for instance `M-30`.
@@ -64,14 +64,14 @@ The data model is defined as shown below:
 
 -   `roadClass` : The classification of this road.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Allowed values: Those described by
         [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Key:highway).
     -   Mandatory
 
 -   `refRoadSegment` : Road segments which define this road.
 
-    -   Attribute type: List of references to entities of type
+    -   Attribute type: Relationship. List of references to entities of type
         [RoadSegment](../../RoadSegment/doc/spec.md).
     -   Mandatory if `location` is not defined
 
@@ -79,19 +79,19 @@ The data model is defined as shown below:
 
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
-    -   Attribute type: `geo:json`
+    -   Attribute type: GeoProperty. `geo:json`
     -   Mandatory if `refRoadSegment` is not defined
 
 -   `length` : Total length of this road in kilometers.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   See also [https://schema.org/length](https://schema.org/length)
     -   Default unit: Kilometer (Km)
     -   Optional
 
 -   `responsible` : Responsible for the raod i.e. the organism or company in
     charge of its maintenance.
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Optional
 
 **Note**: JSON Schemas are intended to capture the data type and associated

@@ -10,17 +10,19 @@
 This repository contains:
 
 -   [JSON Schemas and documentation](./specs/README.md) on harmonized datamodels
-    for different Smart Domains, particularly **Smart Cities** and **Smart Agrifood**.
+    for different Smart Domains, particularly **Smart Cities** and **Smart
+    Agrifood**.
 -   code that allows to expose different harmonized datasets useful for
     different applications. Such datasets are currently exposed through the
     [FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable)
-     and/or [NGSI-LD](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.01.01_60/gs_CIM009v010101p.pdf) APIs (query).
+    and/or
+    [NGSI-LD](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.01.01_60/gs_CIM009v010101p.pdf)
+    APIs (query).
 
 This work is aligned with the results of the
-[GSMA IoT Big Data](https://www.gsma.com/iot/iot-big-data/) Project.
-Such project is working on the harmonization of APIs and data models for fueling
-IoT and Big Data Ecosystems. In fact the FIWARE data models are a superset of
-the
+[GSMA IoT Big Data](https://www.gsma.com/iot/iot-big-data/) Project. Such
+project is working on the harmonization of APIs and data models for fueling IoT
+and Big Data Ecosystems. In fact the FIWARE data models are a superset of the
 [GSMA Data Models](https://github.com/GSMADeveloper/NGSI-LD-Entities).
 
 | :books: [Documentation](https://fiware-datamodels.rtfd.io) |
@@ -30,16 +32,17 @@ the
 ## Data Models adoption
 
 To support the adoption, we created a short [guideline](specs/howto.md) for the
-usage of data models. If you are using **NGSI-LD**, you should also check the [NGSI-LD HowTo](./specs/ngsi-ld_howto.md)
-and the [NGSI-LD FAQ](./specs/ngsi-ld_faq.md).
+usage of data models. If you are using **NGSI-LD**, you should also check the
+[NGSI-LD HowTo](./specs/ngsi-ld_howto.md) and the
+[NGSI-LD FAQ](./specs/ngsi-ld_faq.md).
 
 ## JSON Schemas
 
-A [JSON Schema](http://json-schema.org/) is provided for every
-harmonized data model. In the future all the documentation could be generated
-from a JSON Schema, as it is part of our roadmap. The different JSON Schemas
-usually depend on common JSON Schema definitions found at the root directory of
-this repository.
+A [JSON Schema](http://json-schema.org/) is provided for every harmonized data
+model. In the future all the documentation could be generated from a JSON
+Schema, as it is part of our roadmap. The different JSON Schemas usually depend
+on common JSON Schema definitions found at the root directory of this
+repository.
 
 There are different online JSON Schema Validators, for instance:
 [http://jsonschemalint.com/](http://jsonschemalint.com/). For the development of
@@ -54,10 +57,10 @@ For using it just install it through npm:
 
 A `validate.sh` script is provided for convenience.
 
-**Note**: JSON Schemas capture the name and data type of each Entity Attribute. For instance, this
-means that to test JSON schema examples with a
-[FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable)
-or [NGSI-LD](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.01.01_60/gs_CIM009v010101p.pdf)
+**Note**: JSON Schemas capture the name and data type of each Entity Attribute.
+For instance, this means that to test JSON schema examples with a
+[FIWARE NGSI version 2](http://fiware.github.io/specifications/ngsiv2/stable) or
+[NGSI-LD](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.01.01_60/gs_CIM009v010101p.pdf)
 API implementation, you need to use the `keyValues` mode (`options=keyValues`).
 
 ## How to contribute
@@ -78,9 +81,11 @@ New data models should be added under a folder structured as follows:
             [schema.json of WeatherObserved](specs/Weather/WeatherObserved/schema.json)
         -   `example.json`: One or more JSON example file, e.g.
             [example.json of WeatherObserved](specs/Weather/WeatherObserved/example.json)
-        -   `example-normalized.json`: One or more JSON example file in NGSI v2 normalized format, e.g.
+        -   `example-normalized.json`: One or more JSON example file in NGSI v2
+            normalized format, e.g.
             [example-normalized.json of WeatherObserved](specs/Weather/WeatherObserved/example-normalized.json)
-        -   `example-normalized-ld.jsonld`: One or more JSON example file in **NGSI-LD** normalized format, e.g.
+        -   `example-normalized-ld.jsonld`: One or more JSON example file in
+            **NGSI-LD** normalized format, e.g.
             [example-normalized-ld.jsonld of WeatherObserved](specs/Weather/WeatherObserved/example-normalized-ld.jsonld)
 
 The name of the folder should match the Entity Type used in the JSON Schema
@@ -102,7 +107,7 @@ among the entities. e.g.:
             -   `schema.json`
             -   `example.json`
             -   `example-normalized.json`
-            -   `example-normalized-ld.jsonld` 
+            -   `example-normalized-ld.jsonld`
         -   `NewModelEntityTwo/`
             -   `doc/`
                 -   `spec.md`

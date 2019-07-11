@@ -25,13 +25,13 @@ The following scripts are present:
 
 ## Public instance
 
-You can read about public instance offering information about observed air quality
-[here](../../gsma.md).
+You can read about public instance offering information about observed air
+quality [here](../../gsma.md).
 
 ## Examples of Use
 
-What was the latest observed air quality at the "Parque Juan Carlos I frente oficinas mantenimiento"
-(Madrid) air quality station?
+What was the latest observed air quality at the "Parque Juan Carlos I frente
+oficinas mantenimiento" (Madrid) air quality station?
 
 ```bash
 curl -X GET \
@@ -56,10 +56,7 @@ curl -X GET \
         "hour": "13:00",
         "id": "Madrid-AirQualityObserved-28079059-latest",
         "location": {
-            "coordinates": [
-                -3.609072222,
-                40.46525
-            ],
+            "coordinates": [-3.609072222, 40.46525],
             "type": "Point"
         },
         "measurand": [

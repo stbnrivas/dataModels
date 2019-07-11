@@ -14,29 +14,29 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `location` : Geolocation of the access point represented by a GeoJSON Point.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: GeoProperty. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `location` : Geolocation of the access point represented by a GeoJSON Point.
 
-    -   Attribute type: `geo:json`.
+    -   Attribute type: GeoProperty. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Mandatory
@@ -60,7 +60,7 @@ The data model is defined as shown below:
 
 -   `category` : Category of the access point (entrance, exit, etc.)
 
-    -   Attribute type: List of
+    -   Attribute type: Property. List of
         [https://schema.org/Text](https://schema.org/Text)
     -   Allowed values: Those specificed by the DATEX II _AccessCategoryEnum_. -
         Other values meaningful to the application.
@@ -69,13 +69,13 @@ The data model is defined as shown below:
 -   `refOffStreetParking` : The offstreet parking site this access point gives
     access to.
 
-    -   Attribute type: Reference to an entity of type
+    -   Attribute type: Relationship. Reference to an entity of type
         [OffStreetParking](../../OffStreetParking/doc/spec.md)
     -   Mandatory
 
 -   `features` : Equipment or facilities provided by the access point.
 
-    -   Attribute type: List of
+    -   Attribute type: Property. List of
         [https://schema.org/Text](https://schema.org/Text)
     -   Allowed values: Those specified by the DATEX II _essEquipmentEnum_ and
         by _AccessibilityEnum_.
@@ -171,9 +171,7 @@ Sample uses the NGSI-LD representation
     "type": "ParkingAccess",
     "category": {
         "type": "Property",
-        "value": [
-            "vehicleEntrance"
-        ]
+        "value": ["vehicleEntrance"]
     },
     "name": {
         "type": "Property",
@@ -183,10 +181,7 @@ Sample uses the NGSI-LD representation
         "type": "GeoProperty",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -8.60961198807,
-                41.150691773
-            ]
+            "coordinates": [-8.60961198807, 41.150691773]
         }
     },
     "refOffStreetParking": {
@@ -195,9 +190,7 @@ Sample uses the NGSI-LD representation
     },
     "features": {
         "type": "Property",
-        "value": [
-            "barrier"
-        ]
+        "value": ["barrier"]
     },
     "@context": [
         "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",

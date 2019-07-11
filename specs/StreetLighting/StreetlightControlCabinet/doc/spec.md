@@ -13,18 +13,18 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `location` : Control cabinet's location represented by a GeoJSON point.
 
-    -   Attribute type: `geo:json`.
+    -   Attribute type: GeoProperty. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/draft-ietf-geojson-03](https://tools.ietf.org/html/draft-ietf-geojson-03)
     -   Mandatory
@@ -50,37 +50,37 @@ The data model is defined as shown below:
 
 -   `refStreetlightGroup` : Streetlight group(s) controlled.
 
-    -   Attribute type: List of references to entities of type
+    -   Attribute type: Property. List of references to entities of type
         [StreetlightGroup](../../StreetlightGroup/doc/spec.md).
     -   Mandatory
 
 -   `brandName` : Name of the cabinet's brand.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/brand](https://schema.org/brand)
     -   Optional
 
 -   `modelName` : Name of the cabinet's model.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/model](https://schema.org/model)
     -   Optional
 
 -   `manufacturerName` : Name of the cabinet's manufacturer.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/model](https://schema.org/manufacturer)
     -   Optional
 
 -   `cupboardMadeOf` : Material the cabinet's cupboard is made of.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Allowed values: one Of (`plastic`, `metal`, `concrete`, `other`)
     -   Optional
 
 -   `features` : A list of cabinet controller features.
 
-    -   Attribute type: List of [Text](https://schema.org/Text)
+    -   Attribute type: Property. List of [Text](https://schema.org/Text)
     -   Allowed Values: Those technical values considered meaningful by
         applications.
         -   `astronomicalClock` . The control cabinet includes an astronomical
@@ -97,19 +97,19 @@ The data model is defined as shown below:
 -   `annotations` : A field reserved for annotations (incidences, remarks,
     etc.).
 
-    -   Attribute type: List of [Text](https://schema.org/Text)
+    -   Attribute type: Property. List of [Text](https://schema.org/Text)
     -   Optional
 
 -   `refDevice` : Reference to the device(s) used to monitor this control
     cabinet.
 
-    -   Attribute type: List of Reference to entity(ies) of type
+    -   Attribute type: Relationship. List of Reference to entity(ies) of type
         [Device](../../../Device/Device/doc/spec.md)
     -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateServiceStarted` : Date at which the cabinet controller started giving
@@ -133,12 +133,12 @@ The data model is defined as shown below:
 -   `responsible` : Responsible for the cabinet controller, i.e. entity in
     charge of actuating (programming, etc.).
 
-    -   Attribute type: [Text](http://schema.org/Text)
+    -   Attribute type: Property. [Text](http://schema.org/Text)
     -   Optional
 
 -   `workingMode` : Working mode for this cabinet controller.
 
-    -   Attribute type: [Text](http://schema.org/Text)
+    -   Attribute type: Property. [Text](http://schema.org/Text)
     -   Allowed values:
         -   `automatic` : The cabinet controller decides automatically when
             light groups are switched on and off. Manual operation is not
@@ -151,14 +151,14 @@ The data model is defined as shown below:
 -   `maximumPowerAvailable` : The maximum power available (by contract) for the
     circuits controlled by this cabinet.
 
-    -   Attribute type: [Number](http://schema.org/Number)
+    -   Attribute type: Property. [Number](http://schema.org/Number)
     -   Default unit: Kilowatts (kW)
     -   Optional
 
 -   `energyConsumed` : Energy consumed by the circuits controlled since metering
     started (since `dateMeteringStarted`).
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Kilowatts per hour (kWh).
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -169,7 +169,7 @@ The data model is defined as shown below:
 -   `energyCost` : Cost of the energy consumed by the circuits controlled since
     the metering start date (`dateMeteringStarted`).
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default currency: Euros. (Other currencies might be expressed using a
         metadata attribute)
     -   Attribute metadata:
@@ -181,7 +181,7 @@ The data model is defined as shown below:
 -   `reactiveEnergyConsumed` : Energy consumed (with regards to reactive power)
     by circuits since the metering start date (`dateMeteringStarted`).
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
         -   Default unit: KiloVolts-Ampere-Reactive per hour (kVArh).
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -197,7 +197,7 @@ The data model is defined as shown below:
 -   `lastMeterReading` : Value of the last reading obtained from the energy
     consumed metering system.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Kilowatts per hour (kWh).
     -   Attribute metadata:
         -   `timestamp`: Timestamp which reflects the date and time at which the
@@ -213,7 +213,7 @@ The data model is defined as shown below:
 
 -   `frequency` : The working frequency of the circuit.
 
-    -   Attribute type: [Number](http://schema.org/Number)
+    -   Attribute type: Property. [Number](http://schema.org/Number)
     -   Default unit: Hertz (Hz)
     -   Optional
 
@@ -481,9 +481,7 @@ Sample uses the NGSI-LD representation
     },
     "compliantWith": {
         "type": "Property",
-        "value": [
-            "IP54"
-        ]
+        "value": ["IP54"]
     },
     "intensity": {
         "type": "Property",
@@ -517,10 +515,7 @@ Sample uses the NGSI-LD representation
         "type": "GeoProperty",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -3.164485591715449,
-                40.62785133667262
-            ]
+            "coordinates": [-3.164485591715449, 40.62785133667262]
         }
     },
     "reactivePower": {

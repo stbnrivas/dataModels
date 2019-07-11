@@ -19,38 +19,38 @@ complement a GTFS static file.
 -   `refGtfsTransitFeedFile` : Reference to the entity pointing to the external
     GTFS file.
 
-    -   Attribute type: [URL](https://schema.org/URL)
+    -   Attribute type: Property. [URL](https://schema.org/URL)
     -   Optional. Necessary to create GTFS-RT feeds
 
 -   `routeId` : Identifier of the bus route (or bus line)
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Mandatory
 
 -   `stopId` : Identifier of the stop
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Mandatory if `stopSequence` is not defined
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateModified` : Last update timestamp of this Entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `lastUpdatedAt` : Last update of the entity set by the data provider. It is
     not automatically generated.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Optional.
 
 -   `arrivalEstimationUpdate` : Current updates of the trips referred to the
     route/stop pair
-    -   Attribute type: Array of
+    -   Attribute type: Property. Array of
         [StructuredValue](https://schema.org/StructuredValue)
     -   Subproperties (items):
         -   `arrivalDelay`: Delay in seconds (positive or negative). 0 means

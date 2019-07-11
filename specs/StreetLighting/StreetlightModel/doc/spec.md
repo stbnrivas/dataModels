@@ -14,13 +14,13 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `name` : Name given to the streetlight model.
@@ -42,43 +42,43 @@ The data model is defined as shown below:
 
 -   `maxPowerConsumption` : Maximum power consumption supported by the lantern.
 
-    -   Attribute type: List of [Number](https://schema.org/Number).
+    -   Attribute type: Property. List of [Number](https://schema.org/Number).
     -   Default unit: Watts (W)
     -   Optional
 
 -   `minPowerConsumption` : Minimum power consumption supported by the lantern.
 
-    -   Attribute type: List of [Number](https://schema.org/Number).
+    -   Attribute type: Property. List of [Number](https://schema.org/Number).
     -   Default unit: Watts (W)
     -   Optional
 
 -   `columnBrandName` : Name of the column's brand.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/brand](https://schema.org/brand)
     -   Optional
 
 -   `columnModelName` : Name of the column's model.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/model](https://schema.org/model)
     -   Optional
 
 -   `columnManufacturerName` : Name of the column's manufacturer.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/model](https://schema.org/manufacturer)
     -   Optional
 
 -   `columnMadeOf` : Material column is made of.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Allowed values: one Of (`steel`, `aluminium` , `wood`, `other`)
     -   Optional
 
 -   `columnColor` : Column's painting color.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Allowed Values:
         -   A color keyword as specified by
             [W3C Color Keywords](https://www.w3.org/TR/SVG/types.html#ColorKeywords)
@@ -89,50 +89,50 @@ The data model is defined as shown below:
 
 -   `lanternModelName` : Name of the lantern's model.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/model](https://schema.org/model)
     -   Optional
 
 -   `lanternBrandName` : Name of the lantern's brand.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/brand](https://schema.org/brand)
     -   Optional
 
 -   `lanternManufacturerName` : Name of the lantern's manufacturer.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/model](https://schema.org/manufacturer)
     -   Optional
 
 -   `lanternWeight` : Lantern's weight.
 
-    -   Attribute type: [Number](https://schema.org/Number).
+    -   Attribute type: Property. [Number](https://schema.org/Number).
     -   Default Unit: Kilograms (kg)
     -   See also: [https://schema.org/weight](https://schema.org/weight)
     -   Optional
 
 -   `lampModelName` : Name of the lamp's model.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/model](https://schema.org/model)
     -   Optional
 
 -   `lampBrandName` : Name of the lamp's brand.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/model](https://schema.org/brand)
     -   Optional
 
 -   `lampManufacturerName` : Name of the lamp's manufacturer.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   See also: [https://schema.org/model](https://schema.org/manufacturer)
     -   Optional
 
 -   `lampWeight` : Lamp's weight.
 
-    -   Attribute type: [Number](https://schema.org/Number).
+    -   Attribute type: Property. [Number](https://schema.org/Number).
     -   Default Unit: Kilograms (kg)
     -   See also: [https://schema.org/weight](https://schema.org/weight)
     -   Optional
@@ -140,13 +140,13 @@ The data model is defined as shown below:
 -   `workingLife` : The estimated number of hours working (the lamp) without
     failure.
 
-    -   Attribute type: [Number](http://schema.org/Number)
+    -   Attribute type: Property. [Number](http://schema.org/Number)
     -   Default unit: hours
     -   Optional
 
 -   `lampTechnology` : Technology used by the lamp.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Allowed values: one Of (`LED`, `LPS`, `HPS`)
         -   Or any other value not covered by the above list and meaningful to
             the application.
@@ -154,24 +154,24 @@ The data model is defined as shown below:
 
 -   `colorTemperature` : _Correlated_ color temperature of the lamp.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Kelvin degrees (K)
     -   Optional
 
 -   `colorRenderingIndex` : Color rendering index of the lamp.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Optional
 
 -   `luminousFlux` : Maximum light output which can be provided by the lamp.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Lumens (lm)
     -   Optional
 
 -   `powerConsumption` : (Nominal) power consumption made by the lamp.
 
-    -   Attribute type: List of [Number](https://schema.org/Number).
+    -   Attribute type: Property. List of [Number](https://schema.org/Number).
     -   Default unit: Watts (W)
     -   Optional
 
@@ -284,9 +284,7 @@ Sample uses the NGSI-LD representation
     "type": "StreetlightModel",
     "category": {
         "type": "Property",
-        "value": [
-            "postTop"
-        ]
+        "value": ["postTop"]
     },
     "colorRenderingIndex": {
         "type": "Property",

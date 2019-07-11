@@ -18,12 +18,12 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 The following fields defined by Open 311,
@@ -59,7 +59,7 @@ Open 311 model:
 
 -   `location` : Location of the area on which this type of service is provided.
 
-    -   Attribute type: GeoJSON geometry.
+    -   Attribute type: Property. GeoJSON geometry.
     -   Optional
 
 -   `provider` : Provider of the service.
@@ -71,16 +71,16 @@ Open 311 model:
 -   `effectiveSince` : The date on which the service type was created. This date
     might be different than the entity creation date.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateModified` : Last update timestamp of this entity.
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 **Note**: JSON Schemas are intended to capture the data type and associated

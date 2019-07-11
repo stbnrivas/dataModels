@@ -22,23 +22,23 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateModified` : Last update timestamp of this Entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `hasStop` : It shall point to another Entity(ies) of type `GtfsStop`
@@ -144,18 +144,13 @@ Sample uses the NGSI-LD representation
     },
     "hasStop": {
         "type": "Relationship",
-        "object": [
-            "urn:ngsi-ld:GtfsStop:Madrid_par_4_1"
-        ]
+        "object": ["urn:ngsi-ld:GtfsStop:Madrid_par_4_1"]
     },
     "location": {
         "type": "GeoProperty",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -3.6892,
-                40.4669
-            ]
+            "coordinates": [-3.6892, 40.4669]
         }
     },
     "address": {

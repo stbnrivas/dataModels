@@ -58,7 +58,8 @@ The proposed model for the animal entity has the following properties:
     -   Optional
 -   location: Location of the animal represented by a GeoJSON geometry.
     -   Attribute type: geo:json.
-    -   Normative References: [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
+    -   Normative References:
+        [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Attribute metadata:
         -   timestamp: optional timestamp for the observed value.
             -   Type: DateTime

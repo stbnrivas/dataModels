@@ -20,26 +20,26 @@ A JSON Schema corresponding to this data model can be found
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Normative References:
         [http://schema.org/DateTime](http://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Normative References:
         [http://schema.org/DateTime](http://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: [Text](https://schema.org/Text) or
+    -   Attribute type: Property. [Text](https://schema.org/Text) or
         [URL](https://schema.org/URL)
     -   Optional
 
@@ -85,7 +85,7 @@ A JSON Schema corresponding to this data model can be found
     -   Mandatory
 
 -   `allowedVehicleType` : Vehicle type(s) which can be charged.
-    -   Attribute type: List of [Text](http://schema.org/Text)
+    -   Attribute type: GeoProperty. List of [Text](http://schema.org/Text)
     -   Allowed Values: ( `bicycle`, `bus`, `car`, `caravan`, `motorcycle`,
         `motorscooter`, `truck`)
     -   Mandatory
@@ -106,7 +106,7 @@ A JSON Schema corresponding to this data model can be found
 
 -   `availableCapacity` : The number of vehicles which currently can be charged.
 
-    -   Attribute type: [Number](http://schema.org/Number)
+    -   Attribute type: Property. [Number](http://schema.org/Number)
     -   Allowed values: A positive integer number, including 0. It must lower or
         equal than `capacity`.
     -   Metadata:
@@ -157,8 +157,8 @@ A JSON Schema corresponding to this data model can be found
 
 -   `owner` : Charging station's owner.
 
-    -   Attribute type: Property. List of [Text](http://schema.org/Text) or
-        List of URIs
+    -   Attribute type: Property. List of [Text](http://schema.org/Text) or List
+        of URIs
     -   Optional
 
 -   `operator` : Charging station's operator.
@@ -290,9 +290,7 @@ Sample uses the NGSI-LD representation
     "type": "EVChargingStation",
     "socketType": {
         "type": "Property",
-        "value": [
-            "Wall_Euro"
-        ]
+        "value": ["Wall_Euro"]
     },
     "capacity": {
         "type": "Property",
@@ -304,9 +302,7 @@ Sample uses the NGSI-LD representation
     },
     "allowedVehicleType": {
         "type": "Property",
-        "value": [
-            "car"
-        ]
+        "value": ["car"]
     },
     "source": {
         "type": "Property",
@@ -316,17 +312,12 @@ Sample uses the NGSI-LD representation
         "type": "GeoProperty",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -4.747901,
-                41.618265
-            ]
+            "coordinates": [-4.747901, 41.618265]
         }
     },
     "chargeType": {
         "type": "Property",
-        "value": [
-            "free"
-        ]
+        "value": ["free"]
     },
     "address": {
         "type": "Property",

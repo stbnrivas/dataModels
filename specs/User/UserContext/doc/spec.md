@@ -17,36 +17,36 @@ A JSON Schema corresponding to this data model can be found
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `refUser` : reference to the (anonymised) User to which this UserContext is
     associated.
 
-    -   Attribute type: [https://schema.org/URL](https://schema.org/URL)
+    -   Attribute type: Relationship. [https://schema.org/URL](https://schema.org/URL)
     -   Normative References:
         [https://tools.ietf.org/html/rfc3986](https://tools.ietf.org/html/rfc3986)
     -   Mandatory
 
 -   `location` : Current location of the User represented by a GeoJSON geometry.
 
-    -   Attribute type: `geo:json`.
+    -   Attribute type: GeoProperty. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Mandatory if `address` is not defined.
@@ -60,13 +60,13 @@ A JSON Schema corresponding to this data model can be found
 -   `refUserDevice` : An object representing the current device used by the
     User. See [Device](../../../Device/Device/doc/spec.md) definition.
 
-    -   Attribute type: A references to a
+    -   Attribute type: Property. A references to a
         [Device](../../../Device/Device/doc/spec.md) entity.
     -   Optional
 
 -   `refActivity` : An object representing the current activity performed by the
     User. See [UserActivity](../../Activity/doc/spec.md) definition.
-    -   Attribute type: A references to a
+    -   Attribute type: Relationship. A references to a
         [UserActivity](../../Activity/doc/spec.md) entity.
     -   Optional
 
@@ -140,10 +140,7 @@ Sample uses the NGSI-LD representation
         "type": "GeoProperty",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -4.754444444,
-                41.640833333
-            ]
+            "coordinates": [-4.754444444, 41.640833333]
         }
     },
     "refUser": {

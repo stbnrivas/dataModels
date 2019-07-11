@@ -43,17 +43,12 @@ curl -X GET \
             "addressLocality": "Barcelona",
             "addressRegion": "Barcelona"
         },
-        "category": [
-            "311"
-        ],
+        "category": ["311"],
         "dataProvider": "FIWARE Foundation e.V.",
         "description": "El Museo de lastrong Sagrada Familia /strongofrece multitud de elementos y objetos que permiten comprender el significado y la complejidad de la gran obra de Gaud\u00ed. A trav\u00e9s de planos, dibujos originales, maquetas reconstruidas y distintas piezas, el visitante descubrir\u00e1 m\u00e1s a fondo el proceso de creaci\u00f3n de este impresionante templo, que se ha convertido en el s\u00edmbolo de strongBarcelona/strong. Desde el museo, que se encuentra situado en el interior de la iglesia, tambi\u00e9n se puede admirar la sepultura de Gaud\u00ed.",
         "id": "Museum-b24a98d7fd0e4f37947add846d75fc9b",
         "location": {
-            "coordinates": [
-                2.174492788,
-                41.402942517
-            ],
+            "coordinates": [2.174492788, 41.402942517],
             "type": "Point"
         },
         "name": "Museo del Templo Expiatorio de la Sagrada Familia",

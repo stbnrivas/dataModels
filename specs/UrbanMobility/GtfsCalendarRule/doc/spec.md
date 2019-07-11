@@ -19,23 +19,23 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateModified` : Last update timestamp of this Entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `hasService` : Service to which this rule applies to. Derived from
@@ -121,40 +121,40 @@ Normalized NGSI response
 ```json
 {
     "id": "urn:ngsi-ld:CalendarRule:Madrid:Rule1267",
-    "type": "GtfsCalendarRule", 
+    "type": "GtfsCalendarRule",
     "startDate": {
         "type": "Date",
         "value": "2018-01-01"
-    }, 
+    },
     "endDate": {
         "type": "Date",
         "value": "2019-01-01"
-    }, 
+    },
     "name": {
         "value": "Rule Hospital Service 1"
-    }, 
+    },
     "monday": {
         "value": true
-    }, 
+    },
     "tuesday": {
         "value": true
-    }, 
+    },
     "friday": {
         "value": true
-    }, 
+    },
     "wednesday": {
         "value": true
-    }, 
+    },
     "thursday": {
         "value": true
-    },  
+    },
     "sunday": {
         "value": false
-    }, 
+    },
     "hasService": {
-        "type": "Relationship", 
+        "type": "Relationship",
         "value": "urn:ngsi-ld:GtfsService:Madrid:Hospital_1"
-    }, 
+    },
     "saturday": {
         "value": false
     }

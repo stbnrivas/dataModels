@@ -23,23 +23,23 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateModified` : Last update timestamp of this Entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `name`: Same as GTFS `stop_name`.
@@ -95,8 +95,8 @@ The data model is defined as shown below:
     -   Optional
 
 -   `operatedBy` : Agency that operates this stop.
-    -   Attribute type: List of Relationships. They shall point to an Entity of Type
-        [GtfsAgency](../../GtfsAgency/doc/spec.md)
+    -   Attribute type: List of Relationships. They shall point to an Entity of
+        Type [GtfsAgency](../../GtfsAgency/doc/spec.md)
     -   Optional
 
 ## Examples
@@ -167,10 +167,7 @@ Sample uses the NGSI-LD representation
         "type": "GeoProperty",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -4.424393,
-                36.716872
-            ]
+            "coordinates": [-4.424393, 36.716872]
         }
     },
     "name": {

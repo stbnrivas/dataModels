@@ -22,13 +22,13 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `name` : Indicator's name which should be meaningful in the context of a
@@ -104,7 +104,7 @@ The data model is defined as shown below:
 
 -   `calculationMethod` : The calculation method used.
 
-    -   Attribute type: [Text](http://schema.org/Text)
+    -   Attribute type: Property. [Text](http://schema.org/Text)
     -   Allowed values: oneOf ( `manual`, `automatic`, `semiautomatic`)
         -   Any other value meaningful to the application and not covered by the
             above list.
@@ -113,12 +113,12 @@ The data model is defined as shown below:
 -   `calculationFormula` : For informative purposes, the formula used for
     calculating the indicator.
 
-    -   Attribute type: [Text](http://schema.org/Text)
+    -   Attribute type: Property. [Text](http://schema.org/Text)
     -   Optional
 
 -   `aggregatedData` : Entity(ies) and attribute(s) aggregated by the KPI.
 
-    -   Attribute type: List of
+    -   Attribute type: Property. List of
         [StructuredValue](https://schema.org/StructuredValue).
         -   Subproperties:
             -   `entityType` : Entity type which data is aggregated.
@@ -129,7 +129,7 @@ The data model is defined as shown below:
 
 -   `calculationPeriod` : KPI's period of time.
 
-    -   Attribute type: [StructuredValue](https://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](https://schema.org/StructuredValue)
     -   Subproperties:
         -   `from` : Period start
             -   Type: [DateTime](http://schema.org/DateTime)
@@ -138,7 +138,7 @@ The data model is defined as shown below:
 
 -   `currentStanding` : The KPI's current standing as per its `kpiValue`.
 
-    -   Attribute type: [Text](http://schema.org/Text)
+    -   Attribute type: Property. [Text](http://schema.org/Text)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
             happened.
@@ -148,7 +148,7 @@ The data model is defined as shown below:
 
 -   `kpiValue` :
 
-    -   Attribute type: It can be of any type.
+    -   Attribute type: Property. It can be of any type.
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
             happened.
@@ -158,40 +158,40 @@ The data model is defined as shown below:
 -   `effectiveSince` : The date on which the organization created this KPI. This
     date might be different than the entity creation date.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateNextCalculation` : Date on which a new calculation of the KPI should be
     available.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Optional
 
 -   `dateExpires` : The date on which the KPI will be no longer necessary or
     meaningful.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Optional
 
 -   `updatedAt` : Last update date of the KPI data. This can be different than
     the last update date of the KPI's value.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `location` : Location of the area to which the KPI refers to.
 
-    -   Attribute type: GeoJSON geometry.
+    -   Attribute type: GeoProperty. GeoJSON geometry.
     -   Optional
 
 -   `address` : Civic address of the area to which the KPI refers to.
@@ -203,7 +203,7 @@ The data model is defined as shown below:
 -   `area` : For organizational purposes, it allows to add extra textual
     geographical information such as district, burough, or any other hint which
     can help to identify the KPI coverage.
-    -   Attribute type: [Text](http://schema.org/Text)
+    -   Attribute type: Property. [Text](http://schema.org/Text)
     -   Optional
 
 **Note**: JSON Schemas are intended to capture the data type and associated
@@ -320,9 +320,7 @@ Sample uses the NGSI-LD representation
     "modifiedAt": "2016-06-29T15:59:09.224Z",
     "category": {
         "type": "Property",
-        "value": [
-            "quantitative"
-        ]
+        "value": ["quantitative"]
     },
     "calculationFrequency": {
         "type": "Property",

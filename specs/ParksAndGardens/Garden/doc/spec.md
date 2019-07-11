@@ -17,27 +17,27 @@ A JSON Schema corresponding to this data model can be found
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: [Text](https://schema.org/Text) or
+    -   Attribute type: Property. [Text](https://schema.org/Text) or
         [URL](https://schema.org/URL)
     -   Optional
 
 -   `location` : Location of this garden represented by a GeoJSON geometry.
-    -   Attribute type: `geo:json`.
+    -   Attribute type: GeoProperty. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Mandatory if `address` is not defined.
@@ -61,14 +61,14 @@ A JSON Schema corresponding to this data model can be found
     -   Optional
 
 -   `category` : Garden's category.
-    -   Attribute type: List of [Text](https://schema.org/Text)
+    -   Attribute type: Property. List of [Text](https://schema.org/Text)
     -   Allowed Values: (`public`, `private`, `botanical`, `castle`,
         `community`, `monastery`, `residential`, `fencedOff`) or any other value
         needed by an application.
     -   Optional
 -   `style` : Garden's style.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Allowed values: See
         [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Key:garden:style)
     -   Optional
@@ -79,20 +79,20 @@ A JSON Schema corresponding to this data model can be found
     -   Optional
 -   `areaServed` : Higher level area to which the garden belongs to. It can be
     used to group gardens per responsible, district, neighbourhood, etc.
-    -   Attribute type: [Text](https://schema.org/Text) Optional
+    -   Attribute type: Property. [Text](https://schema.org/Text) Optional
 -   `dateLastWatering` : Timestamp which corresponds to the last watering of
     this garden.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Optional
 
 -   `nextWateringDeadline` : Deadline for next watering operation to be done on
     this garden.
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Optional
 -   `refRecord` : List of records which contain measurements related to this
     garden.
-    -   Attribute type: List of references to entities of type
+    -   Attribute type: Relationship. List of references to entities of type
         `GreenspaceRecord`
     -   Optional
 
@@ -192,9 +192,7 @@ Sample uses the NGSI-LD representation
     "type": "Garden",
     "category": {
         "type": "Property",
-        "value": [
-            "public"
-        ]
+        "value": ["public"]
     },
     "style": {
         "type": "Property",
@@ -215,17 +213,12 @@ Sample uses the NGSI-LD representation
         "type": "GeoProperty",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -3.7836974,
-                43.4741091
-            ]
+            "coordinates": [-3.7836974, 43.4741091]
         }
     },
     "refRecord": {
         "type": "Relationship",
-        "object": [
-            "urn:ngsi-ld:Record:Santander-Garden-Piquio-Record-1"
-        ]
+        "object": ["urn:ngsi-ld:Record:Santander-Garden-Piquio-Record-1"]
     },
     "areaServed": {
         "type": "Property",

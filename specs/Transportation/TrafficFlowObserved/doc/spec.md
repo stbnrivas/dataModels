@@ -16,29 +16,30 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
--   `vehicleType` : Type of vehicle from the point of view of its structural characteristics.
+-   `vehicleType` : Type of vehicle from the point of view of its structural
+    characteristics.
+
     -   See definition at [Vehicle](../../Vehicle/Vehicle/doc/spec.md).
     -   Optional
-    
--   `vehicleSubType` : allows to specify a sub type of `vehicleType` , eg if the `vehicleType` is set
-                        to `Lorry` the `vehicleSubType` may be `OGV1` or `OGV2` to convey more information
-                        about the exact type of vehicle
-    -   Optional
 
+-   `vehicleSubType` : allows to specify a sub type of `vehicleType` , eg if the
+    `vehicleType` is set to `Lorry` the `vehicleSubType` may be `OGV1` or `OGV2`
+    to convey more information about the exact type of vehicle
+    -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `location` : Location of this traffic flow observation represented by a
     GeoJSON geometry.
 
-    -   Attribute type: `geo:json`.
+    -   Attribute type: GeoProperty. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Mandatory if `refRoadSegment` is not present.
@@ -52,18 +53,18 @@ The data model is defined as shown below:
 -   `refRoadSegment` : Concerned road segment on which the observation has been
     mede.
 
-    -   Attribute type: Reference to an entity of type
+    -   Attribute type: Relationship. Reference to an entity of type
         [RoadSegment](../../RoadSegment/doc/spec.md).
     -   Mandatory if `location` is not present.
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `laneId` : Lane identifier.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Allowed values: Positive integer starting with `1`. Lane identification
         is done using the conventions defined by
         [RoadSegment](../../RoadSegment/doc/spec.md) which are based on
@@ -74,24 +75,25 @@ The data model is defined as shown below:
     format. It can be represented by an specific time instant or by an ISO8601
     interval. As a workaround for the lack of support of Orion Context Broker
     for datetime intervals, it can be used two separate attributes:
-    `dateObservedFrom`, `dateObservedTo`. + Attribute type:
-    [DateTime](https://schema.org/DateTime) or an ISO8601 interval represented
-    as [Text](https://schema.org/Text). + Mandatory
+    `dateObservedFrom`, `dateObservedTo`. 
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime) or an ISO8601 interval represented
+    as [Text](https://schema.org/Text). 
+    -   Mandatory
 
 -   `dateObservedFrom` : Observation period start date and time. See
     `dateObserved`.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime).
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime).
     -   Optional
 
 -   `dateObservedTo` : Observation period end date and time. See `dateObserved`.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime).
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime).
     -   Optional
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `name` : Name given to this observation.
@@ -108,44 +110,46 @@ The data model is defined as shown below:
 -   `intensity` : Total number of vehicles detected during this observation
     period.
 
-    -   Attribute type: [Number](https://schema.org/Number). Positive integer.
+    -   Attribute type: Property. [Number](https://schema.org/Number). Positive integer.
     -   Optional
 
 -   `occupancy` : Fraction of the observation time where a vehicle has been
     occupying the observed laned.
 
-    -   Attribute type: [Number](https://schema.org/Number) between 0 and 1.
+    -   Attribute type: Property. [Number](https://schema.org/Number) between 0 and 1.
     -   Optional
 
 -   `averageVehicleSpeed` : Average speed of the vehicles transiting during the
     observation period.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Kilometer per hour (Km/h).
     -   Optional
 
 -   `averageVehicleLength` : Average length of the vehicles transiting during
     the observation period.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: meter (m)
     -   Optional
 
 -   `congested` : Flags whether there was a traffic congestion during the
     observation period in the referred lane. The absence of this attribute means
-    no traffic congestion. + Attribute type:
-    [Boolean](https://schema.org/Boolean) + Optional
+    no traffic congestion. 
+    
+    -   Attribute type: Property. [Boolean](https://schema.org/Boolean) 
+    -   Optional
 
 -   `averageHeadwayTime` : Average headway time. Headaway time is the time
     ellapsed between two consecutive vehicles.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: second (s)
     -   Optional
 
 -   `averageGapDistance` : Average gap distance between consecutive vehicles.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: meter (m)
     -   Optional
 
@@ -154,7 +158,7 @@ The data model is defined as shown below:
     referencing any road segment, allowing to know the direction of travel of
     the traffic flow observed.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Allowed values: (`forward`, `backward`). See
         [RoadSegment.laneUsage](../../RoadSegment/doc/spec.md) for a description
         of the semantics of these values.
@@ -162,7 +166,7 @@ The data model is defined as shown below:
 
 -   `reversedLane`: Flags whether traffic in the lane was reversed during the
     observation period. The absence of this attribute means no lane reversion.
-    -   Attribute type: [Boolean](https://schema.org/Boolean)
+    -   Attribute type: Property. [Boolean](https://schema.org/Boolean)
     -   Optional
 
 **Note**: JSON Schemas are intended to capture the data type and associated
@@ -330,18 +334,9 @@ Sample uses the NGSI-LD representation
         "value": {
             "type": "LineString",
             "coordinates": [
-                [
-                    -4.73735395519672,
-                    41.6538181849672
-                ],
-                [
-                    -4.73414858659993,
-                    41.6600594193478
-                ],
-                [
-                    -4.73447575302641,
-                    41.659585195093
-                ]
+                [-4.73735395519672, 41.6538181849672],
+                [-4.73414858659993, 41.6600594193478],
+                [-4.73447575302641, 41.659585195093]
             ]
         }
     },

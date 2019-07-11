@@ -26,18 +26,18 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `category` : Defines the type of interaction.
 
-    -   Attribute type: List of [Text](http://schema.org/Text)
+    -   Attribute type: Property. List of [Text](http://schema.org/Text)
     -   Allowed values: `information`, `entertainment`, `infotainment`,
         `co-creation` or any other extended value defined by the application.
     -   Mandatory
@@ -46,7 +46,7 @@ The data model is defined as shown below:
     using geoJSON format. It can be represented by a feature of type `Polygon`
     or `Multipolygon`.
 
-    -   Attribute type: `geo:json`.
+    -   Attribute type: Property. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Optional
@@ -56,7 +56,7 @@ The data model is defined as shown below:
     'announcedUrl' field specifies the broadcasted URL which could be this same
     URL or a shortened one.
 
-    -   Attribute type: [URL](https://schema.org/URL)
+    -   Attribute type: Property. [URL](https://schema.org/URL)
     -   Mandatory
 
 -   `availability`: Specifies the time intervals in which this interactive
@@ -67,19 +67,19 @@ The data model is defined as shown below:
     a service which is only active on dayweeks will be encoded as
     "availability": "Mo,Tu,We,Th,Fr,Sa 09:00-20:00".
 
-    -   Attribute type: [Text](https://schema.org/Text)
-    -   Mandatory. 
+    -   Attribute type: Property. [Text](https://schema.org/Text)
+    -   Mandatory.
 
 -   `refRelatedEntity` : List of entities improved with this Smart Point of
     Interaction. The entity type could be any such as a “Parking”, “Point of
     Interest”, etc.
 
-    -   Attribute type: List of references to entities.
+    -   Attribute type: Relationship. List of references to entities.
     -   Optional
 
 -   `refSmartSpot` : References to the “Smart Spot” devices which are part of
     the Smart Point of Interaction.
-    -   Attribute type: Reference to one or more entities of type
+    -   Attribute type: Relationship. Reference to one or more entities of type
         [SmartSpot](../../SmartSpot/doc/spec.md)
     -   Optional
 
@@ -176,9 +176,7 @@ Sample uses the NGSI-LD representation
     "type": "SmartPointOfInteraction",
     "category": {
         "type": "Property",
-        "value": [
-            "co-creation"
-        ]
+        "value": ["co-creation"]
     },
     "applicationUrl": {
         "type": "Property",
@@ -190,22 +188,10 @@ Sample uses the NGSI-LD representation
             "type": "Polygon",
             "coordinates": [
                 [
-                    [
-                        25.774,
-                        -80.19
-                    ],
-                    [
-                        18.466,
-                        -66.118
-                    ],
-                    [
-                        32.321,
-                        -64.757
-                    ],
-                    [
-                        25.774,
-                        -80.19
-                    ]
+                    [25.774, -80.19],
+                    [18.466, -66.118],
+                    [32.321, -64.757],
+                    [25.774, -80.19]
                 ]
             ]
         }
@@ -224,9 +210,7 @@ Sample uses the NGSI-LD representation
     },
     "refRelatedEntity": {
         "type": "Relationship",
-        "object": [
-            "urn:ngsi-ld:RelatedEntity:POI-PlazaCazorla-3123"
-        ]
+        "object": ["urn:ngsi-ld:RelatedEntity:POI-PlazaCazorla-3123"]
     },
     "@context": [
         "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",

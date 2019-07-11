@@ -26,45 +26,45 @@ A JSON Schema corresponding to this data model can be found
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateActivityStarted` : Activity's start timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Mandatory
 
 -   `dateActivityEnded` : Activity's end timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Optional
 
 -   `refAgent` : Reference to the agent (i.e. a person) performing the activity.
     It may be another NGSI Entity or any `Agent` identified by an URI.
 
-    -   Attribute type: Reference to an Entity or
+    -   Attribute type: Relationship. Reference to an Entity or
         [https://schema.org/URL](https://schema.org/URL).
     -   Mandatory
 
 -   `activityType` : The action performed (e.g. Drive).
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Normative References:
         [https://schema.org/Action](https://schema.org/Action),
         [https://www.w3.org/TR/activitystreams-vocabulary/#activity-types](https://www.w3.org/TR/activitystreams-vocabulary/#activity-types),
@@ -74,12 +74,12 @@ A JSON Schema corresponding to this data model can be found
 -   `refObject` : Reference to the object of the action (e.g. Car1). It may be
     another NGSI Entity or any `Object` identified by an URI.
 
-    -   Attribute type: Reference to an Entity or
+    -   Attribute type: Relationship. Reference to an Entity or
         [https://schema.org/URL](https://schema.org/URL).
     -   Optional
 
 -   `refTarget` : Reference to the target of the action (e.g. Office1).
-    -   Attribute type: Reference to an Entity or
+    -   Attribute type: Relationship. Reference to an Entity or
         [https://schema.org/URL](https://schema.org/URL).
     -   Optional
 

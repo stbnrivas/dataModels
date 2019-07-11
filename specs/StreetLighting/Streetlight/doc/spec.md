@@ -18,18 +18,18 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `location` : Streetlight's location represented by a GeoJSON Point.
 
-    -   Attribute type: `geo:json`.
+    -   Attribute type: GeoProperty. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/draft-ietf-geojson-03](https://tools.ietf.org/html/draft-ietf-geojson-03)
     -   Mandatory if `address` is not present.
@@ -44,7 +44,7 @@ The data model is defined as shown below:
     can be used to group streetlights per responsible, district, neighbourhood,
     etc.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Normative References:
         [https://schema.org/areaServed](https://schema.org/areaServed)
     -   Optional
@@ -53,7 +53,7 @@ The data model is defined as shown below:
     from. Typically it will contain an identifier that will allow to obtain more
     information about such circuit.
 
-    -   Attribute type: [Text](http://schema.org/Text)
+    -   Attribute type: Property. [Text](http://schema.org/Text)
     -   Optional
 
 -   `refStreetlightModel` : Streetlight's model.
@@ -72,7 +72,7 @@ The data model is defined as shown below:
 
 -   `status` : The overall status of this street light.
 
-    -   Attribute type: [Text](http://schema.org/Text)
+    -   Attribute type: Relationship. [Text](http://schema.org/Text)
     -   Allowed values: one Of (`ok`, `defectiveLamp`, `columnIssue`,
         `brokenLantern`)
         -   Or any other value meaningful to the application and not covered by
@@ -85,7 +85,7 @@ The data model is defined as shown below:
 
 -   `powerState` : Streetlight's power state.
 
-    -   Attribute type: [Text](http://schema.org/Text)
+    -   Attribute type: Property. [Text](http://schema.org/Text)
     -   Attribute metadata:
         -   `timestamp` : Timestamp when the last update of the attribute
             happened.
@@ -95,7 +95,7 @@ The data model is defined as shown below:
 
 -   `refDevice` : Reference to the device(s) used to monitor this streetligth.
 
-    -   Attribute type: List of Reference to entity(ies) of type
+    -   Attribute type: Relationship. List of Reference to entity(ies) of type
         [Device](../../../Device/Device/doc/spec.md)
     -   Optional
 
@@ -135,7 +135,7 @@ The data model is defined as shown below:
 
 -   `controllingMethod` : The method used to control this streetlight.
 
-    -   Attribute type: [Text](http://schema.org/Text)
+    -   Attribute type: Relationship. [Text](http://schema.org/Text)
     -   Allowed values: one Of (`group`, `individual`)
     -   Optional
 
@@ -164,7 +164,7 @@ The data model is defined as shown below:
 -   `annotations` : A field reserved for annotations (incidences, remarks,
     etc.).
 
-    -   Attribute type: List of [Text](https://schema.org/Text)
+    -   Attribute type: Property. List of [Text](https://schema.org/Text)
     -   Optional
 
 -   `locationCategory` : Category of the location where the streetlight is
@@ -180,7 +180,7 @@ The data model is defined as shown below:
     between streetlights. Another variation source of this property are
     wall-mounted streetlights.
 
-    -   Attribute type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Meters.
     -   Optional
 
@@ -287,10 +287,7 @@ Sample uses the NGSI-LD representation
         "type": "GeoProperty",
         "value": {
             "type": "Point",
-            "coordinates": [
-                -3.164485591715449,
-                40.62785133667262
-            ]
+            "coordinates": [-3.164485591715449, 40.62785133667262]
         }
     },
     "areaServed": {

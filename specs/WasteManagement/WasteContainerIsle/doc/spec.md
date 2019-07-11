@@ -14,18 +14,18 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Text or URL
+    -   Attribute type: Property. Text or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: URL
+    -   Attribute type: Property. URL
     -   Optional
 
 -   `location` : Location of the isle represented by a GeoJSON Polygon.
 
-    -   Attribute type: `geo:json`.
+    -   Attribute type: GeoProperty. `geo:json`.
     -   Normative References:
         [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Mandatory
@@ -49,12 +49,12 @@ The data model is defined as shown below:
 
 -   `insertHolesNumber` : Number of insert holes the isle has.
 
-    -   Attribute type: [Number](https://schema.org/Number).
+    -   Attribute type: Property. [Number](https://schema.org/Number).
     -   Optional
 
 -   `features` : A list of features provided by the isle.
 
-    -   Attribute type: List of [Text](http://schema.org/Text).
+    -   Attribute type: Property. List of [Text](http://schema.org/Text).
     -   Allowed values:
         -   `containerFix`. Allows to fix containers to a permanent position.
         -   `fenced`. The isle is properly fenced.
@@ -64,7 +64,7 @@ The data model is defined as shown below:
 
 -   `refWasteContainer` : List of containers present in the isle.
 
-    -   Attribute type: List of references to
+    -   Attribute type: Relationship. List of references to
         [WasteContainer](../../WasteContainer/doc/spec.md) entities.
     -   Allowed values. Container's ID.
     -   Optional
@@ -72,22 +72,22 @@ The data model is defined as shown below:
 -   `areaServed` : Higher level area to which the isle belongs to. It can be
     used to group isles per responsible, district, neighbourhood, etc.
 
-    -   Attribute type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Optional
 
 -   `dateModified` : Last update timestamp of this entity
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `dateCreated` : Entity's creation timestamp.
 
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `availableSince` : Creation timestamp of the isle (This might different than
     the entity creation time)
-    -   Attribute type: [DateTime](https://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](https://schema.org/DateTime)
     -   Optional
 
 **Note**: JSON Schemas are intended to capture the data type and associated
@@ -192,9 +192,7 @@ Sample uses the NGSI-LD representation
     },
     "features": {
         "type": "Property",
-        "value": [
-            "underground"
-        ]
+        "value": ["underground"]
     },
     "description": {
         "type": "Property",
@@ -206,26 +204,11 @@ Sample uses the NGSI-LD representation
             "type": "Polygon",
             "coordinates": [
                 [
-                    [
-                        -3.164485591715449,
-                        40.62785133667262
-                    ],
-                    [
-                        -3.164445130316209,
-                        40.62787156737224
-                    ],
-                    [
-                        -3.164394553567159,
-                        40.62777209976578
-                    ],
-                    [
-                        -3.164424899616589,
-                        40.62775018317452
-                    ],
-                    [
-                        -3.164485591715449,
-                        40.62785133667262
-                    ]
+                    [-3.164485591715449, 40.62785133667262],
+                    [-3.164445130316209, 40.62787156737224],
+                    [-3.164394553567159, 40.62777209976578],
+                    [-3.164424899616589, 40.62775018317452],
+                    [-3.164485591715449, 40.62785133667262]
                 ]
             ]
         }
