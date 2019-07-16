@@ -143,13 +143,13 @@ def schema_2_ld_context(schema, uri_prefix, predefined_mappings):
     entity_type = extract_entity_type(schema)
     enumerations = extract_enumerations(schema)
 
-    if entity_type is not None:
-        properties.append(entity_type)
-
     all_properties = properties + enumerations
 
     ld_context = generate_ld_context(
         all_properties, uri_prefix, predefined_mappings)
+
+    if entity_type is not None:
+        ld_context[entity_type] = uri_prefix + '/' + 'entity-types' + '/' + entity_type
 
     return ld_context
 
