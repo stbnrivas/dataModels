@@ -1,5 +1,8 @@
 # Traffic flow observed
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Transportation](https://github.com/smart-data-models/dataModel.Transportation)**
+
 ## Description
 
 An observation of traffic flow conditions at a certain place and time. This
