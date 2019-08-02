@@ -1,5 +1,8 @@
 # Device Model
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Device](https://github.com/smart-data-models/dataModel.Device)**
+
 ## Description
 
 This entity captures the static properties of a Device.
