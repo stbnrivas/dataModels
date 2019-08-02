@@ -1,5 +1,8 @@
 # Air Quality Observed
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Environment](https://github.com/smart-data-models/dataModel.Environment)**
+
 ## Description
 
 An observation of air quality conditions at a certain place and time. This data
