@@ -1,5 +1,8 @@
 # Weather Observed
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Weather](https://github.com/smart-data-models/dataModel.Weather)**
+
 ## Description
 
 An observation of weather conditions at a certain place and time. This data
