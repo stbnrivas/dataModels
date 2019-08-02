@@ -1,5 +1,8 @@
 # Museum
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.PointOfInterest](https://github.com/smart-data-models/dataModel.PointOfInterest)**
+
 ## Description
 
 <!-- textlint-disable no-dead-link -->
