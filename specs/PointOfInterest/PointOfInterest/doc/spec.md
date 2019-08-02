@@ -1,5 +1,8 @@
 # Point of interest
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.PointOfInterest](https://github.com/smart-data-models/dataModel.PointOfInterest)**
+
 ## Description
 
 This entity contains a harmonised geographic description of a Point of Interest.
