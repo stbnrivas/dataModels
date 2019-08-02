@@ -1,5 +1,8 @@
 # Off Street Parking
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Parking](https://github.com/smart-data-models/dataModel.Parking)**
+
 ## Description
 
 A site, off street, intended to park vehicles, managed independently and with
