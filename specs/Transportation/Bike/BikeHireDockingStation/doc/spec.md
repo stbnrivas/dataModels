@@ -1,5 +1,8 @@
 # Bike Hire Docking Station
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Transportation](https://github.com/smart-data-models/dataModel.Transportation)**
+
 ## Description
 
 Many cities provide a bike hiring system for citizens. These can hire a bike
