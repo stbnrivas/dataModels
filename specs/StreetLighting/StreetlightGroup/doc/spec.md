@@ -1,5 +1,8 @@
 # Streetlight group
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Streetlighting](https://github.com/smart-data-models/dataModel.Streetlighting)**
+
 An entity of type `StreetlightGroup` represents a group of streetlights. They
 might be controlled together by the same automated system (cabinet controller).
 
