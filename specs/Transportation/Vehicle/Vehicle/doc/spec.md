@@ -1,5 +1,8 @@
 # Vehicle
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Transportation](https://github.com/smart-data-models/dataModel.Transportation)**
+
 ## Description
 
 A vehicle.
