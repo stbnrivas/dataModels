@@ -74,7 +74,7 @@ Contributions should come in the form of pull requests.
 
 **Please note that some of the Data Models in this Repo have been adopted by 
 a joint initiative between TM Forum and FIWARE Foundation. Pull Requests for those
-Data Models shall be done against the correspondent Repo at the [https://github.com/smart-data-models/](https://github.com/smart-data-models/) Organization**
+Data Models shall be done against the corresponding Repo at the [https://github.com/smart-data-models/](https://github.com/smart-data-models/) Organization**
 
 New data models should be added under a folder structured as follows:
 
