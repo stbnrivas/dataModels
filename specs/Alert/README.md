@@ -1,5 +1,8 @@
 # Alert data model
 
+**Note: The latest version of these Data Models can be 
+found at [https://github.com/smart-data-models/dataModel.Alert](https://github.com/smart-data-models/dataModel.Alert)**
+
 ## Description
 
 This entity models an alert and could be used to send alerts related to traffic
