@@ -1,5 +1,8 @@
 # Parking Spot
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Parking](https://github.com/smart-data-models/dataModel.Parking)**
+
 ## Description
 
 A parking spot is an area well delimited where _one_ vehicle can be parked. The
