@@ -1,5 +1,8 @@
 # Parking access
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Parking](https://github.com/smart-data-models/dataModel.Parking)
+
 ## Description
 
 Represents an access point to a parking site, normally an offstreet parking.
