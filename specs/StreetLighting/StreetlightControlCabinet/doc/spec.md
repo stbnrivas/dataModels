@@ -1,5 +1,8 @@
 # Streetlight control cabinet
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Streetlighting](https://github.com/smart-data-models/dataModel.Streetlighting)**
+
 It represents equipment, usually on street, used to the automated control of a
 group(s) of streetlights, i.e. one or more circuits.
 
