@@ -1,5 +1,8 @@
 # Streetlight Model
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Streetlighting](https://github.com/smart-data-models/dataModel.Streetlighting)**
+
 It represents a model of streetlight composed by a specific supporting structure
 model, a lantern model and a lamp model. A streetlight instance will be based on
 a certain streetlight model.
