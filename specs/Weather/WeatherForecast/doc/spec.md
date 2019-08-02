@@ -1,5 +1,8 @@
 # Weather Forecast
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Weather](https://github.com/smart-data-models/dataModel.Weather)**
+
 ## Description
 
 This entity contains a harmonised description of a Weather Forecast. This entity
