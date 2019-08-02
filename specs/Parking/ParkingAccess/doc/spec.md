@@ -1,7 +1,7 @@
 # Parking access
 
 **Note: The latest version of this Data Model can be 
-found at [https://github.com/smart-data-models/dataModel.Parking](https://github.com/smart-data-models/dataModel.Parking)
+found at [https://github.com/smart-data-models/dataModel.Parking](https://github.com/smart-data-models/dataModel.Parking)**
 
 ## Description
 
