@@ -1,5 +1,8 @@
 # Device
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Device](https://github.com/smart-data-models/dataModel.Device)**
+
 ## Description
 
 An apparatus (hardware + software + firmware) intended to accomplish a
