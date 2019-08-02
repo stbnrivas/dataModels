@@ -1,5 +1,8 @@
 # Aero Allergen Observed
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Environment](https://github.com/smart-data-models/dataModel.Environment)**
+
 ## Description
 
 This entity models aero allergens observed at a given location and related
