@@ -25,6 +25,11 @@ project is working on the harmonization of APIs and data models for fueling IoT
 and Big Data Ecosystems. In fact the FIWARE data models are a superset of the
 [GSMA Data Models](https://github.com/GSMADeveloper/NGSI-LD-Entities).
 
+**Some of the Data Models in this Repo have been adopted by 
+a joint initiative between TM Forum and FIWARE Foundation. For more
+info please check 
+[https://github.com/smart-data-models/dataModels](https://github.com/smart-data-models/dataModels)**
+
 | :books: [Documentation](https://fiware-datamodels.rtfd.io) |
 | ---------------------------------------------------------- |
 
