@@ -1,5 +1,8 @@
 # Vehicle Model
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Transportation](https://github.com/smart-data-models/dataModel.Transportation)**
+
 ## Description
 
 This entity models a particular vehicle model, including all properties which
