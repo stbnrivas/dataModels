@@ -1,5 +1,8 @@
 # Parking Group
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Parking](https://github.com/smart-data-models/dataModel.Parking)**
+
 ## Description
 
 A group of parking spots. Granularity level can vary. It can be an storey on a
