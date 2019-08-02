@@ -72,9 +72,9 @@ API implementation, you need to use the `keyValues` mode (`options=keyValues`).
 
 Contributions should come in the form of pull requests. 
 
-** Please note that some of the Data Models in this Repo have been adopted by 
+**Please note that some of the Data Models in this Repo have been adopted by 
 a joint initiative between TM Forum and FIWARE Foundation. Pull Requests for those
-Data Models shall be done against [https://github.com/smart-data-models/dataModels](https://github.com/smart-data-models/dataModels)**
+Data Models shall be done against the correspondent Repo at the [https://github.com/smart-data-models/](https://github.com/smart-data-models/) Organization**
 
 New data models should be added under a folder structured as follows:
 
