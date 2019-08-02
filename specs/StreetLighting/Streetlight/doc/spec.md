@@ -1,5 +1,8 @@
 # Streetlight
 
+**Note: The latest version of this Data Model can be 
+found at [https://github.com/smart-data-models/dataModel.Streetlighting](https://github.com/smart-data-models/dataModel.Streetlighting)**
+
 An entity of type `Streetlight` represents a urban streetlight. Actually, there
 will be an entity of type `Streetlight` per lamp. Thus, if a particular pole
 holds more than one lantern there will be as many streetlight entites as
