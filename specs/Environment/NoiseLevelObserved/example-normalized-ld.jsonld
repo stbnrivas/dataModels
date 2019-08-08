@@ -1,5 +1,5 @@
 {
-    "id": "urn:ngsi-ld:NoiseLevelObserved:Vitoria-NoiseLevelObserved-2016-12-28T11:00:00_2016-12-28T12:00:00",
+    "id": "urn:ngsi-ld:NoiseLevelObserved:Vitoria-NoiseLevelObserved",
     "type": "NoiseLevelObserved",
     "dateObservedFrom": {
         "type": "Property",
@@ -40,6 +40,30 @@
     "LAS": {
         "type": "Property",
         "value": 91.6
+    },
+    "frequencies": {
+        "type": "Property",
+        "value": {
+            "100": 40,
+            "125":  40,
+            "160": 40,
+            "200": 40,
+            "250": 40,
+            "315": 40,
+            "400": 40,
+            "500": 40,
+            "630": 40,
+            "800": 40,
+            "1000": 40,
+            "1250": 40,
+            "1600": 40,
+            "2000": 40,
+            "2500": 40,
+            "3150": 40,
+            "4000": 40,
+            "8000": 40,
+            "10000": 40
+        }
     },
     "@context": [
         "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
