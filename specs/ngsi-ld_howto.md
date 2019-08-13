@@ -1,7 +1,7 @@
 # NGSI-LD HowTo
 
 A tutorial that can complement this info can be found at 
-[https://gihub.com/FIWARE/tutorials-Linked-Data](https://gihub.com/FIWARE/tutorials-Linked-Data).
+[https://github.com/FIWARE/tutorials.Linked-Data](https://github.com/FIWARE/tutorials.Linked-Data).
 
 ## Introduction
 
