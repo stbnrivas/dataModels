@@ -3,6 +3,9 @@
 This FAQ compilation is intended to clarify the NGSI-LD specification by
 providing answers to common questions.
 
+A tutorial that can complement this FAQ can be found at 
+[https://github.com/FIWARE/tutorials.Linked-Data](https://github.com/FIWARE/tutorials.Linked-Data).
+
 ### Q: What are the main (essential) differences between NGSI v2 and NGSI-LD?
 
 In summary, the main differences are the following:
