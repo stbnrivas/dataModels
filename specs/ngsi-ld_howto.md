@@ -1,5 +1,8 @@
 # NGSI-LD HowTo
 
+A tutorial that can complement this info can be found at 
+[https://gihub.com/FIWARE/tutorials-Linked-Data](https://gihub.com/FIWARE/tutorials-Linked-Data).
+
 ## Introduction
 
 The FIWARE NGSI v2 information model has been evolved to better support linked
@@ -249,8 +252,8 @@ curl -X POST \
         }
     },
     "@context": [
-        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
-        "https://schema.lab.fiware.org/ld/context"
+        "https://schema.lab.fiware.org/ld/context",
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
     ]
 }'
 ```
@@ -369,8 +372,8 @@ Content-Type: application/ld+json
         }
     },
     "@context": [
-        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
-        "https://schema.lab.fiware.org/ld/context"
+        "https://schema.lab.fiware.org/ld/context",
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
     ]
 }
 ```
@@ -487,8 +490,8 @@ Content-Type: application/ld+json
             }
         },
         "@context": [
-            "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
-            "https://schema.lab.fiware.org/ld/context"
+            "https://schema.lab.fiware.org/ld/context",
+            "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
         ]
     }
 ]
