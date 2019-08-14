@@ -1,22 +1,45 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
-Extracts the properties, types and  enumerations of a JSON Schema
-converting them into terms of a JSON-LD @Context
+This script provides two files:
+ - context.jsonld, that serves https://schema.lab.fiware.org/ld/fiware-datamodels-context.jsonld
+ - mapping_list.yml, that serves  https://uri.fiware.org/ns/datamodels
+
+context.jsonld is combined by extracting the properties, types and  enumerations of a JSON Schema and
+converting them into terms of a JSON-LD @Context. mapping_list.yml uses the result of extracting
+to prepare a list of terms with schemas and specifications.
 
 Copyright (c) 2019 FIWARE Foundation e.V.
 
-Author: José M. Cantera
+Authors: José M. Cantera, Dmitrii Demin
 """
 
-import sys
 import json
+import yaml
 import os
 from datetime import datetime
+from argparse import ArgumentParser
 
-# Here the aggregated @context will be stored
+# The aggregated @context will be stored here
 aggregated_context = {
 }
+
+# The list of mappings (term->schema/specification) will be stored here
+terms_list = {
+    "terms": {}
+}
+
+# The list of terms alerts will be stored here (if the specification file
+# associated with the term doesn't exist)
+alert_list = [
+]
+
+# Template to prepare a valid URL of a schema for a term mapping
+schema_url = 'https://fiware.github.io/dataModels/{}'
+specification_url = 'https://github.com/FIWARE/dataModels/blob/master/{}'
+
+# Agri* schemas stored at another github organization
+agri_url = 'https://github.com/GSMADeveloper/NGSI-LD-Entities/blob/master/definitions/{}.md'
 
 
 def read_json(infile):
@@ -28,8 +51,14 @@ def read_json(infile):
 
 def write_json(data, outfile):
     with open(outfile, 'w') as data_file:
-        data_file.write(json.dumps(data))
+        data_file.write(json.dumps(data, indent=4))
         data_file.write("\n")
+
+
+def write_yaml(data, outfile):
+    with open(outfile, 'w') as data_file:
+        data_file.write(yaml.dump(data))
+
 
 # Finds a node in a JSON Schema
 # (previously parsed as a Python dictionary)
@@ -122,17 +151,17 @@ def generate_ld_context(properties, uri_prefix, predefined_mappings):
         if p.startswith('ref'):
             context[p] = {
                 '@type': '@id',
-                '@id': uri_prefix + '/' + p
+                '@id': uri_prefix + '#' + p
             }
         elif p.startswith('date'):
             context[p] = {
                 '@type': 'http://uri.etsi.org/ngsi-ld/DateTime',
-                '@id': uri_prefix + '/' + p
+                '@id': uri_prefix + '#' + p
             }
         elif p in predefined_mappings:
             context[p] = predefined_mappings[p]
         else:
-            context[p] = uri_prefix + '/' + p
+            context[p] = uri_prefix + '#' + p
 
     return context
 
@@ -149,29 +178,70 @@ def schema_2_ld_context(schema, uri_prefix, predefined_mappings):
         all_properties, uri_prefix, predefined_mappings)
 
     if entity_type is not None:
-        ld_context[entity_type] = uri_prefix + '/' + 'entity-types' + '/' + entity_type
+        ld_context[entity_type] = uri_prefix + '#' + entity_type
 
     return ld_context
 
 
-def process_file(input_file, uri_prefix, predefined_mappings):
+def process_file(input_file, uri_prefix, predefined_mappings, terms_mappings):
     if os.path.isfile(input_file) and input_file.endswith('schema.json'):
         print(input_file)
-        aggregate_ld_context(input_file, uri_prefix, predefined_mappings)
+        aggregate_ld_context(
+            input_file,
+            uri_prefix,
+            predefined_mappings,
+            terms_mappings)
     elif os.path.isdir(input_file):
         for f in (os.listdir(input_file)):
             process_file(os.path.join(input_file, f),
-                         uri_prefix, predefined_mappings)
+                         uri_prefix, predefined_mappings, terms_mappings)
 
 
-def aggregate_ld_context(f, uri_prefix, predefined_mappings):
+def aggregate_ld_context(f, uri_prefix, predefined_mappings, terms_mappings):
     global aggregated_context
+    global terms_list
+    global alert_list
 
     schema = read_json(f)
     ld_context = schema_2_ld_context(schema, uri_prefix, predefined_mappings)
 
     for p in ld_context:
         aggregated_context[p] = ld_context[p]
+
+        # adding related specifications and schemas
+        if p not in terms_list['terms']:
+            terms_list['terms'][p] = {'specifications': list(),
+                                      'schemas': list()}
+
+        terms_list['terms'][p]['schemas'].append(
+            schema_url.format(f.split('../')[1]))
+
+        file_to_add = find_file(f, terms_mappings)
+        if file_to_add:
+            terms_list['terms'][p]['specifications'].append(file_to_add)
+        else:
+            alert_list.append(f)
+
+
+# Finds the specification file associated with the term
+def find_file(f, terms_mappings):
+    try:
+        spec1 = os.path.join(f.rsplit('/', 1)[0], 'doc/spec.md')
+        spec2 = os.path.join(f.rsplit('/', 1)[0], 'doc/introduction.md')
+        if os.path.isfile(spec1):
+            return specification_url.format(spec1.split('../')[1])
+        elif os.path.isfile(spec2):
+            return specification_url.format(spec2.split('../')[1])
+        elif 'AgriFood' in f:
+            agri_type = f.split('AgriFood/')[1].split('/schema.json')[0]
+            if agri_type in terms_mappings:
+                return agri_url.format(terms_mappings[agri_type])
+            else:
+                return None
+        else:
+            return None
+    except UnboundLocalError:
+        pass
 
 
 def write_context_file():
@@ -183,22 +253,29 @@ def write_context_file():
     }
 
     write_json(ld_context, 'context.jsonld')
+    write_yaml(terms_list, 'terms_list.yml')
 
 
 def main(args):
-    uri_prefix = args[2]
+    uri_prefix = args.u
 
     predefined_mappings = read_json('ldcontext_mappings.json')
+    terms_mappings = read_json('ldcontext_terms_mappings.json')
 
-    process_file(args[1], uri_prefix, predefined_mappings)
+    process_file(args.f, uri_prefix, predefined_mappings, terms_mappings)
 
     write_context_file()
+
+    print("specification file was  not found for this files")
+    print("\n".join(sorted(set(alert_list))))
 
 
 # Entry point
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
-        print("Usage: ldcontext_generator [folder] [URI prefix]")
-        exit(-1)
+    parser = ArgumentParser()
+    parser.add_argument('-f', required=True, help='folder')
+    parser.add_argument('-u', required=True, help='URI prefix')
 
-    main(sys.argv)
+    arguments = parser.parse_args()
+
+    main(arguments)
