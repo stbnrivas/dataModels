@@ -22,64 +22,65 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Property. Text or URL
+    -   Attribute type: Property. Text or [URL](https://schema.org/URL)
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: Property. URL
+    -   Attribute type: Property. [URL](https://schema.org/URL)
     -   Optional
 
 -   `name` : Indicator's name which should be meaningful in the context of a
     project or organization. Example `KPI-2016-2018-Incidences-Street`.
-
-    -   Normative References: [https://schema.org/name](https://schema.org/name)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
+    -   Normative References: `https://uri.etsi.org/ngsi-ld/name` equivalent to [name](https://schema.org/name)
     -   Mandatory
 
 -   `alternateName` : An alias for the KPI.
-
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Normative References:
         [https://schema.org/alternateName](https://schema.org/alternateName)
     -   Optional
 
 -   `organization` : Subject organization evaluated by the KPI.
 
-    -   Attribute Type: [Organization](https://schema.org/Organization)
+    -   Attribute type: Property. [Organization](https://schema.org/organization)
+    -   Normative References:
+        [https://schema.org/organization](https://schema.org/organization)
     -   Mandatory
 
 -   `process` : Subject process evaluated by the KPI.
 
-    -   Attribute Type: [Text](http://schema.org/Text)
+    -   Attribute type: Property. [Text](http://schema.org/Text)
     -   Either `process` or `product` must be defined.
 
 -   `product` : Subject _product or service_ evaluated by the KPI.
 
-    -   Attribute Type: [Product](https://schema.org/Product)
+    -   Attribute type: Property. [Product](https://schema.org/Product)
     -   Either `process` or `product` must be defined.
 
 -   `provider` : Provider of the product or service, if any, that this KPI
     evaluates.
-
-    -   Normative references:
+    -   Attribute Type: Property. [Provider](http://schema.org/provider)    -   Normative references:
         [https://schema.org/provider](https://schema.org/provider)
     -   Optional
 
 -   `businessTarget` : For informative purposes, the business target to which
     this KPI is related to.
 
-    -   Attribute Type: [Text](http://schema.org/Text)
+    -   Attribute type: Property. [Text](http://schema.org/Text)
     -   Optional
 
 -   `description` : Indicator's description.
 
-    -   Normative References:
-        [https://schema.org/description](https://schema.org/description)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
+    -   Normative References: `https://uri.etsi.org/ngsi-ld/description` equivalent to [description](https://schema.org/description)
     -   Optional
 
 -   `calculationFrequency` : How often the KPI is calculated.
 
-    -   Attribute Type: [Text](http://schema.org/Text)
+    -   Attribute type: Property. [Text](http://schema.org/Text)
     -   Allowed values: one Of (`hourly`, `daily`, `weekly`, `monthly`,
         `yearly`, `quarterly`, `bimonthly`, `biweekly`)
         -   Or any other value meaningful for the application and not covered by
@@ -99,7 +100,9 @@ The data model is defined as shown below:
 
 -   `calculatedBy` : The organization in charge of calculating the KPI.
 
-    -   Attribute Type: [Organization](https://schema.org/Organization)
+    -   Attribute type: Property. [Organization](https://schema.org/organization)
+    -   Normative References:
+        [https://schema.org/organization](https://schema.org/organization)
     -   Optional
 
 -   `calculationMethod` : The calculation method used.
@@ -191,7 +194,9 @@ The data model is defined as shown below:
 
 -   `location` : Location of the area to which the KPI refers to.
 
-    -   Attribute type: GeoProperty. GeoJSON geometry.
+    -   Attribute type: GeoProperty. `geo:json`.
+    -   Normative References:
+        [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
     -   Optional
 
 -   `address` : Civic address of the area to which the KPI refers to.

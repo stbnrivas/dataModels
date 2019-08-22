@@ -27,13 +27,13 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Property. Text or URL
+    -   Attribute type: Property. [Text](https://schema.org/Text) or [URL](https://schema.org/URL)
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: Property. URL
+    -   Attribute type: Property. [URL](https://schema.org/URL)
     -   Optional
 
 -   `announcedUrl` : URL broadcasted by the device.
@@ -56,13 +56,13 @@ The data model is defined as shown below:
 
 -   `coverageRadius` : Radius of the spot coverage area in meters.
 
-    -   Attribute Type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Meters.
     -   Optional
 
 -   `announcementPeriod` : Period between announcements.
 
-    -   Attribute Type: [Number](https://schema.org/Number)
+    -   Attribute type: Property. [Number](https://schema.org/Number)
     -   Default unit: Milliseconds.
     -   Mandatory
 

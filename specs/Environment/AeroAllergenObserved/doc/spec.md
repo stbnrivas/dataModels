@@ -1,6 +1,6 @@
 # Aero Allergen Observed
 
-**Note: The latest version of this Data Model can be 
+**Note: The latest version of this Data Model can be
 found at [https://github.com/smart-data-models/dataModel.Environment](https://github.com/smart-data-models/dataModel.Environment)**
 
 ## Description
@@ -30,7 +30,7 @@ A JSON Schema corresponding to this data model can be found
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: Property. URL
+    -   Attribute type: Property. [URL](https://schema.org/URL)
     -   Optional
 
 -   `dateModified` : Last update timestamp of this entity.
@@ -51,6 +51,7 @@ A JSON Schema corresponding to this data model can be found
     -   Mandatory if `address` is not defined.
 -   `address` : Civic address of the aero allergens observation. Sometimes it
     corresponds to the aero allergens station address.
+    -   Attribute type: Property. [Address](https://schema.org/address)
     -   Normative References:
         [https://schema.org/address](https://schema.org/address)
     -   Mandatory if `location` is not present.
@@ -105,7 +106,7 @@ The structure of such an attribute will be as follows:
     allergens) is available at
     [http://www.allergen.org](http://www.allergen.org).
 
--   Attribute type: [Number](https://schema.org/Number)
+-   Attribute type: Property. [Number](https://schema.org/Number)
 
 -   Attribute value: corresponds to the concentration of the allergen as a
     number.
@@ -120,7 +121,8 @@ The structure of such an attribute will be as follows:
         -   Type: [Text](https://schema.org/Text)
         -   Optional
     -   `description` : short description of the allergen
-        -   Type: [Text](https://schema.org/Text)
+        -   Attribute type: Property. [Text](https://schema.org/Text)
+        -   Normative References: `https://uri.etsi.org/ngsi-ld/description` equivalent to [description](https://schema.org/description)
         -   Optional
 
 ### Representing qualitative levels of aero allergens
@@ -133,7 +135,7 @@ concentration of [alnus](https://en.wikipedia.org/wiki/Alder) pollen.
 
 -   Attribute name: Equal to the name of the allergen plus the suffix `Level`,
     for instance `alnus_Level`.
--   Attribute type: [Text](https://schema.org/Text)
+-   Attribute type: Property. [Text](https://schema.org/Text)
 -   Attribute value: Example values defined by the
     [European Aeroallergen Network](https://www.ean-net.org/en/): (`none`,
     `low`, `moderate`, `high`, `veryHigh`). As this can be different between
@@ -144,7 +146,8 @@ concentration of [alnus](https://en.wikipedia.org/wiki/Alder) pollen.
 -   Attribute metadata:
     -   `description` : short description of the measurand and its related
         qualitative level
-        -   Type: [Text](https://schema.org/Text)
+        -   Attribute type: Property. [Text](https://schema.org/Text)
+        -   Normative References: `https://uri.etsi.org/ngsi-ld/description` equivalent to [description](https://schema.org/description)
         -   Optional
     -   `referenceSpecification` : Specification that must be taken as reference
         when interpreting the supplied qualitative value.
@@ -163,7 +166,7 @@ pollen.
 
 -   Attribute name: Equal to the name of the allergen plus the suffix
     `_Allergenicity`, for instance `alnus_Allergenicity`.
--   Attribute type: [Text](https://schema.org/Text)
+-   Attribute type: Property. [Text](https://schema.org/Text)
 -   Attribute value: Example values defined by the
     [Spanish Network for Aerobiology](https://www.uco.es/rea/infor_rea/interpretacion.html):
     (`1`, `2`, `3`, `4`). As this can be different between countries,
@@ -174,7 +177,8 @@ pollen.
 -   Attribute metadata:
     -   `description` : short description of the measurand and its related
         qualitative level
-        -   Type: [Text](https://schema.org/Text)
+        -   Attribute type: Property. [Text](https://schema.org/Text)
+        -   Normative References: `https://uri.etsi.org/ngsi-ld/description` equivalent to [description](https://schema.org/description)
         -   Optional
     -   `referenceSpecification` : Specification that must be taken as reference
         when interpreting the supplied qualitative value.

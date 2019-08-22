@@ -1,6 +1,6 @@
 # Streetlight group
 
-**Note: The latest version of this Data Model can be 
+**Note: The latest version of this Data Model can be
 found at [https://github.com/smart-data-models/dataModel.Streetlighting](https://github.com/smart-data-models/dataModel.Streetlighting)**
 
 An entity of type `StreetlightGroup` represents a group of streetlights. They
@@ -16,13 +16,13 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Property. Text or URL
+    -   Attribute type: Property. [Text](https://schema.org/Text) or [URL](https://schema.org/URL)
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: Property. URL
+    -   Attribute type: Property. [URL](https://schema.org/URL)
     -   Optional
 
 -   `location` : Streetlight's group location represented by a GeoJSON
@@ -60,7 +60,7 @@ The data model is defined as shown below:
 
 -   `dateLastSwitchingOn` : Timestamp of the last switching on.
 
-    -   Attribute Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](http://schema.org/DateTime)
     -   Attribute metadata:
         -   `timestamp` : Timestamp when the last update of the attribute
             happened.
@@ -69,7 +69,7 @@ The data model is defined as shown below:
 
 -   `dateLastSwitchingOff` : Timestamp of the last switching off.
 
-    -   Attribute Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](http://schema.org/DateTime)
     -   Attribute metadata:
         -   `timestamp` : Timestamp when the last update of the attribute
             happened.
@@ -108,7 +108,7 @@ The data model is defined as shown below:
 
 -   `illuminanceLevel` : Relative illuminance level setting for the group.
 
-    -   Attribute Type: [Number](http://schema.org/Number)
+    -   Attribute type: Property. [Number](http://schema.org/Number)
     -   Allowed values: A number between 0 and 1.
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -128,13 +128,13 @@ The data model is defined as shown below:
 
 -   `dateModified` : Timestamp of the last update made to this entity.
 
-    -   Attribute Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](http://schema.org/DateTime)
     -   Read-Only. Automatically generated.
 
 -   `description` : Description about the streetlight group.
 
-    -   Normative References:
-        [https://schema.org/description](https://schema.org/description)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
+    -   Normative References: `https://uri.etsi.org/ngsi-ld/description` equivalent to [description](https://schema.org/description)
     -   Optional
 
 -   `annotations` : A field reserved for annotations (incidences, remarks,

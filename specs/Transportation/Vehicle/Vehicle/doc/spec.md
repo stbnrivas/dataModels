@@ -1,6 +1,6 @@
 # Vehicle
 
-**Note: The latest version of this Data Model can be 
+**Note: The latest version of this Data Model can be
 found at [https://github.com/smart-data-models/dataModel.Transportation](https://github.com/smart-data-models/dataModel.Transportation)**
 
 ## Description
@@ -17,27 +17,25 @@ The data model is defined as shown below:
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Property. Text or URL
+    -   Attribute type: Property. [Text](https://schema.org/Text) or [URL](https://schema.org/URL)
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: Property. URL
+    -   Attribute type: Property. [URL](https://schema.org/URL)
     -   Optional
 
 -   `name` : Name given to this vehicle
 
-    -   Normative References: [https://schema.org/name](https://schema.org/name)
-    -   Optional
-
-    -   Attribute type: Property. Text or URL
+    -   Attribute type: Property. [Text](https://schema.org/Text) or [URL](https://schema.org/URL).
+    -   Normative References: `https://uri.etsi.org/ngsi-ld/name` equivalent to [name](https://schema.org/name)
     -   Optional
 
 -   `description` : Vehicle description.
 
-    -   Normative References:
-        [https://schema.org/description](https://schema.org/description)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
+    -   Normative References: `https://uri.etsi.org/ngsi-ld/description` equivalent to [description](https://schema.org/description)
     -   Optional
 
 -   `vehicleType` : Type of vehicle from the point of view of its structural
@@ -155,14 +153,14 @@ The data model is defined as shown below:
     unique within the issuing authority's region.
 
     -   Normative References: DATEXII `vehicleRegistrationPlateIdentifier`
-    -   Attribute Type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Mandatory if neither `vehicleIdentificationNumber` nor `fleetVehicleId`
         is defined.
 
 -   `fleetVehicleId` : The identifier of the vehicle in the context of the fleet
     of vehicles to which it belongs.
 
-    -   Attribute Type: [Text](https://schema.org/Text)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
     -   Mandatory if neither `vehiclePlateIdentifier` nor
         `vehicleIdentificationNumber` is defined.
 

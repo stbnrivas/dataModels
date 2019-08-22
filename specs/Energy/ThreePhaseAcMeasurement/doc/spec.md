@@ -40,24 +40,24 @@ A JSON Schema corresponding to this data model can be found
 
 -   `source` : A sequence of characters giving the source of the entity data.
 
-    -   Attribute type: Property. Text or URL
+    -   Attribute type: Property. [Text](https://schema.org/Text) or URL
     -   Optional
 
 -   `dataProvider` : Specifies the URL to information about the provider of this
     information
 
-    -   Attribute type: Property. URL
+    -   Attribute type: Property. [URL](https://schema.org/URL)
     -   Optional
 
 -   `name` : Name given to the measurement location or target.
-
-    -   Normative References: [https://schema.org/name](https://schema.org/name)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
+    -   Normative References: `https://uri.etsi.org/ngsi-ld/name` equivalent to [name](https://schema.org/name)
     -   Optional
 
 -   `description` : A longer description of the measurement.
 
-    -   Normative References:
-        [https://schema.org/description](https://schema.org/description)
+    -   Attribute type: Property. [Text](https://schema.org/Text)
+    -   Normative References: `https://uri.etsi.org/ngsi-ld/description` equivalent to [description](https://schema.org/description)
     -   Optional
 
 -   `location` : location of the measurement target represented by a GeoJSON
@@ -69,7 +69,7 @@ A JSON Schema corresponding to this data model can be found
     -   Optional
 
 -   `address` : Civic address where the measurement target is located.
-
+    -   Attribute type: Property. [Address](https://schema.org/address)
     -   Normative References:
         [https://schema.org/address](https://schema.org/address)
     -   Optional
@@ -176,7 +176,7 @@ A JSON Schema corresponding to this data model can be found
     which names will be equal to the name of each of the alternating current
     phases: L1, L2, L3.
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: kilowatt hour (kWh)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -189,7 +189,7 @@ A JSON Schema corresponding to this data model can be found
     conveyed by subproperties which names will be equal to the name of each of
     the alternating current phases: L1, L2, L3.
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: kilovolt-ampere-reactive-hour (kVArh)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -202,7 +202,7 @@ A JSON Schema corresponding to this data model can be found
     subproperties which names will be equal to the name of each of the
     alternating current phases: L1, L2, L3.
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: kilovolt-ampere-hour (kVAh)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -215,7 +215,7 @@ A JSON Schema corresponding to this data model can be found
     will be equal to the name of each of the alternating current phases: L1, L2,
     L3.
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: kilowatt hour (kWh)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -228,7 +228,7 @@ A JSON Schema corresponding to this data model can be found
     subproperties which names will be equal to the name of each of the
     alternating current phases: L1, L2, L3.
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: kilovolt-ampere-reactive-hour (kVArh)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -241,7 +241,7 @@ A JSON Schema corresponding to this data model can be found
     which names will be equal to the name of each of the alternating current
     phases: L1, L2, L3.
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: kilovolt-ampere-hour (kVAh)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -251,7 +251,7 @@ A JSON Schema corresponding to this data model can be found
 
 -   `dateEnergyMeteringStarted` : The starting date for metering energy.
 
-    -   Attribute Type: [DateTime](http://schema.org/DateTime)
+    -   Attribute type: Property. [DateTime](http://schema.org/DateTime)
     -   Optional
 
 -   `frequency` : The frequency of the circuit.
@@ -272,7 +272,7 @@ A JSON Schema corresponding to this data model can be found
 
 -   `totalActivePower` : Active power consumed (counting all phases)
 
-    -   Attribute Type: [Number](http://schema.org/Number)
+    -   Attribute type: Property. [Number](http://schema.org/Number)
     -   Default unit: watt (W).
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -288,7 +288,7 @@ A JSON Schema corresponding to this data model can be found
 
 -   `totalReactivePower` : Reactive power consumed (counting all phases).
 
-    -   Attribute Type: [Number](http://schema.org/Number)
+    -   Attribute type: Property. [Number](http://schema.org/Number)
     -   Default unit: volt-ampere-reactive (VAr).
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -304,7 +304,7 @@ A JSON Schema corresponding to this data model can be found
 
 -   `totalApparentPower` : Apparent power consumed (counting all phases).
 
-    -   Attribute Type: [Number](http://schema.org/Number)
+    -   Attribute type: Property. [Number](http://schema.org/Number)
     -   Default unit: volt-ampere (VA).
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -322,7 +322,7 @@ A JSON Schema corresponding to this data model can be found
     conveyed by subproperties which names will be equal to the name of each of
     the alternating current phases: L1, L2, L3.
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: watt (W)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -340,7 +340,7 @@ A JSON Schema corresponding to this data model can be found
     be conveyed by subproperties which names will be equal to the name of each
     of the alternating current phases: L1, L2, L3.
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: volt-ampere (VA)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -358,7 +358,7 @@ A JSON Schema corresponding to this data model can be found
     will be conveyed by subproperties whose names will be equal to the name of
     each of the alternating current phases: L1, L2, L3.
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: volts-ampere-reactive (VAr)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -374,7 +374,7 @@ A JSON Schema corresponding to this data model can be found
 
 -   `totalPowerFactor` : Power factor including all phases.
 
-    -   Attribute Type: [Number](http://schema.org/Number)
+    -   Attribute type: Property. [Number](http://schema.org/Number)
     -   Allowed values: A number between -1 and 1.
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -394,7 +394,7 @@ A JSON Schema corresponding to this data model can be found
 -   `powerFactor` : Power factor for each phase. The actual values will be
     conveyed by one subproperty per alternating current phase: L1, L2 and L3
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Allowed values: A number between -1 and 1.
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -414,7 +414,7 @@ A JSON Schema corresponding to this data model can be found
 -   `totalDisplacementPowerFactor` : Displacement power factor including all
     phases. The quantity is based on the fundamental frequency of the system
 
-    -   Attribute Type: [Number](http://schema.org/Number)
+    -   Attribute type: Property. [Number](http://schema.org/Number)
     -   Allowed values: A number between -1 and 1.
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -436,7 +436,7 @@ A JSON Schema corresponding to this data model can be found
     values will be conveyed by one subproperty per alternating current phase:
     L1, L2 and L3
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Allowed values: A number between -1 and 1.
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -457,7 +457,7 @@ A JSON Schema corresponding to this data model can be found
     subproperty per alternating current phase and the neutral wire: L1, L2, L3
     and N.
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: Ampers (A)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -475,7 +475,7 @@ A JSON Schema corresponding to this data model can be found
     actual values will be conveyed by one subproperty per alternating current
     phase: L1, L2 and L3
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: Volts (V)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -492,7 +492,7 @@ A JSON Schema corresponding to this data model can be found
 -   `phaseToPhaseVoltage` : Voltage between phases. A value for each phase pair:
     phases 1 and 2 (L12), phases 2 and 3 (L32), phases 3 and 1 (L31).
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Default unit: Volts (V)
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -510,7 +510,7 @@ A JSON Schema corresponding to this data model can be found
     actual values will be conveyed by one subproperty per alternating current
     phase: L1, L2 and L3
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Allowed values: A number between 0 and 1.
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
@@ -528,7 +528,7 @@ A JSON Schema corresponding to this data model can be found
     values will be conveyed by one subproperty per alternating current phase:
     L1, L2 and L3
 
-    -   Attribute Type: [StructuredValue](http://schema.org/StructuredValue)
+    -   Attribute type: Property. [StructuredValue](http://schema.org/StructuredValue)
     -   Allowed values: A number between 0 and 1.
     -   Attribute metadata:
         -   `timestamp`: Timestamp when the last update of the attribute
