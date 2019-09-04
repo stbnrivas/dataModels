@@ -7,7 +7,7 @@
   "location": "http://uri.etsi.org/ngsi-ld/location",
   "name": "https://uri.etsi.org/ngsi-ld/name",
   "title": "https://uri.etsi.org/ngsi-ld/title",
-  "alternativeName": "http://schema.org/alternativeName",
+  "alternateName": "http://schema.org/alternativeName",
   "aggregateRating": "https://schema.org/aggregateRating",
   "openingHours": "http://schema.org/openingHours",
   "address": "http://schema.org/address",
