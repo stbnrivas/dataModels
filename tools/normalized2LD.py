@@ -17,7 +17,6 @@ import json
 from rfc3987 import parse
 from entity_print import print_json_string
 
-ld_context = 'https://schema.lab.fiware.org/ld/context'
 etsi_core_context = 'https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld'
 
 
@@ -60,9 +59,9 @@ def ld_object(attribute_name, entity_id):
 
 
 # Do all the transformation work
-def normalized_2_LD(entity):
+def normalized_2_LD(entity, ld_context_uri):
     out = {
-        '@context': [etsi_core_context, ld_context]
+        '@context': [ld_context_uri, etsi_core_context]
     }
 
     for key in entity:
@@ -153,13 +152,13 @@ def write_json(data, outfile):
 
 def main(args):
     data = read_json(args[1])
-    result = normalized_2_LD(data)
-    write_json(result, 'example-LD.jsonld')
+    result = normalized_2_LD(data, args[3])
+    write_json(result, args[2])
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("Usage: normalized2LD [file]")
+    if len(sys.argv) != 4:
+        print("Usage: normalized2LD [input file] [output file] [target ld_context]")
         exit(-1)
 
     main(sys.argv)
