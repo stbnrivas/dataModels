@@ -24,7 +24,7 @@
   "startedAt": "2016-08-22T10:18:16Z",
   "endedAt": "2016-08-28T10:18:16Z",
   "reportedAt": "2016-08-28T10:18:16Z",
-  "agriProduct": "urn:ngsi-ld:AgriProduct:a8f616b8-13fb-473a-8e61-b7a80c6c93ec",
+  "agriProduct": "urn:ngsi-ld:AgriProductType:a8f616b8-13fb-473a-8e61-b7a80c6c93ec",
   "quantity": 40,
   "waterSource": "rainwater capture",
   "workOrder": "https://example.com/agriparcelrecords/workorder1",
