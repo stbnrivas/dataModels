@@ -41,6 +41,9 @@ specification_url = 'https://fiware-datamodels.readthedocs.io/en/latest/{}'
 # Agri* schemas stored at another github organization
 agri_url = 'https://github.com/GSMADeveloper/NGSI-LD-Entities/blob/master/definitions/{}.md'
 
+# Used to detect attributes which are actually relationships
+ENTITY_ID = 'https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType'
+
 
 def read_json(infile):
     with open(infile) as data_file:
@@ -88,6 +91,7 @@ def find_node(schema, node_name):
 
 
 # extracts the properties dictionary
+# A list of dictionaries is returned
 def extract_properties(schema):
     properties = find_node(schema, 'properties')
 
@@ -98,7 +102,15 @@ def extract_properties(schema):
 
     for p in properties:
         if p != "type":
-            out.append(p)
+            prop = dict()
+            prop['type'] = 'Property'
+            prop['name'] = p
+
+            if '$ref' in properties[p]:
+                if properties[p]['$ref'] == ENTITY_ID:
+                    prop['type'] = 'Relationship'
+
+            out.append(prop)
 
     return out
 
@@ -140,25 +152,45 @@ def extract_enumerations(schema):
     return out
 
 
-# Generates the LD @context for a list of properties with the URI prefix
-def generate_ld_context(properties, uri_prefix, predefined_mappings):
+# Generates the LD @context for a list of JSON Schema properties
+# (which are attributes) with the URI prefix
+def generate_ld_context_attrs(properties, uri_prefix, predefined_mappings):
     context = {}
 
     if properties is None:
         return context
 
     for p in properties:
-        if p.startswith('ref'):
-            context[p] = {
+        p_name = p['name']
+
+        if p['type'] == 'Relationship':
+            context[p_name] = {
                 '@type': '@id',
-                '@id': uri_prefix + '#' + p
+                '@id': uri_prefix + '#' + p_name
             }
-        elif p.startswith('date'):
-            context[p] = {
+        elif p['name'].startswith('date'):
+            context[p_name] = {
                 '@type': 'http://uri.etsi.org/ngsi-ld/DateTime',
-                '@id': uri_prefix + '#' + p
+                '@id': uri_prefix + '#' + p_name
             }
-        elif p in predefined_mappings:
+        elif p_name in predefined_mappings:
+            context[p_name] = predefined_mappings[p_name]
+        else:
+            context[p_name] = uri_prefix + '#' + p_name
+
+    return context
+
+
+# Generates the LD @context for a list of JSON Schema properties
+# (which are enumerated values) with the URI prefix
+def generate_ld_context_enums(properties, uri_prefix, predefined_mappings):
+    context = {}
+
+    if properties is None:
+        return context
+
+    for p in properties:
+        if p in predefined_mappings:
             context[p] = predefined_mappings[p]
         else:
             context[p] = uri_prefix + '#' + p
@@ -174,10 +206,10 @@ def schema_2_ld_context(schema, uri_prefix, predefined_mappings):
 
     ld_context = dict()
 
-    ld_context['Attribute'] = generate_ld_context(
+    ld_context['Attribute'] = generate_ld_context_attrs(
         properties, uri_prefix, predefined_mappings)
 
-    ld_context['Enumeration Value'] = generate_ld_context(
+    ld_context['Enumeration Value'] = generate_ld_context_enums(
         enumerations, uri_prefix, predefined_mappings)
 
     ld_context['Entity Type'] = dict()
@@ -236,10 +268,12 @@ def find_file(f, terms_mappings):
         spec1 = os.path.join(f.rsplit('/', 1)[0], 'doc/spec.md')
         spec2 = os.path.join(f.rsplit('/', 1)[0], 'doc/introduction.md')
         if os.path.isfile(spec1):
-            path = str(spec1.split('../specs/')[1]).split('/spec.md')[0] + '/spec/'
+            path = str(spec1.split('../specs/')
+                       [1]).split('/spec.md')[0] + '/spec/'
             return specification_url.format(path)
         elif os.path.isfile(spec2):
-            path = str(spec2.split('../specs/')[1]).split('/introduction.md')[0] + '/introduction/'
+            path = str(spec2.split('../specs/')
+                       [1]).split('/introduction.md')[0] + '/introduction/'
             return specification_url.format(path)
         elif 'AgriFood' in f:
             agri_type = f.split('AgriFood/')[1].split('/schema.json')[0]
