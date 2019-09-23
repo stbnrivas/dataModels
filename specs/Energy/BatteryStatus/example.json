@@ -1,8 +1,9 @@
 {
-  "id": "urn:ngsi-ld:BatteryStatus:santander:energy:bat-ac-d95372df39",
+  "id": "urn:ngsi-ld:BatteryStatus:santander:energy:bs-bac-d95372df39",
   "type": "BatteryStatus",
   "dataProvider": "bike-in.com",
   "dataObserved": "2019-09-23T15:59:09.224Z",
+  "refBattery": "urn:ngsi-ld:BatteryStatus:santander:energy:bac-d95372df39",
   "status": ["givingEnergy"],
   "statusPercent": 98,
   "acPowerInput": 0,

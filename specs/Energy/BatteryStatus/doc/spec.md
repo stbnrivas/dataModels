@@ -27,10 +27,10 @@ A JSON Schema corresponding to this data model can be found
     -   Attribute type: URL
     -   Optional
 
--   `refDevice` : Entity or Device which it use this battery .
+-   `refBattery` : Battery entity which it belongs.
 
     -   Attribute type: List of Reference to entity(ies) of type
-        [Device](https://github.com/Fiware/dataModels/blob/master/specs/Device/Device/doc/spec.md)
+        [Device](https://github.com/Fiware/dataModels/blob/master/specs/Energy/Battery/doc/spec.md)
     -   Mandatory
 
 -   `dateObserved` : The date and time of this observation in ISO8601 UTCformat.
@@ -111,11 +111,11 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 
 ```json
 {
-  "id": "urn:ngsi-ld:BatteryStatus:santander:energy:bat-ac-d95372df39",
+  "id": "urn:ngsi-ld:BatteryStatus:santander:energy:bs-ac-d95372df39",
   "type": "BatteryStatus",
   "dataProvider": "bike-in.com",
   "dataObserved": "2019-09-23T15:59:09.224Z",
-
+  "refBattery": "urn:ngsi-ld:Battery:santander:energy:ac-d95372df39",
   "status": ["standby"],
   "statusPercent": "100",
   "acPowerInput": 0,
@@ -125,17 +125,15 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 
 ```json
 {
-  {
-    "id": "urn:ngsi-ld:BatteryStatus:santander:energy:bat-ac-d95372df39",
-    "type": "BatteryStatus",
-    "dataProvider": "bike-in.com",
-    "dataObserved": "2019-09-23T15:59:09.224Z",
-
-    "status": ["consumingEnergy","givingEnergy"],
-    "statusPercent": "25",
-    "acPowerInput": 0.1,
-    "acPowerOutput": 0.05,
-  }
+  "id": "urn:ngsi-ld:BatteryStatus:santander:energy:bs-dc-d95372df39",
+  "type": "BatteryStatus",
+  "dataProvider": "bike-in.com",
+  "dataObserved": "2019-09-23T15:59:09.224Z",
+  "refBattery": "urn:ngsi-ld:Battery:santander:energy:bat-dc-h95372df39",
+  "status": ["consumingEnergy","givingEnergy"],
+  "statusPercent": "25",
+  "dcPowerInput": 0.1,
+  "dcPowerOutput": 0.05,
 }
 ```
 

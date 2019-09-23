@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/schema#",
+  "$id": "https://fiware.github.io/dataModels/specs/Energy/Battery/schema.json",
+  "title": "GSMA / FIWARE - BatteryStatus",
+  "$schema": "http://json-schema.org/schema#",
+  "description": "Represent a physical battery with its hardware specifications",
+  "type": "object",
+  "allOff": [
+    "refBattery": {
+      "type": "string",
+      "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
+    }
+  ],
+  "anyOf": [
+    "status": {
+      "type": "array"
+         "contains": {
+         "type": "string",
+         "anyOf": ["standby", "consumingEnergy", "givingEnergy"]
+       }
+    }
+    "statusPercent": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "acPowerInput": {
+      "type": "number"
+    },
+    "acPowerOutput": {
+      "type": "number"
+    },
+    "dcPowerInput": {
+      "type": "number"
+    },
+    "dcPowerOutput": {
+      "type": "number"
+    },
+  ]
+
+}
