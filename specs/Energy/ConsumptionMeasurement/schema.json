@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "Energy/ThreePhaseAcMultiCircuitMeasurement/schema.json",
+  "title": "SynchroniCity - Energy / Three Phase Multi Circuit AC Measurement",
+  "description": "Electrical measurement from a device that can measure multiple circuits.",
+  "type": "object",
+  "allOf": [
+    "dateObserved": {
+      "type": "string"
+    }
+
+  ],
+  "anyOf": [{
+      "required": ["dcPowerConsumption"]
+    },
+    {
+      "required": ["acPowerConsumption"]
+    },
+    "refDevice": {
+      "type": "string"
+    }
+    "dcPowerConsumption": {
+      "type": "number"
+    },
+    "acPowerConsumption": {
+      "type": "Object",
+      "properties": {
+        "frequency": {
+          "type": "number"
+        },
+        "phases": {
+          "type": "number"
+        },
+        "phi": {
+          "type": "number"
+        },
+        "powerFactor": {
+          "type": "number"
+        },
+        "activePower": {
+          "type": "number"
+        },
+        "reactivePower": {
+          "type": "number"
+        },
+        "apparentPower": {
+          "type": "number"
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}
