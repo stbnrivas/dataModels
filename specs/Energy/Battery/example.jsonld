@@ -1,0 +1,39 @@
+{
+  "id": "urn:ngsi-ld:",
+  "type": "Battery",
+  "source": {
+    "type": "string",
+    "value": "bike-in.com"
+  },
+  "dataProvider": {
+    "type": "string",
+    "value": "bike-in.com"
+  },
+  "dataObserved": {
+    "2019-09-23T15:59:09.224Z"
+  },
+  "refDevice": {
+    "type": "string",
+    "value": "urn:ngsi-ld:Battery:santander:energy:bat-ac-d95372df39"
+  },
+  "cicleLife": {
+    "type": "integer",
+    "value": 20000
+  },
+  "autonomyTime": {
+    "type": "Property",
+    "value": "PT1H"
+  },
+  "rechargeTime": {
+    "type": "Property",
+    "value": "PT6H"
+  },
+  "acPowerInput": {
+    "type": "number",
+    "value": 1.5
+  },
+  "acPowerOutput": {
+    "type": "number",
+    "value": 0.5
+  }
+}

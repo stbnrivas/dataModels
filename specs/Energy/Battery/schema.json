@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/schema#",
+  "$id": "https://fiware.github.io/dataModels/specs/Energy/Battery/schema.json",
+  "title": "GSMA / FIWARE - Battery",
+  "$schema": "http://json-schema.org/schema#",
+  "description": "Represent a physical battery with its hardware specifications",
+  "type": "object",
+  "allOff": [
+    "refDevice": {
+      "type": "string",
+      "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
+    }
+  ],
+  "anyOf": [
+    "cycleLife":{
+      "type": "integer"
+    }
+    "autonomyTime": {
+       "type": "string",
+       "pattern": "/^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/"
+    },
+    "rechargeTime": {
+       "type": "string",
+       "pattern": "/^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/"
+    },
+    "acPowerInput": {
+      "type": "integer"
+    }
+    "acPowerOutput": {
+      "type": "integer"
+    },
+    "dcPowerInput": {
+      "type": "integer"
+    },
+    "dcPowerOutput": {
+      "type": "integer"
+    },
+  ]
+
+}
