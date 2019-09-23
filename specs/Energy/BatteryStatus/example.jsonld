@@ -1,0 +1,28 @@
+{
+  "id": "urn:ngsi-ld:BatteryStatus:santander:energy:bat-ac-d95372df39",
+  "type": "BatteryStatus",
+  "dataProvider": "bike-in.com",
+  "dataObserved": {
+    "type": "string",
+    "value": "2019-09-23T15:59:09.224Z"
+  },
+  "status": {
+    "type": "array",
+    "contains": {
+      "type": "string"
+    },
+    "value": ["consumingEnergy"]
+  },
+  "statusPercent": {
+    "type": "integer",
+    "value": 90
+  },
+  "acPowerInput": {
+    "type": "number",
+    "value": 0.01
+  },
+  "acPowerOutput": {
+    "type": "number",
+    "value": 0.0
+  },
+}
