@@ -1,5 +1,5 @@
 {
-  "id": "urn:ngsi-ld:",
+  "id": "urn:ngsi-ld:Battery:santander:energy:bat-ac-d95372df39",
   "type": "Battery",
   "source": {
     "type": "string",
@@ -14,7 +14,7 @@
   },
   "refDevice": {
     "type": "string",
-    "value": "urn:ngsi-ld:Battery:santander:energy:bat-ac-d95372df39"
+    "value": "urn:ngsi-ld:Device:santander:device:d95372df39"
   },
   "cicleLife": {
     "type": "integer",

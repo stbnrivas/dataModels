@@ -1,10 +1,10 @@
 {
-    "id": "urn:ngsi-ld:",
+    "id": "urn:ngsi-ld:Battery:santander:energy:bat-ac-d95372df39",
     "type": "Battery",
     "source": "",
     "dataProvider": "bike-in.com",
     "dataObserved": "2019-09-23T15:59:09.224Z",
-    "refDevice": "urn:ngsi-ld:Battery:santander:energy:bat-ac-d95372df39",
+    "refDevice": "urn:ngsi-ld:Device:santander:device:d95372df39",
     "cicleLife": 20000,
     "autonomyTime": "PT1H",
     "rechargeTime":"PT6H",
