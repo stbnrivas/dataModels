@@ -36,6 +36,13 @@
     "dcPowerOutput": {
       "type": "number"
     },
+  ],
+  "required": [
+    "id",
+    "type",
+    "refBattery",
+    "status",
+    "statusPercent"
   ]
 
 }

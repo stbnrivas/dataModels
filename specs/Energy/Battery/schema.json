@@ -6,12 +6,12 @@
   "description": "Represent a physical battery with its hardware specifications",
   "type": "object",
   "allOff": [
+  ],
+  "anyOf": [
     "refDevice": {
       "type": "string",
       "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
-    }
-  ],
-  "anyOf": [
+    },
     "cycleLife":{
       "type": "integer"
     }
@@ -35,5 +35,9 @@
     "dcPowerOutput": {
       "type": "integer"
     },
+  ],
+  "required": [
+    "id",
+    "type"
   ]
 }
