@@ -7,5 +7,5 @@
   "status": ["givingEnergy"],
   "statusPercent": 98,
   "acPowerInput": 0,
-  "acPowerOutput": 0.01,
+  "acPowerOutput": 0.01
 }
