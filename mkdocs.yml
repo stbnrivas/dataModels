@@ -1,6 +1,6 @@
 site_name: Fiware-DataModels
 site_url: https://fiware-datamodels.readthedocs.org
-repo_url: https://github.com/fiware/dataModels
+repo_url: https://github.com/fiware/data-models
 site_description: FIWARE Data Models Documentation
 docs_dir: specs/
 site_dir: html/
