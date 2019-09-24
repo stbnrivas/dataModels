@@ -28,5 +28,5 @@
   "acPowerOutput": {
     "type": "number",
     "value": 0.0
-  },
+  }
 }
