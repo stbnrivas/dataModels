@@ -5,35 +5,52 @@
   "description": "Represent a physical battery with its hardware specifications",
   "type": "object",
   "allOff": [
+    {
+      "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["Battery"],
+          "description": "NGSI Entity type"
+        },
+        "refDevice": {
+          "type": "string",
+          "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
+        },
+        "cycleLife":{
+          "type": "integer"
+        }
+        "autonomyTime": {
+           "type": "string",
+           "pattern": "/^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/"
+        },
+        "rechargeTime": {
+           "type": "string",
+           "pattern": "/^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/"
+        },
+        "acPowerInput": {
+          "type": "number"
+        }
+        "acPowerOutput": {
+          "type": "number"
+        },
+        "dcPowerInput": {
+          "type": "number"
+        },
+        "dcPowerOutput": {
+          "type": "number"
+        }
+      }
+    }
   ],
   "anyOf": [
-    "refDevice": {
-      "type": "string",
-      "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
-    },
-    "cycleLife":{
-      "type": "integer"
-    }
-    "autonomyTime": {
-       "type": "string",
-       "pattern": "/^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/"
-    },
-    "rechargeTime": {
-       "type": "string",
-       "pattern": "/^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/"
-    },
-    "acPowerInput": {
-      "type": "integer"
-    }
-    "acPowerOutput": {
-      "type": "integer"
-    },
-    "dcPowerInput": {
-      "type": "integer"
-    },
-    "dcPowerOutput": {
-      "type": "integer"
-    },
+    { "required": ["acPowerInput", "dcPowerInput"] },
+    { "required": ["acPowerOutput", "dcPowerOutput"] }
   ],
   "required": [
     "id",

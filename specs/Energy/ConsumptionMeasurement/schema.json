@@ -5,49 +5,55 @@
   "description": "Electrical measurement from a device that can measure multiple circuits.",
   "type": "object",
   "allOf": [
-    "dateObserved": {
-      "type": "string"
-    }
-
-  ],
-  "anyOf": [{
-      "required": ["dcPowerConsumption"]
+    {
+      "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/GSMA-Commons"
     },
     {
-      "required": ["acPowerConsumption"]
+      "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/Location-Commons"
     },
-    "refDevice": {
-      "type": "string"
-    }
-    "dcPowerConsumption": {
-      "type": "number"
-    },
-    "acPowerConsumption": {
-      "type": "Object",
+    {
       "properties": {
-        "frequency": {
+        "dateObserved": {
+          "type": "string"
+        },
+        "refDevice": {
+          "type": "string"
+        }
+        "dcPowerConsumption": {
           "type": "number"
         },
-        "phases": {
-          "type": "number"
-        },
-        "phi": {
-          "type": "number"
-        },
-        "powerFactor": {
-          "type": "number"
-        },
-        "activePower": {
-          "type": "number"
-        },
-        "reactivePower": {
-          "type": "number"
-        },
-        "apparentPower": {
-          "type": "number"
+        "acPowerConsumption": {
+          "type": "Object",
+          "properties": {
+            "frequency": {
+              "type": "number"
+            },
+            "phases": {
+              "type": "number"
+            },
+            "phi": {
+              "type": "number"
+            },
+            "powerFactor": {
+              "type": "number"
+            },
+            "activePower": {
+              "type": "number"
+            },
+            "reactivePower": {
+              "type": "number"
+            },
+            "apparentPower": {
+              "type": "number"
+            }
+          }
         }
       }
     }
+  ],
+  "anyOf": [
+    { "required": ["dcPowerConsumption"] },
+    { "required": ["acPowerConsumption"] }
   ],
   "required": [
     "id",
