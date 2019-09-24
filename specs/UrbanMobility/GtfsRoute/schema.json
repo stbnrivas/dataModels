@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "$id": "https://fiware.github.io/dataModels/specs/UrbanMobility/GtfsRoute/schema.json",
+  "$id": "https://fiware.github.io/data-models/specs/UrbanMobility/GtfsRoute/schema.json",
   "title": "NGSI GTFS Schema - Route",
   "description": "GTFS Route",
   "type": "object",
@@ -19,7 +19,7 @@
       "required": ["id", "type", "routeType", "operatedBy"]
     },
     {
-      "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/GSMA-Commons"
+      "$ref": "https://fiware.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
     },
     {
       "properties": {

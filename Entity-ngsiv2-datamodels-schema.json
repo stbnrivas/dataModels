@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "$id": "https://fiware.github.io/dataModels/Entity-ngsiv2-datamodels-schema.json",
+  "$id": "https://fiware.github.io/data-models/Entity-ngsiv2-datamodels-schema.json",
   "title": "NGSIv2 Entity. Normalized Format for FIWARE Data Models",
   "description": "NGSIv2 Entity. Normalized Format aligned with the usage given by FIWARE Data Models. Restrictions: geo:point, geo:line, geo:polygon, geo:box not covered. keyValues representation not covered",
   "definitions": {
