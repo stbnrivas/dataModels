@@ -111,11 +111,11 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 
 ```json
 {
-  "id": "urn:ngsi-ld:BatteryStatus:santander:energy:bs-ac-d95372df39",
+  "id": "BatteryStatus:santander:energy:d95372df39",
   "type": "BatteryStatus",
   "dataProvider": "bike-in.com",
   "dataObserved": "2019-09-23T15:59:09.224Z",
-  "refBattery": "urn:ngsi-ld:Battery:santander:energy:ac-d95372df39",
+  "refBattery": "Battery:santander:energy:d95372df39",
   "status": ["standby"],
   "statusPercent": "100",
   "acPowerInput": 0,
@@ -125,11 +125,11 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 
 ```json
 {
-  "id": "urn:ngsi-ld:BatteryStatus:santander:energy:bs-dc-d95372df39",
+  "id": "BatteryStatus:santander:energy:d95372df39",
   "type": "BatteryStatus",
   "dataProvider": "bike-in.com",
   "dataObserved": "2019-09-23T15:59:09.224Z",
-  "refBattery": "urn:ngsi-ld:Battery:santander:energy:bat-dc-h95372df39",
+  "refBattery": "Battery:santander:energy:h95372df39",
   "status": ["consumingEnergy","givingEnergy"],
   "statusPercent": "25",
   "dcPowerInput": 0.1,

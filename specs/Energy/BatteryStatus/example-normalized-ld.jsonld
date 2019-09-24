@@ -8,7 +8,7 @@
   },
   "refBattery": {
     "type": "string",
-    "value": "urn:ngsi-ld:BatteryStatus:santander:energy:ac-d95372df39"
+    "value": "urn:ngsi-ld:Battery:santander:energy:ac-d95372df39"
   },
   "status": {
     "type": "array",
