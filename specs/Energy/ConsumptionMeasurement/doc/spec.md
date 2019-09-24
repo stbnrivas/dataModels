@@ -116,12 +116,12 @@ Sample uses simplified representation for data consumers `?options=keyValues`
 
 ```json
 {
-  "id": "urn:ngsi-ld:ConsumptionMeasurement:santander:energy:CM-061000A3B83",
+  "id": "ConsumptionMeasurement:santander:energy:CM-061000A3B83",
   "type": "ConsumptionMeasurement",
   "source": "",
   "dataProvider": "bike-in.com",
   "dataObserved": "2019-09-23T13:13:00.00Z",
-  "refBattery": "urn:ngsi-ld:Battery:santander:energy:bat-ac-061000A3B83",
+  "refDevice": "Device:santander:device:bat-ac-061000A3B83",
   "acPowerConsumption": {
       "frecuency": 50,
       "phases": 3,
@@ -141,7 +141,7 @@ Sample uses simplified representation for data consumers `?options=keyValues`
   "source": "",
   "dataProvider": "bike-in.com",
   "dataObserved": "2019-09-23T13:13:00.00Z",
-  "refBattery": "urn:ngsi-ld:Battery:santander:energy:bat-ac-061000A3B83",
+  "refDevice": "Device:santander:device:061000A3B83",
   "dcPowerConsumption": 0.05
 }
 ```
