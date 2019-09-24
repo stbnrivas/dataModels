@@ -98,7 +98,7 @@ API implementation, you need to use the `keyValues` mode (`options=keyValues`).
 
 ### Normalized Example
 
-Normalized NGSI response for AC
+Normalized NGSI
 
 ### key-value pairs Example
 
@@ -106,11 +106,11 @@ for AC battery
 
 ```json
 {
-    "id": "urn:ngsi-ld:",
+    "id": "Battery:santander:d95372df39",
     "type": "Battery",
     "dataProvider": "bike-in.com",
     "dataObserved": "2019-09-23T15:59:09.224Z",
-    "refDevice": "urn:ngsi-ld:Battery:santander:energy:bat-ac-d95372df39",
+    "refDevice": "Device:santander:energy:bat-ac-d95372df39",
     "cicleLife": 20000,
     "autonomyTime": "PT1H",
     "rechargeTime":"PT6H",
@@ -122,11 +122,11 @@ for DC battery
 
 ```json
 {
-    "id": "",
+    "id": "Battery:santander:d95372df39",
     "type": "Battery",
     "dataProvider": "bike-in.com",
     "dataObserved": "2019-09-23T15:59:09.224Z",
-    "refDevice": "urn:ngsi-ld:Battery:santander:energy:bat-dc-d95372df39",
+    "refDevice": "Device:santander:energy:bat-dc-d95372df39",
     "cicleLife": 20000,
     "autonomyTime": "PT3H",
     "rechargeTime": "PT6H",
