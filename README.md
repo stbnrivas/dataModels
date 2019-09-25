@@ -187,7 +187,7 @@ See:
 
 [MIT](LICENSE) © 2019 FIWARE Foundation e.V.
 
-[![License: MIT](https://img.shields.io/github/license/FIWARE/dataModels.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/github/license/FIWARE/data-models.svg)](https://opensource.org/licenses/MIT)
 
 All the code in this repository is licensed under the MIT License. However each
 original data source may have a different license. So before using harmonized

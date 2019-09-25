@@ -65,7 +65,7 @@ In summary, the main differences are the following:
 
 For each FIWARE Data Model there is an example Entity encoding it in NGSI-LD.
 For instance,
-[here](https://github.com/FIWARE/dataModels/blob/master/specs/PointOfInterest/Museum/example-normalized-ld.jsonld)
+[here](https://github.com/FIWARE/data-models/blob/master/specs/PointOfInterest/Museum/example-normalized-ld.jsonld)
 
 ### Q: Could you give me some examples of a JSON-LD `@context`?
 

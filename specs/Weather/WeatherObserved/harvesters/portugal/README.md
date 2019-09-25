@@ -6,7 +6,7 @@
 
 It performs data harvesting using IPMA's data site as the origin and Orion Context Broker as the destination. It uses 
 predefined list of stations (./stations.yml), that can be obtained by other 
-[harvester](https://github.com/FIWARE/dataModels/tree/master/specs/PointOfInterest/WeatherStation/harvesters/portugal).
+[harvester](https://github.com/FIWARE/data-models/tree/master/specs/PointOfInterest/WeatherStation/harvesters/portugal).
 
 ## How to run
 
