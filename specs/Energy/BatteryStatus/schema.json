@@ -44,12 +44,14 @@
 
   ],
   "anyOf": [
-    "status": {
-      "type": "array"
-         "contains": {
-         "type": "string",
-         "anyOf": ["standby", "consumingEnergy", "givingEnergy"]
-       },
+    {
+      "status": { 
+        "type": "array",
+        "contains": {
+           "type": "string",
+           "anyOf": ["standby", "consumingEnergy", "givingEnergy"]
+        }
+      }
     }
   ],
   "required": [

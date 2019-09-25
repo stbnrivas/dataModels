@@ -18,12 +18,12 @@
         },
         "refDevice": {
           "type": "string"
-        }
+        },
         "dcPowerConsumption": {
           "type": "number"
         },
         "acPowerConsumption": {
-          "type": "Object",
+          "type": "object",
           "properties": {
             "frequency": {
               "type": "number"
