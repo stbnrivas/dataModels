@@ -2,31 +2,31 @@
   "id": "urn:ngsi-ld:BatteryStatus:santander:energy:bs-ac-d95372df39",
   "type": "BatteryStatus",
   "dataProvider": "bike-in.com",
-  "dataObserved": {
-    "type": "string",
-    "value": "2019-09-23T15:59:09.224Z"
+  "dateObserved": {
+    "type": "Property",
+    "value": {
+        "@type": "DateTime",
+        "@value": "2019-09-23T15:59:09.224Z"
+    }
   },
   "refBattery": {
-    "type": "string",
-    "value": "urn:ngsi-ld:Battery:santander:energy:ac-d95372df39"
+    "type": "Relationship",
+    "object": "urn:ngsi-ld:Battery:santander:energy:ac-d95372df39"
   },
   "status": {
-    "type": "array",
-    "contains": {
-      "type": "string"
-    },
+    "type": "Property",
     "value": ["consumingEnergy"]
   },
   "statusPercent": {
-    "type": "integer",
+    "type": "Property",
     "value": 90
   },
   "acPowerInput": {
-    "type": "number",
+    "type": "Property",
     "value": 0.01
   },
   "acPowerOutput": {
-    "type": "number",
+    "type": "Property",
     "value": 0.0
   }
 }

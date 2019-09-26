@@ -45,7 +45,7 @@
   ],
   "anyOf": [
     {
-      "status": { 
+      "status": {
         "type": "array",
         "contains": {
            "type": "string",

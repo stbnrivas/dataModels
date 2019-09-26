@@ -2,7 +2,7 @@
   "id": "BatteryStatus:santander:energy:d95372df39",
   "type": "BatteryStatus",
   "dataProvider": "bike-in.com",
-  "dataObserved": {
+  "dateObserved": {
     "type": "string",
     "value": "2019-09-23T15:59:09.224Z"
   },

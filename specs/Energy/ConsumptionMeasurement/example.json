@@ -2,7 +2,7 @@
   "id": "ConsumptionMeasurement:santander:energy:CM-061000A3B83",
   "type": "ConsumptionMeasurement",
   "dataProvider": "bike-in.com",
-  "dataObserved": "2019-09-23T13:13:00.00Z",
+  "dateObserved": "2019-09-23T13:13:00.00Z",
   "refDevice": "Device:santander:device:e6115a75f7",
   "acPowerConsumption": {
       "frecuency": 50,
