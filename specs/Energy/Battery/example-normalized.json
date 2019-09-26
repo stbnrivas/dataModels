@@ -9,13 +9,17 @@
     "type": "string",
     "value": "bike-in.com"
   },
-  "dataObserved": {
-    "type": "string",
-    "value":"2019-09-23T15:59:09.224Z"
-  },
   "refDevice": {
     "type": "string",
     "value": "Device:santander:d95372df39"
+  },
+  "location": {
+    "type": "Point",
+    "coordinates": [-4.754444444, 41.640833333]
+  },
+  "status": {
+    "type":"array",
+    "value":["working"]
   },
   "cicleLife": {
     "type": "integer",

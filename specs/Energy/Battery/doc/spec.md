@@ -33,6 +33,26 @@ A JSON Schema corresponding to this data model can be found
         [Device](https://github.com/Fiware/dataModels/blob/master/specs/Device/Device/doc/spec.md)
     -   Mandatory
 
+-   `location` : Location of the weather observation represented by a GeoJSON
+    geometry.
+
+    -   Attribute type: Property. `geo:json`.
+    -   Normative References:
+        [https://tools.ietf.org/html/rfc7946](https://tools.ietf.org/html/rfc7946)
+    -   Optional
+
+-   `status` : Status of the battery.
+
+    -   Attribute type: Property. List of [Text](http://schema.org/Text)
+    -   Allowed values:
+        -   (`working`, `outOfService`, `withIncidence`)
+        -   Or any other application-specific.
+    -   Metadata:
+        -   `timestamp` : Timestamp corresponding to the last attribute value.
+            (`observedAt` in NGSI-LD)
+            -   Type: [DateTime](https://schema.org/DateTime)
+    -   Optional
+
 -   `cycleLife`: A number of reference of discharge-charge cycles until the battery
     decrease its performance
 
@@ -109,8 +129,12 @@ for AC battery
     "id": "Battery:santander:d95372df39",
     "type": "Battery",
     "dataProvider": "bike-in.com",
-    "dataObserved": "2019-09-23T15:59:09.224Z",
-    "refDevice": "Device:santander:energy:bat-ac-d95372df39",
+    "status": ["working"],
+    "location": {
+        "coordinates": [-4.747901, 41.618265],
+        "type": "Point"
+    },
+    "refDevice": "Device:santander:energy:d95372df39",
     "cicleLife": 20000,
     "autonomyTime": "PT1H",
     "rechargeTime":"PT6H",
@@ -125,8 +149,12 @@ for DC battery
     "id": "Battery:santander:d95372df39",
     "type": "Battery",
     "dataProvider": "bike-in.com",
-    "dataObserved": "2019-09-23T15:59:09.224Z",
-    "refDevice": "Device:santander:energy:bat-dc-d95372df39",
+    "status": ["working"],
+    "location": {
+        "coordinates": [-4.747901, 41.618265],
+        "type": "Point"
+    },
+    "refDevice": "Device:santander:energy:d95372df39",
     "cicleLife": 20000,
     "autonomyTime": "PT3H",
     "rechargeTime": "PT6H",
