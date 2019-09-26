@@ -2,7 +2,7 @@
 
 ## Description
 
-A `Battery` entity represent a phisical battery which belongs to iot device or
+A `Battery` entity represent a phisical battery which belongs to IoT device or
 any other electrical device with energy consumption. The entity is dependent to
 another instance which belongs. The battery has diferents attributtes whether
 if is for DC power or AC. It entity can be useful for several verticals.
