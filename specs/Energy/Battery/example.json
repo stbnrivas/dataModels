@@ -1,7 +1,6 @@
 {
     "id": "Battery:santander:d95372df39",
     "type": "Battery",
-    "source": "",
     "dataProvider": "bike-in.com",
     "dataObserved": "2019-09-23T15:59:09.224Z",
     "refDevice": "Device:santander:d95372df39",
