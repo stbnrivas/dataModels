@@ -36,18 +36,18 @@ A JSON Schema corresponding to this data model can be found
 -   `cycleLife`: A number of reference of discharge-charge cycles until the battery
     decrease its performance
 
-    -  Attribute type:  [Number](http://schema.org/Number)
-    -  Optional
+    -   Attribute type: [Number](http://schema.org/Number)
+    -   Optional
 
 -   `autonomyTime` :  time duration expressed in 8601 duration until drain battery.
 
-    -  Attribute type: use the ISO 8601 to express [https://en.wikipedia.org/wiki/ISO_8601#Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-    -  Optional
+    -   Attribute type: use the ISO 8601 to express [https://en.wikipedia.org/wiki/ISO_8601#Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+    -   Optional
 
 -   `rechargeTime` : time duration expressed in 8601 duration until re fill 100 the battery.
 
-    -  Attribute type: use the ISO 8601 to express [https://en.wikipedia.org/wiki/ISO_8601#Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-    -  Optional
+    -   Attribute type: use the ISO 8601 to express [https://en.wikipedia.org/wiki/ISO_8601#Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+    -   Optional
 
 -   `acPowerInput` : A measurement at input present only present if the battery
     work with AC. This is like the consumption measurement for the battery.
