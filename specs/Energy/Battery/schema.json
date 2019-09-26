@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json-schema.org/schema#",
+  "$schema": "http://json-schema.org/schema#",
   "$id": "https://fiware.github.io/dataModels/specs/Energy/Battery/schema.json",
   "title": "GSMA / FIWARE - Battery",
   "description": "Represent a physical battery with its hardware specifications",
@@ -27,11 +27,11 @@
         },
         "autonomyTime": {
            "type": "string",
-           "pattern": "/^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/"
+           "pattern": "/^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$/"
         },
         "rechargeTime": {
            "type": "string",
-           "pattern": "/^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/"
+           "pattern": "/^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$/"
         },
         "acPowerInput": {
           "type": "number"
@@ -48,9 +48,11 @@
       }
     }
   ],
-  "anyOf": [
-    { "required": ["acPowerInput", "dcPowerInput"] },
-    { "required": ["acPowerOutput", "dcPowerOutput"] }
+  "oneOf": [
+    { "required": ["acPowerInput","acPowerOutput"]},
+    { "required": ["acPowerInput","dcPowerOutput"]},
+    { "required": ["dcPowerInput","acPowerOutput"]},
+    { "required": ["dcPowerInput","dcPowerOutput"]}
   ],
   "required": [
     "id",

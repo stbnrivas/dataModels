@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "$id": "Energy/ThreePhaseAcMultiCircuitMeasurement/schema.json",
-  "title": "SynchroniCity - Energy / Three Phase Multi Circuit AC Measurement",
+  "$id": "https://fiware.github.io/dataModels/specs/Energy/ConsumptionMeasurement/schema.json",
+  "title": "SynchroniCity - Energy / AC or DC Measurement",
   "description": "Electrical measurement from a device that can measure multiple circuits.",
   "type": "object",
   "allOf": [
