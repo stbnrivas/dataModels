@@ -1,7 +1,10 @@
 {
   "id": "urn:ngsi-ld:BatteryStatus:santander:energy:bs-ac-d95372df39",
   "type": "BatteryStatus",
-  "dataProvider": "bike-in.com",
+  "dataProvider": {
+    "type":"Property",
+    "value":"bike-in.com"
+  },
   "dateObserved": {
     "type": "Property",
     "value": {
