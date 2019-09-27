@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema#",
   "$id": "https://fiware.github.io/dataModels/specs/Energy/ConsumptionMeasurement/schema.json",
-  "title": "SynchroniCity - Energy / AC or DC Measurement",
+  "title": "GSMA / FIWARE AC or DC Measurement",
   "description": "Electrical measurement from a device that can measure multiple circuits.",
   "type": "object",
   "allOf": [
@@ -13,6 +13,11 @@
     },
     {
       "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["ConsumptionMeasurement"],
+          "description": "NGSI Entity type"
+        },
         "dateObserved": {
           "type": "string"
         },
