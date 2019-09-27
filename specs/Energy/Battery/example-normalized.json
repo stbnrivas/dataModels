@@ -26,11 +26,11 @@
     "value": 20000
   },
   "autonomyTime": {
-    "type": "Property",
+    "type": "string",
     "value": "PT1H"
   },
   "rechargeTime": {
-    "type": "Property",
+    "type": "string",
     "value": "PT6H"
   },
   "acPowerInput": {
