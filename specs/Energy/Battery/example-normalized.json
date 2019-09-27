@@ -14,8 +14,11 @@
     "value": "Device:santander:d95372df39"
   },
   "location": {
-    "type": "Point",
-    "coordinates": [-4.754444444, 41.640833333]
+    "type": "geo:json",
+    "value": {
+      "type": "Point",
+      "coordinates": [-8.768460000000001, 42.60214472222222]
+    }
   },
   "status": {
     "type":"array",
