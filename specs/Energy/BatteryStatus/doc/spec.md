@@ -30,7 +30,7 @@ A JSON Schema corresponding to this data model can be found
 -   `refBattery` : Battery entity which it belongs.
 
     -   Attribute type: List of Reference to entity(ies) of type
-        [Device](https://github.com/Fiware/dataModels/blob/master/specs/Energy/Battery/doc/spec.md)
+        [Battery](../../Battery/doc/spec.md)
     -   Mandatory
 
 -   `dateObserved` : The date and time of this observation in ISO8601 UTCformat.
