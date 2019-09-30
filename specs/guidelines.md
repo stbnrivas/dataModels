@@ -214,10 +214,10 @@ New data models should be added under a folder structured as follows:
             [example.json of WeatherObserved](./Weather/WeatherObserved/example.json)
         -   `example-normalized.json`: One or more JSON example file in NGSI v2
             normalized format, e.g.
-            [example-normalized.json of WeatherObserved](specs/Weather/WeatherObserved/example-normalized.json)
+            [example-normalized.json of WeatherObserved](./Weather/WeatherObserved/example-normalized.json)
         -   `example-normalized-ld.jsonld`: One or more JSON example file in
             **NGSI-LD** normalized format, e.g.
-            [example-normalized-ld.jsonld of WeatherObserved](specs/Weather/WeatherObserved/example-normalized-ld.jsonld)
+            [example-normalized-ld.jsonld of WeatherObserved](./Weather/WeatherObserved/example-normalized-ld.jsonld)
 
 The name of the folder should match the entity type used in the JSON Schema
 (e.g. `NewModel`). For data models including more entities, a hierarchical
