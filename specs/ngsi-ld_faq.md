@@ -6,6 +6,12 @@ providing answers to common questions.
 A tutorial that can complement this FAQ can be found at 
 [https://github.com/FIWARE/tutorials.Linked-Data](https://github.com/FIWARE/tutorials.Linked-Data).
 
+### Q: What implementations of NGSI-LD are available?
+
+-   Orion-LD: [https://github.com/Fiware/context.Orion-LD](https://github.com/Fiware/context.Orion-LD)
+-   Scorpio:  [https://github.com/ScorpioBroker/ScorpioBroker](https://github.com/ScorpioBroker/ScorpioBroker)
+-   Djane:    [https://github.com/sensinov/djane/](https://github.com/sensinov/djane/)
+
 ### Q: What are the main (essential) differences between NGSI v2 and NGSI-LD?
 
 In summary, the main differences are the following:
