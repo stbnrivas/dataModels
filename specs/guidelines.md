@@ -58,7 +58,9 @@ section.
     by the international system of units.
 
 -   If a quantity is expressed in a different unit than the default one, use the
-    [unitCode](http://schema.org/unitCode) metadata attribute.
+    [unitCode](http://schema.org/unitCode) metadata attribute in NGSI v2.
+    
+- In NGSI-LD the Property `unitCode` is already defined and available to be used.     
 
 ## Relative values
 
@@ -90,7 +92,8 @@ be considered as the recommended one and A option is to some extent
 
 ## Date Attributes
 
--   Attribute type must be `DateTime`.
+-   In NGSI v2 the Attribute type must be `DateTime`. In NGSI-LD please check
+    the encoding at the [NGSI-LD FAQ](https://github.com/FIWARE/data-models/blob/master/specs/ngsi-ld_howto.md#airquality-in-ngsi-ld-format). 
 
 -   Use the `date` prefix for naming entity attributes representing dates (or
     complete timestamps). Ex. `dateLastEmptying`.
@@ -115,13 +118,15 @@ be considered as the recommended one and A option is to some extent
 
 ## Dynamic attributes
 
--   Use a metadata attribute named `timestamp` for capturing the last update
+-   In NGSI v2 use a metadata attribute named `timestamp` for capturing the last update
     timestamp of a dynamic attribute. Please note that this is the actual date
     at which the measured value was obtained (from a sensor, by visual
     observation, etc.), and that date might be different than the date (metadata
     attribute named `dateModified` as per NGSI v2) at which the attribute of the
     digital entity was updated, as typically there might be delay, specially on
     IoT networks which deliver data only at specific timeslots.
+
+-   In NGSI-LD use the `observedAt` Property. 
 
 ## Internationalization (i18N)
 
@@ -207,6 +212,12 @@ New data models should be added under a folder structured as follows:
             [schema.json of WeatherObserved](./Weather/WeatherObserved/schema.json)
         -   `example.json`: One or more JSON example file, e.g.
             [example.json of WeatherObserved](./Weather/WeatherObserved/example.json)
+        -   `example-normalized.json`: One or more JSON example file in NGSI v2
+            normalized format, e.g.
+            [example-normalized.json of WeatherObserved](specs/Weather/WeatherObserved/example-normalized.json)
+        -   `example-normalized-ld.jsonld`: One or more JSON example file in
+            **NGSI-LD** normalized format, e.g.
+            [example-normalized-ld.jsonld of WeatherObserved](specs/Weather/WeatherObserved/example-normalized-ld.jsonld)
 
 The name of the folder should match the entity type used in the JSON Schema
 (e.g. `NewModel`). For data models including more entities, a hierarchical
@@ -226,9 +237,13 @@ among the entities. e.g.:
             -   `README.md`
             -   `schema.json`
             -   `example.json`
+            -   `example-normalized.json`
+            -   `example-normalized-ld.jsonld`
         -   `NewModelEntityTwo/`
             -   `doc/`
                 -   `spec.md`
             -   `README.md`
             -   `schema.json`
             -   `example.json`
+            -   `example-normalized.json`
+            -   `example-normalized-ld.jsonld`
