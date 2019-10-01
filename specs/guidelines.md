@@ -18,16 +18,16 @@ section.
 
 -   Use English terms, preferably American English.
 -   Use camel case syntax for attribute names (`camelCase`).
--   Entity type names must start with a Capital letter, for instance,
+-   Entity Type names must start with a Capital letter, for instance,
     `WasteContainer`.
--   Use names and not verbs for attribute names, ex. `name`, qualifying it when
+-   Use names and not verbs for Attributes of type Property, ex. `name`, qualifying it when
     necessary, ex. `totalSpotNumber` or `dateCreated`.
--   Avoid plurals in attribute names, but state clearly when a list of items
+-   Avoid plurals in Attribute names, but state clearly when a list of items
     fits. Ex. `category`.
 
 ## Reuse
 
--   Check for the existence of the same attribute on any of the other models and
+-   Check for the existence of the same Attribute on any of the other models and
     reuse it, if pertinent.
 -   Have a look at [schema.org](http://schema.org) trying to find a similar term
     with the same semantics.
@@ -55,7 +55,7 @@ section.
 ## Units
 
 -   Define a default unit for magnitudes. Normally it will be the unit as stated
-    by the international system of units.
+    by the International System of Units.
 
 -   If a quantity is expressed in a different unit than the default one, use the
     [unitCode](http://schema.org/unitCode) metadata attribute in NGSI v2.
@@ -73,43 +73,43 @@ section.
 -   Use `address` attribute for civic locations as per
     [schema.org](http://schema.org/address)
 
--   Use `location` attribute for geographical coordinates. Ideally use GeoJSON
-    for codifying geospatial properties. That works from Orion 1.2 on. If not
-    use, old NGSI version 1 type `coords`.
+-   Use the `location` Attribute for geographical coordinates. GeoJSON
+    must be used for encoding geospatial properties. 
 
 ## Modelling linked data
 
--   When an entity attribute is used as a link (relationship) to other entities
+-   When an Entity Attribute is used as a link (relationship) to other entities
     two modelling options are possible:
 
-        -  A/ Name the attribute with the prefix `ref` plus the name of the target (linked) entity type. For instance `refStreetlightModel`, represents an attribute which contains a reference to an entity of type `StreetlightModel`. This option has been extensively used by data models initially intended to be used with NGSI v2 .
+  1. Name the attribute with the prefix `ref` plus the name of the target (linked) entity type. For instance `refStreetlightModel`, represents an attribute which contains a reference to an entity of type `StreetlightModel`. This option has been extensively used by data models initially intended to be used with NGSI v2 .
 
-        -  B/ Name the attribute using a verb (plus optionally an object) such as `hasStop`, `operatedBy`, `hasTrip`, etc. This option is the one advocated by NGSI-LD, as in NGSI-LD URNs are used to identify entities, and NGSI-LD URNs already convey the type of the target entity, for instance `urn:ngsi-ld:gtfs:Stop:S123`.
+  2. Name the attribute using a verb (plus optionally an object) such as `hasStop`, `operatedBy`, `hasTrip`, etc. This option is the one advocated by NGSI-LD, as in NGSI-LD URNs are used to identify entities, and NGSI-LD URNs already convey the type of the target entity, for instance `urn:ngsi-ld:gtfs:Stop:S123`.
 
-As the current trend is to align with NGSI-LD as much as possible, B option can
-be considered as the recommended one and A option is to some extent
+As the current trend is to align with NGSI-LD as much as possible, 2. option can
+be considered as the recommended one and 1. option is to some extent
 "deprecated".
 
 ## Date Attributes
 
--   In NGSI v2 the Attribute type must be `DateTime`. In NGSI-LD please check
-    the encoding at the [NGSI-LD FAQ](https://github.com/FIWARE/data-models/blob/master/specs/ngsi-ld_howto.md#airquality-in-ngsi-ld-format). 
+-   In NGSI v2 the Attribute type must be `DateTime`. 
+
+-   In NGSI-LD, please check the encoding at the [NGSI-LD FAQ](https://github.com/FIWARE/data-models/blob/master/specs/ngsi-ld_howto.md#airquality-in-ngsi-ld-format). 
 
 -   Use the `date` prefix for naming entity attributes representing dates (or
     complete timestamps). Ex. `dateLastEmptying`.
 
 -   `dateCreated` (`createdAt` in NGSI-LD) must be used to denote the (digital)
-    entity's creation date.
+    Entity's creation date.
 
 -   `dateModified` (`modifiedAt` in NGSI-LD) must be used to denote the
-    (digital) entity's last update date.
+    (digital) Entity's last update date.
 
--   `dateCreated` and `dateModified` are special entity attributes provided
+-   `dateCreated` and `dateModified` are special Entity Attributes provided
     off-the-shelf by NGSI implementations. Be careful because they can be
     different than the actual creation or update date of the real world entity
     represented by its corresponding digital entity.
 
--   When necessary define additional attributes to capture precisely all the
+-   When necessary define additional Attributes to capture precisely all the
     details about dates. For instance, to denote the date at which a weather
     forecast was delivered an attribute named `dateIssued` can be used. In that
     particular case just reusing `dateCreated` would be incorrect because the
@@ -126,7 +126,7 @@ be considered as the recommended one and A option is to some extent
     digital entity was updated, as typically there might be delay, specially on
     IoT networks which deliver data only at specific timeslots.
 
--   In NGSI-LD use the `observedAt` Property. 
+-   In NGSI-LD use the `observedAt` Property to convey timestamps. 
 
 ## Internationalization (i18N)
 
@@ -143,10 +143,11 @@ follows:
     (`Livorno` in our example) in latin script should be used.
 
 -   There shall always be a term for the original attribute, i.e. it is not
-    allowed to have entity representations which only contain terms associated
+    allowed to have Entity representations which only contain terms associated
     to language variants.
+    
 -   For each language variant of an internationalized attribute, there shall be
-    an additional entity attribute which name shall be in the form:
+    an additional Entity Attribute which name shall be in the form:
 
 `<AttributeName>_<LanguageTag>` where `AttributeName` is the original attribute
 name and `LanguageTag` shall be a language tag as mandated by
@@ -155,8 +156,8 @@ on
 [how to use language tags](https://www.w3.org/International/articles/language-tags/).
 
 [JSON-LD](https://www.w3.org/TR/json-ld/#string-internationalization) can
-facilitate developers to parse internationalized entity representations, thus
-Context Producers are encouraged to use JSON-LD (provided that the backing
+facilitate developers to parse internationalized Entity representations, thus
+Context Data Producers are encouraged to use JSON-LD (provided that the backing
 implementations support it).
 
 When parsing plain JSON content, developers should validate that the
@@ -174,7 +175,7 @@ attribute named `description_es` used to convey the value of such a
 
 ## Some of the most used attributes
 
-In case of doubt check other existing models!
+In case of doubt check the existing data models!
 
 -   `name`
 -   `alternateName`
@@ -219,7 +220,7 @@ New data models should be added under a folder structured as follows:
             **NGSI-LD** normalized format, e.g.
             [example-normalized-ld.jsonld of WeatherObserved](./Weather/WeatherObserved/example-normalized-ld.jsonld)
 
-The name of the folder should match the entity type used in the JSON Schema
+The name of the folder should match the Entity Type used in the JSON Schema
 (e.g. `NewModel`). For data models including more entities, a hierarchical
 folder should be used. The father folder can include common JSON schemas shared
 among the entities. e.g.:
