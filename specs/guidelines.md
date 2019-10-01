@@ -93,7 +93,8 @@ be considered as the recommended one and 1. option is to some extent
 
 -   In NGSI v2 the Attribute type must be `DateTime`. 
 
--   In NGSI-LD, please check the encoding at the [NGSI-LD FAQ](https://github.com/FIWARE/data-models/blob/master/specs/ngsi-ld_howto.md#airquality-in-ngsi-ld-format). 
+-   In NGSI-LD, please check the date and time encoding at 
+    the [NGSI-LD FAQ](https://github.com/FIWARE/data-models/blob/master/specs/ngsi-ld_howto.md#airquality-in-ngsi-ld-format). 
 
 -   Use the `date` prefix for naming entity attributes representing dates (or
     complete timestamps). Ex. `dateLastEmptying`.
