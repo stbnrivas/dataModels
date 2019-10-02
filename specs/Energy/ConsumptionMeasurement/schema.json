@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "$id": "https://fiware.github.io/dataModels/specs/Energy/ConsumptionMeasurement/schema.json",
+  "$id": "https://fiware.github.io/data-models/specs/Energy/ConsumptionMeasurement/schema.json",
   "title": "GSMA / FIWARE - AC or DC Measurement",
   "description": "Electrical measurement from a device that can measure multiple circuits.",
   "type": "object",

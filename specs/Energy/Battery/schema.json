@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "$id": "https://fiware.github.io/dataModels/specs/Energy/Battery/schema.json",
+  "$id": "https://fiware.github.io/data-models/specs/Energy/Battery/schema.json",
   "title": "GSMA / FIWARE - Battery",
   "description": "Represent a physical battery with its hardware specifications",
   "type": "object",
