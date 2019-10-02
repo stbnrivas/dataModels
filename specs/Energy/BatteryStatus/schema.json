@@ -4,7 +4,7 @@
   "title": "GSMA / FIWARE - BatteryStatus",
   "description": "Represent a status for a physical battery.",
   "type": "object",
-  "allOff": [
+  "allOf": [
     {
       "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/GSMA-Commons"
     },

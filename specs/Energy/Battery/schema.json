@@ -4,7 +4,7 @@
   "title": "GSMA / FIWARE - Battery",
   "description": "Represent a physical battery with its hardware specifications",
   "type": "object",
-  "allOff": [
+  "allOf": [
     {
       "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/GSMA-Commons"
     },
@@ -23,23 +23,28 @@
           "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType"
         },
         "status": {
-          "type": "string",
-          "enum": [
-            "working",
-            "outOfService",
-            "withIncidence"
-          ]
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type":"string",
+            "enum": [
+              "working",
+              "outOfService",
+              "withIncidence"
+            ]
+          }
         },
         "cycleLife":{
           "type": "integer"
         },
         "autonomyTime": {
            "type": "string",
-           "pattern": "/^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$/"
+           "pattern": "^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$"
         },
         "rechargeTime": {
            "type": "string",
-           "pattern": "/^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$/"
+           "pattern": "^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$"
         },
         "acPowerInput": {
           "type": "number"
