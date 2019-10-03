@@ -12,7 +12,7 @@ model has been developed in cooperation with mobile operators and the
 ## Data Model
 
 A JSON Schema corresponding to this data model can be found
-[here](http://fiware.github.io/dataModels/specs/Environment/AirQualityObserved/schema.json).
+[here](http://fiware.github.io/data-models/specs/Environment/AirQualityObserved/schema.json).
 
 -   `id` : Unique identifier.
 

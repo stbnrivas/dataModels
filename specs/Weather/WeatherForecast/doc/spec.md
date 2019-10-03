@@ -18,7 +18,7 @@ Spanish) [here](http://www.aemet.es/es/eltiempo/prediccion/municipios/ayuda).
 ## Data Model
 
 A JSON Schema corresponding to this data model can be found
-[here](http://fiware.github.io/dataModels/specs/Weather/WeatherForecast/schema.json).
+[here](http://fiware.github.io/data-models/specs/Weather/WeatherForecast/schema.json).
 
 -   `id` : Unique identifier.
 

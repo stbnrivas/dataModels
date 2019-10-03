@@ -276,7 +276,7 @@ following attributes:
 off-the-shelf by NGSI v2 implementations.
 
 Most of the FIWARE Data Models adopt the
-[GSMA common definitions](https://fiware.github.io/dataModels/common-schema.json),
+[GSMA common definitions](https://fiware.github.io/data-models/common-schema.json),
 and so also include standard GSMA terminology such as:
 
 -   `owner`: An array of URIs or pointers to NGSI entities representing the
@@ -294,7 +294,7 @@ and so also include standard GSMA terminology such as:
 See for example the [`Building` Data Model](Building/Building/doc/spec.md).
 
 Similarly most of the FIWARE Data Models adopt the
-[Location common definitions](https://fiware.github.io/dataModels/common-schema.json),
+[Location common definitions](https://fiware.github.io/data-models/common-schema.json),
 and thus include the following attributes:
 
 -   `address`: the civic address of the entity as per

@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 This script provides two files:
- - context.jsonld, that serves https://schema.lab.fiware.org/ld/fiware-datamodels-context.jsonld
- - mapping_list.yml, that serves  https://uri.fiware.org/ns/datamodels
+ - context.jsonld, that serves https://schema.lab.fiware.org/ld/fiware-data-models-context.jsonld
+ - mapping_list.yml, that serves  https://uri.fiware.org/ns/data-models
 
 context.jsonld is combined by extracting the properties, types and  enumerations of a JSON Schema and
 converting them into terms of a JSON-LD @Context. mapping_list.yml uses the result of extracting
@@ -35,14 +35,14 @@ alert_list = [
 ]
 
 # Template to prepare a valid URL of a schema for a term mapping
-schema_url = 'https://fiware.github.io/dataModels/{}'
+schema_url = 'https://fiware.github.io/data-models/{}'
 specification_url = 'https://fiware-datamodels.readthedocs.io/en/latest/{}'
 
 # Agri* schemas stored at another github organization
 agri_url = 'https://github.com/GSMADeveloper/NGSI-LD-Entities/blob/master/definitions/{}.md'
 
 # Used to detect attributes which are actually relationships
-ENTITY_ID = 'https://fiware.github.io/dataModels/common-schema.json#/definitions/EntityIdentifierType'
+ENTITY_ID = 'https://fiware.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType'
 
 
 def read_json(infile):
@@ -101,14 +101,22 @@ def extract_properties(schema):
         return out
 
     for p in properties:
-        if p != "type":
+        if p != "type" and p != "id":
             prop = dict()
             prop['type'] = 'Property'
             prop['name'] = p
 
-            if '$ref' in properties[p]:
-                if properties[p]['$ref'] == ENTITY_ID:
-                    prop['type'] = 'Relationship'
+            ref = find_node(properties[p], '$ref')
+            if ref is not None and ref == ENTITY_ID:
+                prop['type'] = 'Relationship'
+
+            enum = find_node(properties[p], 'enum')
+            if enum is not None:
+                prop['isEnumerated'] = True
+
+            pformat = find_node(properties[p], 'format')
+            if pformat is not None and pformat == 'date-time':
+                prop['isDate'] = True
 
             out.append(prop)
 
@@ -163,18 +171,25 @@ def generate_ld_context_attrs(properties, uri_prefix, predefined_mappings):
     for p in properties:
         p_name = p['name']
 
+        if p_name in predefined_mappings:
+            context[p_name] = predefined_mappings[p_name]
+            continue
+
         if p['type'] == 'Relationship':
             context[p_name] = {
-                '@type': '@id',
-                '@id': uri_prefix + '#' + p_name
+                '@type': '@id'
             }
-        elif p['name'].startswith('date'):
+        elif 'isDate' in p:
             context[p_name] = {
-                '@type': 'http://uri.etsi.org/ngsi-ld/DateTime',
-                '@id': uri_prefix + '#' + p_name
+                '@type': 'https://uri.etsi.org/ngsi-ld/DateTime'
             }
-        elif p_name in predefined_mappings:
-            context[p_name] = predefined_mappings[p_name]
+        elif 'isEnumerated' in p:
+            context[p_name] = {
+                '@type': '@vocab'
+            }
+
+        if p_name in context:
+            context[p_name]['@id'] = uri_prefix + '#' + p_name
         else:
             context[p_name] = uri_prefix + '#' + p_name
 

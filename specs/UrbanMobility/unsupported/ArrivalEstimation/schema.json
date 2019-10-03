@@ -5,7 +5,7 @@
   "description": "Standalone arrival estimation. These entities can be used to create GTFS-RT feeds or to be used in a standalone way",
   "type": "object",
   "allOf": [
-    { "$ref": "https://fiware.github.io/dataModels/common-schema.json#/definitions/GSMA-Commons" },
+    { "$ref": "https://fiware.github.io/data-models/common-schema.json#/definitions/GSMA-Commons" },
     {
       "properties": {
         "type": {
