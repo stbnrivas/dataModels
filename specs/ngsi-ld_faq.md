@@ -231,9 +231,9 @@ It can be found at
 
 Actually, the role of Default `@context`is played by the Core `@context` itself, which does include a default `@vocab` rule to map unknown terms (i.e. those for which no correspondance is found in the user `@context`) to a default URI.
 
-### Do I always need to provide the Core `@context` when invoking API operations?
+### Q: Do I always need to provide the Core `@context` when invoking API operations?
 
 It **is not** necessary. The Core `@context` is always implicit when processing
-API requests. Hlowever, when generating API responses the Core `@context` is
+API requests. However, when generating API responses the Core `@context` is
 always included to facilitate the work of JSON-LD processors that might be
 upstream.
