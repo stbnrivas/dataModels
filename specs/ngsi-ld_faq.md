@@ -77,6 +77,28 @@ For instance,
 
 You can find an example [here](https://schema.lab.fiware.org/ld/context).
 
+### Q: What URI should I use to reference the FIWARE Data Models `@context`?
+
+The sources of truth for the FIWARE Data Models `@context` are [https://fiware.github.io/data-models/context.jsonld](https://fiware.github.io/data-models/context.jsonld) and [https://fiware.github.io/data-models/full-context.jsonld](https://fiware.github.io/data-models/full-context.jsonld). 
+The latter includes both the FIWARE Data Models `@context` and the Core `@context`. 
+
+The full `@context` is also available at 
+[https://schema.lab.fiware.org/ld/context](https://schema.lab.fiware.org/ld/context)
+
+When it comes to referencing the FIWARE Data Models `@context` 
+in your NGSI-LD Entities, there are three different options: 
+
+*  Use the FIWARE Lab URI [https://schema.lab.fiware.org/ld/context](https://schema.lab.fiware.org/ld/context). 
+*  Use the GitHub URI [https://fiware.github.io/data-models/full-context.jsonld](https://fiware.github.io/data-models/full-context.jsonld).
+*  Host a copy of the Data Models `@context` file within your own premises and use a URI referencing a local server 
+
+The main advantage of the first method, is that the FIWARE Lab URI is convenient, as it is shorter and cleaner,
+however it does depend on a redirection made by the FIWARE Lab Infrastructure,  which does not have 100% 
+availability guaranteed. The GitHub URI is longer, but in general GitHub has higher guaranteed availability 
+than FIWARE Lab. The self-hosting method, ensures that the `@context` will only be updated when you chose to do and
+an on-premise URI can help to solve issues faced by applications that are deployed behind firewalls, however your
+local copy of the `@context` file will not include recent changes made to the standard models defined by the `@context`.
+
 ### Q: What is a Property of a Property / Relationship and all the combinations?
 
 It is similar to NGSI v2 metadata. In NGSIv2, in the example above, the Property
@@ -150,7 +172,7 @@ See the example above. In essence an Attribute of type `GeoProperty` plus a
 
 ### Q: Is `application/json` a supported MIME type?
 
-Yes, indeed. However, when using it the LD `@context` has to be externally
+Yes. However, when using it the LD `@context` has to be externally
 provided, or no JSON-LD `@context` at all. In the latter case Entities will be
 under the Default `@context`. You can see an example
 [here](https://github.com/Fiware/NGSI-LD_Tests/blob/master/contextProvision/create_entity_with_ldcontext_test.js#L18)
