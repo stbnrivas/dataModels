@@ -3,7 +3,7 @@
 This FAQ compilation is intended to clarify the NGSI-LD specification by
 providing answers to common questions.
 
-A tutorial that can complement this FAQ can be found at 
+A tutorial that can complement this FAQ can be found at
 [https://github.com/FIWARE/tutorials.Linked-Data](https://github.com/FIWARE/tutorials.Linked-Data).
 
 ### Q: What implementations of NGSI-LD are available?
@@ -79,22 +79,22 @@ You can find an example [here](https://schema.lab.fiware.org/ld/context).
 
 ### Q: What URI should I use to reference the FIWARE Data Models `@context`?
 
-The sources of truth for the FIWARE Data Models `@context` are [https://fiware.github.io/data-models/context.jsonld](https://fiware.github.io/data-models/context.jsonld) and [https://fiware.github.io/data-models/full-context.jsonld](https://fiware.github.io/data-models/full-context.jsonld). 
-The latter includes both the FIWARE Data Models `@context` and the Core `@context`. 
+The sources of truth for the FIWARE Data Models `@context` are [https://fiware.github.io/data-models/context.jsonld](https://fiware.github.io/data-models/context.jsonld) and [https://fiware.github.io/data-models/full-context.jsonld](https://fiware.github.io/data-models/full-context.jsonld).
+The latter includes both the FIWARE Data Models `@context` and the Core `@context`.
 
-The full `@context` is also available at 
+The full `@context` is also available at
 [https://schema.lab.fiware.org/ld/context](https://schema.lab.fiware.org/ld/context)
 
-When it comes to referencing the FIWARE Data Models `@context` 
-in your NGSI-LD Entities, there are three different options: 
+When it comes to referencing the FIWARE Data Models `@context`
+in your NGSI-LD Entities, there are three different options:
 
-*  Use the FIWARE Lab URI [https://schema.lab.fiware.org/ld/context](https://schema.lab.fiware.org/ld/context). 
-*  Use the GitHub URI [https://fiware.github.io/data-models/full-context.jsonld](https://fiware.github.io/data-models/full-context.jsonld).
-*  Host a copy of the Data Models `@context` file within your own premises and use a URI referencing a local server 
+*   Use the FIWARE Lab URI [https://schema.lab.fiware.org/ld/context](https://schema.lab.fiware.org/ld/context).
+*   Use the GitHub URI [https://fiware.github.io/data-models/full-context.jsonld](https://fiware.github.io/data-models/full-context.jsonld).
+*   Host a copy of the Data Models `@context` file within your own premises and use a URI referencing a local server
 
 The main advantage of the first method, is that the FIWARE Lab URI is convenient, as it is shorter and cleaner,
-however it does depend on a redirection made by the FIWARE Lab Infrastructure,  which does not have 100% 
-availability guaranteed. The GitHub URI is longer, but in general GitHub has higher guaranteed availability 
+however it does depend on a redirection made by the FIWARE Lab Infrastructure,  which does not have 100%
+availability guaranteed. The GitHub URI is longer, but in general GitHub has higher guaranteed availability
 than FIWARE Lab. The self-hosting method, ensures that the `@context` will only be updated when you chose to do and
 an on-premise URI can help to solve issues faced by applications that are deployed behind firewalls, however your
 local copy of the `@context` file will not include recent changes made to the standard models defined by the `@context`.
