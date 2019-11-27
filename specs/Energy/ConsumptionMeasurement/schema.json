@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "https://fiware.github.io/data-models/specs/Energy/ConsumptionMeasurement/schema.json",
+  "title": "GSMA / FIWARE - AC or DC Measurement",
+  "description": "Electrical measurement from a device that can measure multiple circuits.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://fiware.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://fiware.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["ConsumptionMeasurement"],
+          "description": "NGSI Entity type"
+        },
+        "dateObserved": {
+          "type": "string"
+        },
+        "refDevice": {
+          "type": "string"
+        },
+        "dcPowerConsumption": {
+          "type": "number"
+        },
+        "acPowerConsumption": {
+          "type": "object",
+          "properties": {
+            "frequency": {
+              "type": "number"
+            },
+            "phases": {
+              "type": "number"
+            },
+            "phi": {
+              "type": "number"
+            },
+            "powerFactor": {
+              "type": "number"
+            },
+            "activePower": {
+              "type": "number"
+            },
+            "reactivePower": {
+              "type": "number"
+            },
+            "apparentPower": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "anyOf": [
+    { "required": ["dcPowerConsumption"] },
+    { "required": ["acPowerConsumption"] }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}
